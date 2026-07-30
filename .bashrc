@@ -1,0 +1,40 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+PATH=$PATH:/test
+export PATH
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+export PS1='[\u@\h \w]\$ '
+export PS1='\[\e[31;1m\][\u@\h\[\e[33;1m\] \w]\$ \[\e[m\]'
+
+# User specific aliases and functions
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias vi='/usr/bin/vim'
+
+alias ls='ls --color=auto -h'
+alias grep='grep --color=auto -i'
+alias c="clear"
+alias bzip2='bzip2 -v'
+alias bunzip2='bunzip2 -v'
+
+ 
+#
+# Sfecific Configuration
+#
+export PS1="\[\e[31;1m\][\u@\h\[\e[33;1m\] \w]\$ \[\e[m\]"
+source ~/.local/share/blesh/ble.sh
