@@ -16,7 +16,7 @@ export PATH
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-export PS1='[\u@\h \w]\$ '
+#export PS1='[\u@\h \w]\$ '
 export PS1='\[\e[31;1m\][\u@\h\[\e[33;1m\] \w]\$ \[\e[m\]'
 
 # User specific aliases and functions
@@ -24,17 +24,85 @@ export PS1='\[\e[31;1m\][\u@\h\[\e[33;1m\] \w]\$ \[\e[m\]'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+
 alias vi='/usr/bin/vim'
 
 alias ls='ls --color=auto -h'
+
 alias grep='grep --color=auto -i'
+alias df="df -hT"
 alias c="clear"
+alias celar="clear"
+alias clea="clear"
 alias bzip2='bzip2 -v'
 alias bunzip2='bunzip2 -v'
+alias 000='script /test/scriptfile1.txt'
+alias chrome='/usr/bin/google-chrome --no-sandbox'
 
- 
+#source ~/.local/share/blesh/ble.sh
+
 #
-# Sfecific Configuration
+# rsync Alias
 #
-export PS1="\[\e[31;1m\][\u@\h\[\e[33;1m\] \w]\$ \[\e[m\]"
-source ~/.local/share/blesh/ble.sh
+alias RS='rsync -az --delete -e ssh'    # RS /backup/ main:/backup/server1
+alias LS='rsync -a --delete'            # LS /backup/ /test100
+
+
+#
+# Firewall Alias
+#
+alias fwcmd='firewall-cmd'
+alias fwadd='firewall-cmd --permanent'
+alias fwreload='firewall-cmd --reload'
+alias fwlist='firewall-cmd --list-all'
+
+
+#
+# Firewall Alias
+#
+alias fwcmd='firewall-cmd'
+alias fwadd='firewall-cmd --permanent'
+alias fwreload='firewall-cmd --reload'
+alias fwlist='firewall-cmd --list-all'
+
+
+#
+# DNS Server Alias
+#
+alias named.conf='vi /etc/named.conf'
+alias named.rfc1912.zones='vi /etc/named.rfc1912.zones' 
+alias DNS='cd /var/named'
+alias dnslog='tail -f /var/log/messages'
+
+
+#
+# FTP Server Alias
+#
+alias FTP='cd /etc/vsftpd'
+alias vsftpd.conf='vi /etc/vsftpd/vsftpd.conf'
+alias ftpusers='vi /etc/vsftpd/ftpusers'
+alias user_list='vi /etc/vsftpd/user_list'
+alias slog='tail -f /var/log/secure'
+alias flog='tail -f /var/log/xferlog'
+
+#
+# Temporary Alias
+#
+alias aaa='systemctl restart vsftpd'
+alias bbb='ftp server1'
+
+#
+# Mail Server Alias
+#
+alias MAIL='cd /etc/postfix'
+alias main.cf='vi /etc/postfix/main.cf'
+alias maillog='tail -f /var/log/maillog'
+
+
+#
+# Samba Server Alias
+#
+alias smb.conf='vi /etc/samba/smb.conf'
+alias SMB='cd /etc/samba'
+alias smblog='tail -f /var/log/samba/log.smbd'
+alias nmblog='tail -f /var/log/samba/log.nmbd'
