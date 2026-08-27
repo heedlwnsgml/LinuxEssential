@@ -1,0 +1,8 @@
+Script started on 2026-08-27 15:10:28+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="156" LINES="51"]
+]0;root@main:~/linux]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://main.example.com/root/linux\[?2004h[31;1m[root@main[33;1m ~/linux]# [mcd
+[?2004l]133;C\]666;vte.shell.preexec!\]0;root@main:~]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://main.example.com/root\[?2004h[31;1m[root@main[33;1m ~]# [mls
+[?2004l]133;C\]666;vte.shell.preexec!\[0m[01;34m바탕화면[0m  anaconda-ks.cfg  [01;34mbin[0m  [01;34mDesktop[0m  [01;34mDocuments[0m  [01;34mDownloads[0m  eicar.txt  [01;34mlinux[0m  [01;34mMusic[0m  [01;34mPictures[0m  [01;34mPublic[0m  [01;34mTemplates[0m  [01;34mVideos[0m
+]0;root@main:~]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://main.example.com/root\[?2004h[31;1m[root@main[33;1m ~]# [mc[Kcmdlog.sh [K[K[K[K[K[K[K[K[K[Kexit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-08-27 15:10:35+09:00 [COMMAND_EXIT_CODE="0"]
