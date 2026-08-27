@@ -23,3 +23,13 @@ bash: lv: command not found...
 exit
 
 Script done on 2026-08-27 15:13:42+09:00 [COMMAND_EXIT_CODE="127"]
+Script started on 2026-08-27 15:24:15+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="156" LINES="51"]
+[root@main ~]# 1
+bash: 1: command not found...
+[root@main ~]# test
+[root@main ~]# test
+[root@main ~]# c
+[root@main ~]# exit
+exit
+
+Script done on 2026-08-27 15:24:25+09:00 [COMMAND_EXIT_CODE="0"]
