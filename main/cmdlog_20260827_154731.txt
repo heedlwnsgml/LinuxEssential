@@ -1,0 +1,3714 @@
+Script started on 2026-08-27 15:47:31+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="117" LINES="46"]
+[root@main ~]# [ ! -f /etc/kea/kea-dhcp-ddns.conf.OLD ] \
+[ !&-fb/etc/kea/kea-dhcp-ddns.conf.OLDn] \etc/kea/kea-dhcp-ddns.conf.OLD
+  && /bin/cp /etc/kea/kea-dhcp-ddns.conf /etc/kea/kea-dhcp-ddns.conf.OLD
+a/kea-dhcp-ddns.conf
+// This is a basic configuration for the Kea DHCP DDNS daemon.
+//// This is just a very basic configuration. Kea comes with large suite (over 30)// of configuration examples and extensive Kea User's Guide. Please refer to
+// those materials to get better understanding of what this software is able to
+// do. Comments in this configuration file sometimes refer to sections for more
+// details. These are section numbers in Kea User's Guide. The version matching
+// your software should come with your Kea package, but it is also available
+// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+// the stable version is https://kea.readthedocs.io/).
+//
+// This configuration file contains only DHCP DDNS daemon's configuration.
+// If configurations for other Kea services are also included in this file they
+// are ignored by the DHCP DDNS daemon.
+{
+
+// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+"DhcpDdns":
+{
+  "ip-address": "127.0.0.1",
+  "port": 53001,
+  "control-socket": {"socket-type": "unix","socket-name": "kea-ddns-ctrl-socket"
+  },
+  "tsig-keys": [],
+  "forward-ddns" : {},
+  "reverse-ddns" : {},
+
+// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18.
+  "loggers": [
+    {// This specifies the logging for D2 (DHCP-DDNS) daemon."name": "kea-dhcp-ddns","output-options": [{// Specifies the output file. There are several special values// supported:// - stdout (prints on standard output)// - stderr (prints on standard error)// - syslog (logs to syslog)// - syslog:name (logs to syslog using specified name)1,1Top+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$pfff/ffff/f          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        2345~@k   678910,112345~@k   6,0-17,1  8920~@k   12345~@k   678930~@k   1,0-12,1  345~@k   65432~@k   1,0-10,1  2987~@k   678930~@k   1,0-12,1  345~@k   678940~@k
+// Any other value is considered a name of the file41,13%
+"output": "kea-ddns.log"42,16%
+43,19%
+// Shorter log pattern suitable for use with systemd,44,112%
+// avoids redundant information45,116%~@k
+// "pattern": "%-5p %m\n"46,119%
+47,122%
+// This governs whether the log output is flushed to disk after48,0-125%
+// every write.49,129%
+// "flush": false,50,132%~@k
+51,135%
+// This specifies the maximum size of the file before it is52,0-138%
+// rotated.53,141%
+// "maxsize": 1048576,54,145%
+55,148%~@k
+// This specifies the maximum number of rotated files to keep.56,0-151%
+// "maxver": 857,154%
+}58,158%
+],59,161%
+// This specifies the severity of log messages to keep. Supported values60,0-164%~@k
+// are: FATAL, ERROR, WARN, INFO, DEBUG61,167%
+"severity": "INFO",62,170%
+63,174%
+// If DEBUG level is specified, this value is used. 0 is least verbose,64,177%
+// 99 is most verbose. Be cautious, Kea can generate lots and lots65,180%~@k
+// of logs if told to do so.66,183%
+"debuglevel": 067,187%
+}68,0-190%
+]69,193%
+}70,196%
+}71,1Bot2345~@k   6~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   5432~@k   10698,0-17,1  ~@k   65432~@k   10,0-159,1  87~@k   6,0-15,1  432,0-11,1  0498,0-17,1  ~@k   65432~@k   103987~@k   36,196%"reverse-ddns" : {},35,193%"forward-ddns" : {},34,190%"tsig-keys": [],33,187%},32,183%~@k   "socket-name": "kea-ddns-ctrl-socket"31,0-180%"socket-type": "unix",30,177%"control-socket": {29,174%"port": 53001,28,170%"ip-address": "127.0.0.1",27,167%~@k   {26,164%"DhcpDdns":25,161%// See Section 11 for examples and details description.24,158%// that simply starts the DDNS daemon, but will not do anything useful.23,154%// DHCP DDNS configuration starts here. This is a very simple configuration22,151%~@k   21,148%{20,145%// are ignored by the DHCP DDNS daemon.19,141%// If configurations for other Kea services are also included in this file they18,138%// This configuration file contains only DHCP DDNS daemon's configuration.17,135%~@k   //16,0-132%// the stable version is https://kea.readthedocs.io/).15,129%// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for14,125%// your software should come with your Kea package, but it is also available13,122%// details. These are section numbers in Kea User's Guide. The version matching12,119%// do. Comments in this configuration file sometimes refer to sections for more11,116%// those materials to get better understanding of what this software is able to10,112%// of configuration examples and extensive Kea User's Guide. Please refer to9,19%// This is just a very basic configuration. Kea comes with large suite (over 30)8,16%//7,13%~@k   // This is a basic configuration for the Kea DHCP DDNS daemon.6,1Top5432~@k   1~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   2~@k   3~@k   4~@k   5~@k   6~@k   7~@k   8~@k   9~@k   10,1~@k   1~@k   2~@k   3~@k   4~@k   5~@k   6,0-1~@k   7,1  ~@k   8~@k   9~@k   20~@k   1~@k   2~@k   3~@k   4~@k   5~@k   6~@k   7~@k   8~@k   9~@k   30~@k   29~@k   ~@k   8~@@   8~@k  []7~@k   []7,4 ~@k   o -- INSERT --28,1Top28,1Top930123233,1Top21029d  "tsig-keys": [],2d  "tsig-keys": [],3 "tsig-keys": [],2 "tsig-keys": [],1^[  29,1Topdd
+// - syslog (logs to syslog)29,3Topdd
+// - syslog:name (logs to syslog using specified name)29,3Topdd
+// Any other value is considered a name of the file29,0-1Top-- INSERT --29,1Top"tsig-keys": [
+    {"name": "ddns-key",(paste) --"algorithm": "HMAC-SHA256","secret": "Xdlsp"Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9oAUL9M0A8F7hM="
+    }
+  ],
+
+  "for"forward-ddns": {
+    "ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-"dns-servers": [{ "ip-address": "192.168.10.20", "port":"loggers": [
+53 }]
+      }    ]},"reverse-ddns": {
+    "ddns-domains": [{"name": "10.168.192.in-addr.ar
+
+// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18."10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }// activities. For details (e.g. names of loggers), see Chapter 18.
+  "loggers": []}
+    ]
+  }
+}{61,0-133%~@k   0,1  ~@k   59876~@k   54321~@k   0498,0-17,1  6~@k   54321~@k   039876,0-1~@k   5,1  4321~@k   0298,0-17,1  {26,132%~@k   "DhcpDdns":25,130%678,0-19,1  ~@k   301234~@k   56,0-17,1  89~@k   401234~@k   5678,0-19,1  ~@k   501234~@k   56789~@k
+{}"loggers": [60,132%
+}{61,0-133%
+// This specifies the logging for D2 (DHCP-DDNS) daemon.62,0-135%
+"name": "kea-dhcp-ddns",63,137%
+"output-options": [64,138%~@k
+{65,140%432,0-11~@k   0,1  59876~@k   54321~@k   0498,0-17,1  6~@k   54321~@k   039876,0-1~@k   5,1  4321~@k   "socket-type": "unix",30,138%"control-socket": {29,137%"port": 53001,28,0-135%"ip-address": "127.0.0.1",27,133%{26,132%~@k   "DhcpDdns":25,130%// See Section 11 for examples and details description.24,129%// that simply starts the DDNS daemon, but will not do anything useful.23,127%// DHCP DDNS configuration starts here. This is a very simple configuration22,125%{}21,124%~@k   {{20,122%// are ignored by the DHCP DDNS daemon.19,120%// If configurations for other Kea services are also included in this file they18,119%// This configuration file contains only DHCP DDNS daemon's configuration.17,117%//16,0-116%~@k   // the stable version is https://kea.readthedocs.io/).15,114%6,0-17,1  89~@k   201234~@k   5678,0-19,1  ~@k   301234~@k   56,0-17,1  89~@k   401234~@k   5678,0-19,1  ~@k
+{ "ip-address": "192.168.10.20", "port": 53 }50,116%
+]51,117%
+}52,119%
+]53,120%
+}54,122%~@k
+}55,124%~@k   2~@k   3~@k
+56,325%~@k
+57,327%~@k
+// Logging configuration starts here. Kea uses different loggers to log various58,329%~@k   4~@k
+{}// activities. For details (e.g. names of loggers), see Chapter 18.59,330%~@k
+{{}
+}"loggers": [60,132%{{}
+}59,3{}8,476~@k   54321~@k   0498,0-17,4  6~@k   54321~@k   039876,0-1~@k   5,4  4321~@k   0298,0-17,4  6~@k   "DhcpDdns":25,430%// See Section 11 for examples and details description.24,429%// that simply starts the DDNS daemon, but will not do anything useful.23,427%// DHCP DDNS configuration starts here. This is a very simple configuration22,425%{}21,124%~@k   {{20,422%1,12,434~@k   5678,0-19,4  ~@k   301234~@k   56,0-17,4  89~@k   401234~@k   5678,0-19,4  ~@k   501234~@k
+}55,424%
+56,425%
+57,427%
+// Logging configuration starts here. Kea uses different loggers to log various58,429%
+{}// activities. For details (e.g. names of loggers), see Chapter 18.59,330%~@k
+{{}
+}"loggers": [60,132%
+}{61,0-133%
+// This specifies the logging for D2 (DHCP-DDNS) daemon.62,0-135%
+"name": "kea-dhcp-ddns",63,437%
+"output-options": [64,438%~@k
+{65,440%
+// Specifies the output file. There are several special values66,441%
+// supported:67,443%
+// - stdout (prints on standard output)68,445%
+// - stderr (prints on standard error)69,446%~@k
+12moreeline;ebeforeo#4y#45gsecondsnago29,169%^Rline"less;kafters#4,2561secondssagonds"ago"reverse-ddns"{:o{},29,374%: "unix",ocket-name": "kea-ddns-ctrl-socket"},// - syslog:name (logs to syslog using specified name)// Any other value is considered a name of the file"output": "kea-ddns.log"// Shorter log pattern suitable for use with systemd,// avoids redundant information// "pattern": "%-5p %m\n"// This governs whether the log output is flushed to disk after// every write.// "flush": false,// This specifies the maximum size of the file before it is// rotated.// "maxsize": 1048576,// This specifies the maximum number of rotated files to keep.// "maxver": 8}],// This specifies the severity of log messages to keep. Supported values// are: FATAL, ERROR, WARN, INFO, DEBUG"severity": "INFO",// If DEBUG level is specified, this value is used. 0 is least verbose,29,0-176%
+1slineiless;"after,#4,156%seconds ago29,171%^R5
+19line%less; after #5  56 seconds ago29,374%^R6
+1/lineDless;lafteri#6sp56isecondshago29,0-176%^R32.moreslines; afters#72927-seconds ago"tsig-keys": [
+    {"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9oAUL9M0A8F7hM="
+    }
+  ],
+
+  "forward-ddns": {
+    "ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]
+  },
+
+  "reverse-ddns": {
+    "ddns-domains": [{"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]
+  }
+329more%lines; after #7  27 seconds ago29,137%30123~@k   456,0-17,1  8~@k   940123~@k   45678,0-1~@k   9,1  5012345678~@k   9601,0-123,1  ~@k
+"output-options": [64,138%~@k   3~@k   2,0-1~@k   1~@k   0,1  i -- INSERT --60,138%261,138%}2,321"output-options": [{66,141%// Specifies the output file. There are several special values// supported:// - stdout (prints on standard output)// - stderr (prints on standard error)// - syslog (logs to syslog)71,149%06987654321010592{}3{}60,21,30,2{}59,3{}2601550450{"name": "ddns-key",35,146%"socket-type": "unix","socket-name": "kea-ddns-ctrl-socket"
+  },
+
+  "tsig-keys": [30,138%"DhcpDdns":
+{
+  "ip-address": "127.0.0.1",
+  "port": 53001,
+  "control-socket": {25,130%// See Section 11 for examples and details description.24,128%// that simply starts the DDNS daemon, but will not do anything useful.23,126%// DHCP DDNS configuration starts here. This is a very simple configuration22,125%21,123%{}{}2345678930123456789401234567895012104987654321039876543210298765432{}1{20,122%{// are ignored by the DHCP DDNS daemon.19,120%// If configurations for other Kea services are also included in this file they18,119%// This configuration file contains only DHCP DDNS daemon's configuration.17,117%//16,115%// the stable version is https://kea.readthedocs.io/).15,114%// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for14,112%// your software should come with your Kea package, but it is also available13,111%// details. These are section numbers in Kea User's Guide. The version matching12,19%// do. Comments in this configuration file sometimes refer to sections for more11,17%// those materials to get better understanding of what this software is able to10,16%// of configuration examples and extensive Kea User's Guide. Please refer to9,14%// This is just a very basic configuration. Kea comes with large suite (over 30)8,13%//7,11%// This is a basic configuration for the Kea DHCP DDNS daemon.6,1Top543212345678910,1123456789201234567893012345678940
+]41,11%
+},42,13%
+43,14%
+"reverse-ddns": {44,16%
+"ddns-domains": [45,17%
+{46,19%
+"name": "10.168.192.in-addr.arpa.",47,111%
+"key-name": "ddns-key",48,112%
+"dns-servers": [49,114%
+{ "ip-address": "192.168.10.20", "port": 53 }50,115%
+]51,117%
+}52,119%
+]53,120%
+}54,122%
+}55,123%
+},56,125%
+57,126%
+58,128%
+// Logging configuration starts here. Kea uses different loggers to log various59,130%
+// activities. For details (e.g. names of loggers), see Chapter 18.60,131%{}
+"loggers": [61,133%}
+
+{62,134%
+// This specifies the logging for D2 (DHCP-DDNS) daemon.63,136%
+"name": "kea-dhcp-ddns",64,138%
+"output-options": [65,139%
+{66,141%
+// Specifies the output file. There are several special values67,142%
+// supported:68,144%
+// - stdout (prints on standard output)69,146%
+// - stderr (prints on standard error)70,147%
+// - syslog (logs to syslog)71,149%
+// - syslog:name (logs to syslog using specified name)72,150%
+// Any other value is considered a name of the file73,152%2106987654321^[  61,152%~@k   0x dl  0-1~@k   1,1  x dl  ,x dl  0-1~@k   0~@k   59,1  ~@k   2~@k   {}3~@k   i -- INSERT --59,352%4,{}5{}43{}449439"tsig-keys": [
+    {"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9oAUL9M0A8F7hM="34,344%"control-socket": {"socket-type": "unix","socket-name": "kea-ddns-ctrl-socket"
+  },29,336%// See Section 11 for examples and details description.
+"DhcpDdns":
+{
+  "ip-address": "127.0.0.1",
+  "port": 53001,24,328%// are ignored by the DHCP DDNS daemon.
+{
+
+// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.19,320%// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+// the stable version is https://kea.readthedocs.io/).
+//
+// This configuration file contains only DHCP DDNS daemon's configuration.
+// If configurations for other Kea services are also included in this file they14,312%// of configuration examples and extensive Kea User's Guide. Please refer to
+// those materials to get better understanding of what this software is able to
+// do. Comments in this configuration file sometimes refer to sections for more
+// details. These are section numbers in Kea User's Guide. The version matching
+// your software should come with your Kea package, but it is also available9,34%// This is a basic configuration for the Kea DHCP DDNS daemon.
+//
+// This is just a very basic configuration. Kea comes with large suite (over 30)4,3Top1611,36,121,26,3316,1
+]41,31%},
+
+  "reverse-ddns": {
+    "ddns-domains": [{46,39%"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]51,317%465136,11,32656{}7{}217// details. These are section numbers in Kea User's Guide. The version matching
+// your software should come with your Kea package, but it is also available
+// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+// the stable version is https://kea.readthedocs.io/).
+//12,39%//
+// This is just a very basic configuration. Kea comes with large suite (over 30)
+// of configuration examples and extensive Kea User's Guide. Please refer to
+// those materials to get better understanding of what this software is able to
+// do. Comments in this configuration file sometimes refer to sections for more7,31%// This is a basic configuration for the Kea DHCP DDNS daemon.2,3Top1611,36,121,26,331261,216,11,36,121,26,3316,1
+]41,31%},
+
+  "reverse-ddns": {
+    "ddns-domains": [{46,39%"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]51,317%}
+    ]
+  },56,325%// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18.
+  "loggers": [61,133%
+{62,134%10{}59,3{}8{}9{}876543210498,1{}7,3{}6543456{}7{}654321039876,1[]5,3[]0"DhcpDdns":
+{
+  "ip-address": "127.0.0.1",25,330%30298,1{}7,3{}65// See Section 11 for examples and details description.24,328%56{}7u}4^[  {}27,328%u1 change; before #13  2 seconds ago{},27,328%27,328%u2  32 seconds ago
+1}change;gbeforeo#12gu32tsecondsrago59,330%u1 u37{}different loggers to log various59,330%
+
+,// activities. For details (e.g. names of loggers), see Chapter 18.
+1 change;sbefore,#11% 37 seconds ago61,133%u0  38},61,133%61,133%u9  38 seconds ago}60,133%60,133%uline less; before #8  88 seconds ago
+32lfewerelines;fbefore #78 15:49:4729,0-170%--3INSERTr--29,170%{fore #7  15:49:47// This specifies the logging for D2 (DHCP-DDNS) daemon."name": "kea-dhcp-ddns","output-options": [{// Specifies the output file. There are several special values// supported:// - stdout (prints on standard output)// - stderr (prints on standard error)// - syslog (logs to syslog)// - syslog:name (logs to syslog using specified name)// Any other value is considered a name of the file"output": "kea-ddns.log"// Shorter log pattern suitable for use with systemd,// avoids redundant information// "pattern": "%-5p %m\n"// This governs whether the log output is flushed to disk after// every write.// "flush": false,// This specifies the maximum size of the file before it is// rotated.// "maxsize": 1048576,// This specifies the maximum number of rotated files to keep.// "maxver": 8}],// This specifies the severity of log messages to keep. Supported values// are: FATAL, ERROR, WARN, INFO, DEBUG"severity": "INFO",29,0-170%
+"DhcpDdns": {
+  "ip-address": "127.0.0.1",
+  "port": 53001,(paste) --"tsig-keys": [
+    {"name": "ddns-key","algorithm"algorithm": "HMAC-SHA256","secret": "Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9"Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9oAUL9M0A8F7hM="
+    }
+  ],
+
+  "forward-ddns": {
+    "ddns-domain"ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-servers": [{ "ip-address":"192.168.10.20", "port": 53 }]}
+    ]
+  },
+
+  "reverse-ddns": {
+    "ddns-domains": [{"name":"10.168.192.in-addr.arpa.","key-name": "ddns-key",
+  "dns-servers": [{ "ip-address": "192.168.10.20{"192.168.10.20", "port": 53 }]}
+    ]
+  }
+}
+}66,138%{{}
+}5{}432~@k   105987~@k   6543,0-12,1  ~@k   123,0-14,1  5~@k   678960~@k   1234{}5~@k   {{}
+}6
+{}// This specifies the logging for D2 (DHCP-DDNS) daemon.67,0-140%
+"name": "kea-dhcp-ddns",68,141%
+"output-options": [69,143%
+{70,144%~@k
+// Specifies the output file. There are several special values71,146%
+// supported:72,147%
+// - stdout (prints on standard output)73,149%
+// - stderr (prints on standard error)74,150%
+// - syslog (logs to syslog)75,152%~@k
+// - syslog:name (logs to syslog using specified name)76,153%5432~@k   106987,0-1~@k   6,1  5432~@k   105987~@k   6543,0-12,1  ~@k   104987~@k   65432~@k   "name": "ddns-key",41,0-152%{40,150%"tsig-keys": [39,149%38,147%"port": 53001,37,146%~@k   "ip-address": "127.0.0.1",36,144%"DhcpDdns": {35,143%{34,141%33,0-140%},32,138%~@k   "socket-name": "kea-ddns-ctrl-socket"31,137%"socket-type": "unix",30,135%"control-socket": {{}29,134%"port": 53001,{}28,0-132%"ip-address": "127.0.0.1",27,131%~@k   {26,129%"DhcpDdns":25,128%// See Section 11 for examples and details description.24,126%// that simply starts the DDNS daemon, but will not do anything useful.23,125%// DHCP DDNS configuration starts here. This is a very simple configuration22,123%~@k   21,122%~@k   2~@k   3~@k   4~@k   5~@k   6~@k   7~@k   8,0-1~@k   9,1  ~@k   30~@k   1~@k   2~@k   3,0-1~@k   4,1  ~@k   5~@k   6~@k   7~@k   8~@k   9~@k   40~@k   1,0-1~@k   2,1  ~@k   3~@k   4~@k   5~@k   6~@k   7~@k   8~@k   9~@k   50~@k   1~@k   2~@k   3,0-1~@k   4,1  ~@k   5~@k
+]56,123%~@k
+}57,125%~@k
+]58,126%~@k
+}59,128%~@k
+}60,129%~@k
+}61,131%~@k
+62,132%~@k
+// Logging configuration starts here. Kea uses different loggers to log various63,134%~@k
+// activities. For details (e.g. names of loggers), see Chapter 18.64,135%~@k
+{}"loggers": [65,137%~@k
+{{}
+}{66,138%~@k
+{}// This specifies the logging for D2 (DHCP-DDNS) daemon.67,0-140%~@k   {}6,1  ~@k   {{}
+}5~@k   {{}
+}6~@k   {{}
+}5u37 fewer lines; before #14  16 seconds ago"control-socket": {"socket-type": "unix","socket-name": "kea-ddns-ctrl-socket"
+  },// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18.
+  "loggers": [
+    {    // This specifies the logging for D2 (DHCP-DDNS) daemon.  "name": "kea-dhcp-ddns",  "output-options": [      { // Specifies the output file. There are several special values
+    // supported:// - stdout (prints on standard output)
+                // - stderr (prints on standard error)
+                // - syslog (logs to syslog) // - syslog:name (logs to syslog using specified name)        // Any other value is considered a name of the file        "output": "kea-ddns.log"      // Shorter log pattern suitable for use with systemd, // avoids redundant information // "pattern": "%-5p %m\n"  // This governs whether the log output is flushed to disk after// every write.
+                // "flush": false, // This specifies the maximum size of the file before it is        // rotated.        // "maxsize": 1048576,      // This specifies the maximum number of rotated files to keep. // "maxver": 8      }
+        ],
+        // This specifies the severity of log messages to keep. Supported values
+ // are: FATAL, ERROR, WARN, INFO, DEBUG
+ "severity": "INFO",
+
+17moreeline;ebeforeo#4v#15:49:1729,169%uchange;-before"#3,215:49:1529,169%29,169%^Raftere#3e-15:49:1529,169%29,169%^Rline less; after #4  15:49:17
+1slineiless;"after,#4,115:49:1729,171%^R58
+19line%less; after #5  15:49:1829,374%^R6
+1/lineDless;lafteri#6sp15:49:1829,0-176%^R37smoredlines; after #14bo19,seconds6ago{
+"DhcpDdns": {
+  "ip-address": "127.0.0.1",
+  "port": 53001,
+
+  "tsig-keys": [
+    {"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9oAUL9M0A8F7hM="
+    }
+  ],
+
+  "forward-ddns": {
+    "ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]
+  },
+
+  "reverse-ddns": {
+    "ddns-domains": [{"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]
+  }
+}
+379more%lines; after #14  19 seconds ago29,134%^RAlready at newest change29,134%^R29,134%^R29,134%^R29,134%^R29,134%^R29,134%^R29,134%^R29,134%"port": 53001,{}28,0-132%"ip-address": "127.0.0.1",27,131%{26,129%"DhcpDdns":25,128%~@k   // See Section 11 for examples and details description.24,126%// that simply starts the DDNS daemon, but will not do anything useful.23,125%// DHCP DDNS configuration starts here. This is a very simple configuration22,123%21,122%{20,120%~@k   // are ignored by the DHCP DDNS daemon.19,119%// If configurations for other Kea services are also included in this file they18,117%// This configuration file contains only DHCP DDNS daemon's configuration.17,116%//16,0-114%// the stable version is https://kea.readthedocs.io/).15,113%~@k   // in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for14,111%56,0-17,1  8~@k   920123~@k   45678,0-1~@k   9,1  30123,0-1~@k   4,1  5678~@k   9401,0-12,1  3~@k   45678~@k
+"reverse-ddns": {49,113%
+"ddns-domains": [50,114%
+{51,116%
+"name": "10.168.192.in-addr.arpa.",52,117%
+"key-name": "ddns-key",53,0-119%~@k
+"dns-servers": [54,120%
+{ "ip-address": "192.168.10.20", "port": 53 }55,122%
+]56,123%
+}57,125%
+]58,126%~@k
+}59,128%8765~@k   43,0-12,1  10~@k   4950123,0-1~@k   4,1  5678~@k   9
+}60,129%
+}61,131%
+62,132%
+// Logging configuration starts here. Kea uses different loggers to log various63,134%~@k
+// activities. For details (e.g. names of loggers), see Chapter 18.64,135%
+{}"loggers": [65,137%
+{{}
+}{66,138%
+{}// This specifies the logging for D2 (DHCP-DDNS) daemon.67,0-140%
+"name": "kea-dhcp-ddns",68,141%~@k
+"output-options": [69,143%~@k   8~@k   7,0-1~@k   6,1  x dl  0-1~@k   {}5,1  x dl  {0-1~@k   4,1  ~@k   2~@k   {}3~@k   i -- INSERT --64,343%,}}}34,{}559449{}3{34,541%{}"control-socket": {"socket-type": "unix","socket-name": "kea-ddns-ctrl-socket"
+  },29,234%// See Section 11 for examples and details description.
+"DhcpDdns":
+{
+  "ip-address": "127.0.0.1",
+  "port": 53001,24,526%// are ignored by the DHCP DDNS daemon.
+{
+
+// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.19,519%// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+// the stable version is https://kea.readthedocs.io/).
+//
+// This configuration file contains only DHCP DDNS daemon's configuration.
+// If configurations for other Kea services are also included in this file they14,511%9249,28,17,5{}43{}8,19,230,3123,14,356789[]40[]1,12,3345678
+"reverse-ddns": {49,313%
+"ddns-domains": [50,314%
+{51,316%
+"name": "10.168.192.in-addr.arpa.",52,317%{}
+"key-name": "ddns-key",53,119%{}
+
+"dns-servers": [54,320%
+{ "ip-address": "192.168.10.20", "port": 53 }55,322%
+]56,323%
+}57,325%
+]58,326%
+},59,328%
+60,329%
+61,331%
+62,332%
+// Logging configuration starts here. Kea uses different loggers to log various63,334%
+// activities. For details (e.g. names of loggers), see Chapter 18.64,335%{}
+"loggers": [65,137%{}
+
+{66,138%
+// This specifies the logging for D2 (DHCP-DDNS) daemon.67,140%
+"name": "kea-dhcp-ddns",68,341%
+"output-options": [69,343%
+{70,344%
+// Specifies the output file. There are several special values71,346%
+// supported:72,347%
+// - stdout (prints on standard output)73,349%
+// - stderr (prints on standard error)74,350%
+// - syslog (logs to syslog)75,352%
+// - syslog:name (logs to syslog using specified name)76,353%
+// Any other value is considered a name of the file77,355%
+"output": "kea-ddns.log"78,356%
+79,358%
+// Shorter log pattern suitable for use with systemd,80,359%
+// avoids redundant information81,361%
+// "pattern": "%-5p %m\n"82,362%
+83,364%
+// This governs whether the log output is flushed to disk after84,165%
+// every write.85,367%
+// "flush": false,86,368%
+87,370%
+// This specifies the maximum size of the file before it is88,171%
+// rotated.89,373%
+// "maxsize": 1048576,90,374%
+91,376%
+// This specifies the maximum number of rotated files to keep.92,177%
+// "maxver": 893,379%
+}94,380%
+],95,382%
+// This specifies the severity of log messages to keep. Supported values96,183%
+// are: FATAL, ERROR, WARN, INFO, DEBUG97,385%6,15,3432,11,30898,17,3654,13,321079876543210106987,1654,33"name": "10.168.192.in-addr.arpa.",62,383%{61,382%"ddns-domains": [60,380%"reverse-ddns": {59,379%58,377%},57,376%]56,374%}55,373%]54,371%{ "ip-address": "192.168.10.20", "port": 53 }53,170%"dns-servers": [52,368%"key-name": "ddns-key",51,367%"name": "example.com.",50,365%{49,364%"ddns-domains": [48,362%"forward-ddns": {47,361%46,359%],45,358%}44,356%"secret": "Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9oAUL9M0A8F7hM="43,355%"algorithm": "HMAC-SHA256",42,353%"name": "ddns-key",41,152%{40,350%"tsig-keys": [39,349%38,347%"port": 53001,37,346%"ip-address": "127.0.0.1",36,344%45678910123456789201237821034613""18Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="62{
+"DhcpDdns": {33,140%"port": 53001,
+  "control-socket": {"socket-type": "unix","socket-name": "kea-ddns-ctrl-socket"
+  },28,132%// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+"DhcpDdns":
+{
+  "ip-address": "127.0.0.1",23,1725%// If configurations for other Kea services are also included in this file they
+// are ignored by the DHCP DDNS daemon.
+{
+
+// DHCP DDNS configuration starts here. This is a very simple configuration18,6217%// your software should come with your Kea package, but it is also available
+// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+// the stable version is https://kea.readthedocs.io/).
+//
+// This configuration file contains only DHCP DDNS daemon's configuration.13,6210%// This is just a very basic configuration. Kea comes with large suite (over 30)
+// of configuration examples and extensive Kea User's Guide. Please refer to
+// those materials to get better understanding of what this software is able to
+// do. Comments in this configuration file sometimes refer to sections for more
+// details. These are section numbers in Kea User's Guide. The version matching8,622%// This is a basic configuration for the Kea DHCP DDNS daemon.
+//3,62Top1611,36,121,26,4431,296,26
+"key-name": "ddns-key",41,11%"dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]46,328%},
+
+  "reverse-ddns": {
+    "ddns-domains": [{51,616%[]"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]56,823%[]}
+    ]
+  },61,1031%[]// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18.
+  "loggers": [
+    {66,138%[]// This specifies the logging for D2 (DHCP-DDNS) daemon."name": "kea-dhcp-ddns","output-options": [{// Specifies the output file. There are several special values71,646%// supported:// - stdout (prints on standard output)// - stderr (prints on standard error)// - syslog (logs to syslog)// - syslog:name (logs to syslog using specified name)76,6253%// Any other value is considered a name of the file"output": "kea-ddns.log"// Shorter log pattern suitable for use with systemd,// avoids redundant information81,6261%// "pattern": "%-5p %m\n"// This governs whether the log output is flushed to disk after// every write.// "flush": false,86,4868%// This specifies the maximum size of the file before it is// rotated.// "maxsize": 1048576,91,3576%// This specifies the maximum number of rotated files to keep.// "maxver": 8}],// This specifies the severity of log messages to keep. Supported values96,183%// are: FATAL, ERROR, WARN, INFO, DEBUG"severity": "INFO",// If DEBUG level is specified, this value is used. 0 is least verbose,// 99 is most verbose. Be cautious, Kea can generate lots and lots101,6291%// of logs if told to do so."debuglevel": 0
+    }
+  ]
+}106,6298%
+}111,2Bot207,372,4897,62 2,1 87,422,677,3072,6298%}
+    ]
+  },67,191%"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]62,883%},
+
+  "reverse-ddns": {
+    "ddns-domains": [{57,4476%"dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]52,568%"forward-ddns": {
+    "ddns-domains": [{"name": "example.com.","key-name": "ddns-key",47,2561%[]"algorithm": "HMAC-SHA256","secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="
+    }
+  ],42,2053%{[]}"port": 53001,
+
+  "tsig-keys": [
+    {"name": "ddns-key",37,3446%{}},
+
+{
+"DhcpDdns": {
+  "ip-address": "127.0.0.1",32,1738%"ip-address": "127.0.0.1",
+  "port": 53001,
+  "control-socket": {"socket-type": "unix","socket-name": "kea-ddns-ctrl-socket"27,531%// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+"DhcpDdns":
+>4;m"/etc/kea/kea-dhcp-ddns.conf" 112L, 3653B written
+>4;mcp4.conf
+"lease-database": {
+      "type": "memfile",      "persist": true,"name": "/var/lib/kea/kea-leases4.csv"
+    },// 갱신 시도(5분)
+    "renew-timer": 300,
+    // 재바인딩 시도 (8.75분)
+    "rebind-timer": 525,
+    // IP 대여 유효기간 (10분)
+    "valid-lifetime": 600,"host-reservation-identifiers": [ "hw-address" ],"subnet4": [{"id": 1,"subnet": "192.168.10.0/24","pools": [{ "pool": "192.168.10.51 - 192.168.10.80" }],"option-data": [{ "name": "routers", "data": "192.168.10.2" },{ "name": "domain-name-servers", "data": "192.168.10.20, 8.8.8.8" },{ "name": "domain-name", "data": "example.com" },{ "name": "domain-search", "data": "example.com" }],"reservations": [{"hw-address": "00:0c:29:21:c2:22","ip-address": "192.168.10.20","hostname": "server1.example.com"},{"hw-address": "00:0c:29:d9:2f:e0","ip-address": "192.168.10.30","hostname": "server2.example.com"}]}
+    ],46,4231%+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        5{}4,11{}3,122,4~@k   10{}39,11[{}]8,25[]7,0-1~@k   6,10 5,42432~@k   []1,24[]0,0-129,10 8,42[]7,18[]6,0-15,36 4,1{}3,7 [{}
+    ]2,16~@k   []1,0-10,42 19,5-88,26 ()7,37-30~@k   ()6,24   ()5,36-29()4,23   ()3,2()2,0-1  ~@k   11,626%},10,4221%"interfaces": [ "ens160" ]9,2215%"interfaces-config": {8,2410%"Dhcp4": {{}7,235%~@k   {{}6,0-1Top5,6  []4,32{[]
+    }3,26{}2,12~@k   1,1 ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   2,12{}3,26{[]
+    }4,32[]5,6 ~@k   6,0-1{}7,23 {}8,249,2210,42~@k   1,6 2,0-1()3,2()4,23   ()5,36-29()6,24   ()7,()8,26   9,5-820,42 ~@k   1,0-12,16 3,7 4,165,3~@k   6,0-15,36 4,13,7 2,16~@k   1,0-10,42 19,5-88,26 ()7,37-30~@k   ()6,24   ()5,36-29()4,23   ()3,2()2,0-1  ~@k   1,6  0,429,22 8,24{}7,23~@k   {}6,0-15,6  []4,32{[]
+    }3,26{}2,12~@k   1,1 2,12{}3,26{[]
+    }4,32[]5,6 ~@k   6,0-15,6  []4,32{[]
+    }3,26{}2,12~@k   1,1 ~@k   2,12p{}3p {{}}4~@k   {{}}3dx  x dl  x dl  {2o -- INSERT --3,1Top3,1Top4,1Top32-91  45432345d64,12345d6534"ddns-send-updates": true,
+    "ddns-override-(paste) --"ddns-override-client-update": true,
+    "ddns-override-no-update": true,
+    "ddns-replace-client-name": "when-not-present",
+    ""ddns-generated-prefix": "dhcp",
+    "ddns-qualifying-suffix": "example.com",
+    "ddns-update-on-renew": true,"dhcp"dhcp-ddns": {"enable-updates": true,"server-ip": "12"127.0.0.1","server-port": 53001
+    },--a17,1Top65432109,1 876543223345465"ddns-send-updates": true,456712,47,122,47,132,47"option-data": [{ "name": "routers", "data": "192.168.10.2" },42,45%{ "name": "domain-name-servers", "data": "192.168.10.20, 8.8.8.8" },{ "name": "domain-name", "data": "example.com" },{ "name": "domain-search", "data": "example.com" }],47,420%"reservations": [{"hw-address": "00:0c:29:21:c2:22","ip-address": "192.168.10.20","hostname": "server1.example.com"52,135%},{"hw-address": "00:0c:29:d9:2f:e0","ip-address": "192.168.10.30","hostname": "server2.example.com"57,450%}]}
+    ],62,464%"loggers": [{"name": "kea-dhcp4","output-options": [{ "output": "/var/log/kea/kea-dhcp4.log" }67,179%],"severity": "INFO","debuglevel": 0}
+    ]72,494%}
+}77,4Bot9,24,469479,24,4695449439,497%449549649
+}74,4Bot9,24,4695449439,497%"renew-timer": 300,
+    // 재바인딩 시도 (8.75분)
+    "rebind-timer": 525,
+    // IP 대여 유효기간 (10분)
+    "valid-lifetime": 600,34,482%"persist": true,"name": "/var/lib/kea/kea-leases4.csv"
+    },// 갱신 시도(5분)29,467%"interfaces": [ "ens160" ]
+    },"lease-database": {"type": "memfile",24,452%"server-ip": "127.0.0.1","server-port": 53001
+    },"interfaces-config": {19,438%"ddns-send-updates": true,
+    "ddns-override-client-update": true,
+    "ddns-override-no-update": true,
+    "ddns-replace-client-name": "when-not-present",
+    "ddns-generated-prefix": "dhcp",
+    "ddns-qualifying-suffix": "example.com",
+    "ddns-update-on-renew": true,"dhcp-ddns": {"enable-updates": true,9,48%{
+  "Dhcp4": {4,4Top1,26,411,16,4231261,116,41,16,421,16,4316,1
+>4;m"/etc/kea/kea-dhcp4.conf""79L,o1896B"written": "192.168.10.2" },{ "name": "domain-name-servers", "data": "192.168.10.20, 8.8.8.8" },{ "name": "domain-name", "data": "example.com" },{ "name": "domain-search", "data": "example.com" }],46,417%"reservations": [{"hw-address": "00:0c:29:21:c2:22","ip-address": "192.168.10.20",51,432%461,136^[  36,0-132%::wq
+>4;mp-ddns -t /etc/kea/kea-dhcp-ddns.conf
+2026-08-27 15:56:35.359 WARN  [kea-dhcp-ddns.d2-to-dns/5095.139974043774272] DHCP_DDNS_CONFIG_SYNTAX_WARNING DHCP-DDNS server configuration syntax warning: /etc/kea/kea-dhcp-ddns.conf:27.4: Extraneous comma. A piece of configuration may have been omitted.
+Syntax check failed with: /etc/kea/kea-dhcp-ddns.conf:29.1: syntax error, unexpected {, expecting "," or }
+vio/etc/kea/kea-dhcp4.confns -t /etc/kea/kea-dhcp-ddns.conf
+{
+  "Dhcp4": {    "ddns-send-updates": true,
+    "ddns-override-client-update": true,
+    "ddns-override-no-update": true,
+    "ddns-replace-client-name": "when-not-present",
+    "ddns-generated-prefix": "dhcp",
+    "ddns-qualifying-suffix": "example.com",
+    "ddns-update-on-renew": true,"dhcp-ddns": {"enable-updates": true,"server-ip": "127.0.0.1","server-port": 53001
+    },"interfaces-config": {"interfaces": [ "ens160" ]
+    },"lease-database": {"type": "memfile","persist": true,"name": "/var/lib/kea/kea-leases4.csv"
+    },// 갱신 시도(5분)
+    "renew-timer": 300,
+    // 재바인딩 시도 (8.75분)
+    "rebind-timer": 525,
+    // IP 대여 유효기간 (10분)
+via/etc/kea/kea-dhcp-ddns.confdhcp-ddns.conf.confifiers": [ "hw-address" ],"subnet4": [{"id": 1,"subnet": "192.168.10.0/24","pools": [{ "pool": "192.168.10.51 - 192.168.10.80" }],36,0-1Top+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        ::q
+// This is a basic configuration for the Kea DHCP DDNS daemon.
+//// This is just a very basic configuration. Kea comes with large suite (over 30)// of configuration examples and extensive Kea User's Guide. Please refer to
+// those materials to get better understanding of what this software is able to
+// do. Comments in this configuration file sometimes refer to sections for more
+// details. These are section numbers in Kea User's Guide. The version matching
+// your software should come with your Kea package, but it is also available
+// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+// the stable version is https://kea.readthedocs.io/).
+//
+// This configuration file contains only DHCP DDNS daemon's configuration.
+// If configurations for other Kea services are also included in this file they
+// are ignored by the DHCP DDNS daemon.
+{
+
+// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+"DhcpDdns":
+{
+  "ip-address": "127.0.0.1",
+  "port": 53001,
+  "control-socket": {"socket-type": "unix","socket-name": "kea-ddns-ctrl-socket"
+  },
+
+{
+"DhcpDdns": {
+  "ip-address": "127.0.0.1",
+  "port": 53001,
+
+  "tsig-keys": [
+    {"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="
+    }
+  ],
+
+  "forward-ddns": {
+  1 //dThisoisiasbasic"configurationlforothe,Kea2DHCP+DDNSfdaemon.q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        ~@k   3,16::set nu
+  2 //
+  3 // This is just a very basic configuration. Kea comes with large suite (over 30)
+  4 // of configuration examples and extensive Kea User's Guide. Please refer to
+  5 // those materials to get better understanding of what this software is able to
+  6 // do. Comments in this configuration file sometimes refer to sections for more
+  7 // details. These are section numbers in Kea User's Guide. The version matching
+  8 // your software should come with your Kea package, but it is also available
+  9 // in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+ 10 // the stable version is https://kea.readthedocs.io/).
+ 11 //
+ 12 // This configuration file contains only DHCP DDNS daemon's configuration.
+ 13 // If configurations for other Kea services are also included in this file they
+ 14 // are ignored by the DHCP DDNS daemon.
+ 15 {
+ 16
+ 17 // DHCP DDNS configuration starts here. This is a very simple configuration
+ 18 // that simply starts the DDNS daemon, but will not do anything useful.
+ 19 // See Section 11 for examples and details description.
+ 20 "DhcpDdns":
+ 21 {
+ 22   "ip-address": "127.0.0.1",
+ 23   "port": 53001,
+ 24   "control-socket": {
+ 25       "socket-type": "unix",
+ 26       "socket-name": "kea-ddns-ctrl-socket"
+ 27   },
+ 28
+ 29 {
+ 30 "DhcpDdns": {
+ 31   "ip-address": "127.0.0.1",
+ 32   "port": 53001,
+ 33
+ 34   "tsig-keys": [
+ 35     {
+ 36       "name": "ddns-key",
+ 37       "algorithm": "HMAC-SHA256",
+ 38       "secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="
+ 39     }
+ 40   ],
+ 41
+ 42   "forward-ddns": {
+ 43     "ddns-domains": [
+ 44       {
+ 45         "name": "example.com.",23,16Top~@k   4~@k   5~@k   6~@k   7,4 ~@k   8,0-1~@k   9,1  ~@k   30,13~@k   1,16~@k   2~@k   3,0-1~@k   []4,16 ~@k   [{}]5,5 ~@k   {}6,16~@k   7~@k   8~@k   {}9,5 ~@k   {}40,4~@k
+ 46 "key-name": "ddns-key",41,0-11%~@k
+ 47 "dns-servers": [42,162%~@k
+ 48 { "ip-address": "192.168.10.20", "port": 53 }43,164%~@k
+ 49 ]44,75%~@k
+ 50       }45,167%~@k
+ 51     ]46,168%~@k
+ 52   },47,1610%~@k
+ 53 48,1611%~@k
+[] 54   "reverse-ddns": {49,913%~@k
+{[]} 55     "ddns-domains": [50,714%~@k
+[{}] 56       {51,516%~@k
+[] 57 "name": "10.168.192.in-addr.arpa.",52,417%~@k
+ 58 "key-name": "ddns-key",53,0-119%~@k   2,4  ~@k   3,0-1~@k
+ 59 "dns-servers": [54,1620%~@k
+ 60 { "ip-address": "192.168.10.20", "port": 53 }55,1622%~@k
+ 61 ]56,723%~@k
+ 62       }57,1625%~@k   {}6,7 ~@k   {}5,16~@k   4~@k   3,0-1~@k   2,4  ~@k   []1,5~@k   [{}]0,7~@k   {[]}49,9~@k   []8,16~@k   7~@k   6~@k   5~@k   {}4,7 ~@k   {}3,16~@k   2~@k   1,0-1~@k   0,4  ~@k   {}39,5~@k   {}8,16~@k   7~@k   6~@k   {}5,5 ~@k   [{}]4,16~@k   []3,0-1~@k   2,16 ~@k   1~@k   0,13~@k   29,1 ~@k   8,0-1~@k   9,1  30,131,1623,0-1~@k   []4,16 [{}]5,5 {}6,1678~@k   {}9,5 {}40,41,0-12,16 3~@k   {}4,7 {}5,16678~@k   []9,9 {[]}50,7[{}]1,5[]2,43,0-1~@k   4,16 5{}6,7 {}7,16
+ 63     ]58,1626%~@k
+ 64   },59,1628%
+ 65 60,1629%
+[] 66 61,931%
+{[]} 67 62,732%
+[{}] 68 // Logging configuration starts here. Kea uses different loggers to log various63,534%~@k
+[] 69 // activities. For details (e.g. names of loggers), see Chapter 18.64,435%
+ 70   "loggers": [65,0-137%
+ 71     {66,0-138%
+ 72 // This specifies the logging for D2 (DHCP-DDNS) daemon.67,0-140%
+ 73 "name": "kea-dhcp-ddns",68,1641%~@k
+ 74 "output-options": [69,1643%
+ 75 {70,1444%
+ 76 // Specifies the output file. There are several special values71,546%
+ 77 // supported:72,1647%
+ 78 // - stdout (prints on standard output)73,1649%~@k
+ 79 // - stderr (prints on standard error)74,1650%321,5 0,14~@k   69,1687,0-165~@k   4,4  []3,5[{}]2,7{[]}1,9[]0,16~@k   5960[]1,9 {[]}2,7[{}]3,5~@k   []4,4~@k   {}3~@k   {}3~@k   {}4~@k   {}4~@k   dd
+4
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79 // - syslog (logs to syslog)64,0-151%~@k   3,1  ~@k   2~@k   1~@k   0~@k   59~@k   8~@k   7~@k   6~@k   5~@k   4~@k   3,0-1~@k   2,1  ~@k   1~@k   0~@k   49~@k   8~@k   7~@k   6~@k   5~@k   4~@k   3~@k   2~@k   1,0-1~@k   0,1  ~@k    34   "tsig-keys": [39,150%~@k    33 38,148%~@k    32   "port": 53001,37,146%~@k    31   "ip-address": "127.0.0.1",36,145%~@k    30 "DhcpDdns": {35,143%~@k    29 {34,142%~@k    28 33,0-140%~@k    27   },32,139%~@k    26       "socket-name": "kea-ddns-ctrl-socket"31,137%~@k    25       "socket-type": "unix",30,136%~@k    24   "control-socket": {29,134%~@k    23   "port": 53001,28,0-133%~@k   9,1  ~@k   8,0-1~@k    22   "ip-address": "127.0.0.1",27,131%~@k    21 {26,130%~@k    20 "DhcpDdns":25,128%~@k    19 // See Section 11 for examples and details description.24,127%~@k    18 // that simply starts the DDNS daemon, but will not do anything useful.23,125%~@k    17 // DHCP DDNS configuration starts here. This is a very simple configuration22,124%~@k    16 21,122%~@k    15 {20,121%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 { "ip-address": "192.168.10.20", "port": 53 }20,121%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 ]20,321%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59       }20,322%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59     ]20,322%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 20,722%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 20,723%dd
+5{67DHCP DDNS configuration starts here. This is a very simple configuration8that simply starts the DDNS daemon, but will not do anything useful.19// See Section 11 for examples and details description.0}1
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 20,323%dd
+5{67DHCP DDNS configuration starts here. This is a very simple configuration8that simply starts the DDNS daemon, but will not do anything useful.19// See Section 11 for examples and details description.0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // Logging configuration starts here. Kea uses different loggers to log various20,0-124%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // activities. For details (e.g. names of loggers), see Chapter 18.20,124%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59   "loggers": [20,125%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59     {20,325%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // This specifies the logging for D2 (DHCP-DDNS) daemon.20,325%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 "name": "kea-dhcp-ddns",20,0-126%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 "output-options": [20,326%dd
+0{1
+ 22
+ 23
+ 24}5
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 {20,527%dd
+0
+ 21
+ 22
+ 23}4
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // Specifies the output file. There are several special values20,728%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // supported:20,728%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // - stdout (prints on standard output)20,729%dd
+5{67DHCP DDNS configuration starts here. This is a very simple configuration8that simply starts the DDNS daemon, but will not do anything useful.19// See Section 11 for examples and details description.0}1
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // - stderr (prints on standard error)20,529%dd
+5{67DHCP DDNS configuration starts here. This is a very simple configuration8that simply starts the DDNS daemon, but will not do anything useful.19// See Section 11 for examples and details description.0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // - syslog (logs to syslog)20,330%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // - syslog:name (logs to syslog using specified name)20,0-131%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // Any other value is considered a name of the file20,331%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 "output": "kea-ddns.log"20,532%dd
+0{1
+ 22
+ 23
+ 24
+ 25
+ 26}7
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 20,733%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25}6
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // Shorter log pattern suitable for use with systemd,20,934%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // avoids redundant information20,935%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // "pattern": "%-5p %m\n"20,935%dd
+0{}1
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 20,1136%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // This governs whether the log output is flushed to disk after20,937%dd
+5{67DHCP DDNS configuration starts here. This is a very simple configuration8that simply starts the DDNS daemon, but will not do anything useful.19// See Section 11 for examples and details description.0}1
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // every write.20,738%dd
+5{67DHCP DDNS configuration starts here. This is a very simple configuration8that simply starts the DDNS daemon, but will not do anything useful.19// See Section 11 for examples and details description.0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // "flush": false,20,540%dd
+5{67DHCP DDNS configuration starts here. This is a very simple configuration8that simply starts the DDNS daemon, but will not do anything useful.19// See Section 11 for examples and details description.0}1
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 20,341%dd
+5{67DHCP DDNS configuration starts here. This is a very simple configuration8that simply starts the DDNS daemon, but will not do anything useful.19// See Section 11 for examples and details description.0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // This specifies the maximum size of the file before it is20,0-142%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // rotated.20,343%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // "maxsize": 1048576,20,545%dd
+0{1
+ 22
+ 23
+ 24
+ 25
+ 26}7
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 20,746%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25}6
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // This specifies the maximum number of rotated files to keep.20,948%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // "maxver": 820,950%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 }20,951%dd
+0{}1
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 ],20,1153%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // This specifies the severity of log messages to keep. Supported values20,956%dd
+5{67DHCP DDNS configuration starts here. This is a very simple configuration8that simply starts the DDNS daemon, but will not do anything useful.19// See Section 11 for examples and details description.0}1
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 // are: FATAL, ERROR, WARN, INFO, DEBUG20,758%dd
+5{67DHCP DDNS configuration starts here. This is a very simple configuration8that simply starts the DDNS daemon, but will not do anything useful.19// See Section 11 for examples and details description.0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 "severity": "INFO",20,560%dd
+0
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 20,0-163%-- INSERT --20,163%{
+ 21 "DhcpDdns": {
+ 22   "ip-address": "127.0.0.1",
+ 23   "port4
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59(paste) --"port": 53001,
+ 24
+ 25   "tsig-keys": [
+ 26     {
+ 27       "name": "ddns-key",
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59"algorithm": "HMAC-SHA256",
+ 29       "secret": "Xdlsp/2PER30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59"Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9oAUL9M0A8F7hM="
+ 30     }
+ 31   ],
+ 32
+ 33   "forward-ddn4
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59"forward-ddns": {
+ 34     "ddns-domains": [
+ 35       {
+ 36 "name": "example.c7
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59"example.com.",
+ 37 "key-name": "ddns-key",
+ 38 "dns-servers": [9
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59 39 { "ip-address": "192.168.10.20", "port": 53 }
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59]
+ 41       }
+ 42     ]
+ 43   },
+ 44
+ 45   "reverse-ddns": {
+ 46     "ddns-domains":7
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59[
+ 47       {
+ 48 "name": "10.168.192.in-addr.arpa.",
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59"key-name": "ddns-key",
+ 50 "dns-servers": [
+ 51 { "i2
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59"ip-address": "192.168.10.20", "port": 53 }
+ 52 ]
+ 53       }
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59{]
+ 55   }
+ 56 }
+ 57 }8
+ 59
+ 60
+ 61
+ 6257,128%~@k
+>4;m"/etc/kea/kea-dhcp-ddns.conf"~104L,{3494B@written~@k   4~@k   3~@k   2~@k   1~@k   0~@k   49~@k   8~@k   7~@k   6~@k   5~@k   4,0-1~@k   3,1  ~@k   2~@k   1~@k   0~@k   39~@k   8~@k   7~@k   6~@k   5~@k   4~@k   3~@k   2,0-1~@k   1,1  ~@k   0~@k   29~@k   8~@k   9~@@   62~@k   1~@k   2W {}30,5 W [{}]1,3~@k   []2,0-1~@k   3,3  ~@k   4~@k   3~@k   2,0-1~@k   []1,3  ~@k   []0~@k   29~@k   8~@k   9~@k   30~@@   {}5~@k   {}29,62~@@   ~@k   1~@k   2^W^W    ^W^W    i -- INSERT --29,6230""18Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="62^[  29,6130%::wq
+kea-dhcp-ddnsn-t]/etc/kea/kea-dhcp-ddns.conffconf
+Syntax check failed with: /etc/kea/kea-dhcp-ddns.conf:20.1: syntax error, unexpected {, expecting DhcpDdns
+vioot@main ~]# kea-dhcp-ddns -t /etc/kea/kea-dhcp-ddns.conf
+// This is a basic configuration for the Kea DHCP DDNS daemon.
+//// This is just a very basic configuration. Kea comes with large suite (over 30)// of configuration examples and extensive Kea User's Guide. Please refer to
+// those materials to get better understanding of what this software is able to
+// do. Comments in this configuration file sometimes refer to sections for more
+// details. These are section numbers in Kea User's Guide. The version matching
+// your software should come with your Kea package, but it is also available
+// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+// the stable version is https://kea.readthedocs.io/).
+//
+// This configuration file contains only DHCP DDNS daemon's configuration.
+// If configurations for other Kea services are also included in this file they
+// are ignored by the DHCP DDNS daemon.
+{
+
+// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+{
+"DhcpDdns": {
+  "ip-address": "127.0.0.1",
+  "port": 53001,
+
+  "tsig-keys": [
+    {"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="
+    }
+  ],
+
+  "forward-ddns": {
+    "ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]
+  },
+
+  "reverse-ddns": {29,61Top+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        {}30,5 {}1,42,0-1{}3,19 {[]
+  }4,21[{}
+    ]5,7 {}6,317[]8,24~@k   [{}]9,55[{}]40,9
+{[]}"ddns-domains": [41,71%
+[{}
+    ]{42,53%
+[]"name": "10.168.192.in-addr.arpa.",43,45%~@k
+"key-name": "ddns-key",44,0-16%
+"dns-servers": [45,198%
+{ "ip-address": "192.168.10.20", "port": 53 }46,2110%
+]47,711%
+}48,4313%~@k
+]49,3115%
+[]}50,2416%
+[{}]}51,5518%
+[{}]}52,920%
+{[]}53,722%~@k
+[{}
+    ]54,523%
+{[]
+  }// Logging configuration starts here. Kea uses different loggers to log various55,325%
+{{}
+}// activities. For details (e.g. names of loggers), see Chapter 18.56,127%
+{{}
+}"loggers": [57,128%
+{}{58,0-130%~@k
+// This specifies the logging for D2 (DHCP-DDNS) daemon.59,0-132%
+"name": "kea-dhcp-ddns",60,6133%
+"output-options": [61,6135%
+{62,1437%
+// Specifies the output file. There are several special values63,538%~@k
+// supported:64,6140%
+// - stdout (prints on standard output)65,3242%
+// - stderr (prints on standard error)66,2744%
+// - syslog (logs to syslog)67,1345%
+// - syslog:name (logs to syslog using specified name)68,6147%~@k
+// Any other value is considered a name of the file69,2949%
+()"output": "kea-ddns.log"70,5550%
+()()71,5452%
+()()// Shorter log pattern suitable for use with systemd,72,4454%
+()// avoids redundant information73,6155%~@k
+// "pattern": "%-5p %m\n"74,6157%
+75,4059%
+// This governs whether the log output is flushed to disk after76,0-161%
+// every write.77,6162%
+// "flush": false,78,4764%~@k
+7404166%8,47],616,0-15,40 ~@k   4,613()2,44()()1,5()()0,55~@k   ()69,298,617,136,275,32~@k   4,613,5 2,141,610~@k   59,0-1::set nu
+ 41       }
+ 42     ]
+ 43   },
+ 44
+ 45   "reverse-ddns": {
+ 46     "ddns-domains": [
+ 47       {
+ 48         "name": "10.168.192.in-addr.arpa.",
+ 49         "key-name": "ddns-key",
+ 50         "dns-servers": [
+ 51           { "ip-address": "192.168.10.20", "port": 53 }
+ 52         ]
+ 53       }
+ 54     ]
+ 55   }
+ 56 }
+ 57 }
+ 58
+ 59
+ 60 // Logging configuration starts here. Kea uses different loggers to log various
+ 61 // activities. For details (e.g. names of loggers), see Chapter 18.
+ 62   "loggers": [
+ 63     {
+ 64         // This specifies the logging for D2 (DHCP-DDNS) daemon.
+ 65         "name": "kea-dhcp-ddns",
+ 66         "output-options": [
+ 67     {
+ 68     // Specifies the output file. There are several special values
+ 69     // supported:
+ 70     // - stdout (prints on standard output)
+ 71     // - stderr (prints on standard error)
+ 72     // - syslog (logs to syslog)
+ 73     // - syslog:name (logs to syslog using specified name)
+ 74     // Any other value is considered a name of the file
+ 75     "output": "kea-ddns.log"
+ 76
+ 77     // Shorter log pattern suitable for use with systemd,
+ 78     // avoids redundant information
+ 79     // "pattern": "%-5p %m\n"
+ 80
+ 81     // This governs whether the log output is flushed to disk after
+ 82     // every write.
+ 83     // "flush": false,
+ 84 59,0-166%87,1  65~@k   43210~@k   498765~@k    39 { "ip-address": "192.168.10.20", "port": 53 }44,0-164% 38 "dns-servers": [43,162% 37 "key-name": "ddns-key",42,161% 36 "name": "example.com.",41,159% 35       {40,157%~@k    34     "ddns-domains": [39,155% 33   "forward-ddns": {38,154% 32 37,152% 31   ],36,150% 30     }35,149%~@k    29       "secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="34,147% 28       "algorithm": "HMAC-SHA256",33,145% 27       "name": "ddns-key",32,0-144% 26     {31,142% 25   "tsig-keys": [30,140%~@k    24 29,138% 23   "port": 53001,28,137% 22   "ip-address": "127.0.0.1",27,135% 21 "DhcpDdns": {26,133% 20 {25,132%~@k    19 // See Section 11 for examples and details description.24,0-130% 18 // that simply starts the DDNS daemon, but will not do anything useful.23,128% 17 // DHCP DDNS configuration starts here. This is a very simple configuration22,127% 16 21,125% 15 {{}20,123%~@k    14 // are ignored by the DHCP DDNS daemon.{}19,122%~@k   {}20{}19 13 // If configurations for other Kea services are also included in this file they18,120% 12 // This configuration file contains only DHCP DDNS daemon's configuration.17,118% 11 //16,0-116%~@k    10 // the stable version is https://kea.readthedocs.io/).15,115%  9 // in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for14,113%  8 // your software should come with your Kea package, but it is also available13,111%  7 // details. These are section numbers in Kea User's Guide. The version matching12,110%  6 // do. Comments in this configuration file sometimes refer to sections for more11,18%  5 // those materials to get better understanding of what this software is able to10,16%  4 // of configuration examples and extensive Kea User's Guide. Please refer to9,15%  3 // This is just a very basic configuration. Kea comes with large suite (over 30)8,13%  2 //7,11%  1 // This is a basic configuration for the Kea DHCP DDNS daemon.6,1Top~@k   54321~@k   ~@k   ~@k   2345~@k   678910,1~@k   12345~@k   6,0-15,1  432~@k   109,1 87~@k   65432~@k   12345~@k   678910,1~@k   12345~@k   6,0-17,1  8920~@k   1234,0-15,1  ~@k   678930~@k   102987~@k   678930~@k   12,0-13,1  45~@k   678940~@k
+ 46     "ddns-domains": [41,11%
+ 47       {42,13%
+ 48 "name": "10.168.192.in-addr.arpa.",43,15%
+ 49 "key-name": "ddns-key",44,0-16%
+ 50 "dns-servers": [45,18%~@k
+ 51 { "ip-address": "192.168.10.20", "port": 53 }46,110%
+ 52 ]47,111%
+ 53       }48,113%
+ 54     ]49,115%
+ 55   }50,116%~@k
+ 56 }51,118%
+ 57 }52,120%
+ 58 53,122%
+ 59 54,123%
+ 60 // Logging configuration starts here. Kea uses different loggers to log various55,125%~@k
+>4;m>4;mp4.confties. For details (e.g. names of loggers), see Chapter 18.56,127%^[  ^[  ::q
+2026-08-27 15:59:00.859 WARN  [kea-dhcp4.dhcpsrv/5149.140492329908352] DHCPSRV_MT_DISABLED_QUEUE_CONTROL disabling dhcp queue control when multi-threading is enabled.
+2026-08-27 15:59:00.859 WARN  [kea-dhcp4.dhcp4/5149.140492329908352] DHCP4_RESERVATIONS_LOOKUP_FIRST_ENABLED Multi-threading is enabled and host reservations lookup is always performed first.
+2026-08-27 15:59:00.860 INFO  [kea-dhcp4.dhcpsrv/5149.140492329908352] DHCPSRV_CFGMGR_NEW_SUBNET4 a new subnet has been added to configuration: 192.168.10.0/24 with params: t1=300, t2=525, valid-lifetime=600
+2026-08-27 15:59:00.860 INFO  [kea-dhcp4.dhcpsrv/5149.140492329908352] DHCPSRV_CFGMGR_SOCKET_TYPE_SELECT using socket type raw
+2026-08-27 15:59:00.861 INFO  [kea-dhcp4.dhcpsrv/5149.140492329908352] DHCPSRV_CFGMGR_ADD_IFACE listening on interface ens160
+2026-08-27 15:59:00.861 INFO  [kea-dhcp4.dhcpsrv/5149.140492329908352] DHCPSRV_CFGMGR_SOCKET_TYPE_DEFAULT "dhcp-socket-type" not specified , using default socket type raw
+2026-08-27 15:59:00.861 INFO  [kea-dhcp4.dhcpsrv/5149.140492329908352] DHCPSRV_LEASE_MGR_BACKENDS_REGISTERED the following lease backend types are available: memfile
+2026-08-27 15:59:00.861 INFO  [kea-dhcp4.hosts/5149.140492329908352] HOSTS_BACKENDS_REGISTERED the following host backend types are available:
+2026-08-27 15:59:00.861 INFO  [kea-dhcp4.dhcpsrv/5149.140492329908352] DHCPSRV_FORENSIC_BACKENDS_REGISTERED the following forensic backend types are available:
+2026-08-27 15:59:00.861 INFO  [kea-dhcp4.database/5149.140492329908352] CONFIG_BACKENDS_REGISTERED the following config backend types are available:
+vi@kea-dhcp-ddnsd-tp-ddns.conftc/kea/kea-dhcp4.conf
+// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.// See Section 11 for examples and details description.{
+"DhcpDdns": {
+  "ip-address": "127.0.0.1",
+  "port": 53001,
+
+  "tsig-keys": [
+    {"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="
+    }
+  ],
+
+  "forward-ddns": {
+    "ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]
+  },
+
+  "reverse-ddns": {
+    "ddns-domains": [{"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]
+  }
+}
+}
+
+
+// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18.56,127%+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        ~@k
+{{}
+}"loggers": [57,128%~@k   {{}
+}6~@k   {}5~@k   4~@k   3~@k   2~@k   1~@k   0~@k   49~@k   8~@k   7~@k   6~@k   5~@k   4,0-1~@k   3,1  ~@k   2~@k   1~@k   0~@k   39~@k   8~@k   7~@k   6~@k   5~@k   4~@k   3~@k   2,0-1~@k   1,1  ~@k   0~@k   29~@k   8~@k   7~@k   6~@k   5~@k   4,0-1~@k   3,1  ~@k   // DHCP DDNS configuration starts here. This is a very simple configuration22,127%~@k   21,125%~@k   {{}20,123%dd
+}
+
+
+// Logging configuration starts here. Kea uses different loggers to log various20,124%dd
+// activities. For details (e.g. names of loggers), see Chapter 18.20,324%dd
+"loggers": [20,325%dd
+{20,0-125%dd
+// This specifies the logging for D2 (DHCP-DDNS) daemon.20,325%dd
+{}"name": "kea-dhcp-ddns",20,526%dd
+}"output-options": [20,726%dd
+{20,727%dd
+// Specifies the output file. There are several special values20,728%dd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.}// supported:20,528%dd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.// - stdout (prints on standard output)20,329%dd
+// - stderr (prints on standard error)20,0-129%dd
+// - syslog (logs to syslog)20,330%dd
+// - syslog:name (logs to syslog using specified name)20,531%dd
+{}// Any other value is considered a name of the file20,731%dd
+}"output": "kea-ddns.log"20,932%dd
+20,933%dd
+// Shorter log pattern suitable for use with systemd,20,934%dd
+{}// avoids redundant information20,1135%dd
+// "pattern": "%-5p %m\n"20,935%dd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.}20,736%dd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.// This governs whether the log output is flushed to disk after20,537%dd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+  }// every write.20,338%dd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.// "flush": false,20,0-140%dd
+20,341%dd
+// This specifies the maximum size of the file before it is20,542%dd
+{}// rotated.20,743%dd
+}// "maxsize": 1048576,20,945%dd
+20,946%dd
+// This specifies the maximum number of rotated files to keep.20,948%dd
+{}// "maxver": 820,1150%dd
+}20,951%dd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.}],20,753%dd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.// This specifies the severity of log messages to keep. Supported values20,556%dd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+  }// are: FATAL, ERROR, WARN, INFO, DEBUG20,358%dd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+}"severity": "INFO",20,160%dd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+}20,163%dd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.// If DEBUG level is specified, this value is used. 0 is least verbose,20,0-166%-- INSERT --20,166%// Kea DHCP DDNS 설정 파일 전문
+{
+  "DhcpDdns": {(paste) --// DDNS 서비스 IP 및 포트 설정
+    "ip-address": "127"127.0.0.1",
+    "port": 53001,// DNS 업데이트를 위한 TSIG 키 설정
+    "tsig-keys": [{"name": "ddn"ddns-key","algorithm": "HMAC-SHA256","secret": ""Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="}
+    ],
+
+ // 정방향 DNS(Forward DDNS) 업데이트 설정
+    "forw"forward-ddns": {"ddns-domains": [{"name": "example.com.","key-name": "ddns-key",""dns-servers": [{"ip-address": "192."192.168.10.20","port": 53}]
+}]
+    },// 역방향 DNS(Reverse DDNS) 업데이트 설정
+    "reverse-ddns": {"ddns-domains": [{"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [// activities. For details (e.g. names of loggers), see Chapter 18.{"ip-address": "192.168.10.20","port": 53}
+          ]        }]
+    }}
+}
+
+// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18.
+  "loggers": [
+>4;m"/etc/kea/kea-dhcp-ddns.conf"~114L,43880B written2~@k   1~@k   0~@k   59~@k   8~@k   7~@k   6~@k   5~@k   4~@k   3~@k   2^[  ^[  ::wq
+14@kea-dhcp-ddnsd-tp-ddns.conf4.confhcp-ddns.conf
+Syntax check failed with: /etc/kea/kea-dhcp-ddns.conf:21.1: syntax error, unexpected {, expecting DhcpDdns
+vioot@main ~]# kea-dhcp-ddns -t /etc/kea/kea-dhcp-ddns.conf
+// If configurations for other Kea services are also included in this file they
+// are ignored by the DHCP DDNS daemon.{// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문
+{
+  "DhcpDdns": {
+    // DDNS 서비스 IP 및 포트 설정
+    "ip-address": "127.0.0.1",
+    "port": 53001,// DNS 업데이트를 위한 TSIG 키 설정
+    "tsig-keys": [{"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="}
+    ],// 정방향 DNS(Forward DDNS) 업데이트 설정
+    "forward-ddns": {"ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-servers": [{"ip-address": "192.168.10.20","port": 53}]}]
+    },// 역방향 DNS(Reverse DDNS) 업데이트 설정
+    "reverse-ddns": {"ddns-domains": [{"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key",52,117%+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$pfff/ffff/f          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        // This is a basic configuration for the Kea DHCP DDNS daemon.
+//
+// This is just a very basic configuration. Kea comes with large suite (over 30)
+// of configuration examples and extensive Kea User's Guide. Please refer to
+// those materials to get better understanding of what this software is able to
+// do. Comments in this configuration file sometimes refer to sections for more
+// details. These are section numbers in Kea User's Guide. The version matching
+// your software should come with your Kea package, but it is also available
+// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+// the stable version is https://kea.readthedocs.io/).
+//
+// This configuration file contains only DHCP DDNS daemon's configuration.
+// If configurations for other Kea services are also included in this file they
+// are ignored by the DHCP DDNS daemon.
+{
+
+// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문
+{
+  "DhcpDdns": {
+    // DDNS 서비스 IP 및 포트 설정
+    "ip-address": "127.0.0.1",
+    "port": 53001,// DNS 업데이트를 위한 TSIG 키 설정
+    "tsig-keys": [{"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="}
+    ],// 정방향 DNS(Forward DDNS) 업데이트 설정
+    "forward-ddns": {"ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-servers": [{"ip-address": "192.168.10.20","port": 53}]}]
+    },// 역방향 DNS(Reverse DDNS) 업데이트 설정
+    "reverse-ddns": {"ddns-domains": [{"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{"ip-address": "192.168.10.20","port": 53}]}]
+    }
+  }
+}52,1Top// This is a basic configuration for the Kea DHCP DDNS daemon.
+//
+// This is just a very basic configuration. Kea comes with large suite (over 30)
+// of configuration examples and extensive Kea User's Guide. Please refer to
+// those materials to get better understanding of what this software is able to
+// do. Comments in this configuration file sometimes refer to sections for more
+// details. These are section numbers in Kea User's Guide. The version matching
+// your software should come with your Kea package, but it is also available
+// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+// the stable version is https://kea.readthedocs.io/).
+//
+// This configuration file contains only DHCP DDNS daemon's configuration.
+// If configurations for other Kea services are also included in this file they
+// are ignored by the DHCP DDNS daemon.
+{
+
+// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문
+{
+  "DhcpDdns": {
+    // DDNS 서비스 IP 및 포트 설정
+    "ip-address": "127.0.0.1",
+    "port": 53001,// DNS 업데이트를 위한 TSIG 키 설정
+    "tsig-keys": [{"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="}
+    ],// 정방향 DNS(Forward DDNS) 업데이트 설정
+    "forward-ddns": {"ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-servers": [{"ip-address": "192.168.10.20","port": 53}]}]
+    },// 역방향 DNS(Reverse DDNS) 업데이트 설정
+    "reverse-ddns": {"ddns-domains": [{"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{"ip-address": "192.168.10.20","port": 53}]}]
+    }
+  }
+}
+
+// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18.
+  "loggers": [
+    {// This specifies the logging for D2 (DHCP-DDNS) daemon."name": "kea-dhcp-ddns","output-options": [{// Specifies the output file. There are several special values// supported:// - stdout (prints on standard output)// - stderr (prints on standard error)// - syslog (logs to syslog)// - syslog:name (logs to syslog using specified name)// Any other value is considered a name of the file"output": "kea-ddns.log"// Shorter log pattern suitable for use with systemd,// avoids redundant information// "pattern": "%-5p %m\n"// This governs whether the log output is flushed to disk after// every write.// "flush": false,// This specifies the maximum size of the file before it is// rotated.// "maxsize": 1048576,// This specifies the maximum number of rotated files to keep.// "maxver": 8}],52,1Top-- INSERT --52,1Top// Kea DHCP DDNS 설정 파일 전문{
+  "DhcpDdns": {// 역방향 DNS(Reverse DDNS) 업데이트 설정(paste) --// DDNS 서비스 IP 및 포트 설정"ip-address": "127.    // 역방향 DNS(Reverse DDNS) 업데이트 설정"127.0.0.1","port": 53001,// DNS 업데이트를 위한 T    // 역방향 DNS(Reverse DDNS) 업데이트 설정SIG 키 설정"tsig-keys": [{"name": "ddns    // 역방향 DNS(Reverse DDNS) 업데이트 설정"ddns-key","algorithm": "HMAC-SHA256","secret": "O    // 역방향 DNS(Reverse DDNS) 업데이트 설정"Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI=" }
+  //}정
+    },// 역방향 DNS(Reverse DDNS) 업    // 역방향 DNS(Reverse DDNS) 업데이트 설정데이트 설정"reverse-ddns": {"ddns-domains": [
+    {"name": "10.168.192.in-addr.arpa.",// 역방향 DNS(Reverse DDNS) 업데이트 설정"key-name": "ddns-key","dns-servers": [// 역방향 DNS(Reverse DDNS) 업데이트 설정{"ip-address": "192.168.10.20",// 역방향 DNS(Reverse DDNS) 업데이트 설정"port": 53}]}]
+    }// 역방향 DNS(Reverse DDNS) 업데이트 설정{}}    // 역방향 DNS(Reverse DDNS) 업데이트 설정"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key",100,15%u48 fewer lines; before #1  4 seconds ago    // 역방향 DNS(Reverse DDNS) 업데이트 설정
+    "reverse-ddns": {
+      "ddns-domains": [
+        {      "name0.168.192.in-addr.arpa.",
+          "key-name": "ddns-key","dns-servers": [
+            {          ip-address": "192.168.10.20", "port": 53    }  ]}]
+    }}
+}// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18.
+  "loggers: [{// This specifies the logging for D2 (DHCP-DDNS) daemon."name": "kea-dhcp-ddns","output-options": [{    // Specifies the output file. There are several special values      // supported: // - stdout (prints on standard output) // - stderr (prints on standard error)
+      // - syslog (logs to syslog)// - syslog:name (logs to syslog using specified name)
+                // Any other value is considered a name of the file
+                "output": "kea-ddns.log" // Shorter log pattern suitable for use with systemd,      // avoids redundant information      // pattern": "%-5p %m\n"    // This governs whether the log output is flushed to disk after  // every write.  // flush": false,      // This specifies the maximum size of the file before it is // rotated. // "maxsize": 1048576, // This specifies the maximum number of rotated files to keep.
+                // "maxver": 8        }  ],// This specifies the severity of log messages to keep. Supported values// are: FATAL, ERROR, WARN, INFO, DEBUG"severity": "INFO",52,125%52,125%1,0-10,1  49876543210398765,0-14,1  321029876,0-15,1  432{}1{}019876,0-15,1  432^[  109,1 // This is just a very basic configuration. Kea comes with large suite (over 30)8,116%//7,18%// This is a basic configuration for the Kea DHCP DDNS daemon.6,1Top54321~@k   2345678910,11~@k   2//
+// This is just a very basic configuration. Kea comes with large suite (over 30)
+// of configuration examples and extensive Kea User's Guide. Please refer to
+// those materials to get better understanding of what this software is able to
+// do. Comments in this configuration file sometimes refer to sections for more
+// details. These are section numbers in Kea User's Guide. The version matching
+// your software should come with your Kea package, but it is also available
+// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+// the stable version is https://kea.readthedocs.io/).
+//
+// This configuration file contains only DHCP DDNS daemon's configuration.
+// If configurations for other Kea services are also included in this file they
+// are ignored by the DHCP DDNS daemon.
+{
+
+// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문
+{
+  "DhcpDdns": {
+    // DDNS 서비스 IP 및 포트 설정
+    "ip-address": "127.0.0.1",
+    "port": 53001,// DNS 업데이트를 위한 TSIG 키 설정
+    "tsig-keys": [{"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="}
+    ],// 정방향 DNS(Forward DDNS) 업데이트 설정
+    "forward-ddns": {"ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-servers": [{"ip-address": "192.168.10.20","port": 53}]}]
+    },// 역방향 DNS(Reverse DDNS) 업데이트 설정
+    "reverse-ddns": {"ddns-domains": [{"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{"ip-address": "192.168.10.20","port": 53}]}]
+    }
+  }
+}
+
+// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18.
+  "loggers": [
+    {// This specifies the logging for D2 (DHCP-DDNS) daemon."name": "kea-dhcp-ddns","output-options": [{// Specifies the output file. There are several special values// supported:// - stdout (prints on standard output)// - stderr (prints on standard error)// - syslog (logs to syslog)// - syslog:name (logs to syslog using specified name)// Any other value is considered a name of the file"output": "kea-ddns.log"// Shorter log pattern suitable for use with systemd,// avoids redundant information// "pattern": "%-5p %m\n"// This governs whether the log output is flushed to disk after// every write.12,14%109,1 87// This is a basic configuration for the Kea DHCP DDNS daemon.6,1Top543~@k   21~@k   2345678910,1~@k   123456,0-17,1  8920~@k   {}1{}23456,0-17,1  8930~@k   12345,0-16,1  78940~@k   12345678950~@k   1,0-12,1  3456789601234567{}8{}9,0-170,1  ~@k   12345678980~@k   123456,0-1
+// every write.87,14%
+// "flush": false,88,18%
+89,113%
+// This specifies the maximum size of the file before it is90,0-117%~@k
+// rotated.91,121%
+// "maxsize": 1048576,92,126%
+93,130%
+// This specifies the maximum number of rotated files to keep.94,0-134%
+// "maxver": 895,139%
+}96,143%
+],97,147%
+// This specifies the severity of log messages to keep. Supported values98,0-152%
+// are: FATAL, ERROR, WARN, INFO, DEBUG99,156%
+"severity": "INFO",100,160%~@k
+101,165%
+// If DEBUG level is specified, this value is used. 0 is least verbose,102,169%
+// 99 is most verbose. Be cautious, Kea can generate lots and lots103,173%
+// of logs if told to do so.104,178%
+"debuglevel": 0105,182%
+}106,0-186%
+]107,191%
+}108,195%
+}109,1Bot10~@k   1009876,0-15,1  432~@k   1099,1 8,0-17,1  654,0-13,1  2~@k   10,0-189,1  876,0-15,1  432~@k   10798765432~@k   1069,0-18,1  765432~@k   10598765432~@k   1,0-10,1  498765432~@k   10398765,0-14,1  32~@k   1029// DDNS 서비스 IP 및 포트 설정28,195%"DhcpDdns": {27,191%{26,0-186%// Kea DHCP DDNS 설정 파일 전문25,182%// See Section 11 for examples and details description.24,178%// that simply starts the DDNS daemon, but will not do anything useful.23,173%// DHCP DDNS configuration starts here. This is a very simple configuration22,169%~@k   {}21,165%{{}20,160%// are ignored by the DHCP DDNS daemon.19,156%// If configurations for other Kea services are also included in this file they18,152%// This configuration file contains only DHCP DDNS daemon's configuration.17,147%//16,0-143%// the stable version is https://kea.readthedocs.io/).15,139%// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for14,134%// your software should come with your Kea package, but it is also available13,130%// details. These are section numbers in Kea User's Guide. The version matching12,126%~@k   // do. Comments in this configuration file sometimes refer to sections for more11,121%// those materials to get better understanding of what this software is able to10,117%// of configuration examples and extensive Kea User's Guide. Please refer to9,113%// This is just a very basic configuration. Kea comes with large suite (over 30)8,18%//7,14%// This is a basic configuration for the Kea DHCP DDNS daemon.6,1Top5432~@k   1~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   2345678910,1~@k   123456,0-17,1  8920~@k   {}1{}23456,0-17,1  8930~@k   12345,0-16,1  78940~@k   123456789501,0-12,1  3456789^[  60~@k   1234567{}8{}9,0-170,1  ~@k   12345678980~@k   10798765432~@k   1069,0-1{}8,1  {}765432~@k   10598765432~@k   1,0-10,1  498765432~@k   10398765,0-14,1  32~@k   1029876,0-15,1  432~@k   {}1dd
+}// every write.21,3Topdd
+// "flush": false,21,5Topdd
+21,5Topdd
+// This specifies the maximum size of the file before it is21,5Topdd
+// rotated.21,0-1Topdd
+// "maxsize": 1048576,21,5Topdd
+21,5Topdd
+{}// This specifies the maximum number of rotated files to keep.21,7Topdd
+}// "maxver": 821,9Topdd
+}21,9Topdd
+],21,9Topdd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문}// This specifies the severity of log messages to keep. Supported values21,7Topdd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문// are: FATAL, ERROR, WARN, INFO, DEBUG21,5Topdd
+"severity": "INFO",21,0-1Topdd
+21,5Topdd
+// If DEBUG level is specified, this value is used. 0 is least verbose,21,5Topdd
+// 99 is most verbose. Be cautious, Kea can generate lots and lots21,7Topdd
+{}// of logs if told to do so.21,9Topdd
+}"debuglevel": 021,11Topdd
+}21,11Topdd
+]21,11Topdd
+{}}21,13Topdd
+}}21,15Alldd
+~                                                                                                                                                                                                                                         21,15Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문}~                                                                                                                                                                                                                                         21,13Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문~                                                                                                                                                                                                                                         21,11Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문}~                                                                                                                                                                                                                                         21,9Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문~                                                                                                                                                                                                                                         21,7Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문
+    }~                                                                                                                                                                                                                                         21,5Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문~                                                                                                                                                                                                                                         21,0-1Alldd
+~                                                                                                                                                                                                                                         21,5Alldd
+~                                                                                                                                                                                                                                         21,5Alldd
+~                                                                                                                                                                                                                                         21,7Alldd
+{}~                                                                                                                                                                                                                                         21,9Alldd
+}~                                                                                                                                                                                                                                         21,11Alldd
+~                                                                                                                                                                                                                                         21,11Alldd
+~                                                                                                                                                                                                                                         21,11Alldd
+{}~                                                                                                                                                                                                                                         21,13Alldd
+}~                                                                                                                                                                                                                                         21,15Alldd
+~                                                                                                                                                                                                                                         21,15Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문}~                                                                                                                                                                                                                                         21,13Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문~                                                                                                                                                                                                                                         21,11Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문}~                                                                                                                                                                                                                                         21,9Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문~                                                                                                                                                                                                                                         21,7Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문
+    }~                                                                                                                                                                                                                                         21,5Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문
+  }~                                                                                                                                                                                                                                         21,3Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문
+}~                                                                                                                                                                                                                                         21,1Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+1/more line;Dbefore정
+12morelline; before #48  3 seconds ago21,3Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문
+}~                                                                                                                                                                                                                                         21,1Alldd
+{DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문~                                                                                                                                                                                                                                         21,0-1All-- INSERT --21,1All{
+  "DhcpDdns": {
+    // DDNS 데몬 통신 IP 및 포트(paste) --"ip-address": "127.0.0.1",
+    "port": 53001,// DNS 업데이트 권한 확인용 TSIG 키
+    "tsig-keys": [{"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="}
+    ],// 정방향 DNS 업데이트 도메인 및 서버"forward-ddns": {"ddns-domains": [{"name": "example.com.","key-name": "ddns-key",
+ "dns-servers": [{"ip-addre"ip-address": "192.168.10.20","port": 53}
+  ]}]
+    },// 역방향 DNS 업데이트 도메인 및 서버
+    "reverse-ddns": {"ddns-d"ddns-domains": [{"name": "10.168.192.in-addr.arpa"10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{"ip-address": "192.168.10.20",
+  "port": 53}]}
+    ]
+    },// DHCP-DDNS 데몬 로깅 설정
+    "loggers": [{"name": "kea-dhcp-ddns","output-op"output-options": [{"output": "kea-ddns.log",
+   "flush": true}],"severity{"severity": "INFO","debuglevel": 0}
+    ]
+  }
+>4;m"/etc/kea/kea-dhcp-ddns.conf" 128L, 4167B written
+14@kea-dhcp-ddns]-tvi /etc/kea/kea-dhcp-ddns.conf
+Syntax check failed with: /etc/kea/kea-dhcp-ddns.conf:21.1: syntax error, unexpected {, expecting DhcpDdns
+vioot@main ~]# kea-dhcp-ddns -t /etc/kea/kea-dhcp-ddns.conf
+// This is a basic configuration for the Kea DHCP DDNS daemon.
+//// This is just a very basic configuration. Kea comes with large suite (over 30)// of configuration examples and extensive Kea User's Guide. Please refer to
+// those materials to get better understanding of what this software is able to
+// do. Comments in this configuration file sometimes refer to sections for more
+// details. These are section numbers in Kea User's Guide. The version matching
+// your software should come with your Kea package, but it is also available
+// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+// the stable version is https://kea.readthedocs.io/).
+//
+// This configuration file contains only DHCP DDNS daemon's configuration.
+// If configurations for other Kea services are also included in this file they
+// are ignored by the DHCP DDNS daemon.
+{
+
+// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+// Kea DHCP DDNS 설정 파일 전문
+{
+  "DhcpDdns": {
+    // DDNS 데몬 통신 IP 및 포트
+    "ip-address": "127.0.0.1",
+    "port": 53001,// DNS 업데이트 권한 확인용 TSIG 키
+    "tsig-keys": [{"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="}
+    ],// 정방향 DNS 업데이트 도메인 및 서버
+    "forward-ddns": {"ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-servers": [{"ip-address": "192.168.10.20","port": 53}]}]
+    },// 역방향 DNS 업데이트 도메인 및 서버
+    "reverse-ddns": {"ddns-domains": [{"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{"ip-address": "192.168.10.20","port": 53}]}]
+    },// DHCP-DDNS 데몬 로깅 설정
+    "loggers": [{"name": "kea-dhcp-ddns","output-options": [{"output": "kea-ddns.log","flush": true}],"severity": "INFO","debuglevel": 0}
+    ]
+  }
+}
+// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18.
+  "loggers": [
+    {// This specifies the logging for D2 (DHCP-DDNS) daemon."name": "kea-dhcp-ddns","output-options": [{83,1Top+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        {}2107987654~@k   32106987,0-16,1  54~@k   32105987654~@k   321,0-10,1  4987654~@k   3210398765,0-14,1  ~@k   321029876,0-15,1  4~@k   32{}1{}019876,0-15,1  4~@k   32109,1 87654~@k   321~@k   2345678910,1~@k   123456,0-17,1  8920~@k   {}1dd
+}// Specifies the output file. There are several special values21,3Top2345,0-16,3  78930~@k   10298765,0-14,3  32~@k   1019876,0-1{}5,1  {}4,332~@k   1,22,334
+{}5,1{}6,0-17,3  8920~@k   1~@k   2dd
+//1s//pThisdis2a5basickconfiguration-forkthe5Kea DHCP DDNSkdaemon.   8~@k   9~@k   30~@k   1~@k   []2~@k   []3,0-1~@k   4,5  ~@k   5~@k   6~@k   7~@k   8~@k   9~@k   40~@k   1~@k   2~@k   3~@k   4~@k   5::set nu
+  2 //
+  3 // This is just a very basic configuration. Kea comes with large suite (over 30)
+  4 // of configuration examples and extensive Kea User's Guide. Please refer to
+  5 // those materials to get better understanding of what this software is able to
+  6 // do. Comments in this configuration file sometimes refer to sections for more
+  7 // details. These are section numbers in Kea User's Guide. The version matching
+  8 // your software should come with your Kea package, but it is also available
+  9 // in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+ 10 // the stable version is https://kea.readthedocs.io/).
+ 11 //
+ 12 // This configuration file contains only DHCP DDNS daemon's configuration.
+ 13 // If configurations for other Kea services are also included in this file they
+ 14 // are ignored by the DHCP DDNS daemon.
+ 15 {
+ 16
+ 17 // DHCP DDNS configuration starts here. This is a very simple configuration
+ 18 // that simply starts the DDNS daemon, but will not do anything useful.
+ 19 // See Section 11 for examples and details description.
+ 20 // Kea DHCP DDNS 설정 파일 전문
+ 21   "DhcpDdns": {
+ 22     "ip-address": "127.0.0.1",
+ 23     "port": 53001,
+ 24
+ 25     // DNS 업데이트 권한 확인용 TSIG 키
+ 26     "tsig-keys": [
+ 27       {
+ 28         "name": "ddns-key",
+ 29         "algorithm": "HMAC-SHA256",
+ 30         "secret": "Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI="
+ 31       }
+ 32     ],
+ 33
+ 34     // 정방향 DNS 업데이트 도메인 및 서버
+ 35     "forward-ddns": {
+ 36       "ddns-domains": [
+ 37         {
+ 38           "name": "example.com.",
+ 39           "key-name": "ddns-key",
+ 40           "dns-servers": [
+ 41     {
+ 42     "ip-address": "192.168.10.20",
+ 43     "port": 53
+ 44     }
+ 45           ]
+ 46         }
+ 47       ]
+ 48     },
+ 49
+ 50     // 역방향 DNS 업데이트 도메인 및 서버
+ 51     "reverse-ddns": {
+ 52       "ddns-domains": [
+ 53         {
+ 54           "name": "10.168.192.in-addr.arpa.",
+ 55           "key-name": "ddns-key",
+ 56           "dns-servers": [
+ 57     {
+ 58     "ip-address": "192.168.10.20",
+ 59     "port": 53
+ 60     }
+ 61           ]
+ 62         }
+ 63       ]
+ 64     },
+ 65
+ 66     // DHCP-DDNS 데몬 로깅 설정
+ 67     "loggers": [
+ 68       {
+ 69         "name": "kea-dhcp-ddns",
+ 70         "output-options": [
+ 71           {
+ 72     "output": "kea-ddns.log",
+ 73     "flush": true
+ 74           }
+ 75         ],
+ 76         "severity": "INFO",
+ 77         "debuglevel": 0
+ 78       }
+ 79     ]
+ 80   }
+ 81 }
+ 82 // Logging configuration starts here. Kea uses different loggers to log various
+ 83 // activities. For details (e.g. names of loggers), see Chapter 18.
+ 84   "loggers": [
+ 85     {
+ 86         // This specifies the logging for D2 (DHCP-DDNS) daemon.
+ 87         "name": "kea-dhcp-ddns",
+ 88         "output-options": [
+ 89     {
+ 90     // Specifies the output file. There are several special values
+>4;m"/etc/kea/kea-dhcp-ddns.conf"[126L,q4125B written
+14@kea-dhcp-ddns]-tvi /etc/kea/kea-dhcp-ddns.conf
+Syntax check failed with: /etc/kea/kea-dhcp-ddns.conf:84.3-11: syntax error, unexpected constant string, expecting end of file
+.conf.OLD /etc/kea/kea-dhcp-ddns.conf
+cp: overwrite '/etc/kea/kea-dhcp-ddns.conf'? y
+via-dhcp-ddns#-tp /etc/kea/kea-dhcp-ddns.conf.OLD /etc/kea/kea-dhcp-ddns.conf
+// This is a basic configuration for the Kea DHCP DDNS daemon.
+//// This is just a very basic configuration. Kea comes with large suite (over 30)// of configuration examples and extensive Kea User's Guide. Please refer to
+// those materials to get better understanding of what this software is able to
+// do. Comments in this configuration file sometimes refer to sections for more
+// details. These are section numbers in Kea User's Guide. The version matching
+// your software should come with your Kea package, but it is also available
+// in ISC's Knowledgebase (https://kea.readthedocs.io; the direct link for
+// the stable version is https://kea.readthedocs.io/).
+//
+// This configuration file contains only DHCP DDNS daemon's configuration.
+// If configurations for other Kea services are also included in this file they
+// are ignored by the DHCP DDNS daemon.
+{
+
+// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+"DhcpDdns":
+{
+  "ip-address": "127.0.0.1",
+  "port": 53001,
+  "control-socket": {"socket-type": "unix","socket-name": "kea-ddns-ctrl-socket"
+  },
+  "tsig-keys": [],
+  "forward-ddns" : {},
+  "reverse-ddns" : {},
+
+// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18.
+  "loggers": [
+    {// This specifies the logging for D2 (DHCP-DDNS) daemon."name": "kea-dhcp-ddns","output-options": [{// Specifies the output file. There are several special values// supported:// - stdout (prints on standard output)// - stderr (prints on standard error)// - syslog (logs to syslog)// - syslog:name (logs to syslog using specified name)// Any other value is considered a name of the file"output": "kea-ddns.log"// Shorter log pattern suitable for use with systemd,// avoids redundant information45,5Top+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[
+// "pattern": "%-5p %m\n"46,53%
+47,57%
+// This governs whether the log output is flushed to disk after48,0-111%
+// every write.49,515%
+// "flush": false,50,519%~@k
+51,523%
+// This specifies the maximum size of the file before it is52,0-126%
+// rotated.53,530%
+// "maxsize": 1048576,54,534%
+55,538%
+// This specifies the maximum number of rotated files to keep.56,0-142%~@k
+// "maxver": 857,546%6,0-15,5  432,0-1~@k   1,5  0498,0-17,5  6~@k   543210~@k   3987654~@k   321,0-10,5  298~@k   7,46,55432~@k   1,12,53456~@k   7,48,59301,0-12,5  ~@k   321,0-10,5  298~@k   7,48,59301,0-12,5  ~@k   3~@k   2~@k   1,0-1~@k   0,5  ~@k   29~@k   8dd
+}28,348%dd
+],28,350%dd
+// This specifies the severity of log messages to keep. Supported values28,0-152%-- INSERT --28,152%"tsig-keys": [
+    {"name": "ddns-key","algorit(paste) --"algorithm": "HMAC-SHA256","secret": "Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9"Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9oAUL9M0A8F7hM="
+    }
+  ],
+
+  "forward-ddns": {
+    "ddns-domains": [{"name": "example.com.","key-name": ""ddns-key","dns-servers": [{ "ip-address": "1"192.168.10.20", "port": 53 }]}
+    ]
+  },
+
+  "rev"reverse-ddns": {
+    "ddns-domains": [{"name": "10"10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", ""port": 53 }]}
+    ]
+  }
+}60,0-127%~@k   {}59,1  dd
+{ip-address": "127.0.0.1",port": 53001,"control-socket": {typunix",    "socket-name": "kea-ddns-ctrl-socket"
+  },"tsig-keys": [
+    {name": "ddns-key",algorithm: "HMAC-SHA256",  "secret": "Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9oAUL9M0A8F7hM="
+    }
+  ],"forward-ddns": {"ddns-domains": [{name": "example.com.key-name": ddns-key","dns-servers": [  { "ip-address": "192.168.10.20", "port": 53 }  ]
+      }
+    ]
+  },"reverse-ddns": {"ddns-domains": [{name": "10.168.192.in-addr.arpa.",key-name": ddns-key","dns-servers": [  { "ip-address": "192.168.10.20", "port": 53 }  ]
+      }
+    ]
+>4;m"/etc/kea/kea-dhcp-ddns.conf"2104L, 3585B written2~@k   {}3x dl  {2~@k   7~@k   8~@k   ~@k   7~@k   6~@k   5~@k   4^[  ^[  ::wq
+kea-dhcp-ddnsa-tea-dhcp-ddns.conf.OLDcp-ddns.conf
+Syntax check failed with: /etc/kea/kea-dhcp-ddns.conf:62.3-11: syntax error, unexpected constant string, expecting "," or }
+vioot@main ~]# kea-dhcp-ddns -t /etc/kea/kea-dhcp-ddns.conf
+// the stable version is https://kea.readthedocs.io/).
+//// This configuration file contains only DHCP DDNS daemon's configuration.// If configurations for other Kea services are also included in this file they
+// are ignored by the DHCP DDNS daemon.
+{
+
+// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+"DhcpDdns":
+{
+  "ip-address": "127.0.0.1",
+  "port": 53001,
+  "control-socket": {"socket-type": "unix","socket-name": "kea-ddns-ctrl-socket"
+  },
+  "tsig-keys": [
+    {"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9oAUL9M0A8F7hM="
+    }
+  ],
+
+  "forward-ddns": {
+    "ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]
+  },
+
+  "reverse-ddns": {
+    "ddns-domains": [{"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]54,216%+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        ~@k   3~@k
+// Logging configuration starts here. Kea uses different loggers to log various55,318%~@k
+// activities. For details (e.g. names of loggers), see Chapter 18.56,320%~@k
+"loggers": [57,322%~@k   6~@k   5~@k   6~@k   7~@k   4~@k   []5~@k
+>4;m"/etc/kea/kea-dhcp-ddns.conf"}104L,}3588B5written:wq
+14@kea-dhcp-ddns]-tvi /etc/kea/kea-dhcp-ddns.conf
+2026-08-27 16:04:58.404 INFO  [kea-dhcp-ddns.dctl/5234.140483178560832] DCTL_CONFIG_CHECK_COMPLETE server has completed configuration check: listening on 127.0.0.1, port 53001, using UDP, result: success(0), text=Configuration check successful
+vioot@main ~]# kea-dhcp-ddns -t /etc/kea/kea-dhcp-ddns.conf
+// are ignored by the DHCP DDNS daemon.
+{// DHCP DDNS configuration starts here. This is a very simple configuration
+// that simply starts the DDNS daemon, but will not do anything useful.
+// See Section 11 for examples and details description.
+"DhcpDdns":
+{
+  "ip-address": "127.0.0.1",
+  "port": 53001,
+  "control-socket": {"socket-type": "unix","socket-name": "kea-ddns-ctrl-socket"
+  },
+  "tsig-keys": [
+    {"name": "ddns-key","algorithm": "HMAC-SHA256","secret": "Xdlsp/2PERuO7NaNBKaKV9mWbgdZM9oAUL9M0A8F7hM="
+    }
+  ],
+
+  "forward-ddns": {
+    "ddns-domains": [{"name": "example.com.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]
+  },
+
+  "reverse-ddns": {
+    "ddns-domains": [{"name": "10.168.192.in-addr.arpa.","key-name": "ddns-key","dns-servers": [{ "ip-address": "192.168.10.20", "port": 53 }]}
+    ]
+  },
+
+// Logging configuration starts here. Kea uses different loggers to log various
+// activities. For details (e.g. names of loggers), see Chapter 18.
+  "loggers": [
+>4;m"/etc/kea/kea-dhcp-ddns.conf"b104L,b3588B3written4+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        ~@k   7~@k   6~@k   5~@k   4~@k   3~@k   2~@k   1~@k   0~@k   49~@k   8~@k   7,0-1~@k   6,4  ~@k   5~@k   4~@k   3~@k   2~@k   1~@k   0~@k   39~@k   8~@k   7~@k   6~@k   5,0-1~@k   4,4  ~@k   3~@k   2~@@   62~@k   1i -- INSERT --32,6124%""18Od5D8nxtTYn5etqez/dxdPy27vIJprg2np0dlEs6pyI=62^[  32,6124%::wq
+14@kea-dhcp-ddns]-tvi /etc/kea/kea-dhcp-ddns.conf
+2026-08-27 16:05:25.104 INFO  [kea-dhcp-ddns.dctl/5246.140717876587840] DCTL_CONFIG_CHECK_COMPLETE server has completed configuration check: listening on 127.0.0.1, port 53001, using UDP, result: success(0), text=Configuration check successful
+c
+systemctlnrestart5kea-dhcp-ddnsz&&xsystemctlrenablelkea-dhcp-ddns
+Created symlink '/etc/systemd/system/multi-user.target.wants/kea-dhcp-ddns.service' → '/usr/lib/systemd/system/kea-dhcp-ddns.service'.
+systemctlnrestartskea-dhcp4s&&rsystemctlpenableykea-dhcp4nable kea-dhcp4
+[tail@-fi/var/log/kea/kea-dhcp4.loga/kea-dhcp4.log
+2026-08-27 16:05:45.952 INFO  [kea-dhcp4.dhcp4/5417.140630696564864] DHCP4_CONFIG_COMPLETE DHCPv4 server has completed configuration: added IPv4 subnets: 1; DDNS: enabled
+2026-08-27 16:05:45.953 INFO  [kea-dhcp4.dhcpsrv/5417.140630696564864] DHCPSRV_MEMFILE_DB opening memory file lease database: name=/var/lib/kea/kea-leases4.csv persist=true type=memfile universe=4
+2026-08-27 16:05:45.953 INFO  [kea-dhcp4.dhcpsrv/5417.140630696564864] DHCPSRV_MEMFILE_LEASE_FILE_LOAD loading leases from file /var/lib/kea/kea-leases4.csv.2
+2026-08-27 16:05:45.953 INFO  [kea-dhcp4.dhcpsrv/5417.140630696564864] DHCPSRV_MEMFILE_LEASE_FILE_LOAD loading leases from file /var/lib/kea/kea-leases4.csv
+2026-08-27 16:05:45.953 INFO  [kea-dhcp4.dhcpsrv/5417.140630696564864] DHCPSRV_MEMFILE_EXTRACT_EXTENDED_INFO4 extracting extended info saw 3 leases, extended info sanity checks modified 0 / updated 0 leases and 0 leases have relay or remote id
+2026-08-27 16:05:45.953 INFO  [kea-dhcp4.dhcpsrv/5417.140630696564864] DHCPSRV_MEMFILE_LFC_SETUP setting up the Lease File Cleanup interval to 3600 sec
+2026-08-27 16:05:45.953 INFO  [kea-dhcp4.dhcpsrv/5417.140630696564864] DHCPSRV_DHCP_DDNS_SENDER_STARTED NameChangeRequest sender has been started: enable_updates: yes, server-ip: 127.0.0.1, server-port: 53001, sender-ip: 0.0.0.0, sender-port: 0, max-queue-size: 1024, ncr-protocol: UDP, ncr-format: JSON
+2026-08-27 16:05:45.969 INFO  [kea-dhcp4.dhcpsrv/5417.140630696564864] DHCPSRV_CFGMGR_USE_ALLOCATOR using the iterative allocator for V4 leases in subnet 192.168.10.0/24
+2026-08-27 16:05:45.969 INFO  [kea-dhcp4.dhcp4/5417.140630696564864] DHCP4_MULTI_THREADING_INFO enabled: yes, number of threads: 8, queue size: 64
+2026-08-27 16:05:45.969 INFO  [kea-dhcp4.dhcp4/5417.140630696564864] DHCP4_STARTED Kea DHCPv4 server version 3.0.3 started
+
+
+2026-08-27 16:06:44.124 INFO  [kea-dhcp4.dhcp4/5417.140630647867072] DHCP4_QUERY_LABEL received query: [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x9e9c9332
+2026-08-27 16:06:44.125 INFO  [kea-dhcp4.packets/5417.140630647867072] DHCP4_PACKET_RECEIVED [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x9e9c9332: DHCPREQUEST (type 3) received from 0.0.0.0 to 255.255.255.255 on interface ens160
+2026-08-27 16:06:44.125 INFO  [kea-dhcp4.leases/5417.140630647867072] DHCP4_INIT_REBOOT [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x9e9c9332: client is in INIT-REBOOT state and requests address 192.168.10.52
+2026-08-27 16:06:44.125 INFO  [kea-dhcp4.leases/5417.140630647867072] DHCP4_LEASE_ALLOC [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x9e9c9332: lease 192.168.10.52 has been allocated for 600 seconds
+2026-08-27 16:06:44.126 INFO  [kea-dhcp4.packets/5417.140630647867072] DHCP4_PACKET_SEND [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x9e9c9332: trying to send packet DHCPACK (type 5) from 192.168.10.10:67 to 192.168.10.52:68 on interface ens160
+
+
+2026-08-27 16:07:26.754 INFO  [kea-dhcp4.dhcp4/5417.140630639474368] DHCP4_QUERY_LABEL received query: [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x50f8ad36
+2026-08-27 16:07:26.754 INFO  [kea-dhcp4.packets/5417.140630639474368] DHCP4_PACKET_RECEIVED [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x50f8ad36: DHCPREQUEST (type 3) received from 0.0.0.0 to 255.255.255.255 on interface ens160
+2026-08-27 16:07:26.755 INFO  [kea-dhcp4.leases/5417.140630639474368] DHCP4_INIT_REBOOT [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x50f8ad36: client is in INIT-REBOOT state and requests address 192.168.10.52
+2026-08-27 16:07:26.755 INFO  [kea-dhcp4.leases/5417.140630639474368] DHCP4_LEASE_ALLOC [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x50f8ad36: lease 192.168.10.52 has been allocated for 600 seconds
+2026-08-27 16:07:26.755 INFO  [kea-dhcp4.packets/5417.140630639474368] DHCP4_PACKET_SEND [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x50f8ad36: trying to send packet DHCPACK (type 5) from 192.168.10.10:67 to 192.168.10.52:68 on interface ens160
+2026-08-27 16:07:43.003 INFO  [kea-dhcp4.dhcp4/5417.140630631081664] DHCP4_QUERY_LABEL received query: [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0xbabc1388
+2026-08-27 16:07:43.003 INFO  [kea-dhcp4.packets/5417.140630631081664] DHCP4_PACKET_RECEIVED [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0xbabc1388: DHCPRELEASE (type 7) received from 192.168.10.52 to 192.168.10.10 on interface ens160
+2026-08-27 16:07:43.003 INFO  [kea-dhcp4.leases/5417.140630631081664] DHCP4_RELEASE [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0xbabc1388: address 192.168.10.52 was released properly.
+2026-08-27 16:07:43.003 INFO  [kea-dhcp4.leases/5417.140630631081664] DHCP4_RELEASE_EXPIRED [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0xbabc1388: address 192.168.10.52 expired on release.
+2026-08-27 16:07:48.203 INFO  [kea-dhcp4.dhcp4/5417.140630622688960] DHCP4_QUERY_LABEL received query: [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x3302fed
+2026-08-27 16:07:48.203 INFO  [kea-dhcp4.packets/5417.140630622688960] DHCP4_PACKET_RECEIVED [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x3302fed: DHCPDISCOVER (type 1) received from 0.0.0.0 to 255.255.255.255 on interface ens160
+2026-08-27 16:07:48.204 INFO  [kea-dhcp4.leases/5417.140630622688960] DHCP4_LEASE_OFFER [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x3302fed: lease 192.168.10.52 will be offered
+2026-08-27 16:07:48.204 INFO  [kea-dhcp4.packets/5417.140630622688960] DHCP4_PACKET_SEND [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x3302fed: trying to send packet DHCPOFFER (type 2) from 192.168.10.10:67 to 192.168.10.52:68 on interface ens160
+2026-08-27 16:07:48.205 INFO  [kea-dhcp4.dhcp4/5417.140630614296256] DHCP4_QUERY_LABEL received query: [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x3302fed
+2026-08-27 16:07:48.205 INFO  [kea-dhcp4.packets/5417.140630614296256] DHCP4_PACKET_RECEIVED [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x3302fed: DHCPREQUEST (type 3) received from 0.0.0.0 to 255.255.255.255 on interface ens160
+2026-08-27 16:07:48.205 INFO  [kea-dhcp4.leases/5417.140630614296256] DHCP4_LEASE_ALLOC [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x3302fed: lease 192.168.10.52 has been allocated for 600 seconds
+2026-08-27 16:07:48.205 INFO  [kea-dhcp4.packets/5417.140630614296256] DHCP4_PACKET_SEND [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x3302fed: trying to send packet DHCPACK (type 5) from 192.168.10.10:67 to 192.168.10.52:68 on interface ens160
+2026-08-27 16:09:46.623 INFO  [kea-dhcp4.dhcp4/5417.140630605903552] DHCP4_QUERY_LABEL received query: [hwtype=1 00:0c:29:d9:2f:e0], cid=[01:00:0c:29:d9:2f:e0], tid=0x33e8000c
+2026-08-27 16:09:46.624 INFO  [kea-dhcp4.packets/5417.140630605903552] DHCP4_PACKET_RECEIVED [hwtype=1 00:0c:29:d9:2f:e0], cid=[01:00:0c:29:d9:2f:e0], tid=0x33e8000c: DHCPREQUEST (type 3) received from 192.168.10.30 to 192.168.10.10 on interface ens160
+2026-08-27 16:09:46.624 INFO  [kea-dhcp4.leases/5417.140630605903552] DHCP4_LEASE_ALLOC [hwtype=1 00:0c:29:d9:2f:e0], cid=[01:00:0c:29:d9:2f:e0], tid=0x33e8000c: lease 192.168.10.30 has been allocated for 600 seconds
+2026-08-27 16:09:46.624 INFO  [kea-dhcp4.packets/5417.140630605903552] DHCP4_PACKET_SEND [hwtype=1 00:0c:29:d9:2f:e0], cid=[01:00:0c:29:d9:2f:e0], tid=0x33e8000c: trying to send packet DHCPACK (type 5) from 192.168.10.10:67 to 192.168.10.30:68 on interface ens160
+^C
+-dhcp4.conf
+{
+  "Dhcp4": {    "ddns-send-updates": true,
+    "ddns-override-client-update": true,
+    "ddns-override-no-update": true,
+    "ddns-replace-client-name": "when-not-present",
+    "ddns-generated-prefix": "dhcp",
+    "ddns-qualifying-suffix": "example.com",
+    "ddns-update-on-renew": true,"dhcp-ddns": {"enable-updates": true,"server-ip": "127.0.0.1","server-port": 53001
+    },"interfaces-config": {"interfaces": [ "ens160" ]
+    },"lease-database": {"type": "memfile","persist": true,"name": "/var/lib/kea/kea-leases4.csv"
+    },// 갱신 시도(5분)
+    "renew-timer": 300,
+    // 재바인딩 시도 (8.75분)
+    "rebind-timer": 525,
+    // IP 대여 유효기간 (10분)
+    "valid-lifetime": 600,"host-reservation-identifiers": [ "hw-address" ],"subnet4": [{"id": 1,"subnet": "192.168.10.0/24","pools": [{ "pool": "192.168.10.51 - 192.168.10.80" }],"option-data": [{ "name": "routers", "data": "192.168.10.2" },{ "name": "domain-name-servers", "data": "192.168.10.20, 8.8.8.8" },{ "name": "domain-name", "data": "example.com" },{ "name": "domain-search", "data": "example.com" }36,0-1Top+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        7,1  89401,0-1~@k   2,1  345,0-1
+],46,13%
+47,16%
+"reservations": [48,110%
+{49,113%
+"hw-address": "00:0c:29:21:c2:22",50,117%
+"ip-address": "192.168.10.20",51,120%
+"hostname": "server1.example.com"52,0-124%
+},53,127%~@k
+{54,131%
+"hw-address": "00:0c:29:d9:2f:e0",55,134%
+"ip-address": "192.168.10.30",56,137%
+"hostname": "server2.example.com"57,141%
+}58,144%
+]59,148%~@k
+}60,151%
+],61,155%
+62,158%
+"loggers": [63,162%
+{64,165%
+"name": "kea-dhcp4",65,168%~@k
+"output-options": [66,172%
+{ "output": "/var/log/kea/kea-dhcp4.log" }67,0-175%
+],68,179%
+"severity": "INFO",69,182%
+"debuglevel": 070,186%
+}71,189%~@k
+]72,193%
+}73,196%
+tailt-fa/var/log/kea/kea-dhcp4.log/var/log/kea/kea-dhcp4.log-|degrep 'DHCPDISCOVER|DHCPOFFER|DHCPREQUEST|DHCPACK'
+2026-08-27 16:07:48.205 INFO  [kea-dhcp4.leases/5417.140630614296256] DHCP4_LEASE_ALLOC [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x3302fed: lease 192.168.10.52 has been allocated for 600 seconds
+2026-08-27 16:07:48.205 INFO  [kea-dhcp4.packets/5417.140630614296256] DHCP4_PACKET_SEND [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x3302fed: trying to send packet DHCPACK (type 5) from 192.168.10.10:67 to 192.168.10.52:68 on interface ens160
+2026-08-27 16:09:46.623 INFO  [kea-dhcp4.dhcp4/5417.140630605903552] DHCP4_QUERY_LABEL received query: [hwtype=1 00:0c:29:d9:2f:e0], cid=[01:00:0c:29:d9:2f:e0], tid=0x33e8000c
+2026-08-27 16:09:46.624 INFO  [kea-dhcp4.packets/5417.140630605903552] DHCP4_PACKET_RECEIVED [hwtype=1 00:0c:29:d9:2f:e0], cid=[01:00:0c:29:d9:2f:e0], tid=0x33e8000c: DHCPREQUEST (type 3) received from 192.168.10.30 to 192.168.10.10 on interface ens160
+2026-08-27 16:09:46.624 INFO  [kea-dhcp4.leases/5417.140630605903552] DHCP4_LEASE_ALLOC [hwtype=1 00:0c:29:d9:2f:e0], cid=[01:00:0c:29:d9:2f:e0], tid=0x33e8000c: lease 192.168.10.30 has been allocated for 600 seconds
+2026-08-27 16:09:46.624 INFO  [kea-dhcp4.packets/5417.140630605903552] DHCP4_PACKET_SEND [hwtype=1 00:0c:29:d9:2f:e0], cid=[01:00:0c:29:d9:2f:e0], tid=0x33e8000c: trying to send packet DHCPACK (type 5) from 192.168.10.10:67 to 192.168.10.30:68 on interface ens160
+2026-08-27 16:10:19.507 INFO  [kea-dhcp4.dhcp4/5417.140630597510848] DHCP4_QUERY_LABEL received query: [hwtype=1 00:0c:29:21:c2:22], cid=[01:00:0c:29:21:c2:22], tid=0xaa884731
+2026-08-27 16:10:19.507 INFO  [kea-dhcp4.packets/5417.140630597510848] DHCP4_PACKET_RECEIVED [hwtype=1 00:0c:29:21:c2:22], cid=[01:00:0c:29:21:c2:22], tid=0xaa884731: DHCPREQUEST (type 3) received from 192.168.10.20 to 192.168.10.10 on interface ens160
+2026-08-27 16:10:19.508 INFO  [kea-dhcp4.leases/5417.140630597510848] DHCP4_LEASE_ALLOC [hwtype=1 00:0c:29:21:c2:22], cid=[01:00:0c:29:21:c2:22], tid=0xaa884731: lease 192.168.10.20 has been allocated for 600 seconds
+2026-08-27 16:10:19.508 INFO  [kea-dhcp4.packets/5417.140630597510848] DHCP4_PACKET_SEND [hwtype=1 00:0c:29:21:c2:22], cid=[01:00:0c:29:21:c2:22], tid=0xaa884731: trying to send packet DHCPACK (type 5) from 192.168.10.10:67 to 192.168.10.20:68 on interface ens160
+
+
+
+
+
+
+
+
+
+
+
+
+
+2026-08-27 16:12:47.420 INFO  [kea-dhcp4.dhcp4/5417.140630589118144] DHCP4_QUERY_LABEL received query: [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x9ece51c2
+2026-08-27 16:12:47.421 INFO  [kea-dhcp4.packets/5417.140630589118144] DHCP4_PACKET_RECEIVED [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x9ece51c2: DHCPREQUEST (type 3) received from 192.168.10.52 to 192.168.10.10 on interface ens160
+2026-08-27 16:12:47.421 INFO  [kea-dhcp4.leases/5417.140630589118144] DHCP4_LEASE_ALLOC [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x9ece51c2: lease 192.168.10.52 has been allocated for 600 seconds
+2026-08-27 16:12:47.421 INFO  [kea-dhcp4.packets/5417.140630589118144] DHCP4_PACKET_SEND [hwtype=1 00:50:56:2c:c7:d2], cid=[01:00:50:56:2c:c7:d2], tid=0x9ece51c2: trying to send packet DHCPACK (type 5) from 192.168.10.10:67 to 192.168.10.52:68 on interface ens160
+^C
+[root@main ~]# c
+-ddns.service
+Removed '/etc/systemd/system/multi-user.target.wants/kea-dhcp-ddns.service'.
+[root@main ~]# systemctl disable --now kea-d4.serviceservice
+Removed '/etc/systemd/system/multi-user.target.wants/kea-dhcp4.service'.
+[root@main ~]# nmcli connection n
+NAME  UUID                                  TYPE      DEVICE
+eth0  a459e410-2925-3a65-b843-b1afd951943d  ethernet  ens160
+lo    68c49f8e-7d74-4e34-be0b-f0bb25a3226a  loopback  lo
+[root@main ~]# rm -rf ~/.ssh
+[root@main ~]# c
+lsgen
+바탕화면  anaconda-ks.cfg  bin  Desktop  Documents  Downloads  eicar.txt  linux  Music  Pictures  Public  Templates  Videos
+c
+/ssh
+bash: cd: /ssh: No such file or directory
+h
+bash: cd: /root/.ssh: No such file or directory
+[root@main ~]# c
+[root@main ~]# # (main)
+# root 암호 설정
+ROOTPASS='centos'
+# 선수 패키지 설치
+dnf install -y -q sshpass
+# 키 생성
+echo -e '\ny\n' | ssh-keygen -N ''
+# 키 배포
+for host in main server1 server2
+do
+    sshpass -p "$ROOTPASS" ssh-copy-id -o StrictHostKeyChecking=no ${host}
+done
+
+echo ; echo "===== ssh SERVER hostname ====="
+#o(main) main server1 server2 ; do ssh ${i} hostname ; done
+# root 암호 설정
+ROOTPASS='centos'
+# 선수 패키지 설치
+dnf install -y -q sshpass
+# 키 생성
+echo -e '\ny\n' | ssh-keygen -N ''
+# 키 배포
+for host in main server1 server2
+do
+    sshpass -p "$ROOTPASS" ssh-copy-id -o StrictHostKeyChecking=no ${host}
+done
+
+echo ; echo "===== ssh SERVER hostname ====="
+for i in main server1 server2 ; do ssh ${i} hostname ; done
+
+Installed:
+  sshpass-1.09-9.el10.x86_64
+
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/root/.ssh/id_ed25519): Created directory '/root/.ssh'.
+Your identification has been saved in /root/.ssh/id_ed25519
+Your public key has been saved in /root/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:FecYCsyEFLQeW1dpVLCTs0ZKTD0grv4A06EINsLR1uk root@main.example.com
+The key's randomart image is:
++--[ED25519 256]--+
+| ..o=*= o+*+o    |
+|. .o.=o= o=O     |
+|o+. = o =.O..    |
+|+..+ E o + +     |
+|. + =   S o      |
+|   +     .       |
+|    o            |
+|     o           |
+|      .          |
++----[SHA256]-----+
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: ssh-add -L
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 2 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+
+Number of key(s) added: 2
+
+Now try logging into the machine, with: "ssh -o 'StrictHostKeyChecking=no' 'main'"
+and check to make sure that only the key(s) you wanted were added.
+
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: ssh-add -L
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 2 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+
+Number of key(s) added: 2
+
+Now try logging into the machine, with: "ssh -o 'StrictHostKeyChecking=no' 'server1'"
+and check to make sure that only the key(s) you wanted were added.
+
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: ssh-add -L
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 2 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+
+Number of key(s) added: 2
+
+Now try logging into the machine, with: "ssh -o 'StrictHostKeyChecking=no' 'server2'"
+and check to make sure that only the key(s) you wanted were added.
+
+
+===== ssh SERVER hostname =====
+main.example.com
+server1.example.com
+server2.example.com
+[root@main ~]# exi
+bash: exi: command not found...
+[root@main ~]# exit
+exit
+
+Script done on 2026-08-27 18:45:20+09:00 [COMMAND_EXIT_CODE="127"]
