@@ -13,3 +13,28 @@ bash: d: command not found...
 exit
 
 Script done on 2026-08-27 18:55:56+09:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-27 18:56:32+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="85" LINES="31"]
+[root@main ~]# ls
+바탕화면         bin      Documents  eicar.txt  Music     Public     Videos
+anaconda-ks.cfg  Desktop  Downloads  linux      Pictures  Templates
+[root@main ~]# ls
+바탕화면         bin      Documents  eicar.txt  Music     Public     Videos
+anaconda-ks.cfg  Desktop  Downloads  linux      Pictures  Templates
+[root@main ~]# ls
+바탕화면         bin      Documents  eicar.txt  Music     Public     Videos
+anaconda-ks.cfg  Desktop  Downloads  linux      Pictures  Templates
+[root@main ~]# ls
+바탕화면         bin      Documents  eicar.txt  Music     Public     Videos
+anaconda-ks.cfg  Desktop  Downloads  linux      Pictures  Templates
+[root@main ~]# ls
+바탕화면         bin      Documents  eicar.txt  Music     Public     Videos
+anaconda-ks.cfg  Desktop  Downloads  linux      Pictures  Templates
+[root@main ~]# test
+[root@main ~]# test
+[root@main ~]# test
+
+tecla     tee       telinit   telnet    test      test_ppa
+[root@main ~]# exit
+exit
+
+Script done on 2026-08-27 18:56:48+09:00 [COMMAND_EXIT_CODE="1"]
