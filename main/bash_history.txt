@@ -1,0 +1,1000 @@
+clear
+# 필요한 패키지 설치
+yum -q -y install httpd mod_ssl createrepo
+# 웹 서비스 기동
+systemctl enable --now httpd
+# 웹 서비스 디렉토리 생성
+mkdir -p /var/www/html/CD/
+if [ $(who -r | awk '{print $2}') -eq 3 ] ; then
+	mkdir -p /mnt/cdrom; 	mount -t iso9660 -o ro /dev/cdrom /mnt/cdrom; 	time rsync -av --progress /mnt/cdrom/ /var/www/html/CD/; 	cd && umount /mnt/cdrom
+elif [ $(who -r | awk '{print $2}') -eq 5 ]; then
+	time rsync -av --progress /run/media/root/CentOS-Stream-10-BaseOS-x86_64/ /var/www/html/CD/;     cd && umount /run/media/root/CentOS-Stream-10-BaseOS-x86_64/
+else      echo "[ FAIL ] 못해먹겠당~~~"; fi
+clear
+yum -q -y install httpd mod_ssl createrepo
+systemctl enable --now httpd
+mkdir -p /var/www/html/CD/
+if [ $(who -r | awk '{print $2}') -eq 3 ] ; then
+	mkdir -p /mnt/cdrom; 	mount -t iso9660 -o ro /dev/cdrom /mnt/cdrom; 	time rsync -av --progress /mnt/cdrom/ /var/www/html/CD/; 	cd && umount /mnt/cdrom
+elif [ $(who -r | awk '{print $2}') -eq 5 ]; then
+	time rsync -av --progress /run/media/root/CentOS-Stream-10-BaseOS-x86_64/ /var/www/html/CD/;     cd && umount /run/media/root/CentOS-Stream-10-BaseOS-x86_64/
+else      echo "[ FAIL ] 못해먹겠당~~~"; fi
+ls /var/www/html/CD/BaseOS
+if [ $(who -r | awk '{print $2}') -eq 3 ] ; then 	mkdir -p /mnt/cdrom; 	mount -t iso9660 -o ro /dev/cdrom /mnt/cdrom; 	time rsync -av --progress /mnt/cdrom/ /var/www/html/CD/; 	cd && umount /mnt/cdrom; elif [ $(who -r | awk '{print $2}') -eq 5 ]; then 	time rsync -av --progress /run/media/root/CentOS-Stream-10-BaseOS-x86_64/ /var/www/html/CD/;     cd && umount /run/media/root/CentOS-Stream-10-BaseOS-x86_64/; else      echo "[ FAIL ] 못해먹겠당~~~"; fi
+c
+clear
+ls
+cd /run/media/root
+cd /run
+ls
+cd
+ls /var/www/html/CD/BaseOS/
+ls /var/www/html/CD/AppStream
+yum repolist 
+celar
+clear
+vi ~/.bashrc 
+. ~/.bashrc 
+vi ~/.bash
+vi ~/.bashrc 
+exit
+systemctl isolate graphical.target 
+vi ~/.bashrc 
+. ~/.bashrc 
+vi /etc/default/grub
+grub2-mkconfig -o /boot/grub2/grub.cfg 
+reboot
+systemctl isolate graphical.target 
+systemctl set-default graphical.target 
+ssh server2
+exit
+c
+who -r
+systemctl get-default 
+exit
+poweroff
+c
+cd /backup/
+ls
+exit
+poweroff
+sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/' /etc/default/grub
+grub2-mkconfig -o /boot/grub2/grub.cfg
+exit
+nmcli device 
+reboot
+# (main/server1/server2)
+localectl set-locale LANG=en_US.UTF-8
+if grep '^SELINUX=disabled' /etc/selinux/config ; then
+    sed -i 's/^SELINUX=disabled/SELINUX=permissive/' /etc/selinux/config;     reboot; else
+    setenforce 0;     sed -i 's/^SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config; fi
+# (main/server1/server2)
+# $HOME/.bashrc 파일에 엘리어스 설정하기
+cat << EOF >> ~/.bashrc
+
+#
+# Firewall Alias
+#
+alias fwcmd='firewall-cmd'
+alias fwadd='firewall-cmd --permanent'
+alias fwreload='firewall-cmd --reload'
+alias fwlist='firewall-cmd --list-all'
+
+EOF
+
+source ~/.bashrc
+alias | grep fw
+exit
+c
+firefox https://192.168.10.20:9090 &
+exit
+dnf install -y firewalld
+systemctl enable --now firewalld.service 
+# (main/server1/server2)
+# $HOME/.bashrc 파일에 엘리어스 설정하기
+cat << EOF >> ~/.bashrc
+
+#
+# Firewall Alias
+#
+alias fwcmd='firewall-cmd'
+alias fwadd='firewall-cmd --permanent'
+alias fwreload='firewall-cmd --reload'
+alias fwlist='firewall-cmd --list-all'
+
+EOF
+
+source ~/.bashrc
+alias | grep fw
+c
+systemctl status firewalld.service 
+export LANG=ko_KR.UTF-8	
+[200~# (main)
+# TELNET 클라이언트 프로그램을 설치하고 원격 접속 시도 => 성공
+yum -y install telnet
+# (main)
+# TELNET 클라이언트 프로그램을 설치하고 원격 접속 시도 => 성공
+yum -y install telnet
+telnet 192.168.10.20
+ssh server1
+firefox https://192.168.10.20:9090 &
+c
+firefox https://192.168.10.20:9090 &
+# (main/server1/server2)
+# SELinux 설정(enforcing -> permissive)
+if grep -w '^SELINUX=enforcing' /etc/selinux/config ; then     sed -i 's/^SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config ;     setenforce 0 ; elif grep -w '^SELINUX=permissive' /etc/selinux/config ; then     :; else     sed -i 's/^SELINUX=disabled/SELINUX=permissive/' /etc/selinux/config ;     reboot; fi
+sestatus 
+c
+poweroff
+for host in main server1 server2 ; do ssh $host hostname ; done
+exit
+c
+for host in main server1 server2 ; do ssh $host hostname ; done
+sestatus 
+systemctl status firewalld
+firewall-cmd --list-all 
+firewall-cmd --permanent --add-service=telnet
+firewall-cmd --reload 
+firewall-cmd --list-all 
+RMSVC=$(firewall-cmd --list-services | sed 's/ ssh//' | sed 's/ /,/g')
+firewall-cmd --list-services 
+firewall-cmd --reload 
+firewall-cmd --list-services 
+RMSVC=$(firewall-cmd --list-services | sed 's/ ssh//' | sed 's/ /,/g')
+firewall-cmd --permanent --remove-service={${RMSVC}}
+firewall-cmd --reload
+firewall-cmd --permanent --add-service={cockpit,dhcpv6-client,ssh,telnet}
+firewall-cmd --reload
+firewall-cmd --list-all
+c
+firewall-cmd --list-services 
+firewall-cmd --list-all
+c
+cat /etc/hosts 
+ nmcli connection 
+systemctl get-default
+who -r
+poweroff
+firewall-cmd --list-all
+c
+for host in main server1 server2 ; do ssh $host hostname ; done
+c
+dnf -y install bind bind-utils 
+c
+dnf -y install bind bind-utils
+c
+rpm -qa | grep bind 
+c
+# (main)
+cat <<'EOF' >> ~/.bashrc
+
+#
+# DNS Server Alias
+#
+alias named.conf='vi /etc/named.conf'
+alias named.rfc1912.zones='vi /etc/named.rfc1912.zones' 
+alias DNS='cd /var/named'
+alias dnslog='tail -f /var/log/messages'
+
+EOF
+
+source ~/.bashrc
+vi ~/.bashrc 
+c
+dnf -y install bind bind-utils
+c
+vi /etc/named.conf 
+c
+poweroff
+tail -f /var/log/messages
+dnf -y install bind bind-utils 
+cd /etc/yum.repos.d/yum
+ls
+cd /etc/yum.repos.d/
+ls
+vi centos
+vi centos-addons.repo 
+c
+cd
+c
+alias
+c
+scp --help
+man scp
+c
+vi /etc/named.conf 
+cat /etc/named.conf 
+vi /etc/named.rfc1912.zones 
+named-checkconf /etc/named.conf 
+cd /var/named/
+cat named.ca 
+c
+cp -p named.ca named.ca.OLD
+> named.ca
+vi named.ca
+cat /etc/named.rfc1912.zones 
+c
+cat /var/named/named.ca
+cp -p named.localhost com.zone
+> com.zone 
+vi com.zone
+cat /var/named/named.ca
+cat /etc/named.conf 
+c
+cat /var/named/com.zone 
+cat /etc/named.r
+cat /etc/named.rfc1912.zones 
+c
+cat /etc/named.rfc1912.zones
+c
+cat /var/named/named.ca
+vi com.zone 
+for i in main server1 server2; do ssh $i hostname ; done
+named-checkconf /etc/namd.conf
+named-checkconf /etc/named.conf
+named-checkzone /var/named/com.zone 
+named-checkzone com /var/named/com.zone 
+c
+named-checkzone com /var/named/com.zone 
+cp -p named.loopback com.rev
+c
+> com.rev
+vi com.rev
+ls
+cat named.loopback 
+named-checkzone 10.168.192.in-addr.arpa /var/named/com.rev 
+journalctl -u named -f
+systemctl enable named.service 
+systemctl restart named
+systemctl status named
+vi /etc/sysconfig/named 
+systemctl restart named
+systemctl status named
+pgrep -a named 
+netstat -plunt | grep :53
+firewall-cmd --permanent --add-service=dns
+firewall-cmd --reload 
+firewall-cmd --list-all
+named-checkconf -p
+c
+cd
+nmcli device 
+nmcli connection modify eth0 ipv4.dns 192.168.10.10 + ipv4.dns 8.8.8.8 ipv4.dns-search com
+nmcli connection modify eth0 ipv4.dns 192.168.10.10 +ipv4.dns 8.8.8.8 ipv4.dns-search com 
+nmcli connection up eht0
+nmcli connection up eth0
+cat /etc/resolv.conf 
+nslookup 
+vi /var/named/named.ca
+nslookup 
+c
+cat /var/named/example.rev
+c
+nslookup 
+poweroff
+curl http://www.example.com 
+u
+c
+# (main)
+yum -y install httpd
+echo 'This is a main.'   > /var/www/html/index.html
+systemctl restart httpd
+firewall-cmd --permanent   --add-service=http
+firewall-cmd --reload
+curl http://www.example.com 
+cd /var/named/
+ls
+c
+ls
+cat com.zone 
+nslookup www.test.com
+nslookup www.example.com
+c
+curl http://www.example.com
+cat /etc/hosts
+cat /etc/resolv.conf 
+systemctl status named
+cat com.zone 
+c
+systemctl disable --now named
+systemctl status named
+c
+nmtui
+nmcli connection up eth0 
+cat /etc/resolv.conf 
+nslookup 
+poweroff
+alias
+poweroff
+nmap -p 80,443 192.168.10.30
+curl http://192.168.10.30
+curl http://www.example.com
+curl http://example.com
+firefox
+poweroff
+dnf install -y epel-release
+dnf -y install evolution
+cd
+c
+wget -O eicar.txt https://secure.eicar.org/eicar.com.txt
+ls
+dnf -y install nfs-utils
+poweroff
+dnf -y install nfs-utils 
+showmount -e 192.168.10.20
+mkdir -p /mnt/share 
+mount 192.168.10.20:/ /mnt/share
+df
+tree /mnt/share/
+cd
+umount /mnt/share
+firewall-cmd --permanent --add-service={mountd,rpc-bind,nfs}
+firewall-cmd --list-all
+firewall-cmd --reload 
+firewall-cmd --permanent --remove--service={mountd,rpc-bind,nfs}
+firewall-cmd --permanent --remove-service={mountd,rpc-bind,nfs}
+firewall-cmd --reload 
+showmount -e server1 
+mkdir -p /mnt/share 
+mount -o nfsvers=3 server1:/share /mnt/share
+df
+cd.
+cd
+ umount /mnt/share 
+c
+mkdir -p /mnt/p1
+showmount -e server1
+moutn server1:/share2 /mnt/p1
+mount server1:/share2 /mnt/p1
+df
+mkdir -p /mnt/p2
+mount server1:/share3 /mnt/p2
+c
+df
+c
+df | grep nfs
+tree /mnt/p1
+c
+cd /mnt/p1
+mkdir -p /test
+cp file1 /test
+head /test/file1
+cd
+umount /mnt/p1 
+df
+c
+mkdir -p /mnt/server
+mount /server1:/sharedir /mnt/server
+mount server1:/sharedir /mnt/server
+df
+cd /mnt/server/
+touch file2.txt
+ll
+cat file1.txt 
+ln -s file1.txt filego
+cd
+umount /mnt/server 
+mount server1:/sharedir /mnt/server
+cd /mnt/server/
+touch file2.txt
+echo 1111 >> file1.txt 
+cd
+umount /mnt/server 
+c
+df
+c
+showmount -e server1
+mkdir -p /mnt/server
+mount server1:/share /mnt/server
+df
+c
+cd /mnt/server
+lsblk
+c
+ll
+mkdir dir1
+echo 1111 >> testfile.txt 
+id
+cd .
+cd ..
+ll
+chmod 777 share
+ll
+cd s
+cd share/
+ll
+mkdir dir
+ll
+rm -rf dir/
+cd ..
+chmod 755 share/
+ll
+chmod 777 server
+cd s
+cd server/
+ll
+> testfile.txt 
+ll
+cat > testfile.txt 
+cat testfile.txt 
+id
+touch main.txt
+mkdir main
+ll
+cd
+ll
+ssh nfsuser@localhost
+c
+umount /home/nfsuser 
+userdel -r nfsuser 
+df
+mount server1:/share /mnt/server/
+cd /mnt/server/
+c
+cd
+umount /mnt/server 
+c
+df
+mount server1:/share /mnt/server
+cd /mnt/server/
+ls
+c
+ll
+cat > main.txt
+cat main.txt
+touch main2.txt
+ll
+touch centos.txt
+mkdir centos
+ll
+echo centos >> testfile.txt 
+cat testfile.txt 
+cd
+df
+umount /mnt/server 
+df
+c
+man ls
+cd /usr/share/man
+ls
+cd 
+cd -
+cd ..
+mv man man.OLD
+man ls
+showmount -e server1
+showmount -e 
+showmount -e server1
+mkdir /usr/share/man
+vi /etc/hosts
+mount server1:/usr/share/man /usr/share/man
+df
+which df
+/usr/bin/df 
+c
+man ls
+ls /usr/share/man
+cd
+umount /usr/share/man 
+df
+c
+rmdir /usr/share/m
+rmdir /usr/share/man
+mv /usr/share/man.OLD  /usr/share/man
+man ls
+c
+useradd -u 3000 -g 100 -M nfsuser
+echo 'nfsuser:nfsuser' | chpasswd 
+cat /etc/shadow | grep nfsuser
+showmount -e server1
+mkdir /home/nfsuser
+chown nfsuser:users /home/nfsuser
+mount server1:/export/home/nfsuser /home/nfsuser
+df
+c
+showmount -e server1
+mkdir -p /run/media/root/CentOS-Stream-10-BaseOS-x86_64 /mnt/cdrom
+rm -rf /run/media/root/CentOS-Stream-10-BaseOS-x86_64/
+rm -rf /run/media/root/CentOS-Stream-10-BaseOS-x86_64
+ll
+ls -l
+mount server1:/run/media/root/CentOS-Stream-10-BaseOS-x86_64 /mnt/cdrom
+cd /mnt/cdrom/
+ls /run/media/root
+cd AppStream/
+cd Packages/
+dnf -y localinstall php-8.3.32-1.el10.x86_64.rpm 
+cd /run/media/root
+ll
+ls -l
+cd C
+cd CentOS-Stream-10-BaseOS-x86_64/
+ll
+c
+cd 
+cd /mnt/cdrom 
+cd AppStream/Packages
+ rpm -qa | grep php
+cd
+umount /mnt/cdrom 
+df
+umount /run/media/root/CentOS-Stream-10-BaseOS-x86_64
+df
+c
+restart
+systemctl reboot 
+df
+c
+showmount -e server1
+showmount -e server2
+rm -rf /backup && mkdir -p /backup
+mount server1:/backup/main /backup
+df
+cd
+umount /backup 
+df
+vi /etc/nfs.conf 
+systemctl mask list
+ll
+rm -rf /etc/systemd/system/list.service 
+c
+cat /etc/fstab 
+c
+df
+showmount -e
+showmount -e server1
+c
+# (main)
+echo ; echo 
+echo "[ INFO ] 총 4단계의 완료가 되어야 합니다."
+# 패키지 설치
+yum -y install nfs-utils epel-release >/dev/null 2>&1   && yum -y install boxes cowsay >/dev/null 2>&1 
+[ $? -eq 0 ] && echo "[1:  OK  ] 패키지 설치 완료" || exit 1
+# (main)
+echo ; echo 
+echo "[ INFO ] 총 4단계의 완료가 되어야 합니다."
+# 패키지 설치
+yum -y install nfs-utils epel-release >/dev/null 2>&1   && yum -y install boxes cowsay >/dev/null 2>&1 
+[ $? -eq 0 ] && echo "[1:  OK  ] 패키지 설치 완료" || exit 1
+ssh server2
+exit
+ssh server1
+exit
+# (main)
+echo ; echo 
+echo "[ INFO ] 총 4단계의 완료가 되어야 합니다."
+# 패키지 설치
+yum -y install nfs-utils epel-release >/dev/null 2>&1   && yum -y install cowsay >/dev/null 2>&1 
+[ $? -eq 0 ] && echo "[1:  OK  ] 패키지 설치 완료" || exit 1
+# 공유 디렉토리 생성
+mkdir -p /export/home && useradd -u 5000 -d /export/home/nfsuser1 nfsuser1 && useradd -u 5001 -d /export/home/nfsuser2 nfsuser2
+[ $? -eq 0 ] && echo "[2-1:OK  ] 공유 홈 디렉토리 생성 완료" || exit 1
+cat << EOF > /export/home/nfsuser1/main.txt
+$(echo nfsuser1 | cowsay "Hello nfsuser1!")
+EOF
+
+cat << EOF > /export/home/nfsuser2/main.txt
+$(echo nfsuser2 | cowsay "Hello nfsuser2!")
+EOF
+
+mkdir -p /shares/main
+cat << EOF > /shares/main/main.txt
+$(echo MAIN | cowsay "hello nfsuser!")
+EOF
+
+[ $? -eq 0 ] && echo "[2-2:OK  ] 공유 디렉토리 생성 완료" || exit 1
+# /etc/exports.d/main.autofs 파일 생성
+cat << EOF > /etc/exports.d/main.exports
+/shares/main     *(rw,no_root_squash)
+/export/home     *(rw,no_root_squash)
+EOF
+
+[ $? -eq 0 ] && echo "[3:  OK  ] 공유 설정 완료" || exit 1
+# NFS 서비스 기동
+systemctl restart nfs-server && systemctl enable nfs-server >/dev/null 2>&1
+[ $? -eq 0 ] && echo "[4:  OK  ] 공유 서비스 기동 완료" || exit 1
+# 방화벽에 서비스 등록
+firewall-cmd --permanent --add-service={nfs,mountd,rpc-bind}
+firewall-cmd --reload
+echo; echo 
+echo "----- 출력 내용 -----"
+exportfs -v
+cat /shares/main/main.txt 
+c
+exportfs 
+exportfs -v
+c
+exportfs -v
+exportfs 
+# (main)
+systemctl disable --now nfs-server 
+rm -f /etc/exports.d/main.exports 
+for user in nfsuser1 nfsuser2; do   userdel -r $user; done
+c
+cat /etc/resolv.conf 
+c
+# (main/server1/server2)
+systemctl stop firewalld
+systemctl status firewalld
+dnf -y install nfs-utils
+c
+mkdir -p /www1
+chown -R apache:apache /www1
+chmod 755 /www1
+cat <<'EOF' | sudo tee /www1/index.php
+<?php
+echo "<h1>Hello from web server: " . gethostname() . "</h1>";
+?>
+EOF
+
+cat /www1/index.php 
+ cat <<'EOF' | sudo tee /etc/exports.d/webnfs.exports
+#
+# DNS/LB + WEB + NFS Test
+#
+/www1	192.168.10.0/24(rw,sync,no_root_squash)
+
+EOF
+
+c
+vi /etc/exports/webnfs.exports
+systemctl restart nfs-server && systemctl enable nfs-server
+systemctl status nfs-server.service 
+c
+exportfs -v
+c
+dnf -y install haproxy
+c
+lll
+lllllllllllllllllllll
+c
+histoy
+history
+c
+cp -p /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.OLD
+vi /etc/haproxy/haproxy.cfg
+systemctl restart haproxy.service 
+ haproxy -f /etc/haproxy/haproxy.cfg -c 
+vi /etc/haproxy/haproxy.cfg 
+systemctl restart haproxy
+ netstat -antup | grep :80
+systemctl stop httpd
+systemctl disable httpd
+systemctl restart haproxy
+ nslookup www.example.com
+curl http://www.example.com:80/ ; echo
+ curl http://www.example.com:80/ ; echo
+curl http://www.example.com:80/ ; echo
+# (main/server1/server2) 방화벽 ON
+systemctl enable --now firewalld
+# (main) /etc/exports 파일의 내용 주석 처리
+sed -i '1,$s/^/#/' /etc/exports
+systemctl restart nfs-server
+c
+exit
+ssh server2
+ssh server1
+c
+tail -f /var/log/remote.log 
+c
+tail -f /var/log/remote.log 
+c
+tail -0f /var/log/messages
+ssh server2
+eixt
+ssh server1
+dnf -y install samba-client cifs-utils
+c
+# (main/server1/server2) 
+# 모든 서버에 telnet 서비스가 기동된 상태라고 가정한다.
+yum -y install telnet telnet-server
+systemctl enable --now telnet.socket
+firewall-cmd --permanent --add-service=telnet 
+firewall-cmd --reload 
+c
+ssh user01@server1
+ ssh fedora@server1
+c
+netstat -plunt | grep :514
+netstat -antup  | grep :514
+vi /etc/rsyslog.conf 
+netstat -antup  | grep :514
+vi /etc/rsyslog.d/remote.conf
+rsyslogd -N 1
+touch /var/log/remote.log
+chmod 400 /var/log/remote.log 
+systemctl restart rsyslog.service 
+netstat -plunt | grep :514
+firewall-cmd --list-all
+firewall-cmd --permanent --add-port={514/tcp,514/udp}
+firewall-cmd --permanent --add-service=syslog-tls
+firewall-cmd --reload 
+firewall-cmd --list-all
+c
+vi /etc/rsyslog.d/remote.conf 
+rsyslogd -N 1
+systemctl restart rsyslog.service 
+c
+mkdir -p /root/bin
+vi /root/bin/msg.sh
+chmod 700 /root/bin/msg.sh 
+msg.sh 
+vi /root/bin/msg2.sh
+vi /root/bin/msgllop.sh
+msg.sh
+chmod 700 /root/bin/*.sh
+msgllop.sh 5
+vi /etc/rsyslog.conf 
+c
+# 만약 미리 등록 되어 있으면 등록하지 않는다.
+if ! grep -q -w server1.example.com /etc/hosts ; then
+cat << EOF > /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+192.168.10.10  main.example.com      main
+192.168.10.20  server1.example.com   server1
+192.168.10.30  server2.example.com   server2
+
+EOF
+ fi
+echo ; echo "[  OK  ] ==== /etc/hosts ===="
+cat /etc/hosts
+c
+systemctl disable --now firewalld
+# (main)
+NET=192.168.10
+for i in 10 20 30; do     ping -c 1 -W 1 $NET.$i >/dev/null 2>&1       && echo "[  OK  ] $NET.$i"       || echo "[ FAIL ] $NET.$i"; done
+# (main/server1/server2)
+nmcli connection modify eth0 ipv4.dns 8.8.8.8
+nmcli connection up eth0
+cat /etc/resolv.conf 
+# (main/server1/server2)
+dnf install -y epel-release
+dnf repolist | grep epel
+# (main/server1/server2)
+systemctl disable --now cockpit.socket
+# (main)
+# 레포지토리 추가
+# - /etc/yum.repos.d/prometheus-rpm_release.repo 파일 생성
+curl -s https://packagecloud.io/install/repositories/prometheus-rpm/release/script.rpm.sh | sudo bash
+# 패키지 설치
+sudo dnf -y install prometheus node_exporter
+# 서비스 기동
+sudo systemctl enable --now prometheus node_exporter
+# 서비스 기동 확인
+echo ; echo "[  OK  ] ==== prometheus, node_exporter ===="
+systemctl is-active prometheus node_exporter
+# (main)
+# 레포지토리 설정 파일 생성
+# - /etc/yum.repos.d/grafana.repo 파일 생성
+cat << EOF > /etc/yum.repos.d/grafana.repo
+[grafana]
+name=grafana
+baseurl=https://rpm.grafana.com
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://rpm.grafana.com/gpg.key
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+
+EOF
+
+# 패키지 설치 - loki + grafana + Alloy
+dnf -y install loki grafana alloy
+# Alloy 설정
+mkdir -p /var/lib/alloy
+cat << 'EOF' > /etc/alloy/config.alloy
+local.file_match "linux_logs" {
+  path_targets = [
+    {
+      __path__ = "/var/log/messages",
+      host     = constants.hostname,
+      job      = "messages",
+    },
+    {
+      __path__ = "/var/log/secure",
+      host     = constants.hostname,
+      job      = "secure",
+    },
+  ]
+}
+
+loki.source.file "local_logs" {
+  targets    = local.file_match.linux_logs.targets
+  forward_to = [loki.write.default.receiver]
+}
+
+loki.write "default" {
+  endpoint {
+    url = "http://main.example.com:3100/loki/api/v1/push"
+  }
+}
+
+EOF
+
+setfacl -R -m u:alloy:rX /var/log
+# 서비스 기동 - loki, grafana-server
+systemctl enable --now loki alloy grafana-server
+# 서비스 기동 확인
+echo ; echo "[  OK  ] ==== loki, grafana-server ===="
+systemctl is-active loki alloy grafana-server
+# rsyslog 서비스 재기동
+systemctl restart rsyslog
+# (main)
+[ ! -f /etc/prometheus/prometheus.yml.OLD ]   && cp -p /etc/prometheus/prometheus.yml /etc/prometheus/prometheus.yml.OLD
+grep -q -w linux-servers /etc/prometheus/prometheus.yml || cat << EOF >> /etc/prometheus/prometheus.yml
+
+  - job_name: 'linux-servers'
+    static_configs:
+      - targets: ['server1.example.com:9100', 'server2.example.com:9100']
+
+EOF
+
+systemctl restart prometheus
+echo ; echo "[  OK  ] ==== prometheus ===="
+systemctl is-active prometheus
+systemctl restart prometheus
+systemctl restart loki.service 
+systemctl is-active prometheus node_exporter loki alloy grafana-server
+netstat -antp | egrep ':3000|:3100|:9090|:9100'	(# ss -nlt | egrep ':3000|:3100|:9090|:9100')
+netstat -antp | egrep ':3000|:3100|:9090|:9100'
+curl -s http://main.example.com:9100/metrics | head -10 
+curl -s http://server1.example.com:9100/metrics | head -10 
+curl -s http://server2.example.com:9100/metrics | head -10 
+ curl -s http://main.example.com:9090/api/v1/targets | jq . | grep -E 'instance|health'
+ curl -s http://main.example.com:9090/api/v1/targets | jq . 
+c
+curl -s http://localhost:3100/ready
+watch curl -s http://localhost:3100/ready
+curl -sG "http://localhost:3100/loki/api/v1/label/{job}/values" | jq .
+firefox &
+firefox http://main.example.com:3000 &
+eixt
+exit
+ssh server1
+exit
+firefox http://main.example.com:3000 &
+c
+ssh server1
+exit
+ssh server2
+exit
+cat /etc/machine-id 
+journalctl --list-boots 
+cd
+ping server1
+arp -an
+ping server2 -c 1
+ping server2
+arp -an
+ tail -f /var/log/kea/kea-dhcp4.log | egrep 'DHCPDISCOVER|DHCPOFFER|DHCPREQUEST|DHCPACK'
+exit
+# systemctl disable --now node_exporter alloy
+# systemctl disable --now prometheus loki grafana-server 
+systemctl disable --now node_exporter alloy
+systemctl disable --now prometheus loki grafana-server 
+yum config-manager   --disable grafana   --disable prometheus-rpm_release   --disable prometheus-rpm_release-source
+ systemctl enable --now firewalld
+c
+less /etc/logrotate.conf 
+cd /etc/logrotate.d/
+ls
+cat rsyslog 
+cat httpd 
+cat wtmp 
+c
+cat prometheus-node-exporter 
+cat rsyslog 
+cd
+c
+ls -1 /var/log/cron
+ls -1 /var/log/cron*
+c
+cat /root/bin/chklog.sh
+ cat /root/bin/chklog.sh 
+c
+cd /run/log/journal/
+ll
+ls /run/systemd/journal/
+cat /run/systemd/journal/dev-log 
+cd
+journalctl 
+c
+journalctl 
+c
+systemctl status sshd
+c
+journalctl | egrep 'emer|warn|alte|crit|fail'
+c
+journalctl --no-pager 
+c
+journalctl -n 5
+c
+journalctl --no-pager -p warn
+journalctl --no-pager -p warning
+journalctl --no-pager -p info
+c
+journalctl --no-pager -p notice
+journalctl --no-pager -p notice -n 5
+c
+journalctl --since "-5min" --no-pager 
+journalctl -o verbose 
+c
+journalctl -o verbose | grep warning
+journalctl -o verbose | grep fail
+journalctl -o verbose | grep emer
+journalctl -o verbose | grep crit
+c
+cd /etc/logrotate.d/
+ll
+ls
+vi httpd 
+cd
+c
+rpm -qa | egrep kea
+yum list kea*
+dnf list kea*
+dnf install -y kea kea-doc
+tree /etc/kea
+c
+cd /etc/kea
+c
+ls
+cat kea-dhcp4.conf 
+c
+ls
+ [ ! -f /etc/kea/kea-dhcp4.conf.OLD ] &&   cp -p /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.OLD
+> kea-dhcp4.conf
+vi kea-dhcp4.conf
+nmcli device 
+vi kea-dhcp4.conf
+cat /etc/resl
+cat /etc/resolv.conf 
+c
+lkl
+c
+ll
+ kea-dhcp4 -t /etc/kea/kea-dhcp4.conf | grep -v 'INFO'
+ls/var/lib/kea
+ls /var/lib/kea
+cd
+git config --list
+cd ~
+git clone https://github.com/heedlwnsgml/LinuxEssential.git linux
+cd ~/linux
+mkdir main
+cp -a ~/.bashrc /root/bin /root/env main/
+cd ~
+git clone https://github.com/heedlwnsgml/LinuxEssential.git linux
+cd ~/linux
+git status
+tree -a -L 3
+git status
+git pull --rebase origin main
+git status
+git add main/
+git commit -m "Add main server files"
+git push origin main
+systemctl restart kea-dhcp4
+cd
+systemctl restart kea-dhcp4
+systemctl enable kea-dhcp4
+firewall-cmd --permanent --add-service={dhcp,dhcpv6}
+firewall-cmd --reload 
+ tail -f /var/log/kea/kea-dhcp4.log | egrep 'DHCPDISCOVER|DHCPOFFER|DHCPREQUEST|DHCPACK'
+systemctl status firewalld.service 
+c
+vi /etc/kea/kea-dhcp4.conf
+systemctl restart kea-dhcp4
+systemctl status kea-dhcp4
+vi /etc/kea/kea-dhcp4.conf
+ping server1 -c 1
+arp -an
+vi /etc/kea/kea-dhcp4.conf
+systemctl restart kea-dhcp4
+vi /etc/kea/kea-dhcp4.conf
+systemctl restart kea-dhcp4
+vi /root/record_cmd.sh
+poweroff
