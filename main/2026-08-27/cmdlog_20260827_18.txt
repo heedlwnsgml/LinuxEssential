@@ -3,3 +3,13 @@ Script started on 2026-08-27 18:51:17+09:00 [TERM="xterm-256color" TTY="/dev/pts
 exit
 
 Script done on 2026-08-27 18:52:56+09:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-27 18:55:53+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="85" LINES="31"]
+[root@main ~]# d
+bash: d: command not found...
+[root@main ~]# c
+[root@main ~]# c
+[root@main ~]# c
+[root@main ~]# exit
+exit
+
+Script done on 2026-08-27 18:55:56+09:00 [COMMAND_EXIT_CODE="0"]
