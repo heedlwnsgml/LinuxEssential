@@ -1,0 +1,1000 @@
+EOF
+
+source ~/.bashrc
+alias | grep fw
+c
+yum -y install ftp 
+c
+ftp server1
+ping server1 -c 4
+nmap -p 21 server1
+ssh 192.168.10.20
+ssh 192.168.10.20 -p 2222
+ping 192.168.10.20
+nmap -p 2222 192.168.10.20
+ssh 192.168.10.20 -p 2222
+ssh 192.168.10.20
+ssh 192.168.10.20 -p 2222
+curl 192.168.10.20
+curl 192.168.10.20:8282
+ping 192.168.10.20
+nmap 192.168.10.20
+nmap 192.168.10.20:8282
+nmap -p 8282 192.168.10.20
+# (main/server1/server2)
+# SELinux 설정(enforcing -> permissive)
+if grep -w '^SELINUX=enforcing' /etc/selinux/config ; then     sed -i 's/^SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config ;     setenforce 0 ; elif grep -w '^SELINUX=permissive' /etc/selinux/config ; then     :; else     sed -i 's/^SELINUX=disabled/SELINUX=permissive/' /etc/selinux/config ;     reboot; fi
+sestatus 
+c
+poweroff
+ls
+cp ~/바탕화면/* ~/Desktop/
+firewall-cmd --list-all
+for host in main server1 server2 ; do ssh $host hostname ; done
+exit
+c
+for host in main server1 server2 ; do ssh $host hostname ; done
+sestatus 
+systemctl status firewalld
+firewall-cmd --list-all 
+firewall-cmd --permanent --remove-service=http
+firewall-cmd --permanent --add-service=telnet
+firewall-cmd --reload 
+firewall-cmd --list-all
+c
+firewall-cmd --permanent --add-service=http
+firewall-cmd --reload 
+c
+cat /etc/hosts 
+ nmcli connection 
+systemctl get-default
+who -r
+poweroff
+# (server2) 웹서버 설정
+# (ㄱ) 관련 패키지 설치
+yum -y install epel-release
+yum -y install httpd mod_ssl cowsay boxes
+# (ㄴ) 웹 페이지 구성
+cat << EOF > /var/www/html/index.html
+<pre>
+$(cowsay -f dragon-and-cow SERVER2 | boxes -d boy)
+</pre>
+EOF
+
+# (ㄷ) 웹 서비스 기동
+systemctl restart httpd
+# (ㄹ) 방화벽 등록
+firewall-cmd --permanent --add-service=http 
+firewall-cmd --reload 
+# (ㅁ) 웹 서비스 확인
+systemctl status httpd 
+# (server2) 웹서버 설정
+# (ㄱ) 관련 패키지 설치
+yum -y install epel-release
+yum -y install httpd mod_ssl cowsay boxes
+# (ㄴ) 웹 페이지 구성
+cat << EOF > /var/www/html/index.html
+<pre>
+$(cowsay -f dragon-and-cow SERVER2 | boxes -d boy)
+</pre>
+EOF
+
+# (ㄷ) 웹 서비스 기동
+systemctl restart httpd
+# (ㄹ) 방화벽 등록
+firewall-cmd --permanent --add-service=http 
+firewall-cmd --reload 
+# (ㅁ) 웹 서비스 확인
+systemctl status httpd 
+cat << EOF > /var/www/html/index.html
+<pre>
+$(cowsay -f dragon-and-cow SERVER2 | boxes -d boy)
+</pre>
+EOF
+
+# (ㄷ) 웹 서비스 기동
+systemctl restart httpd
+# (ㄹ) 방화벽 등록
+firewall-cmd --permanent --add-service=http 
+firewall-cmd --reload 
+# (ㅁ) 웹 서비스 확인
+systemctl status httpd 
+firewall-cmd --list-all
+systemctl start firewalld
+systemctl enable --now firewalld
+systemctl status firewalld
+yum -y install epel-release
+yum -y install httpd mod_ssl cowsay boxes
+# (ㄴ) 웹 페이지 구성
+cat << EOF > /var/www/html/index.html
+<pre>
+$(cowsay -f dragon-and-cow SERVER2 | boxes -d boy)
+</pre>
+EOF
+
+# (ㄷ) 웹 서비스 기동
+systemctl restart httpd
+# (ㄹ) 방화벽 등록
+firewall-cmd --permanent --add-service=http 
+firewall-cmd --reload 
+# (ㅁ) 웹 서비스 확인
+systemctl status httpd 
+c
+cat << EOF > /var/www/html/index.html
+<pre>
+#$(cowsay -f dragon-and-cow SERVER2 | boxes -d boy)
+#$(cowsay -f dragon-and-cow SERVER2)
+</pre>
+EOF
+
+cat << EOF > /var/www/html/index.html
+<pre>
+$(cowsay -f dragon-and-cow SERVER2)
+</pre>
+EOF
+
+cat /var/www/html/index.html
+systemctl status httpd
+c
+curl http://serveer2/index.html
+curl http://server2/index.html
+c
+for host in main server1 server2 ; do ssh $host hostname ; done
+c
+dnf -y install bind bind-utils 
+c
+rpm -qa | grep bind 
+c
+# (main)
+cat <<'EOF' >> ~/.bashrc
+
+#
+# DNS Server Alias
+#
+alias named.conf='vi /etc/named.conf'
+alias named.rfc1912.zones='vi /etc/named.rfc1912.zones' 
+alias DNS='cd /var/named'
+alias dnslog='tail -f /var/log/messages'
+
+EOF
+
+source ~/.bashrc
+c
+alias
+poweroff
+dnf -y install bind bind-utils
+c
+vi /etc/namedc
+vi /etc/named.conf 
+vi /etc/named.rfc1912.zones 
+named-checkconf /etc/named.conf 
+cd /var/named/
+cp -p named.ca named.ca.OLD
+> named.ca
+vi named.ca
+cp -p named.localhost test.zone
+> test.zone 
+vi test.zone 
+named-checkzone test.com test.zone 
+cp -p named.loopback test.rev
+> test.rev 
+vi test.rev 
+named-checkzone 10.168.192.in-addr.arpa test.rev 
+systemctl enable --now named.service 
+systemctl status named
+vi /etc/sysconfig/named 
+systemctl restart named
+systemctl status named
+ss -plunt | grep :53
+firewall-cmd --permanent --add-service=dns
+firewall-cmd --reload 
+firewall-cmd --list-all
+nmcli connection modify eth0 ipv4.dns 192.168.10.30 +ipv4.dns 8.8.8.8 ipv4.dns-search test.coom
+nmcli connection modify eth0 ipv4.dns 192.168.10.30 +ipv4.dns 8.8.8.8 ipv4.dns-search test.com
+nmcli connection up eth0
+cat /etc/resolv.conf 
+nslookup ns1.test.com
+nslookup 192.168.10.30
+systemctl status named
+vi test.rev 
+selinux 
+poweroff
+tail -f /var/log/messages
+curl http://www.example.com
+nslookup www.example.com
+curl http://192.168.10.20
+firefox http://cafe.example.com
+cd /var/named/
+c
+ls
+c
+vi test.zone 
+nslookup www.test.com
+nslookup ftp.test.com
+systemctl restart named
+nslookup www.test.com
+nslookup ftp.test.com
+nslookup -q=MX test.com
+ nslookup -q=MX test.com
+vi test.zone 
+systemctl restart named
+ nslookup -q=MX test.com
+vi test.zone 
+systemctl restart named
+c
+ nslookup -q=MX test.com
+# (server2)
+yum -y install httpd
+echo 'This is a server2.'   > /var/www/html/index.html
+systemctl restart httpd
+firewall-cmd --permanent   --add-service=http
+firewall-cmd --reload
+curl http://www.example.com 
+vi test.zone 
+systemctl status named
+cat test.zone 
+c
+cd
+c
+vi /etc/named.rfc1912.zones 
+systemctl restart named
+tree /var/named/slaves/
+c
+tree /var/named/slaves/
+cd /var/named/
+cat test.zone 
+c
+nslookup test.example.com
+systemctl restart named
+nslookup test.example.com
+cd slaves/
+watch ls -l
+nslookup test.example.com
+nslookup test1.example.com
+c
+systemctl disable --now named.service 
+nmtui
+nmcli connection up eth0 
+c
+nslookup 
+poweroff
+cd
+c
+alias
+systemctl restart httpd
+vi /etc/httpd/conf/httpd.conf
+vi /etc/httpd/conf.d/vhost.conf 
+systemctl restart httpd
+systemctl restart kibana.service 
+exit
+ls -l /etc/elasticsearch/certs/http_ca.crt
+getent group elasticsearch 
+firefox & 
+URL: http://www.example.com/q?=<script>alert('hacking')</script> 
+less /var/log/httpd/modsec_audit.log 
+ vi /etc/elasticsearch/elasticsearch.yml
+ systemctl status elasticsearch
+cd
+c
+curl -u elastic http://localhost:9200/_cluster/health | jq
+curl -u elastic http://localhost:9200 | jq
+ /usr/share/elasticsearch/bin/elasticsearch-service-tokens list
+/usr/share/elasticsearch/bin/elasticsearch-service-tokens create elastic/kibana kibana-server-new
+/usr/share/elasticsearch/bin/elasticsearch-service-tokens list
+chown elasticsearch:elasticsearch /etc/elasticsearch/service_tokens
+chmod 600 /etc/elasticsearch/service_tokens
+ vi /etc/kibana/kibana.yml
+c
+exit
+cd /var/lib/mysql/
+ls
+cd testdb/
+ls
+cat users.ibd 
+cd ..
+ssh server1
+ssh main
+poweroff
+systemctl enable --now kibana
+systemctl status kibana
+firefox http://192.168.10.30:5601 &
+ls -l /etc/elasticsearch/certs/
+getent group elasticsearch
+usermod -aG elasticsearch kibana
+ls -l /etc/elasticsearch/certs/
+systemctl enable --now kibana
+systemctl status kibana
+firefox http://192.168.10.30:5601 &
+ /usr/share/elasticsearch/bin/elasticsearch-service-tokens list
+journalctl -u kibana.service -n 50 --no-pager
+vi /etc/kibana/kibana.yml
+systemctl restart kibana.service 
+c
+firefox http://192.168.10.30:5601 &
+dnf install -y filebea
+filebeat modules enable apache
+ filebeat modules list | head 
+vi /etc/filebeat/modules.d/apache.yml
+cd /etc/filebeat/modules.d
+ls | grep apache.yml 
+vi /etc/filebeat/modules.d/apache.yml
+vi /etc/filebeat/filebeat.yml
+filebeat test config
+filebeat test output
+filebeat setup
+systemctl enable filebeat.service 
+systemctl restart filebeat.service 
+systemctl status filebeat.service 
+cd
+mkdir -p /root/bin/
+cat <<'EOF' > /root/bin/web-log-gen.sh
+#!/bin/bash
+
+# Target URLs
+URLS=(
+    "http://192.168.10.30/index.html"
+    "http://192.168.10.30/images/logo.png"
+    "http://192.168.10.30/login.php"
+    "http://192.168.10.30/test.php"
+    "http://192.168.10.30/cgi-bin/test.cgi"
+    "http://192.168.10.30/index.php"
+)
+
+echo "Starting HTTP traffic generator..."
+echo "Target: 192.168.10.30"
+echo "Press CTRL+C to stop."
+
+while true; do
+    # Select a random URL from the list
+    RAND_INDEX=$((RANDOM % ${#URLS[@]}))
+    TARGET_URL="${URLS[$RAND_INDEX]}"
+    
+    # Get the corresponding interval
+    # Generates a number between 0 and 8
+    TIME_INTERVAL=$((RANDOM % 9))
+
+    # Fallback to 5 seconds if interval is 0 (or optionally simply add 1 to the random result to avoid 0)
+    if [ "$TIME_INTERVAL" -eq 0 ]; then
+        TIME_INTERVAL=5
+    fi
+
+    # Get current timestamp for display
+    NOW=$(date "+%Y-%m-%d %H:%M:%S")
+
+    # Send request
+    # -s: Silent mode (don't show progress meter)
+    # -o /dev/null: Discard output
+    # -w: Display HTTP status code
+    echo -n "[$NOW] Requesting $TARGET_URL ... "
+    HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$TARGET_URL")
+    
+    echo "Status: $HTTP_CODE (Next request in ${TIME_INTERVAL}s)"
+
+    # Wait
+    sleep "${TIME_INTERVAL}"
+done
+EOF
+
+chmod 700 /root/bin/web-log-gen.sh
+nohup /root/bin/web-log-gen.sh &
+jobs
+pkill 1
+jobs
+pkill --help
+firefox http://192.168.10.30:5601 &
+jobs
+kill -9 %2
+jobs
+kill -9 %3
+culr -I http://www.example.com
+curl -I http://www.example.com
+ cp /usr/share/doc/httpd-core/httpd-default.conf /etc/httpd/conf.d/default.conf 
+vi /etc/httpd/conf.d/default.conf
+systemctl restart httpd
+c
+dnf list 'mod_security*'
+dnf -y install mod_security mod_security_crs
+rpm -ql mod_security | egrep -v '/usr/lib/|/usr/share/doc' 
+cd /etc/httpd/conf
+cd ...
+cd ..
+cd conf.d/
+ls
+c
+ll
+c
+l
+c
+ls
+vi mod_security.conf 
+cd
+cd /etc/httpd/modsecurity.d/
+ll
+tree
+cd
+tree /etc/httpd/modsecurity.d/
+cd -
+ls
+systemctl restart httpd
+firefox http://www.example.com & 
+c
+cat /var/log/httpd/modsec_audit.log 
+firefox & 
+URL: http://www.example.com/q?=<script>alert('hacking')</script> 
+cat /var/log/httpd/modsec_audit.log
+ firefox http://www.example.com & 
+cd
+c
+firefox &
+cat /var/log/httpd/modsec_audit.log 
+ vi /etc/httpd/conf.d/modsecurity.conf
+vi /etc/httpd/conf.d/modsecurity.conf
+vi /etc/httpd//conf.d/mod_security.conf 
+ firefox & 
+systemctl restart httpd 
+ firefox & 
+c
+vi /etc/httpd/modsecurity.d/local_rules/modsecurity_localrules.conf 
+vi /etc/httpd//conf.d/mod_security.conf 
+vi /etc/httpd/modsecurity.d/local_rules/modsecurity_localrules.conf 
+vi /etc/httpd//conf.d/mod_security.conf 
+vi /etc/httpd/modsecurity.d/local_rules/modsecurity_localrules.conf 
+ systemctl restart httpd 
+curl http://www.example.com/index.html?data=good 
+ curl http://www.example.com/index.html?data=XXXevilXXX 
+cat /var/log/httpd/modsec_audit.log 
+c
+# (server2)
+# /etc/httpd/conf.d/mod_security.conf 파일 옮기기(mod_security.conf.OLD)
+mv /etc/httpd/conf.d/mod_security.conf /etc/httpd/conf.d/mod_security.conf.OLD
+systemctl restart httpd 
+firefox &
+ yum -y install mariadb-server mariadb
+systemctl enable mariadb
+systemctl restart mariadb
+mysql_secure_installation
+firewall-cmd --permanent --add-service=mysql
+firewall-cmd --reload 
+firewall-cmd --list-al
+firewall-cmd --list-all
+ mysql -u root -p
+cd /usr/local 
+ wget   https://downloads.apache.org/tomcat/tomcat-9/v9.0.113/bin/apache-tomcat-9.0.113.tar.gz 
+cd
+c
+systemctl status httpd
+firewall-cmd --list-all
+yum -y install java-21-openjdk.x86_64 
+java -version 
+cd /usr/local/
+ll
+wget \ 
+wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.121/bin/apache-tomcat-9.0.121.tar.gz.sha512
+wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.121/bin/apache-tomcat-9.0.121.tar.gz
+ls
+rm -f apache-tomcat-9.0.121.tar.gz.sha512 
+ll
+tar xzf apache-tomcat-9.0.121.tar.gz 
+ls
+ln -s apache-tomcat-9.0.121 tomcat
+ll
+ echo 'export CATALINA_HOME="/usr/local/tomcat"' >> ~/.bashrc 
+source ~/.bashrc 
+echo $?
+echo ${CATALINA_HOME} 
+cd tomcat/
+cd bin/
+ls -l *.sh
+chmod +x *.sh
+ll
+pgrep -a java
+./startup.sh 
+pgrep -a java
+firefox http://www.example.com:8080 & 
+useradd -r -M -s /sbin/nologin tomcat
+cd
+cd -
+cd ..
+c
+ls
+chown -R tomcat:tomcat /usr/local/apache-tomcat-9.0.121
+ls -l tomcat/
+ls -l tomcat
+ls -ld apache-tomcat-9.0.121
+ /usr/local/tomcat/bin/shutdown.sh 
+vi /usr/lib/systemd/system/tomcat.service 
+systemctl daemon-reload 
+systemctl list-unit-files | grep tomcat 
+systemctl enable --now tomcat.service 
+systemctl status tomcat.service 
+firewall-cmd --permanent --add-port=8080/tcp
+firewall-cmd --reload 
+vi /usr/local/tomcat/conf/tomcat-users.xml 
+ vi /etc/httpd/conf.d/vhost.conf 
+http -q
+http -t
+httpd -t
+systemctl restart httpd
+systemctl restart tomcat.service 
+vi /usr/local/tomcat/conf/server.xml 
+systemctl restart tomcat
+firefox http://www.example.com & 
+firefox http://www.example.com/manager/status & 
+dnf install -y mariadb-java-client 
+c
+cd
+c
+mysql -u root -p
+ dnf list mariadb-java-client
+updatedb && locate mariadb-java-client
+cp /usr/lib/java/mariadb-java-client.jar $CATALINA_HOME/lib/
+chown tomcat:tomcat $CATALINA_HOME/lib/mariadb-java-client.jar
+ls -l $CATALINA_HOME/lib/mariadb-java-client.jar
+systemctl restart tomcat.service 
+vi /usr/local/tomcat/webapps/ROOT/db.jsp
+firefox http://www.example.com/db.jsp & 
+# (server2)
+# (ㄱ) DB 내리기
+systemctl disable --now mariadb
+# (ㄴ) Tomcat 내리기
+systemctl disable --now tomcat
+# (ㄷ) httpd 내리기
+systemctl disable --now httpd
+# (ㄹ) 웹 서비스 설정 파일 복원
+# /etc/httpd/conf.d/vhost.conf  파일 복원
+cat << EOF > /etc/httpd/conf.d/vhost.conf
+<VirtualHost *:80>
+    ServerAdmin webmaster@example.com
+    ServerName www.example.com
+    ServerAlias example.com
+    DocumentRoot "/www1"
+    ErrorLog "/var/log/httpd/example.com_error_log"
+    CustomLog "/var/log/httpd/example.com_access_log" common
+    <Directory /www1>
+       Require all granted
+       Options Indexes Includes
+       AllowOverride AuthConfig
+    </Directory>
+    ScriptAlias /cgi-bin/ /www1/cgi-bin/
+    WSGIScriptAlias /myapp /www1/wsgi/myapp.wsgi
+</VirtualHost>
+EOF
+
+# (ㅁ) 방화벽 설정
+firewall-cmd --permanent --remove-service=http --remove-service=https --remove-service=mysql
+firewall-cmd --permanent --remove-port=81/tcp --remove-port=82/tcp --remove-port=8080/tcp
+firewall-cmd --reload
+c
+yum -y install nginx 
+c
+systemctl disable --now httpd
+systemctl enable --now nginx
+firewall-cmd --list-all
+ firewall-cmd --add-service={http,https}
+firewall-cmd --runtime-to-permanent
+firewall-cmd --list-all
+systemctl disable --now nginx 
+systemctl enable --now httpd 
+dnf -y install httpd mod_ssl openssl 
+openssl req -newkey rsa:2048 -nodes -x509 -days 3650   -keyout /etc/pki/tls/private/httpd.key   -out /etc/pki/tls/certs/httpd.crt 
+ ls -l /etc/pki/tls/{private,certs}/httpd.*
+[ ! -f /etc/httpd/conf.d/ssl.conf.OLD ]   && /bin/cp -p /etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf.OLD 
+ vi /etc/httpd/conf.d/ssl.conf 
+systemctl restart httpd && systemctl enable httpd 
+systemctl status httpd
+c
+firewall-cmd --list-all
+firefox https://www.example.com & 
+c
+crontab -e
+dnf -y install vsftpd ftp 
+c
+ rpm -qa | grep vsftpd 
+ls /etc/vsftpd 
+firewall-cmd --info-service=ftp 
+ cat /etc/vsftpd/ftpusers 
+cat /etc/vsftpd/ftpusers 
+cat /etc/vsftpd/user_list 
+cd
+c
+fwadd --add-service=ftp
+fwreload 
+fwlist 
+systemctl enable --now vsftpd
+ftp localhost
+c
+ ftp localhost 
+ vi /etc/vsftpd/ftpusers 
+vi /etc/vsftpd/user_list 
+ftp localhost
+dd if=/dev/zero of=/root/server2.txt bs=1M count=1
+ls -lh server2.txt
+yum -y install ftp
+ftp server1
+fpt server1
+ftp server1
+ftp 192.168.10.20
+ftp server1 
+ls -lh server2.txt
+yum -y install ftp 
+ftp server1 
+ftp server1
+mkdir -p /test
+ftp server1
+vi /etc/vsftpd/user_list 
+vi /etc/vsftpd/ftpusers 
+ftp server1
+vi ~/.bashrc 
+ftp server1
+ftp 192.168.10.20
+ping 192.168.10.20
+ftp server1
+c
+firewall-cmd --list-all
+c
+firewall-cmd --list-all
+which ftp
+ftp -A server1
+c
+ftp -A server1
+firewall-cmd --list-all
+firewall-cmd --permanent --add-port=20/tcp
+firewall-cmd --reload 
+ftp -A server1
+vi /etc/vsftpd/vsftpd.conf 
+ftp -A server1
+systemctl stop firewalld
+systemctl status firewalld.service 
+ftp -A server1
+systemctl restart firewalld.service 
+systemctl status firewalld.service 
+c
+firewall-cmd --list-all
+ftp -d 192.168.10.20
+systemctl disable --now firewalld.service 
+ftp -d
+ftp -d 192.168.10.20
+c
+ftp server1
+exit
+systemctl enable --now firewalld.service 
+firewall-cmd --permanent --add-port=1-65535/tcp
+firewall-cmd --reload 
+firewall-cmd --list-all
+ftp -A 192.168.10.20
+firewall-cmd --permanent --remove-port=1-65535/tcp
+firewall-cmd --permanent --add-port=20/tcp
+firewall-cmd --reload 
+firewall-cmd --list-all
+firewall-cmd --permanent --add-port=8000/tcp
+firewall-cmd --reload 
+c
+mkdir -p /test && rm -rf /test/*
+history 
+history  | grep db
+c
+tty
+c
+# (main/server1/server2)
+# 한글 입력기 설치
+sudo dnf install -y ibus ibus-hangul
+# 입력기 목록 설정 (us + hangul)
+gsettings set org.gnome.desktop.input-sources sources "[('ibus', 'hangul'), ('xkb', 'kr')]"
+gsettings get org.gnome.desktop.input-sources sources
+# ibus 데몬 재시작
+ibus restart
+# (server2)
+cat << EOF >> ~/.bashrc 
+
+#
+# Mail Server Alias
+#
+alias MAIL='cd /etc/postfix'
+alias main.cf='vi /etc/postfix/main.cf'
+alias maillog='tail -f /var/log/maillog'
+
+EOF
+
+source ~/.bashrc
+dnf -y install postfix s-nail 
+vi /etc/postfix/main.cf 
+systemctl enable postfix
+systemctl restart postfix
+ firewall-cmd --permanent --add-service={smtp,smtps,smtp-submission} 
+firewall-cmd --reload 
+firewall-cmd --list-all 
+postfix check
+vi /etc/postfix/main.cf
+postfix check
+systemctl enable postfix
+systemctl restart postfix
+sork 
+firewall-cmd --list-all
+dnf -y install dovecot
+ vi /etc/dovecot/dovecot.conf 
+vi /etc/dovecot/conf.d/10-auth.conf 
+vi /etc/dovecot/conf.d/10-master.conf 
+vi /etc/dovecot/conf.d/10-mail.conf 
+vi /etc/dovecot/conf.d/10-master.conf
+vi /etc/dovecot/conf.d/10-ssl.conf
+systemctl enable dovecot
+systemctl restart dovecot
+systemctl status dovecot
+doveconf -n 
+firewall-cmd --permanent --add-service={pop3,pop3s,imap,imaps} 
+ firewall-cmd --reload 
+su - user01
+c
+mailx user01@example.com
+mailx user01
+su - user01
+c
+poweroff
+su - user01
+dnf -y install epel-release
+dnf -y install evolution
+c
+ll
+ssh nfsuser@localhost
+c
+cat /etc/resolv.conf 
+c
+# (main/server1/server2)
+systemctl stop firewalld
+systemctl status firewalld
+c
+dnf -y install nfs-utils php
+showmount -e main
+[ -d /www1 ] && mv /www1 /www1.OLD
+ll
+mkdir -p /www1
+mount main:/www1 /www1
+tree /www
+tree /www1
+cat /www1/index.php 
+c
+dnf -y install httpd mod_ssl php
+[ ! -f /etc/httpd/conf.d/vhost.conf.OLD ]   && mv /etc/httpd/conf.d/vhost.conf /etc/httpd/conf.d/vhost.conf.OLD
+ vi /etc/httpd/conf.d/vhost.conf
+systemctl restart httpd
+curl http://server2/
+c
+curl http://server2/ ; echo
+# (main/server1/server2) 방화벽 ON
+systemctl enable --now firewalld
+# (server1) 서버 설정 복원
+# 마운트 해제
+cd
+umount /www1 
+sleep 1
+# 가상 호스트 파일 삭제
+rm -f /etc/httpd/conf.d/vhost.conf
+# 서비스 재기동
+systemctl restart httpd
+# (server2) 서버 설정 복원
+# 마운트 해제
+cd 
+umount /www1 && rmdir /www1
+sleep 1
+[ -d /www1.OLD ] && mv /www1.OLD /www1
+# 가상 호스트 설정 파일(vhost.conf) 복원
+[ -f /etc/httpd/conf.d/vhost.conf.OLD ]   && /bin/cp -p /etc/httpd/conf.d/vhost.conf.OLD /etc/httpd/conf.d/vhost.conf
+# 서비스 재기동
+systemctl restart httpd
+c
+yum -y install nfs-utils
+showmount -e server
+showmount -e server1
+useradd -u 3000 -g 100 -M nfsuser
+echo 'nfsuser:nfsuser' | chpasswd 
+mkdir /home/nfsuser
+chown nfsuser:users /home/nfsuser/
+chown nfsuser:users /home/nfsuser
+mount server1:/export/home/nfsuser /home/nfsuser
+df
+c
+df
+umount /home/nfsuser 
+userdel -r nfsuser 
+c
+id
+id nfsuser
+c
+showmount -e server1
+rm -rf /backup
+mkdir -p /backup
+mount server1:/backup/server2 /backup
+df
+tar czf /backup/home.tar.gz /home
+tar cvzf /backup/home.tar.gz /home
+ll /home/
+ll /home
+ls -lh /backup
+ssh server1 find /backup
+cd
+umount /backup 
+df
+exit
+# (main/server1/server2) 
+# 모든 서버에 telnet 서비스가 기동된 상태라고 가정한다.
+yum -y install telnet telnet-server
+systemctl enable --now telnet.socket
+firewall-cmd --permanent --add-service=telnet 
+firewall-cmd --reload 
+exit
+ tail -f /var/log/maillog 
+exit
+dnf -y install samba samba-client cifs-utils
+c
+smbclient -L 192.168.10.20 -U smbuser03
+smbclient -L 192.168.10.20 -U smbuser3
+mkdir -p /mnt/smbuser
+mount -o username=smbuser3,passwd=smbuser3 //server1/test /mnt/smbuser
+ mount -o username=smbuser4 //server1/test /mnt/smbuser
+mount -o username=smbuser3 //server1/test /mnt/smbuser
+ls -ld /mnt/smbuser/
+df
+echo 'hello smbuser3' >> /mnt/smbuser/smbuser3.txt
+ls -ld /mnt/smbuser/
+ls -l
+ls -l /mnt/smbuser
+df
+cd
+umount /mnt/smbuser
+mount -o username=smbuser3,uid=smbuser3,gid=marketing //server1/test /mnt/smbuser
+df
+mount -o username=smbuser3 //server1/test /mnt/smbuser
+mount -o username=smbuser3,passwd=smbuser3 //server1/test /mnt/smbuser
+df
+ mount -o username=smbuser3,password=smbuser3 //server1/test1 /mnt/smbuser
+ mount -o username=smbuser3,password=smbuser3 //server1/test /mnt/smbuser
+df
+c
+df
+umount /mnt/smbuser 
+ mount -o username=smbuser3,password=smbuser3 //server1/test /mnt/smbuser
+ mount -o username=smbuser3,password=smbuser3 //server1/test1 /mnt/smbuser
+cd
+umount /mnt/smbuser 
+telnet server1
+c
+vi /etc/rsyslog.d/remote.conf
+systemctl restart rsyslog.service 
+logger -p local2.notice "TCP 송신"
+exit
+c
+systemctl disable --now firewalld
+# (main/server1/server2)
+nmcli connection modify eth0 ipv4.dns 8.8.8.8
+nmcli connection up eth0
+# (main/server1/server2)
+dnf install -y epel-release
+dnf repolist | grep epel
+# (main/server1/server2)
+systemctl disable --now cockpit.socket
+# (server1/server2)
+# 레포지토리 추가
+# - /etc/yum.repos.d/prometheus-rpm_release.repo
+curl -s https://packagecloud.io/install/repositories/prometheus-rpm/release/script.rpm.sh | sudo bash
+# 패키지 설치
+sudo dnf -y install node_exporter
+# 서비스 기동
+sudo systemctl enable --now node_exporter
+# 서비스 기동 확인
+echo ; echo "[  OK  ] ==== node_exporter ===="
+systemctl is-active node_exporter
+# (server1/server2)
+# 레포지토리 설정 파일 생성
+# - /etc/yum.repos.d/grafana.repo
+cat << EOF > /etc/yum.repos.d/grafana.repo
+[grafana]
+name=grafana
+baseurl=https://rpm.grafana.com
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://rpm.grafana.com/gpg.key
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+
+EOF
+
+# 패키지 설치 - Alloy
+dnf -y install alloy
+mkdir -p /var/lib/alloy
+cat << 'EOF' > /etc/alloy/config.alloy
+local.file_match "linux_logs" {
+  path_targets = [
+    {
+      __path__ = "/var/log/messages",
+      host     = constants.hostname,
+      job      = "messages",
+    },
+    {
+      __path__ = "/var/log/secure",
+      host     = constants.hostname,
+      job      = "secure",
+    },
+  ]
+}
+
+loki.source.file "local_logs" {
+  targets    = local.file_match.linux_logs.targets
+  forward_to = [loki.write.default.receiver]
+}
+
+loki.write "default" {
+  endpoint {
+    url = "http://main.example.com:3100/loki/api/v1/push"
+  }
+}
+
+EOF
+
+setfacl -R -m u:alloy:rX /var/log
+# 서비스 기동
+systemctl restart alloy && systemctl enable alloy
+echo ; echo "[  OK  ] ==== promtail ===="
+systemctl is-active alloy node_exporter
+# rsyslog 서비스 재기동
+systemctl restart rsyslog
+systemctl disable --now node_exporter alloy
+yum config-manager   --disable grafana   --disable prometheus-rpm_release   --disable prometheus-rpm_release-source
+ systemctl enable --now firewalld
+eixt
+exit
+top
+c
+ cat /root/bin/chklog.sh 
+cat /root/bin/ipconfig.sh 
+cat /root/bin/web-log-gen.sh 
+c
+date + %b
+date + '%b'
+echo $(date + '%b')
+c
+date
+date | grep %d
+MONTH=$(date +'%b')
+MONTH
+c
+yum -y install git
+cd ~
+ls -la
+cd ~/linux
+git status
+git clone https://github.com/heedlwnsgml/LinuxEssential.git linux
+cd ~/linux
+git status
+tree -a -L 3
+cd ~/linux
+mkdir server2
+cp -a ~/.bashrc server2/
+cp -a /root/shell server2/
+cp -a /root/bin server2/
+ls -la /root
+ls -la /root/bin
+ls -la /root/shell
+tree -a -L 3 server2
+git status
+git add server2/
+git status
+git commit -m "Add server2 files"
+git push origin main
+c
+cd
+c
+nmtui
+nmcli connection up eth0-dhcp 
+ip address show ens160 
+ip route 
+ping 8.8.8.8 -c 4
+cat /etc/resolv.conf
+c
+ip a
+nmcli connection up eth0-dhcp 
+ip a
+ip r
+c
+vi /root/record_cmd.sh
+poweroff
