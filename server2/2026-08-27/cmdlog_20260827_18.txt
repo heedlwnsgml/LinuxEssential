@@ -3,3 +3,8 @@ Script started on 2026-08-27 18:51:10+09:00 [TERM="xterm-256color" TTY="/dev/pts
 exit
 
 Script done on 2026-08-27 18:53:05+09:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-27 18:53:54+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="170" LINES="51"]
+[root@server2 ~]# exit
+exit
+
+Script done on 2026-08-27 18:53:56+09:00 [COMMAND_EXIT_CODE="0"]
