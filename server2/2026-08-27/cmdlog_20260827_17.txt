@@ -1,0 +1,15 @@
+Script started on 2026-08-27 17:59:45+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="127" LINES="46"]
+[root@server2 ~]# c
+[root@server2 ~]# c
+[root@server2 ~]# c
+[root@server2 ~]# c
+[root@server2 ~]# cc
+cc: fatal error: no input files
+compilation terminated.
+[root@server2 ~]# c
+[root@server2 ~]# c
+[root@server2 ~]# cd
+[root@server2 ~]# exit
+exit
+
+Script done on 2026-08-27 17:59:50+09:00 [COMMAND_EXIT_CODE="0"]
