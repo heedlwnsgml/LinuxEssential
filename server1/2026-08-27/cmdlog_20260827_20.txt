@@ -1,0 +1,935 @@
+Script started on 2026-08-27 20:12:34+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="127" LINES="46"]
+flatpakeremote-addfflathubrhttps://flathub.org/repo/flathub.flatpakrepolathub.flatpakrepo
+[root@server1 ~]# c
+timedatectl
+               Local time: Thu 2026-08-27 20:29:04 KST
+           Universal time: Thu 2026-08-27 11:29:04 UTC
+                 RTC time: Thu 2026-08-27 11:29:04
+                Time zone: Asia/Seoul (KST, +0900)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+timedatectl list-timezones | grep -i seoul
+Asia/Seoul
+[root@server1 ~]# tzselect
+Please identify a location so that time zone rules can be set correctly.
+Please select a continent, ocean, "coord", or "TZ".
+1) Africa                                                            7) Europe
+2) Americas                                                          8) Indian Ocean
+3) Antarctica                                                        9) Pacific Ocean
+4) Asia                                                             10) coord - I want to use geographical coordinates.
+5) Atlantic Ocean                                                   11) TZ - I want to specify the timezone using the Posix TZ format.
+6) Australia
+#? 4
+Please select a country whose clocks agree with yours.
+ 1) Afghanistan              13) Cocos (Keeling) Islands  25) Jordan                   37) Nepal                    49) Syria
+ 2) Antarctica               14) Cyprus                   26) Kazakhstan               38) Oman                     50) Taiwan
+ 3) Armenia                  15) East Timor               27) Korea (North)            39) Pakistan                 51) Tajikistan
+ 4) Australia                16) French S. Terr.          28) Korea (South)            40) Palestine                52) Thailand
+ 5) Azerbaijan               17) Georgia                  29) Kuwait                   41) Philippines              53) Turkmenistan
+ 6) Bahrain                  18) Hong Kong                30) Kyrgyzstan               42) Qatar                    54) United Arab Emirates
+ 7) Bangladesh               19) India                    31) Laos                     43) Russia                   55) Uzbekistan
+ 8) Bhutan                   20) Indonesia                32) Lebanon                  44) Réunion                  56) Vietnam
+ 9) Brunei                   21) Iran                     33) Macau                    45) Saudi Arabia             57) Yemen
+10) Cambodia                 22) Iraq                     34) Malaysia                 46) Seychelles
+11) China                    23) Israel                   35) Mongolia                 47) Singapore
+12) Christmas Island         24) Japan                    36) Myanmar (Burma)          48) Sri Lanka
+#? 28
+
+The following information has been given:
+
+        Korea (South)
+
+Therefore TZ='Asia/Seoul' will be used.
+Selected time is now:   Thu Aug 27 20:37:51 KST 2026.
+Universal Time is now:  Thu Aug 27 11:37:51 UTC 2026.
+Is the above information OK?
+1) Yes
+2) No
+#? 1
+
+You can make this change permanent for yourself by appending the line
+        TZ='Asia/Seoul'; export TZ
+to the file '.profile' in your home directory; then log out and log in again.
+
+Here is that TZ value again, this time on standard output so that you
+can use the /usr/bin/tzselect command in shell scripts:
+Asia/Seoul
+ezone Asia/Seoul
+edatectl
+               Local time: Thu 2026-08-27 20:38:32 KST
+           Universal time: Thu 2026-08-27 11:38:32 UTC
+                 RTC time: Thu 2026-08-27 11:38:33
+                Time zone: Asia/Seoul (KST, +0900)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+datectl set-ntp false
+edatectl set-ntp true
+edatectl
+               Local time: Thu 2026-08-27 20:39:13 KST
+           Universal time: Thu 2026-08-27 11:39:13 UTC
+                 RTC time: Thu 2026-08-27 11:39:13
+                Time zone: Asia/Seoul (KST, +0900)
+System clock synchronized: no
+              NTP service: active
+          RTC in local TZ: no
+[root@server1 ~]# c
+rony.conf | head
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (https://www.pool.ntp.org/join.html).
+# pool 2.centos.pool.ntp.org iburst
+server kr.pool.ntp.org iburst
+
+# Use NTP servers from DHCP.
+sourcedir /run/chrony-dhcp
+
+# Record the rate at which the system clock gains/losses time.
+driftfile /var/lib/chrony/drift
+chronycesource
+Unrecognized command
+[root@server1 ~]# chronyc sources
+MS Name/IP address         Stratum Poll Reach LastRx Last sample
+===============================================================================
+^* mail.zeroweb.kr               3   6    37    20  +2602ns[ +301us] +/-   35ms
+[root@server1 ~]# chronyc sources -v
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample
+===============================================================================
+^* mail.zeroweb.kr               3   6    37    27  +2602ns[ +301us] +/-   35ms
+[root@server1 ~]# chronyc sources -v
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample
+===============================================================================
+^* mail.zeroweb.kr               3   6    77    32   -237us[ -590us] +/-   37ms
+nmcli connection modify eth0 ipv4.dns 8.8.8.8
+nmcli connection up eth0
+cat /etc/resolv.conmcli connection modify eth0 ipv4.dns 8.8.8.8
+nmcli connection up eth0
+cat /etc/resolv.conf
+
+nmcli connection modify eth0 ipv4.dns 8.8.8.8
+nmcli connection up eth0
+cat /etc/resolv.conmcli connection modify eth0 ipv4.dns 8.8.8.8
+nmcli connection up eth0
+cat /etc/resolv.conf nmcli connection modify eth0 ipv4.dns 8.8.8.8
+nmcli connection up eth0
+cat /etc/resolv.conf
+
+
+
+nmcli connection modify eth0 ipv4.dns 8.8.8.8
+nmcli connection up eth0
+cat /etc/resolv.conmcli connection modify eth0 ipv4.dns 8.8.8.8
+nmcli connection up eth0
+cat /etc/resolv.conf
+Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/3)
+# Generated by NetworkManager
+search example.com
+nameserver 8.8.8.8
+c
+[root@server1 ~]# dnf -y install chrony
+Last metadata expiration check: 2:11:11 ago on Thu 27 Aug 2026 06:35:57 PM KST.
+Package chrony-4.8-2.el10.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+rony.conf
+  1 # Use public servers from the pool.ntp.org project.                                                                                                                     2 # Please consider joining the pool (https://www.pool.ntp.org/join.html).  3 # pool 2.centos.pool.ntp.org iburst  4 server kr.pool.ntp.org iburst
+  5
+  6 # Use NTP servers from DHCP.
+  7 sourcedir /run/chrony-dhcp
+  8
+  9 # Record the rate at which the system clock gains/losses time.
+ 10 driftfile /var/lib/chrony/drift
+ 11
+ 12 # Allow the system clock to be stepped in the first three updates
+ 13 # if its offset is larger than 1 second.
+ 14 makestep 1.0 3
+ 15
+ 16 # Enable kernel synchronization of the real-time clock (RTC).
+ 17 rtcsync
+ 18
+ 19 # Enable hardware timestamping on all interfaces that support it.
+ 20 #hwtimestamp *
+ 21
+ 22 # Increase the minimum number of selectable sources required to adjust
+ 23 # the system clock.
+ 24 #minsources 2
+ 25
+ 26 # Allow NTP client access from local network.
+ 27 #allow 192.168.0.0/16
+ 28
+ 29 # Serve time even if not synchronized to a time source.
+ 30 #local stratum 10
+ 31
+ 32 # Require authentication (nts or key option) for all NTP sources.
+ 33 #authselectmode require
+ 34
+ 35 # Specify file containing keys for NTP authentication.
+ 36 #keyfile /etc/chrony.keys
+ 37
+ 38 # Save NTS keys and cookies.
+ 39 ntsdumpdir /var/lib/chrony
+ 40
+ 41 # Insert/delete leap seconds by slewing instead of stepping.
+ 42 #leapsecmode slew
+ 43
+ 44 # Set the TAI-UTC offset of the system clock.
+ 45 #leapseclist /usr/share/zoneinfo/leap-seconds.list
+ 46
+ 47 # Specify directory for log files.
+ 48 logdir /var/log/chrony
+ 49
+>4;m"/etc/chrony.conf"o51L,i1412B written1,1Top+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$pfff/ffff/f          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        ~@k     1 # Use public servers from the pool.ntp.org project.  2 # Please consider joining the pool (https://www.pool.ntp.org/join.html).                                                                                              2~@k     2 # Please consider joining the pool (https://www.pool.ntp.org/join.html).  3 # pool 2.centos.pool.ntp.org iburst                                                                                                                                   3~@k     3 # pool 2.centos.pool.ntp.org iburst  4 server kr.pool.ntp.org iburst                                                                                                                                         4~@k   2~@k   3~@k   4~@k   5~@k   6~@k   7i -- INSERT --4,7Top8r.pool.ntp.org iburst .pool.ntp.org iburst pool.ntp.org iburst ool.ntp.org iburst ol.ntp.org iburst l.ntp.org iburst .ntp.org iburst ntp.org iburst tp.org iburst p.org iburst .org iburst org iburst rg iburst g iburst  iburst 1 iburst99 iburst102 iburst1. iburst21 iburst36 iburst48 iburst5. iburst61 iburst70 iburst8. iburst91 iburst200 iburst1^[  4,20Top::wq
+>4;mtart chronyd
+onyd
+datectl
+               Local time: Thu 2026-08-27 20:47:45 KST
+           Universal time: Thu 2026-08-27 11:47:45 UTC
+                 RTC time: Thu 2026-08-27 11:47:45
+                Time zone: Asia/Seoul (KST, +0900)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+ronyc sources -v
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample
+===============================================================================
+^* main.example.com              4   6    17    18    -54us[  -76us] +/-   43ms
+/cmd.sh
+#!/bin/bash
+
+echo "------------- main -------------"
+ssh 192.168.10.10 $*
+echo ; echo
+echo "------------- server1 -------------"
+ssh 192.168.10.20 $*
+echo ; echo
+echo "------------- server2 -------------"
+ssh 192.168.10.30 $*
+echo ; echo
+ '/root/bin/cmd.sh date'
+[root@server1 ~]# c
+ll mariadb-server-mariadb
+Last metadata expiration check: 2:52:26 ago on Thu 27 Aug 2026 06:35:57 PM KST.
+Package mariadb-server-3:10.11.18-1.el10.x86_64 is already installed.
+Package mariadb-3:10.11.18-1.el10.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+riadb
+riadb
+Created symlink '/etc/systemd/system/mysql.service' → '/usr/lib/systemd/system/mariadb.service'.
+Created symlink '/etc/systemd/system/mysqld.service' → '/usr/lib/systemd/system/mariadb.service'.
+Created symlink '/etc/systemd/system/multi-user.target.wants/mariadb.service' → '/usr/lib/systemd/system/mariadb.service'.
+atus mariadb
+● mariadb.service - MariaDB 10.11 database server
+     Loaded: loaded (/usr/lib/systemd/system/mariadb.service; enabled; preset: 0;1;38:5:185mdisabled)
+     Active: active (running) since Thu 2026-08-27 21:28:48 KST; 12s ago
+ Invocation: 2d6113a0e5704993bd28e4628a0d0252
+       Docs: man:mariadbd(8)
+             https://mariadb.com/kb/en/library/systemd/
+   Main PID: 43951 (mariadbd)
+     Status: "Taking your SQL requests now..."
+      Tasks: 12 (limit: 48322)
+     Memory: 129.4M (peak: 134.3M)
+        CPU: 236ms
+     CGroup: /system.slice/mariadb.service
+             └─43951 /usr/libexec/mariadbd --basedir=/usr
+
+Aug 27 21:28:48 server1.example.com systemd[1]: Starting mariadb.service - MariaDB 10.11 database server...
+Aug 27 21:28:48 server1.example.com mariadb-prepare-db-dir[43913]: Database MariaDB is probably initialized in /var/lib/mysql already, nothing is done.
+Aug 27 21:28:48 server1.example.com mariadb-prepare-db-dir[43913]: If this is not the case, make sure the /var/lib/mysql is empty before running mariadb-prepare-db-dir.
+Aug 27 21:28:48 server1.example.com (mariadbd)[43951]: 0;1;38:5:185m0;1;38:5:185mmariadb.service: Referenced but unset environment variable evaluates to an empty string: MYSQLD_OPTS, _WSREP_NEW_C>
+Aug 27 21:28:48 server1.example.com systemd[1]: Started mariadb.service - MariaDB 10.11 database server.
+[root@server1 ~]#Dc
+all-cmd --list-all
+public (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: ens160
+  sources:
+  services: cockpit dhcpv6-client dns ftp http https imap imaps mountd mysql nfs pop3 pop3s rdp rpc-bind samba samba-client smtp smtp-submission smtps ssh telnet
+  ports: 20/tcp
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+[root@server1 ~]# c
+sql_secure_installation
+lrwxrwxrwx. 1 root root 27 Jun  3 09:00 /usr/bin/mysql_secure_installation -> mariadb-secure-installation
+iadb-secure-installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user. If you've just installed MariaDB, and
+haven't set the root password yet, you should just press enter here.
+
+Enter current password for root (enter for none):
+OK, successfully used password, moving on...
+
+Setting the root password or using the unix_socket ensures that nobody
+can log into the MariaDB root user without the proper authorisation.
+
+You already have your root account protected, so you can safely answer 'n'.
+
+Switch to unix_socket authentication [Y/n] y
+Enabled successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+You already have your root account protected, so you can safely answer 'n'.
+
+Change the root password? [Y/n] y
+New password:
+Re-enter new password:
+Aborting!
+
+Cleaning up...
+[root@server1 ~]# mariadb-secure-installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user. If you've just installed MariaDB, and
+haven't set the root password yet, you should just press enter here.
+
+Enter current password for root (enter for none):
+OK, successfully used password, moving on...
+
+Setting the root password or using the unix_socket ensures that nobody
+can log into the MariaDB root user without the proper authorisation.
+
+You already have your root account protected, so you can safely answer 'n'.
+
+Switch to unix_socket authentication [Y/n] y
+Enabled successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+You already have your root account protected, so you can safely answer 'n'.
+
+Change the root password? [Y/n] y
+New password:
+Re-enter new password:
+Password updated successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] y
+ ... Success!
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] y
+ ... Success!
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] y
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+[root@server1 ~]# mysql -u root -p
+Enter password:
+BWelcome to the MariaDB monitor.  Commands end with ; or \g.
+BBYour MariaDB connection id is 16
+Server version: 10.11.18-MariaDB MariaDB Server
+
+BBCopyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+BBType 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+BMariaDB [(none)]> show databases
+    -> ^C
+showadatabases;]>
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| roundcubemail      |
+| sys                |
++--------------------+
+B5 rows in set (0.002 sec)
+BB
+BMariaDB [(none)]> quit
+BBye
+B[root@server1 ~]# mysql -u root -p
+Enter password:
+BWelcome to the MariaDB monitor.  Commands end with ; or \g.
+BBYour MariaDB connection id is 17
+Server version: 10.11.18-MariaDB MariaDB Server
+
+BBCopyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+BBType 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+BMariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| roundcubemail      |
+| sys                |
++--------------------+
+B5 rows in set (0.001 sec)
+BB
+BMariaDB [(none)]> quit
+BBye
+B[root@server1 ~]# mysql
+BWelcome to the MariaDB monitor.  Commands end with ; or \g.
+BBYour MariaDB connection id is 18
+Server version: 10.11.18-MariaDB MariaDB Server
+
+BBCopyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+BBType 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+atabases [(none)]> sho dat
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| roundcubemail      |
+| sys                |
++--------------------+
+B5 rows in set (0.000 sec)
+BB
+BMariaDB [(none)]> quit
+BBye
+B[root@server1 ~]# systemctl stop mariadb.service
+[root@server1 ~]# rm -rf /var/lib/mysql/*
+mariadb-install-db --datadir=/var/lib/mysql --user mysql
+Installing MariaDB/MySQL system tables in '/var/lib/mysql' ...
+OK
+
+To start mariadbd at boot time you have to copy
+support-files/mariadb.service to the right place for your system
+
+
+Two all-privilege accounts were created.
+One is root@localhost, it has no password, but you need to
+be system 'root' user to connect. Use, for example, sudo mariadb
+The second is root@localhost, it has no password either, but
+you need to be the system 'root' user to connect.
+After connecting you can set the password, if you would need to be
+able to connect as any of these users with a password and without sudo
+
+See the MariaDB Knowledgebase at https://mariadb.com/kb
+
+You can start the MariaDB daemon with:
+cd '/usr' ; /usr/bin/mariadbd-safe --datadir='/var/lib/mysql'
+
+You can test the MariaDB daemon with mysql-test-run.pl
+cd '/usr/share/mysql-test' ; perl mariadb-test-run.pl
+
+Please report any problems at https://mariadb.org/jira
+
+The latest information about MariaDB is available at https://mariadb.org/.
+
+Consider joining MariaDB's strong and vibrant community:
+https://mariadb.org/get-involved/
+
+systemctl start mariadb
+adb-secure-installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user. If you've just installed MariaDB, and
+haven't set the root password yet, you should just press enter here.
+
+Enter current password for root (enter for none):
+OK, successfully used password, moving on...
+
+Setting the root password or using the unix_socket ensures that nobody
+can log into the MariaDB root user without the proper authorisation.
+
+You already have your root account protected, so you can safely answer 'n'.
+
+Switch to unix_socket authentication [Y/n] y
+Enabled successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+You already have your root account protected, so you can safely answer 'n'.
+
+Change the root password? [Y/n] y
+New password:
+Re-enter new password:
+Password updated successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] y
+ ... Success!
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] y
+ ... Success!
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] y
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+.cnf
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+
+[root@server1 ~]# cd /etc/my.cnf.d/
+[root@server1 /etc/my.cnf.d]# ls
+auth_gssapi.cnf  enable_encryption.preset  mysql-clients.cnf   provider_lz4.cnf  provider_snappy.cnf
+client.cnf       mariadb-server.cnf        provider_bzip2.cnf  provider_lzo.cnf  spider.cnf
+[root@server1 /etc/my.cnf.d]# cd
+cda-b-server.cnf
+/etc/my.cnf.d
+[root@server1 /etc/my.cnf.d]# vi mariadb-server.cnf
+  1 #                                                                                                                                                                       2 # These groups are read by MariaDB server.  3 # Use it for options that only the server (but not clients) should see  4 #
+  5 # See the examples of server my.cnf files in /usr/share/mysql/
+  6 #
+  7
+  8 # this is read by the standalone daemon and embedded servers
+  9 [server]
+ 10
+ 11 # this is only for the mysqld standalone daemon
+ 12 # Settings user and group are ignored when systemd is used.
+ 13 # If you need to run mysqld under a different user or group,
+ 14 # customize your systemd unit file for mysqld/mariadb according to the
+ 15 # instructions in http://fedoraproject.org/wiki/Systemd
+ 16 [mysqld]
+ 17 datadir=/var/lib/mysql
+ 18 socket=/var/lib/mysql/mysql.sock
+ 19 log-error=/var/log/mariadb/mariadb.log
+ 20 pid-file=/run/mariadb/mariadb.pid
+ 21
+ 22
+ 23 #
+ 24 # * Galera-related settings
+ 25 #
+ 26 [galera]
+ 27 # Mandatory settings
+ 28 #wsrep_on=ON
+ 29 #wsrep_provider=
+ 30 #wsrep_cluster_address=
+ 31 #binlog_format=row
+ 32 #default_storage_engine=InnoDB
+ 33 #innodb_autoinc_lock_mode=2
+ 34 #
+ 35 # Allow server to accept connections on all interfaces.
+ 36 #
+ 37 #bind-address=0.0.0.0
+ 38 #
+ 39 # Optional setting
+ 40 #wsrep_slave_threads=1
+ 41 #innodb_flush_log_at_trx_commit=0
+ 42
+ 43 # this is only for embedded server
+ 44 [embedded]
+ 45
+ 46 # This group is only read by MariaDB servers, not by MySQL.
+ 47 # If you use the same .cnf file for MySQL and MariaDB,
+ 22 #g*lGalera-relatedgsettingsoptions here1,1Top+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6237#2,0-1oe---INSERTd--23,1Top322k623+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        ~@k     1 #  2 # These groups are read 4y MariaDB server.                                                                                                                            2~@k     2 # These groups are read by MariaDB server.  3 # Use it for options that only the server (but not clients) should see                                                                                                3~@k     3 # Use it for options that only the server (but not clients) should see  4 #                                                                                                                                                                     4~@k     4 #  5 # See the examples of server my.cnf files in /usr/share/mysql/                                                                                                        5~@k     5 # See the examples of server my.cnf files in /usr/share/mysql/  6 #                                                                                                                                                                     6~@k     6 #  7                                                                                                                                                                       7,0-1~@k     7   8 # this is read by the standalone daemon and embedded servers                                                                                                          8,1  ~@k     8 # this is read by the standalone daemon and embedded servers  9 [server]                                                                                                                                                              9~@k     9 [server] 10                                                                                                                                                                       10,0-1~@k    10  11 # this is only for the mysqld standalone daemon                                                                                                                       1,1  ~@k    11 # this is only for the mysqld standalone daemon 12 # Settings user and group are ignored when systemd is used.                                                                                                           2~@k    12 # Settings user and group are ignored when systemd is used. 13 # If you need to run mysqld under a different user or group,                                                                                                          3~@k    13 # If you need to run mysqld under a different user or group, 14 # customize your systemd unit file for mysqld/mariadb according to the                                                                                                4~@k    14 # customize your systemd unit file for mysqld/mariadb according to the 15 # instructions in http://fedoraproject.org/wiki/Systemd                                                                                                               5~@k    15 # instructions in http://fedoraproject.org/wiki/Systemd 16 [mysqld]                                                                                                                                                              6~@k    16 [mysqld] 17 datadir=/var/lib/mysql                                                                                                                                                7~@k    17 datadir=/var/lib/mysql 18 socket=/var/lib/mysql/mysql.sock                                                                                                                                      8~@k    18 socket=/var/lib/mysql/mysql.sock 19 log-error=/var/log/mariadb/mariadb.log                                                                                                                                9~@k    19 log-error=/var/log/mariadb/mariadb.log 20 pid-file=/run/mariadb/mariadb.pid                                                                                                                                     20~@k    20 pid-file=/run/mariadb/mariadb.pid 21                                                                                                                                                                       1,0-1~@k    21  22                                                                                                                                                                       2~@k    22  23 #                                                                                                                                                                     3,1  ~@k    23 # 24 # * Galera-related settings                                                                                                                                           4~@k    24 # * Galera-related settings 25 #                                                                                                                                                                     5~@k    25 # 26 [galera]                                                                                                                                                              6~@k    26 [galera] 27 # Mandatory settings                                                                                                                                                  7~@k    27 # Mandatory settings 28 #wsrep_on=ON                                                                                                                                                          8~@k    28 #wsrep_on=ON 29 #wsrep_provider=                                                                                                                                                      9~@k    29 #wsrep_provider= 30 #wsrep_cluster_address=                                                                                                                                               30~@k
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 4823,1Top 22                                                                                                                                                                        23 2^[  22,0-1Top-- INSERT --22,1Top 22  23 #
+ 24 # 기본 문자셋(Default Character Set) 설정
+ 25 #
+ 26 # 설                                                                                                                                                                  7
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48(paste) --정 확인: # mysql -u root -p -e "show VARIABLES like 'character_se 26 # 설정 확인: # mysql -u root -p -e "show VARIABLES like 'character_set%';" 27 character-set-server = utf8mb4
+ 28 collation-server = u                                                                                                                                                  9
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48 28 collation-server = utf8mb4_unicode_ci  29 #character-set-server = utf8
+ 30 #colla                                                                                                                                                                31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48 30 #collation-server = utf8_unicode_ci    31
+ 32 #
+ 33 # 원격 접속 허용 여                                                                                                                                                   4
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48 33 # 원격 접속 허용 여부 설정 34 #
+ 35 bind-address = 0.0.0.0
+ 36 #skip-networking = 0
+ 37                                                                                                                                                                       8
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 4837,0-1Topdd
+ 37                                                                                                                                                                       8
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 22 #h기
+ 22 #                                                                                                                                                                     3
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 26 character-set-server2= utf8mb4문자셋(#emb4는
+ 50 #
+>4;m"mariadb-server.cnf".69L,.1950B-writtening는
+>4;mcd
+d -
+/etc/my.cnf.d
+[root@server1 /etc/my.cnf.d]# cat mysql-clients.cnf
+#
+# These groups are read by MariaDB command-line tools
+# Use it for options that affect only one utility
+#
+
+[mysql]
+
+[mysql_upgrade]
+
+[mysqladmin]
+
+[mysqlbinlog]
+
+[mysqlcheck]
+
+[mysqldump]
+
+[mysqlimport]
+
+[mysqlshow]
+
+[mysqlslap]
+
+[root@server1 /etc/my.cnf.d]# systemctl restart mariadb && systemctl enable mariadb
+systemctl restart mariadb && systemctl enable mariadb
+
+ls -l /var/log/mariadb/
+total 12K
+-rw-rw----+ 1 mysql mysql 8.9K Aug 27 21:50 mariadb.log
+[root@server1 /etc/my.cnf.d]# cat /var/log/mariadb/mariadb.log
+2026-08-21 19:34:18 0 [Note] Starting MariaDB 10.11.18-MariaDB source revision 197f92bee02d8e836f529f37625be69b83e7acbd server_uid tvrAz7MQYtugvx1tQIhs18GqGeI= as process 14308
+2026-08-21 19:34:18 0 [Note] InnoDB: Compressed tables use zlib 1.3.1.zlib-ng
+2026-08-21 19:34:18 0 [Note] InnoDB: Number of transaction pools: 1
+2026-08-21 19:34:18 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2026-08-21 19:34:18 0 [Note] InnoDB: Using Linux native AIO
+2026-08-21 19:34:18 0 [Note] InnoDB: innodb_buffer_pool_size_max=8388608m, innodb_buffer_pool_size=128m
+2026-08-21 19:34:18 0 [Note] InnoDB: Completed initialization of buffer pool
+2026-08-21 19:34:18 0 [Note] InnoDB: File system buffers for log disabled (block size=512 bytes)
+2026-08-21 19:34:18 0 [Note] InnoDB: End of log at LSN=44404
+2026-08-21 19:34:18 0 [Note] InnoDB: 128 rollback segments are active.
+2026-08-21 19:34:18 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2026-08-21 19:34:18 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2026-08-21 19:34:18 0 [Note] InnoDB: log sequence number 44404; transaction id 14
+2026-08-21 19:34:18 0 [Note] Plugin 'FEEDBACK' is disabled.
+2026-08-21 19:34:18 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+2026-08-21 19:34:18 0 [Note] InnoDB: Buffer pool(s) load completed at 260821 19:34:18
+2026-08-21 19:34:18 0 [Note] Server socket created on IP: '0.0.0.0', port: '3306'.
+2026-08-21 19:34:18 0 [Note] Server socket created on IP: '::', port: '3306'.
+2026-08-21 19:34:18 0 [Note] /usr/libexec/mariadbd: ready for connections.
+Version: '10.11.18-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+2026-08-21 19:43:41 16 [Warning] Access denied for user 'roundcube'@'localhost' (using password: YES)
+2026-08-21 19:43:55 17 [Warning] Access denied for user 'roundcube'@'localhost' (using password: YES)
+2026-08-21 19:43:57 18 [Warning] Access denied for user 'roundcube'@'localhost' (using password: YES)
+2026-08-21 20:12:48 0 [Note] /usr/libexec/mariadbd (initiated by: unknown): Normal shutdown
+2026-08-21 20:12:48 0 [Note] InnoDB: FTS optimize thread exiting.
+2026-08-21 20:12:48 0 [Note] InnoDB: Starting shutdown...
+2026-08-21 20:12:48 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+2026-08-21 20:12:48 0 [Note] InnoDB: Buffer pool(s) dump completed at 260821 20:12:48
+2026-08-21 20:12:48 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+2026-08-21 20:12:48 0 [Note] Shutdown completed; log sequence number 221067; transaction id 143
+2026-08-21 20:12:48 0 [Note] /usr/libexec/mariadbd: Shutdown complete
+2026-08-27 21:28:48 0 [Note] Starting MariaDB 10.11.18-MariaDB source revision 197f92bee02d8e836f529f37625be69b83e7acbd server_uid tvrAz7MQYtugvx1tQIhs18GqGeI= as process 43951
+2026-08-27 21:28:48 0 [Note] InnoDB: Compressed tables use zlib 1.3.1.zlib-ng
+2026-08-27 21:28:48 0 [Note] InnoDB: Number of transaction pools: 1
+2026-08-27 21:28:48 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2026-08-27 21:28:48 0 [Note] InnoDB: Using Linux native AIO
+2026-08-27 21:28:48 0 [Note] InnoDB: innodb_buffer_pool_size_max=8388608m, innodb_buffer_pool_size=128m
+2026-08-27 21:28:48 0 [Note] InnoDB: Completed initialization of buffer pool
+2026-08-27 21:28:48 0 [Note] InnoDB: File system buffers for log disabled (block size=512 bytes)
+2026-08-27 21:28:48 0 [Note] InnoDB: End of log at LSN=221067
+2026-08-27 21:28:48 0 [Note] InnoDB: 128 rollback segments are active.
+2026-08-27 21:28:48 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2026-08-27 21:28:48 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2026-08-27 21:28:48 0 [Note] InnoDB: log sequence number 221067; transaction id 144
+2026-08-27 21:28:48 0 [Note] Plugin 'FEEDBACK' is disabled.
+2026-08-27 21:28:48 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+2026-08-27 21:28:48 0 [Note] Server socket created on IP: '0.0.0.0', port: '3306'.
+2026-08-27 21:28:48 0 [Note] Server socket created on IP: '::', port: '3306'.
+2026-08-27 21:28:48 0 [Note] InnoDB: Buffer pool(s) load completed at 260827 21:28:48
+2026-08-27 21:28:48 0 [Note] /usr/libexec/mariadbd: ready for connections.
+Version: '10.11.18-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+2026-08-27 21:39:24 0 [Note] /usr/libexec/mariadbd (initiated by: unknown): Normal shutdown
+2026-08-27 21:39:24 0 [Note] InnoDB: FTS optimize thread exiting.
+2026-08-27 21:39:24 0 [Note] InnoDB: Starting shutdown...
+2026-08-27 21:39:24 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+2026-08-27 21:39:24 0 [Note] InnoDB: Buffer pool(s) dump completed at 260827 21:39:24
+2026-08-27 21:39:24 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+2026-08-27 21:39:24 0 [Note] Shutdown completed; log sequence number 221067; transaction id 145
+2026-08-27 21:39:24 0 [Note] /usr/libexec/mariadbd: Shutdown complete
+2026-08-27 21:41:20 0 [Note] Starting MariaDB 10.11.18-MariaDB source revision 197f92bee02d8e836f529f37625be69b83e7acbd server_uid tvrAz7MQYtugvx1tQIhs18GqGeI= as process 44532
+2026-08-27 21:41:20 0 [Note] InnoDB: Compressed tables use zlib 1.3.1.zlib-ng
+2026-08-27 21:41:20 0 [Note] InnoDB: Number of transaction pools: 1
+2026-08-27 21:41:20 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2026-08-27 21:41:20 0 [Note] InnoDB: Using Linux native AIO
+2026-08-27 21:41:20 0 [Note] InnoDB: innodb_buffer_pool_size_max=8388608m, innodb_buffer_pool_size=128m
+2026-08-27 21:41:20 0 [Note] InnoDB: Completed initialization of buffer pool
+2026-08-27 21:41:20 0 [Note] InnoDB: File system buffers for log disabled (block size=512 bytes)
+2026-08-27 21:41:20 0 [Note] InnoDB: End of log at LSN=44404
+2026-08-27 21:41:20 0 [Note] InnoDB: 128 rollback segments are active.
+2026-08-27 21:41:20 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2026-08-27 21:41:20 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2026-08-27 21:41:20 0 [Note] InnoDB: log sequence number 44404; transaction id 14
+2026-08-27 21:41:20 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+2026-08-27 21:41:20 0 [Note] Plugin 'FEEDBACK' is disabled.
+2026-08-27 21:41:20 0 [Note] InnoDB: Buffer pool(s) load completed at 260827 21:41:20
+2026-08-27 21:41:20 0 [Note] Server socket created on IP: '0.0.0.0', port: '3306'.
+2026-08-27 21:41:20 0 [Note] Server socket created on IP: '::', port: '3306'.
+2026-08-27 21:41:20 0 [Note] /usr/libexec/mariadbd: ready for connections.
+Version: '10.11.18-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+2026-08-27 21:50:24 0 [Note] /usr/libexec/mariadbd (initiated by: unknown): Normal shutdown
+2026-08-27 21:50:24 0 [Note] InnoDB: FTS optimize thread exiting.
+2026-08-27 21:50:24 0 [Note] InnoDB: Starting shutdown...
+2026-08-27 21:50:24 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+2026-08-27 21:50:24 0 [Note] InnoDB: Buffer pool(s) dump completed at 260827 21:50:24
+2026-08-27 21:50:24 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+2026-08-27 21:50:24 0 [Note] Shutdown completed; log sequence number 44776; transaction id 16
+2026-08-27 21:50:24 0 [Note] /usr/libexec/mariadbd: Shutdown complete
+2026-08-27 21:50:24 0 [Note] Starting MariaDB 10.11.18-MariaDB source revision 197f92bee02d8e836f529f37625be69b83e7acbd server_uid tvrAz7MQYtugvx1tQIhs18GqGeI= as process 44760
+2026-08-27 21:50:24 0 [Note] InnoDB: Compressed tables use zlib 1.3.1.zlib-ng
+2026-08-27 21:50:24 0 [Note] InnoDB: Number of transaction pools: 1
+2026-08-27 21:50:24 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2026-08-27 21:50:24 0 [Note] InnoDB: Using Linux native AIO
+2026-08-27 21:50:24 0 [Note] InnoDB: innodb_buffer_pool_size_max=8388608m, innodb_buffer_pool_size=128m
+2026-08-27 21:50:24 0 [Note] InnoDB: Completed initialization of buffer pool
+2026-08-27 21:50:24 0 [Note] InnoDB: File system buffers for log disabled (block size=512 bytes)
+2026-08-27 21:50:24 0 [Note] InnoDB: End of log at LSN=44776
+2026-08-27 21:50:24 0 [Note] InnoDB: 128 rollback segments are active.
+2026-08-27 21:50:24 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2026-08-27 21:50:24 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2026-08-27 21:50:24 0 [Note] InnoDB: log sequence number 44776; transaction id 15
+2026-08-27 21:50:24 0 [Note] Plugin 'FEEDBACK' is disabled.
+2026-08-27 21:50:24 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+2026-08-27 21:50:24 0 [Note] InnoDB: Buffer pool(s) load completed at 260827 21:50:24
+2026-08-27 21:50:24 0 [Note] Server socket created on IP: '0.0.0.0', port: '3306'.
+2026-08-27 21:50:24 0 [Note] /usr/libexec/mariadbd: ready for connections.
+Version: '10.11.18-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+[root@server1 /etc/my.cnf.d]# DB기동이 문제가 생기거나 오류 발생 시
+bash: DB기동이: command not found...
+[root@server1 /etc/my.cnf.d]# cd
+[root@server1 ~]# exit
+exit
+
+Script done on 2026-08-27 21:51:04+09:00 [COMMAND_EXIT_CODE="0"]
