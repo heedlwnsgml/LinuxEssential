@@ -1,0 +1,1000 @@
+vi /etc/aliases 
+newaliases
+ls -l /etc/aliases* 
+postmap -q mail01 /etc/aliases 
+systemctl restart postfix
+postmap -q mail01 /etc/aliases 
+ newaliases
+postmap -q mail01 /etc/aliases 
+postmap -s /etc/aliases 
+ postmap -q mail01 /etc/aliases
+systemctl restart postfix
+postmap -q mail01 /etc/aliases 
+useradd mail02
+passwd mail02
+useradd mail01
+passwd mail01
+grep mail /etc/passwd 
+postmap -q mail01 /etc/aliases
+postmap /etc/aliases
+postmap -q mail01 /etc/aliases
+mailx mail01@example.com
+su - mail01
+su - mail02
+c
+vi /etc/aliases
+postconf 
+postconf | grep aliases
+c
+ll /etc/aliases*
+vi /etc/aliases
+newaliases
+postmap -q mail01 /etc/aliases 
+ll /etc/aliases*
+poweroff
+cd
+postconf | grep aliases
+ls -l /etc/aliases*
+vi /etc/aliases 
+less /etc/aliases
+ls -l /user/bin/newaliases
+ls -l /usr/bin/newaliases
+ls -l /etc/alternatives/mta-newaliases
+ls -l /usr/bin/newaliases.sendmail 
+which postalias
+tail -5 /etc/aliases
+postalias /etc/aliases
+ postmap -s /etc/aliases | grep mail01
+mailx mail01
+su - mail01
+su - mail02
+nslookup -q=MX test.com
+tail -f /var/log/maillog
+vi /etc/aliases
+postalias /etc/aliases
+postmap -q myuser /etc/aliases
+su - user02
+su - user01
+su - user02
+mailx myuser@example.com
+su - user02
+su - myuser
+passwd | grep myuser
+id
+su - user01
+c
+vi /etc/aliases
+postalias /etc/aliases
+postmap -s /etc/aliases | egrep 'tema|every'
+postmap -s /etc/aliases | egrep 'team|every'
+useradd team01 
+echo team01 | passwd --stdin team01 
+useradd team02 
+echo team02 | passwd --stdin team02 
+echo ; echo "==== [  OK  ] USER List ===="
+grep team0 /etc/passwd
+passwd -help
+mailx teammain 
+su - user01
+mailx teammain@example.com
+su - user01
+su - team01 
+c
+ps -r
+ef -r
+c
+ps -ef
+ps -efr
+ps -r
+c
+cat id
+id
+c
+find / -name id
+c
+ cat /etc/passwd
+c
+awk -r
+c
+awk -F: '$3 >= 1000 && $3 <= 60000 {print $1}' /etc/passwd > /etc/postfix/everyone.list
+cat /etc/postfix/everyone.list 
+mailx everyone
+su - fedora 
+mailx everyone@example.com
+su - fedora 
+su - user01
+firefox http://10.1.202.158:8080
+dnf install -y epel-release 
+ dnf install -y clamav clamav-freshclam clamav-data clamav-doc 
+rpm -ql clamav | egrep -v '/man/|/usr/share/|/usr/lib/.build-id'
+egrep -v '^#|^$' /etc/freshclam.conf 
+ chown clamupdate:clamupdate /var/lib/clamav
+freshclam
+wget -O /var/spool/mail/eicar.txt  https://secure.eicar.org/eicar.com.txt
+ls -lg /var/spool/mail/eicar.txt 
+ls -lh /var/spool/mail/eicar.txt 
+mkdir -p /test
+tree /test
+ clamscan --infected --remove --recursive /test 
+clamscan --infected --remove --recursive /var/spool/mail 
+ls /var/spool/mail/
+ls /var/spool/mail
+dnf --enablerepo=epel,crb -y install amavisd-new clamd perl-Digest-SHA1 perl-IO-stringy
+ dnf install -y perl-Socket6 perl-IO-Socket-INET6
+ vi /etc/clamd.d/scan.conf
+ touch /var/log/clamd.scan
+chown clamscan:clamscan /var/log/clamd.scan
+systemctl enable --now clamd@scan.service
+ vi /etc/clamd.d/scan.conf
+systemctl status clamd@scan.service 
+ systemctl list-unit-files | grep clam
+ vi /etc/amavisd/amavisd.conf
+systemctl restart amavisd.service 
+systemctl enable amavisd.service 
+c
+cd /etc/postfix/
+c
+ls
+vi main.cf
+vi /etc/postfix/master.cf
+systemctl restart postfix
+systemctl status postfix.service 
+c
+cd
+c
+cd /var/named
+ls
+vi example.zone
+systemctl restart named
+nslookup www.example.com
+cd
+dnf -y install php php-devel ImageMagick ImageMagick-devel php-pear
+vi /etc/php.ini
+ echo "extension=imagick.so" >> /etc/php.ini 
+pecl install imagick
+ systemctl restart httpd php-fpm
+systemctl enable httpd php-fpm
+systemctl status httpd php-fpm
+firewall-cmd --permanent --add-service={http,https}
+dnf -y install mariadb-server mariadb
+systemctl enable --now mariadb
+ firewall-cmd --permanent --add-service=mysql
+ firewall-cmd --reload
+ mysql_secure_installation 
+ mysql -u root -p
+dnf install -y roundcubemail php-mysqlnd
+ls /usr/share/roundcubemail/SQL
+c
+ls /usr/share/roundcubemail/SQL
+mysql -u roundcube -p'password'   -D roundcubemail < /usr/share/roundcubemail/SQL/mysql.initial.sql
+ mysql -u'roundcube' -p'password'   -D roundcubemail -e "show tables;"
+cp -p /etc/roundcubemail/config.inc.php.sample /etc/roundcubemail/config.inc.php
+vi /etc/roundcubemail/config.inc.php
+chown root:apache /etc/roundcubemail/config.inc.php
+ chown -R apache:apache /usr/share/roundcubemail
+vi /etc/httpd/conf.d/roundcubemail.conf
+ systemctl restart httpd
+systemctl status httpd php-fpm
+ firefox http://192.168.10.20/webmail/ &
+vi /etc/httpd/conf.d/roundcubemail.conf
+ vi /etc/roundcubemail/config.inc.php
+ systemctl restart httpd
+firefox http://192.168.10.20/webmail/ &
+ vi /etc/roundcubemail/config.inc.php
+systemctl restart httpd
+ firefox http://192.168.10.20/webmail/ &
+[200~# (server1) 
+# DB 종료
+systemctl disable --now mariadb
+# WEB 서버 종료
+systemctl disable --now httpd
+# AV, Spam Filter 종료
+systemctl disable --now amavisd clamd@scan.service
+# SMTP/IMAP 종료
+systemctl disable --now postfix dovecot
+~# (server1)
+# /etc/postfix/main.cf 파일의 content_filter 부분 주석처리
+sed -i '/^content_filter=/s/^content_filter=/#^content_filter=/' /etc/postfix/main.cf
+# /etc/postfix/master.cf 파일의 smtp-amavis ... 부분 주석처리
+START_LINE=$(grep -n 'smtp-amavis unix' /etc/postfix/master.cf | awk -F: '{print $1}')
+END_LINE=$(expr $START_LINE + 17)
+[ -n $START_LINE ] && [ -n $END_LINE ] &&   sed -i "${START_LINE},${END_LINE}s/^/#/" /etc/postfix/master.cf
+dnf -y install nfs-utils 
+grep '^nfs' /etc/services
+systemctl enable --now nfs-server 
+systemctl status nfs-server 
+ ls -l /etc/exports 
+ls /etc/exports.d 
+cat /proc/fs/nfsd/versions 
+cat /etc/exports
+cat /etc/fstab
+c
+exportfs
+exportfs -ar
+mkdir -p /share
+vi /etc/exports
+systemctl restart nfs-server.service 
+exportfs 
+exportfs -v
+clear
+mkdir -p /share1
+vi /etc/exports
+exportfs -ar
+exportfs 
+exportfs -v
+showmount -e
+showmount -e 172.16.6.252
+vi /etc/exports
+exit
+smbstatus 
+c
+cat /etc/resolv.conf 
+c
+vi /var/named/example.zone 
+systemctl restart named
+nslookup www.example.com
+nslookup www
+c
+systemctl stop firewalld.service 
+# (main/server1/server2)
+systemctl stop firewalld
+systemctl status firewalld
+# (main/server1/server2)
+systemctl stop firewalld
+systemctl status firewalld
+c
+showmount -e server1
+c
+showmount -e main
+mkdir -p /www1
+mount main:/www1 /www1
+tree /www1
+cat /www1/index.php 
+df
+dnf -y install php
+c
+dnf -y install nfs-utils
+c
+systemctl status httpd
+yum -y install httpd mod_ssl php
+ vi /etc/httpd/conf.d/vhost.conf
+systemctl restart httpd
+systmeclt status httpd
+systmectl status httpd
+systemctl status httpd
+c
+curl http://192.168.10.20/ ; echo
+# (main/server1/server2) 방화벽 ON
+systemctl enable --now firewalld
+# (server1) example.com DNS 설정
+sed -i '/^www/s/192.168.10.10/192.168.10.20/' /var/named/example.zone
+systemctl restart named
+# (server1) 서버 설정 복원
+# 마운트 해제
+cd
+umount /www1 
+sleep 1
+# 가상 호스트 파일 삭제
+rm -f /etc/httpd/conf.d/vhost.conf
+# 서비스 재기동
+systemctl restart httpd
+c
+exit
+cd /share
+ll
+vi /etc/exports
+exportfs -v
+exportfs -a
+exportfs -ar
+exportfs -v
+c
+cd
+c
+vi /etc/exports
+systemctl restart nfs-server.service 
+exportfs -v
+c
+mkdir -p /export/home
+useradd -u 3000 -g 100 -d /export/home/nfsuser nfsuser
+cat /etc/group | grep -w 100
+echo 'nfsuser:nfsuser' | chpasswd
+cat /etc/shadow | grep nfsuser
+vi /etc/exports
+systemctl restart nfs-server.service 
+exportfs -v
+su - nfsuser 
+c
+ mount -t iso9660 -o ro /dev/cdrom /mnt/cdrom 
+c
+id
+c
+cd /run/media/root/
+ls
+ls CentOS-Stream-10-BaseOS-x86_64/
+df
+c
+cd CentOS-Stream-10-BaseOS-x86_64/
+exportfs -ar
+exportfs -v
+ls /run/media/root/
+cat /etc/exports
+cd
+sed -i '/BaseOS/s/^/#/' /etc/exports
+cat /etc/exports
+c
+systemctl restart nfs-server
+df
+c
+cd
+CD=$(/bin/df -h /dev/sr0 | tail -1 | awk '{print $6}')
+cd
+echo $CD
+umount $CD
+df
+c
+ll /backup
+c
+mkdir -p /backup && rm -rf /backup/*
+mkdir -p /backup/{main,server2}
+tree /backup
+vi /etc/exports
+exportfs -ar
+exportfs -v
+cat /etc/resolv.conf 
+c
+dnf -y install autofs nfs-utils
+ cat /etc/auto.master | egrep -v '^#|^$' | grep /net 
+cat /etc/hosts
+systemctl enable autofs
+systemctl restart autofs.service 
+ls /net
+c
+cd /net
+ls
+ll
+cd /net/main
+ls
+cd ..
+ls
+cd server1
+ls
+cd ..
+cd server2
+cd main
+tree
+cat /net/main/shares/main/main.txt 
+df
+c
+cd
+c
+showmount -e main
+showmount -e 
+showmount -e server2
+c
+dnf -y install nfs-utils autofs
+c
+mkdir -p /mnt/home
+mount main:/export/home /mnt/home
+df
+cd
+umount /mnt/home 
+rmdir /mnt/home/
+c
+vi /etc/auto.master.d/direct.autofs
+vi /etc/auto.direct
+systemctl restart autofs
+ls /mnt
+tree /mnt/main/
+df
+showmount -e main
+mkdir -p /mnt/home
+mount main:/export/home /mnt/home/
+df
+cd
+umount /mnt/home 
+df
+c
+rmdir /mnt/home/
+ll /mnt
+c
+vi /etc/auto.master.d/indirect.autofs
+vi /etc/auto.master.d/direct.autofs
+vi /etc/auto.master.d/indirect.autofs
+vi /etc/auto.indirect
+useradd -u 5000 -M nfsuser1 
+echo nfsuser1 | passwd --stdin nfsuser1 
+useradd -u 5001 -M nfsuser2 
+echo nfsuser2 | passwd --stdin nfsuser2 
+systemctl restart autofs.service 
+ls /home/
+su - nfsuser1
+su - nfsuer2
+su - nfsuser2
+c# (server1)
+systemctl disable --now autofs 
+rm -f /etc/auto.master.d/* /etc/auto.direct /etc/auto.indirect 
+for user in nfsuser1 nfsuser2; do   userdel $user; done
+c
+cat /etc/resolv.conf 
+c
+dnf -y install samba samba-client cifs-utils
+egrep '(netbios|microsoft-ds)' /etc/services 
+cd /etc/samba
+c
+ls
+cat smb.conf
+cat smb.conf.example 
+c
+cat lmhosts
+systemctl restart smb nmb
+systemctl enable smb nmb
+systemctl status smb nmb
+c
+firewall-cmd --list-all
+firewall-cmd --permanent --add-service={samba,samba-client}
+firewall-cmd --reload 
+firewall-cmd --list-all
+cd
+cd -
+ls
+mv smb.conf smb.conf.OLD
+cp -p smb.conf.example smb.conf
+cat smb.conf
+c
+vi smb.conf
+smbclient -L 192.168.10.202
+smbclient -L 192.168.10.202 -N
+smbclient -L 192.168.10.202 -U soldesk
+smbclient //192.168.10.202/share -U soldesk
+smbstatus 
+smbclient //192.168.10.202/share -U soldesk
+c
+testparm -v
+c
+testparm 
+testparm -v
+testparm -s
+testparm -sv | sed '/home/,$d'
+testparm -sv | sed '/homes/,$d' | grep 'browseable'
+c
+smbclient -L 192.168.10.202 -u soledsk
+smbclient -L 192.168.10.202 -u soldesk
+smbclient -L 192.168.10.202 -U soldesk
+mkdir -p /mnt/cifs
+mount //192.168.10.202/share /mnt.cifs -o username=soldesk
+ mkdir -p /mnt/cifs
+ mount //192.168.10.202/share /mnt/cifs -o username=soldesk
+ls /mnt/cifs/
+touch /mnt/cifs/file1.txt
+tree /mnt/cifs/
+cd
+df
+umount /mnt/cifs 
+c
+# (server1)
+cat << EOF >> ~/.bashrc
+
+#
+# Samba Server Alias
+#
+alias smb.conf='vi /etc/samba/smb.conf'
+alias SMB='cd /etc/samba'
+alias smblog='tail -f /var/log/samba/log.smbd'
+alias nmblog='tail -f /var/log/samba/log.nmbd'
+EOF
+
+source ~/.bashrc
+exit
+su - feodr
+su - feodra
+su - fedora
+who
+w -f
+who
+w -f
+cat /var/log/secure
+c
+cd /var/lo
+cd /var/log
+ls
+tail -0f /var/log/atop/
+exit
+c
+# (main/server1/server2) 
+# 모든 서버에 telnet 서비스가 기동된 상태라고 가정한다.
+yum -y install telnet telnet-server
+systemctl enable --now telnet.socket
+firewall-cmd --permanent --add-service=telnet 
+firewall-cmd --reload 
+c
+exit
+tail -f /var/log/file1.log
+exit
+histroy
+history 
+history | grep passwd
+c
+dnf -y install samba samba-client cifs-utils
+mkdir -p -m 777 /samba
+cp /etc/passwd /samba/passwd.txt
+cp -p /etc/samba/smb.conf.example /etc/samba/smb.conf
+vi /etc/samba/smb.conf
+testparm =s
+testparm -s
+smbpasswd -a smbuser1
+ smbpasswd -a smbuser1
+vi /etc/samba/smb.conf
+ smbpasswd -a smbuser1
+vi /etc/samba/smb.conf
+ useradd -M -s /sbin/nologin smbuser1 
+useradd -M -s /sbin/nologin smbuser2 
+smbpasswd -a smbuser1
+ smbpasswd -a smbuser2
+ pdbedit -L
+systemctl enable smb nmb
+ systemctl restart smb nmb
+grep smbuser /etc/passwd 
+cat passwd
+cat /etc/passwd
+c
+smbpasswd --help
+pdbedit 
+pdbedit -L
+c
+firewall-cmd --permanent --add-service={samba,samba-client}
+smbclient -L localhost -N
+firewall-cmd --list-all
+firewall-cmd --info-service=samba-client 
+firewall-cmd --info-service=samba
+smbclient -L localhost
+smbclient -L localhost -U fedora
+smbclient -L localhost -U smbsuer1
+smbclient -L localhost -U smbuser1
+smbclient -L localhost -U root
+c
+cd /samba
+ld
+ls
+smbclient -L 192.168.10.202 -U soldesk%soldesk1.
+cd
+cd -
+mkdir -p /mnt/server
+mount //192.168.10.202/samba_share /mnt/server -o user=soldesk,password=soldesk1.
+df
+df | grep server
+cd /server1/
+cd /mnt/server/
+c
+ls
+c
+ll
+touch myfile
+ll
+cd
+df
+umount /mnt/server 
+df
+c
+vi /etc/samba/smb.conf
+testparm -s
+groupadd --help
+groupadd -r marketing
+mkdir -p /smbshare
+chgrp marketing /smbshare/
+chgrp marketing /smbshare
+chmod 2775 /smbshare
+ls -ld /smbshare/
+ls -ld /smbshare
+ps -ef | grep passwd
+ls -l /etc/shadow
+which passwd
+ls -l /usr/bin/pass
+ls -l /usr/bin/passwd 
+c
+ls -ld /smbshare/
+su - fedora
+c
+ls -ld /smbshare/
+ls -ld /etc/bin/passwd
+which passwd
+ls -ld /usr/bin/passwd
+c
+useradd -M -s /sbin/nologin -G marketing smbuser3
+useradd -M -s /sbin/nologin -G marketing smbuser4
+grep smbuser /etc/group
+id
+c
+id smbuser{3,4}
+id smbuser{1..4}
+smbpasswd -a smbuser3
+smbpasswd -a smbuser4
+pdbedit -L
+pdbedit -Lv
+c
+systemctl restart smb nmb
+systemctl status smb nmb
+c
+vi /etc/samba/smb.conf
+history | grep mount 
+ls -ld /smbshare/
+cp /etc/passwd /smbshare/passwd
+ grep smbuser /etc/group
+ls -l /mnt/smbuser
+ls -l /smbshare
+vi /etc/samba/smb.conf
+smbstatus 
+vi /etc/samba/smb.conf
+cd
+c
+ls -ld /var/run
+ls /
+c
+df -hT
+ls -ld /proc/
+cat /proc/c
+c
+less /etc/rsyslog.conf 
+cd /var/log/
+ll
+c
+ls
+cat ~/.bashrc 
+c
+ls
+cd
+vi /etc/rsyslog.conf 
+cat /var/log/boot.log
+cd -
+ll
+cat boot.log-20260910
+boot.log-20260910c
+c
+cat boot.log-20260910 | grep warning
+cat boot.log-20260910 | grep war
+c
+cd
+c
+dnf -y install rsyslog rsyslog-doc-8.2
+dnf -y install rsyslog rsyslog-doc 
+c
+grep 'syslog' /etc/services 
+systemctl restart rsyslog.service 
+systemctl status rsyslog.service 
+c
+cat /var/log/messages
+c
+ssh server2
+c
+tail -f /var/log/secure
+c
+tail -f /var/log/maillog 
+c
+tail -f /var/log/cron
+tail -0f /var/log/cron
+c
+tail -0f /var/log/cron
+c
+tty
+c
+tail -0f /var/log/file.log 
+ㅊ
+c
+tail -f /var/log/file.log 
+c
+exit
+tty
+c
+grep '^auth' /etc/rsyslog.conf 
+su - user01
+c
+telnet server2
+vi /etc/rsyslog.conf 
+cd /etc/rsyslog.d/
+ll
+ls
+cd
+cd -
+cd
+c
+# (server1)
+yum -y install postfix s-nail
+systemctl enable --now postfix
+firewall-cmd --permanent --add-service={smtp,smtps,pop3,pop3s,imap,imaps}
+firewall-cmd --reload
+ grep '^mail' /etc/rsyslog.conf
+c
+mailx user01@test.com
+ grep '^cron' /etc/rsyslog.conf 
+c
+ grep '^cron' /etc/rsyslog.conf 
+crontab -e
+crontab -l
+date
+dat
+date
+sl
+c
+crontab -e
+vi /root/bin/coffeetime.sh 
+vi /root/bin/coffeetime2.sh 
+tty
+c
+tty
+at now +1 min
+at -l
+c
+tty
+c
+vi /etc/rsyslog.conf 
+touch /var/log/file.log
+chmod 600 /var/log/file.log 
+ls -l /var/log/file.log 
+systemctl restart rsyslog.service 
+logger -p local0.notice "Notice Message(from server1)"
+logger -p local0.crit "나랏말싸미 듕귁에달아"
+vi /etc/rsyslog.
+vi /etc/rsyslog.conf 
+touch /var/log/file1.log
+chmod 400 /var/log/file1.log
+systemctl restart rsyslog.service 
+logger -p local1.notice "문자와로 서로 사맞디 아니할세"
+logger -p local1.crit "니런 젼챠로 ~~~"
+cat /var/log/messages | grep "니런"
+cat /var/log/messages |
+cat /var/log/messages
+ㅊ
+c
+vi /etc/rsyslog.d/remote.conf
+systemctl restart rsyslog.service 
+logger -p local2.notice "UDP 송신"
+ㅊ
+vi /etc/rsyslog.d/remote.conf 
+rsyslogd -N 1
+touch /var/log/file.log
+cc
+c
+systemctl restart rsyslog.service 
+c
+logger -t TestType -p local2.notice "노티스 메세지"
+logger -t TestType -p local2.warning "워닝  메세지"
+logger -t TestType -p local2.crit "Critical Messages(from server1)"
+logger -t TestType -p local2.alert "Alert Messages(from server1)"
+logger -t TestType -p local2.emerg "Emergency Messages(from server1)"
+ㅊ
+c
+exit
+c
+systemctl disable --now firewalld
+# (main/server1/server2)
+nmcli connection modify eth0 ipv4.dns 8.8.8.8
+nmcli connection up eth0
+# (main/server1/server2)
+dnf install -y epel-release
+dnf repolist | grep epel
+# (main/server1/server2)
+systemctl disable --now cockpit.socket
+# (server1/server2)
+# 레포지토리 추가
+# - /etc/yum.repos.d/prometheus-rpm_release.repo
+curl -s https://packagecloud.io/install/repositories/prometheus-rpm/release/script.rpm.sh | sudo bash
+# 패키지 설치
+sudo dnf -y install node_exporter
+# 서비스 기동
+sudo systemctl enable --now node_exporter
+# 서비스 기동 확인
+echo ; echo "[  OK  ] ==== node_exporter ===="
+systemctl is-active node_exporter
+# (server1/server2)
+# 레포지토리 설정 파일 생성
+# - /etc/yum.repos.d/grafana.repo
+cat << EOF > /etc/yum.repos.d/grafana.repo
+[grafana]
+name=grafana
+baseurl=https://rpm.grafana.com
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://rpm.grafana.com/gpg.key
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+
+EOF
+
+# 패키지 설치 - Alloy
+dnf -y install alloy
+mkdir -p /var/lib/alloy
+cat << 'EOF' > /etc/alloy/config.alloy
+local.file_match "linux_logs" {
+  path_targets = [
+    {
+      __path__ = "/var/log/messages",
+      host     = constants.hostname,
+      job      = "messages",
+    },
+    {
+      __path__ = "/var/log/secure",
+      host     = constants.hostname,
+      job      = "secure",
+    },
+  ]
+}
+
+loki.source.file "local_logs" {
+  targets    = local.file_match.linux_logs.targets
+  forward_to = [loki.write.default.receiver]
+}
+
+loki.write "default" {
+  endpoint {
+    url = "http://main.example.com:3100/loki/api/v1/push"
+  }
+}
+
+EOF
+
+setfacl -R -m u:alloy:rX /var/log
+# 서비스 기동
+systemctl restart alloy && systemctl enable alloy
+echo ; echo "[  OK  ] ==== promtail ===="
+systemctl is-active alloy node_exporter
+# rsyslog 서비스 재기동
+systemctl restart rsyslog
+logger -p local0.crit TEST CRITICAL server1
+exit
+logger -p local0.crit TEST CRITICAL server1
+exit
+systemctl disable --now node_exporter alloy
+yum config-manager   --disable grafana   --disable prometheus-rpm_release   --disable prometheus-rpm_release-source
+ systemctl enable --now firewalld
+exit
+ cat /root/bin/chklog.sh 
+systemctl status sshd
+c
+journalctl _PID=1
+c
+systemctl status ssh
+systemctl status sshd
+journalctl _PID=1530
+c
+journalctl _PID=1 --no-pager 
+c
+journalctl _PID=1 --no-pager --since "-10min"
+c
+systemctl status httpd
+systemctl list-unit-files 
+systemctl list-units
+c
+systemctl status httpd
+systemctl status sshd
+c
+systemctl status sshd
+journalctl _PID=1530
+journalctl -u sshd --no-pager | less
+journalctl -u httpd --no-pager | less
+journalctl -u firewall --no-pager | less
+journalctl --list-namespaces 
+journalctl --list-invocations 
+journalctl --list-catalog 
+c
+journalctl -u sshd --no-pager | less
+c
+systemctl status sshd
+journalctl -u sshd --no-pager 
+journalctl _PID=1530 --no-pager 
+c
+journalctl -p cirt
+journalctl -p crit
+journalctl -p emerg
+journalctl -p alter
+journalctl -p alert 
+journalctl -p crit 
+journalctl -p error
+journalctl -p err 
+c
+journalctl --since "-10min"
+ssh localhost
+journalctl --since 17:00:00 _SYSTEMD_UNIT="sshd.service"
+ls /etc/systemd/system/
+cp /usr/lib/systemd/journald.conf /etc/systemd/journald.conf
+vi /etc/systemd/journald.conf 
+journalctl | egrep 'Runtime Journal|System Journal'
+systemctl restart systemd-journald 
+journalctl | egrep 'Runtime Journal|System Journal'
+c
+journalctl | egrep 'Runtime Journal|System Journal'
+vi /etc/systemd/journald.conf 
+c
+journalctl --flush 
+journalctl | egrep 'Runtime Journal|System Journal'
+reboot 
+hostname
+hostnamectl 
+c
+journalctl | egrep 'Runtime Journal|System Journal'
+ls /var/log/journal
+ls /var/log/journal/f85f21ee23c04dff80e2a7b7633f02ae/
+ls -lh /var/log/journal/f85f21ee23c04dff80e2a7b7633f02ae/
+journalctl --list-boots 
+cd /var/log
+cd journal/
+ls
+cd ..
+ls
+c
+cd
+c
+journalctl -b 1
+c
+journalctl -b -1 | head 10
+journalctl -b -1 | head -n
+journalctl -b -1 -n 5
+journalctl -b -1 -n 5 --no-pager 
+c
+vi git
+c
+git config --list
+git push -u origin main
+tree .git
+cd ~/linux/
+ll
+cd
+git init
+tree .git
+c
+cat ~/.gitconfig 
+git commit -m "second commit"
+cd ~/linux/
+cp -a ~/.bashrc /root/shell /root/bin .
+git add .
+git commit -m "2nd commit"
+git push origin main
+git pull --rebase origin main
+git push origin main
+git remote -v
+git status
+git log --oneline --all --decorate -5
+cd ~/linux
+mkdir server1
+git mv bin server1/
+git mv env server1/
+git mv .bashrc server1/
+tree -a
+git mv shell server1/
+tree -a -L 3
+git status
+git add .
+git commit -m "Organize server1 files"
+git push origin main
+cd ~/linux
+git push origin main
+c
+cd
+c
+vll
+ll
+find / -name *.sh
+c
+systemctl status firewalld.service 
+nmtui
+nmcli connection up eth0-dhcp
+nmtui
+nmcli device 
+ip a
+nmcli connection up eth0
+nmtui
+nmcli connection up eth0-dhcp 
+ip a
+nmcli connection up eth0-dhcp 
+ip a
+ip r
+c
+cat /etc/resolv.conf
+ip a
+nmcli connection up eth0-dhcp 
+ip a
+ip c
+ip r
+c
+vi /root/record_cmd.sh
+vi /root/github_sync.sh
+poweroff
