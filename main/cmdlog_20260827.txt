@@ -1,0 +1,25 @@
+Script started on 2026-08-27 15:13:27+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="156" LINES="51"]
+c
+[root@main ~]# ls
+바탕화면  anaconda-ks.cfg  bin  Desktop  Documents  Downloads  eicar.txt  linux  Music  Pictures  Public  Templates  Videos
+[root@main ~]# ll
+total 8.0K
+drwxr-xr-x. 2 root root  105 Jul 22 15:32 바탕화면
+-rw-------. 1 root root 1.2K Jul 21 18:24 anaconda-ks.cfg
+drwxr-xr-x. 4 root root  140 Aug 25 21:20 bin
+drwxr-xr-x. 2 root root  105 Jul 22 16:46 Desktop
+drwxr-xr-x. 2 root root    6 Jul 22 16:40 Documents
+drwxr-xr-x. 2 root root    6 Jul 22 16:40 Downloads
+-rw-r--r--. 1 root root   68 Jan  4  2025 eicar.txt
+drwxr-xr-x. 6 root root   77 Aug 27 15:00 linux
+drwxr-xr-x. 2 root root    6 Jul 22 16:40 Music
+drwxr-xr-x. 2 root root    6 Jul 22 16:40 Pictures
+drwxr-xr-x. 2 root root    6 Jul 22 16:40 Public
+drwxr-xr-x. 2 root root    6 Jul 22 16:40 Templates
+drwxr-xr-x. 2 root root    6 Jul 22 16:40 Videos
+[root@main ~]# lv
+bash: lv: command not found...
+[root@main ~]# exit
+exit
+
+Script done on 2026-08-27 15:13:42+09:00 [COMMAND_EXIT_CODE="127"]
