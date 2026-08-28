@@ -1,0 +1,1863 @@
+Script started on 2026-08-28 20:13:16+09:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="183" LINES="51"]
+[root@server1 ~]# iSCSI
+bash: iSCSI: command not found...
+[root@server1 ~]# lsblks
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+└─nvme0n2p1 259:5    0 1022M  0 part
+[root@server1 ~]# lvs
+  LV   VG Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  home cs -wi-ao----  16.86g
+  root cs -wi-ao---- <34.55g
+  swap cs -wi-ao----   6.00g
+[root@server1 ~]# pvs
+  PV             VG Fmt  Attr PSize  PFree
+  /dev/nvme0n1p3 cs lvm2 a--  57.41g    0
+[root@server1 ~]# gvss
+bash: gvs: command not found...
+Similar command is: 'vgs'
+[root@server1 ~]# vgs
+  VG #PV #LV #SN Attr    VSize  VFree
+  cs   1   3   0 wz--n-- 57.41g    0
+umounts/dev/nvme0n2p1unt /dev/nvme0n2p1
+umount: /dev/nvme0n2p1: not mounted.
+parteds-sv/dev/nvme0n2erm-1 /dev/nvme0n2 rm 1
+[root@server1 ~]# lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+[root@server1 ~]# lsblk -fp
+NAME                    FSTYPE      FSVER    LABEL UUID                                   FSAVAIL FSUSE% MOUNTPOINTS
+/dev/sr0
+/dev/nvme0n1
+├─/dev/nvme0n1p1        vfat        FAT32          92D7-2447                               589.9M     1% /boot/efi
+├─/dev/nvme0n1p2        xfs                        5fbb955b-a34d-4ac7-9f0b-67103b9c5119      1.3G    31% /boot
+└─/dev/nvme0n1p3        LVM2_member LVM2 001       L97X7H-L81f-uabu-MHok-TCMj-MUnf-xcxHFV
+  ├─/dev/mapper/cs-root xfs                        f9655feb-8162-4827-b992-db69f379272e     23.2G    33% /
+  ├─/dev/mapper/cs-swap swap        1              dae72d55-87fd-48a8-a135-4e117be78d2f                  [SWAP]
+  └─/dev/mapper/cs-home xfs                        960c242e-6c55-482a-ad4e-683ceabf59fb     12.4G    26% /home
+/dev/nvme0n2
+[root@server1 ~]# lsblk -pp
+NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+/dev/sr0                 11:0    1 1024M  0 rom
+/dev/nvme0n1            259:0    0   60G  0 disk
+├─/dev/nvme0n1p1        259:1    0  600M  0 part /boot/efi
+├─/dev/nvme0n1p2        259:2    0    2G  0 part /boot
+└─/dev/nvme0n1p3        259:3    0 57.4G  0 part
+  ├─/dev/mapper/cs-root 253:0    0 34.5G  0 lvm  /
+  ├─/dev/mapper/cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─/dev/mapper/cs-home 253:2    0 16.9G  0 lvm  /home
+/dev/nvme0n2            259:4    0    1G  0 disk
+ed -s /dev/nvme0n2 \
+> ^Clab
+abel gpt mkpart primary 1MiB 50%%FREE
+parteds-sd/dev/nvme0n2p1nset 1 lvm on
+Error: No flags supported
+[root@server1 ~]# parted -s /dev/nvme0n2p1 set 1 lvm on
+[root@server1 ~]# lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+└─nvme0n2p1 259:6    0  511M  0 part
+e0n2
+nvme0n2    nvme0n2p1
+[root@server1 ~]# parted -s /dev/nvme0n2
+nvme0n2    nvme0n2p1
+[root@server1 ~]# parted -s /dev/nvme0n2 500MiB 100% set 1
+Usage: parted [OPTION]... [DEVICE [COMMAND [PARAMETERS]...]...]
+Apply COMMANDs with PARAMETERS to DEVICE.  If no COMMAND(s) are given, run in
+interactive mode.
+
+OPTIONs:
+  -h, --help                      displays this help message
+  -l, --list                      lists partition layout on all block devices
+  -m, --machine                   displays machine parseable output
+  -j, --json                      displays JSON output
+  -s, --script                    never prompts for user intervention
+  -f, --fix                       in script mode, fix instead of abort when asked
+  -v, --version                   displays the version
+  -a, --align=[none|cyl|min|opt]  alignment for new partitions
+
+COMMANDs:
+  align-check TYPE N                       check partition N for TYPE(min|opt) alignment
+  help [COMMAND]                           print general help, or help on COMMAND
+  mklabel,mktable LABEL-TYPE               create a new disklabel (partition table)
+  mkpart PART-TYPE [FS-TYPE] START END     make a partition
+  name NUMBER NAME                         name partition NUMBER as NAME
+  print [devices|free|list,all]            display the partition table, or available devices, or free space, or all found partitions
+  quit                                     exit program
+  rescue START END                         rescue a lost partition near START and END
+  resizepart NUMBER END                    resize partition NUMBER
+  rm NUMBER                                delete partition NUMBER
+  select DEVICE                            choose the device to edit
+  disk_set FLAG STATE                      change the FLAG on selected device
+  disk_toggle [FLAG]                       toggle the state of FLAG on selected device
+  set NUMBER FLAG STATE                    change the FLAG on partition NUMBER
+  toggle [NUMBER [FLAG]]                   toggle the state of FLAG on partition NUMBER
+  type NUMBER TYPE-ID or TYPE-UUID         type set TYPE-ID or TYPE-UUID of partition NUMBER
+  unit UNIT                                set the default unit to UNIT
+  version                                  display the version number and copyright information of GNU Parted
+
+Report bugs to bug-parted@gnu.org
+[root@server1 ~]# parted -s /dev/1@1@m1@k1@p1@a1@r1@t
+ted /dev/nvme0n2 print
+Model: VMware Virtual NVMe Disk (nvme)
+Disk /dev/nvme0n2: 1074MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End    Size   File system  Name     Flags
+ 1      1049kB  537MB  536MB  xfs          primary  lvm
+
+lsblkd -s /dev/nvme0n2
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+└─nvme0n2p1 259:6    0  511M  0 part
+parteds-sv/dev/nvme0n2erm-1 /dev/nvme0n2 rm 1
+[root@server1 ~]# lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+y 1MiB 500MiB
+parteds-sv/dev/nvme0n2emkpartdprimary0500MBp100%primary 500MB 100%
+Error: You requested a partition from 500MB to 1074MB (sectors 976562..2097151).
+The closest location we can manage is 524MB to 1074MB (sectors 1024000..2097118).
+[root@server1 ~]# lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+└─nvme0n2p1 259:6    0  499M  0 part
+parteds-sv/dev/nvme0n2emkpartdprimary0500MiBa100%rimary 500MiB 100%
+yumo-ysinstall~targetcli install targetcli
+Last metadata expiration check: 0:33:38 ago on Fri 28 Aug 2026 08:09:04 PM KST.
+Dependencies resolved.
+=======================================================================================================================================================================================
+ Package                                                Architecture                        Version                                       Repository                              Size
+=======================================================================================================================================================================================
+Installing:
+ targetcli                                             B noarch                              2.1.58-5.el10                                 appstream                               90 k
+Installing dependencies:
+ python3-configshell                                   B noarch                              1:1.1.30-9.el10                               baseos                                  87 k
+ python3-kmod                                          B x86_64                              0.9.2-6.el10                                  baseos                                 110 k
+ python3-pyparsing                                     B noarch                              3.1.1-7.el10                                  baseos                                 269 k
+ python3-rtslib                                        B noarch                              2.1.76-12.el10                                appstream                              124 k
+ python3-typing-extensions                             B noarch                              4.9.0-6.el10                                  baseos                                  78 k
+ python3-urwid                                         B x86_64                              2.5.3-4.el10                                  baseos                                 1.1 M
+ python3-wcwidth                                       B noarch                              0.2.13-1.el10                                 baseos                                  50 k
+ target-restore                                        B noarch                              2.1.76-12.el10                                appstream                               16 k
+
+Transaction Summary
+=======================================================================================================================================================================================
+Install  9 Packages
+
+Total download size: 1.9 M
+Installed size: 7.1 M
+Downloading Packages:
+(1/9):)python3-configshell-1.1.30-9.el10.noarch.rpm                       0% [=========                                                              ] 191 kB/s |  87 kB     00:00 ETA
+(2/9):)python3-kmod-0.9.2-6.el10.x86_64.rpmpm                            11% [========                                                               ] 226 kB/s | 110 kB     00:00 ETA
+(3/9):)python3-typing-extensions-4.9.0-6.el10.noarch.rpm                 13% [=========-                                                             ] 352 kB/s | 278 kB     00:00 ETA
+(4/9):)python3-pyparsing-3.1.1-7.el10.noarch.rpm                         28% [====================                                                   ] 368 kB/s | 269 kB     00:00 ETA
+(5/9):)python3-wcwidth-0.2.13-1.el10.noarch.rpmpm                        31% [======================-                                                ] 190 kB/s | 650 kB     00:00 ETA
+(6/9):)python3-urwid-2.5.3-4.el10.x86_64.rpmh.rpm                        73% [====================================================                   ] 2.1 MB/s | 1.1 MB     00:00 ETA
+(7/9):)target-restore-2.1.76-12.el10.noarch.rpmpm                        93% [==================================================================-    ] 9.3 kB/s | 116 kB     00:01 ETA
+(8/9):)targetcli-2.1.58-5.el10.noarch.rpmpm                              94% [==================================================================-    ] 142 kB/s | 190 kB     00:02 ETA
+(9/9): python3-rtslib-2.1.76-12.el10.noarch.rpm                         100% [=======================================================================] 314 kB/s | 124 kB     00:09 ETA
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                                  171 kB/s | 1.9 MB     00:11
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :  [=======================================================================================================================================                   ] 1/1
+  Installing       : python3-wcwidth-0.2.13-1.el10.noarch [====================================================================================================================  ] 1/9
+  Installing       : python3-typing-extensions-4.9.0-6.el10.noarch [===========================================================================================================  ] 2/9
+  Installing       : python3-urwid-2.5.3-4.el10.x86_64 [=======================================================================================================================  ] 3/9
+  Installing       : python3-pyparsing-3.1.1-7.el10.noarch [===================================================================================================================  ] 4/9
+  Installing       : python3-configshell-1:1.1.30-9.el10.noarch [==============================================================================================================  ] 5/9
+  Installing       : python3-kmod-0.9.2-6.el10.x86_64 [========================================================================================================================  ] 6/9
+  Installing       : python3-rtslib-2.1.76-12.el10.noarch [====================================================================================================================  ] 7/9
+  Installing       : target-restore-2.1.76-12.el10.noarch [===================================================================================================================   ] 8/9
+  Running scriptlet: target-restore-2.1.76-12.el10.noarch                                                                                                                          8/9
+  Installing       : targetcli-2.1.58-5.el10.noarch [==========================================================================================================================  ] 9/9
+  Running scriptlet: targetcli-2.1.58-5.el10.noarch                                                                                                                                9/9
+
+Installed:
+  python3-configshell-1:1.1.30-9.el10.noarch          python3-kmod-0.9.2-6.el10.x86_64        python3-pyparsing-3.1.1-7.el10.noarch       python3-rtslib-2.1.76-12.el10.noarch
+  python3-typing-extensions-4.9.0-6.el10.noarch       python3-urwid-2.5.3-4.el10.x86_64       python3-wcwidth-0.2.13-1.el10.noarch        target-restore-2.1.76-12.el10.noarch
+  targetcli-2.1.58-5.el10.noarch
+
+Complete!
+parteds-sv/dev/nvme0n2esets1/lvm/onme0n2 set 1 lvm on
+[root@server1 ~]# lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+├─nvme0n2p2 259:5    0  523M  0 part
+└─nvme0n2p1 259:6    0  499M  0 part
+ted /dev/nvme0n2 print
+Model: VMware Virtual NVMe Disk (nvme)
+Disk /dev/nvme0n2: 1074MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size   File system  Name     Flags
+ 1      1049kB  524MB   523MB  xfs          primary  lvm
+ 2      524MB   1073MB  548MB               primary
+
+pvcreater/dev/nvme0n2p1ate /dev/nvme0n2p1
+WARNING: xfs signature detected on /dev/nvme0n2p1 at offset 0. Wipe it? [y/n]: vgcreate vg1 /dev/nvme0n2p1
+  WARNING: Invalid input 'vgcreate...'.
+WARNING: xfs signature detected on /dev/nvme0n2p1 at offset 0. Wipe it? [y/n]: y
+  Wiping xfs signature on /dev/nvme0n2p1.
+  Physical volume "/dev/nvme0n2p1" successfully created.
+lvcreater-nrlv1]-ll100%FREE-vg1v1 -l 100%FREE vg1
+  Volume group "vg1" not found
+  Cannot process volume group vg1
+arteda/dev/nvme0n20printte -n lv1 -l 100%FREE vg1
+Model: VMware Virtual NVMe Disk (nvme)
+Disk /dev/nvme0n2: 1074MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size   File system  Name     Flags
+ 1      1049kB  524MB   523MB               primary  lvm
+ 2      524MB   1073MB  548MB               primary
+
+[root@server1 ~]# lvs
+  LV   VG Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  home cs -wi-ao----  16.86g
+  root cs -wi-ao---- <34.55g
+  swap cs -wi-ao----   6.00g
+[root@server1 ~]# vgs
+  VG #PV #LV #SN Attr    VSize  VFree
+  cs   1   3   0 wz--n-- 57.41g    0
+[root@server1 ~]# pvs
+  PV             VG Fmt  Attr PSize   PFree
+  /dev/nvme0n1p3 cs lvm2 a--   57.41g      0
+  /dev/nvme0n2p1    lvm2 ---  499.00m 499.00m
+[root@server1 ~]# targetcli
+targetcli shell version 2.1.58
+Copyright 2011-2013 by Datera, Inc and others.
+For help on commands, type 'help'.
+
+/> ls
+o- / ......................................................................................................................... [...]
+  o- backstores .............................................................................................................. [...]
+  | o- block .................................................................................................. [Storage Objects: 0]
+  | o- fileio ................................................................................................. [Storage Objects: 0]
+  | o- pscsi .................................................................................................. [Storage Objects: 0]
+  | o- ramdisk ................................................................................................ [Storage Objects: 0]
+  o- iscsi ............................................................................................................ [Targets: 0]
+  o- loopback ......................................................................................................... [Targets: 0]
+/>
+/>
+/>
+/>
+/> cd backstores/
+/backstores> ls
+o- backstores ................................................................................................................ [...]
+  o- block .................................................................................................... [Storage Objects: 0]
+  o- fileio ................................................................................................... [Storage Objects: 0]
+  o- pscsi .................................................................................................... [Storage Objects: 0]
+  o- ramdisk .................................................................................................. [Storage Objects: 0]
+/backstores>
+/backstores>
+/backstores> cd block
+/backstores/block> ls
+o- block ...................................................................................................... [Storage Objects: 0]
+/backstores/block> creat
+/          bookmarks  cd         create     delete     exit       get        help       ls         pwd        refresh    set
+status
+/backstores/block> help
+
+GENERALITIES
+============
+This is a shell in which you can create, delete and configure
+configuration objects.
+
+The available commands depend on the current path or target
+path you want to run a command in: different path have
+different sets of available commands, i.e. a path pointing at
+an iSCSI target will not have the same available commands as,
+say, a path pointing at a storage object.
+
+The prompt that starts each command line indicates your
+current path. Alternatively (useful if the prompt displays
+an abbreviated path to save space), you can run the
+`pwd` command to display the complete current path.
+
+Navigating the tree is done using the `cd` command. Without
+any argument, `cd` presents you with the full objects
+tree. Just use arrows to select the destination path, and
+enter will get you there. Please try `help cd` for navigation
+tips.
+
+COMMAND SYNTAX
+==============
+Commands are built using the following syntax:
+
+[TARGET_PATH] COMMAND_NAME [OPTIONS]
+
+TARGET_PATH indicates the path to run the command from.
+If omitted, the command is run from your current path.
+
+OPTIONS depend on the command. Please use `help` to
+get more information.
+
+
+AVAILABLE COMMANDS
+==================
+The following commands are available in the
+current path:
+
+  - bookmarks action [bookmark]
+  - cd [path]
+  - create name dev [readonly] [wwn]
+  - delete name [save]
+  - exit
+  - get [group] [parameter...]
+  - help [topic]
+  - ls [path] [depth]
+  - pwd
+  - refresh
+  - set [group] [parameter=value...]
+  - status /backstores/block> q
+/backstores/block>
+/backstores/block> create disk1 /dev/vg1/lv1
+Could not open /dev/vg1/lv1
+/backstores/block> create disk2 /dev/nvme0n2p2
+Created block storage object disk2 using /dev/nvme0n2p2.
+/backstores/block> ls
+o- block ...................................................................................................... [Storage Objects: 1]
+  o- disk2 ...................................................................... [/dev/nvme0n2p2 (523.0MiB) write-thru deactivated]
+    o- alua ....................................................................................................... [ALUA Groups: 1]
+      o- default_tg_pt_gp ........................................................................... [ALUA state: Active/optimized]
+/backstores/block> cde..e disk
+/backstores> cd fileio
+/backstores/fileio> create disk3 /root/file1 100M
+/root/file1 exists, using its size (4027 bytes) instead
+Created fileio disk3 with size 4027
+/backstores/fileio> ls
+o- fileio ..................................................................................................... [Storage Objects: 1]
+  o- disk3 ........................................................................... [/root/file1 (3.9KiB) write-back deactivated]
+    o- alua ....................................................................................................... [ALUA Groups: 1]
+      o- default_tg_pt_gp ........................................................................... [ALUA state: Active/optimized]
+/backstores/fileio> cd
+0o- / .........................................................................................................................[...]  o- backstores ..............................................................................................................[...]  | o- block ..................................................................................................[Storage Objects: 1]  | | o- disk2 ..................................................................[/dev/nvme0n2p2 (523.0MiB) write-thru deactivated]  | |   o- alua ...................................................................................................[ALUA Groups: 1]  | |     o- default_tg_pt_gp .......................................................................[ALUA state: Active/optimized]  | o- fileio .................................................................................................[Storage Objects: 1]  | | o- disk3 .......................................................................[/root/file1 (3.9KiB) write-back deactivated]  | |   o- alua ...................................................................................................[ALUA Groups: 1]  | |     o- default_tg_pt_gp .......................................................................[ALUA state: Active/optimized]  | o- pscsi ..................................................................................................[Storage Objects: 0]  | o- ramdisk ................................................................................................[Storage Objects: 0]  o- iscsi ............................................................................................................[Targets: 0]  o- loopback .........................................................................................................[Targets: 0]
+/backstores/fileio> cd -
+No such path /backstores/fileio/-
+/backstores/fileio> cd ..
+/backstores> cd block/
+createidisk1//dev/vg1/lv1p2Msk3 /root/file1 100M
+Created block storage object disk1 using /dev/vg1/lv1.
+/backstores/block> ls
+o- block ...................................................................................................... [Storage Objects: 2]
+  o- disk1 ........................................................................ [/dev/vg1/lv1 (496.0MiB) write-thru deactivated]
+  | o- alua ....................................................................................................... [ALUA Groups: 1]
+  |   o- default_tg_pt_gp ........................................................................... [ALUA state: Active/optimized]
+  o- disk2 ...................................................................... [/dev/nvme0n2p2 (523.0MiB) write-thru deactivated]
+    o- alua ....................................................................................................... [ALUA Groups: 1]
+      o- default_tg_pt_gp ........................................................................... [ALUA state: Active/optimized]
+/backstores/block> cd ..
+/backstores> cd fileio/
+/backstores/fileio> ls
+o- fileio ..................................................................................................... [Storage Objects: 1]
+  o- disk3 ........................................................................... [/root/file1 (3.9KiB) write-back deactivated]
+    o- alua ....................................................................................................... [ALUA Groups: 1]
+      o- default_tg_pt_gp ........................................................................... [ALUA state: Active/optimized]
+/backstores/fileio> delete disk3
+Deleted storage object disk3.
+/backstores/fileio> ls
+o- fileio ..................................................................................................... [Storage Objects: 0]
+/backstores/fileio>
+/backstores/fileio>
+/backstores/fileio> create disk3 /root/file1 100M
+Created fileio disk3 with size 104857600
+/backstores/fileio>
+/backstores/fileio>
+/backstores/fileio> cd ..
+/backstores> /backstores> ls
+o- backstores ................................................................................................................ [...]
+  o- block .................................................................................................... [Storage Objects: 2]
+  | o- disk1 ...................................................................... [/dev/vg1/lv1 (496.0MiB) write-thru deactivated]
+  | | o- alua ..................................................................................................... [ALUA Groups: 1]
+  | |   o- default_tg_pt_gp ......................................................................... [ALUA state: Active/optimized]
+  | o- disk2 .................................................................... [/dev/nvme0n2p2 (523.0MiB) write-thru deactivated]
+  |   o- alua ..................................................................................................... [ALUA Groups: 1]
+  |     o- default_tg_pt_gp ......................................................................... [ALUA state: Active/optimized]
+  o- fileio ................................................................................................... [Storage Objects: 1]
+  | o- disk3 ....................................................................... [/root/file1 (100.0MiB) write-back deactivated]
+  |   o- alua ..................................................................................................... [ALUA Groups: 1]
+  |     o- default_tg_pt_gp ......................................................................... [ALUA state: Active/optimized]
+  o- pscsi .................................................................................................... [Storage Objects: 0]
+  o- ramdisk .................................................................................................. [Storage Objects: 0]
+/backstores>
+/backstores>
+/backstores>
+/backstores> ls /
+o- / ......................................................................................................................... [...]
+  o- backstores .............................................................................................................. [...]
+  | o- block .................................................................................................. [Storage Objects: 2]
+  | | o- disk1 .................................................................... [/dev/vg1/lv1 (496.0MiB) write-thru deactivated]
+  | | | o- alua ................................................................................................... [ALUA Groups: 1]
+  | | |   o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | | o- disk2 .................................................................. [/dev/nvme0n2p2 (523.0MiB) write-thru deactivated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- fileio ................................................................................................. [Storage Objects: 1]
+  | | o- disk3 ..................................................................... [/root/file1 (100.0MiB) write-back deactivated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- pscsi .................................................................................................. [Storage Objects: 0]
+  | o- ramdisk ................................................................................................ [Storage Objects: 0]
+  o- iscsi ............................................................................................................ [Targets: 0]
+  o- loopback ......................................................................................................... [Targets: 0]
+/backstores> cd ..
+/> cd iscsi
+/iscsi> ls
+o- iscsi .............................................................................................................. [Targets: 0]
+/iscsi> help
+
+GENERALITIES
+============
+This is a shell in which you can create, delete and configure
+configuration objects.
+
+The available commands depend on the current path or target
+path you want to run a command in: different path have
+different sets of available commands, i.e. a path pointing at
+an iSCSI target will not have the same available commands as,
+say, a path pointing at a storage object.
+
+The prompt that starts each command line indicates your
+current path. Alternatively (useful if the prompt displays
+an abbreviated path to save space), you can run the
+`pwd` command to display the complete current path.
+
+Navigating the tree is done using the `cd` command. Without
+any argument, `cd` presents you with the full objects
+tree. Just use arrows to select the destination path, and
+enter will get you there. Please try `help cd` for navigation
+tips.
+
+COMMAND SYNTAX
+==============
+Commands are built using the following syntax:
+
+[TARGET_PATH] COMMAND_NAME [OPTIONS]
+
+TARGET_PATH indicates the path to run the command from.
+If omitted, the command is run from your current path.
+
+OPTIONS depend on the command. Please use `help` to
+get more information.
+
+
+AVAILABLE COMMANDS
+==================
+The following commands are available in the
+current path:
+
+  - bookmarks action [bookmark]
+  - cd [path]
+  - create [wwn]
+  - delete wwn
+  - exit
+  - get [group] [parameter...]
+  - help [topic]
+  - info
+  - ls [path] [depth]
+  - pwd
+  - refresh
+  - set [group] [parameter=value...]
+  - status
+  - version /iscsi>
+/iscsi>
+/iscsi> /iscsi> ccreate iqn.1994-05.com.redhat:server1
+Created target iqn.1994-05.com.redhat:server1.
+Created TPG 1.
+Global pref auto_add_default_portal=true
+Created default portal listening on all IPs (0.0.0.0), port 3260.
+/iscsi> ls
+o- iscsi .............................................................................................................. [Targets: 1]
+  o- iqn.1994-05.com.redhat:server1 ...................................................................................... [TPGs: 1]
+    o- tpg1 ................................................................................................. [no-gen-acls, no-auth]
+      o- acls ............................................................................................................ [ACLs: 0]
+      o- luns ............................................................................................................ [LUNs: 0]
+      o- portals ...................................................................................................... [Portals: 1]
+        o- 0.0.0.0:3260 ....................................................................................................... [OK]
+/iscsi> ls
+/iscsi>
+/iscsi> ls
+o- iscsi .............................................................................................................. [Targets: 1]
+  o- iqn.1994-05.com.redhat:server1 ...................................................................................... [TPGs: 1]
+    o- tpg1 ................................................................................................. [no-gen-acls, no-auth]
+      o- acls ............................................................................................................ [ACLs: 0]
+      o- luns ............................................................................................................ [LUNs: 0]
+      o- portals ...................................................................................................... [Portals: 1]
+        o- 0.0.0.0:3260 ....................................................................................................... [OK]
+/iscsi> cd iqn.1994-05.com.redhat:server1/
+/iscsi/iqn.19...edhat:server1> ls
+o- iqn.1994-05.com.redhat:server1 ........................................................................................ [TPGs: 1]
+  o- tpg1 ................................................................................................... [no-gen-acls, no-auth]
+    o- acls .............................................................................................................. [ACLs: 0]
+    o- luns .............................................................................................................. [LUNs: 0]
+    o- portals ........................................................................................................ [Portals: 1]
+      o- 0.0.0.0:3260 ......................................................................................................... [OK]
+/iscsi/iqn.19...edhat:server1> cd tpg1/
+/iscsi/iqn.19...:server1/tpg1> ls
+o- tpg1 ..................................................................................................... [no-gen-acls, no-auth]
+  o- acls ................................................................................................................ [ACLs: 0]
+  o- luns ................................................................................................................ [LUNs: 0]
+  o- portals .......................................................................................................... [Portals: 1]
+    o- 0.0.0.0:3260 ........................................................................................................... [OK]
+/iscsi/iqn.19...:server1/tpg1> cd luns
+/iscsi/iqn.19...er1/tpg1/luns> ls
+o- luns .................................................................................................................. [LUNs: 0]
+/iscsi/iqn.19...er1/tpg1/luns> /iscsi/iqn.19...er1/tpg1/luns> help
+
+GENERALITIES
+============
+This is a shell in which you can create, delete and configure
+configuration objects.
+
+The available commands depend on the current path or target
+path you want to run a command in: different path have
+different sets of available commands, i.e. a path pointing at
+an iSCSI target will not have the same available commands as,
+say, a path pointing at a storage object.
+
+The prompt that starts each command line indicates your
+current path. Alternatively (useful if the prompt displays
+an abbreviated path to save space), you can run the
+`pwd` command to display the complete current path.
+
+Navigating the tree is done using the `cd` command. Without
+any argument, `cd` presents you with the full objects
+tree. Just use arrows to select the destination path, and
+enter will get you there. Please try `help cd` for navigation
+tips.
+
+COMMAND SYNTAX
+==============
+Commands are built using the following syntax:
+
+[TARGET_PATH] COMMAND_NAME [OPTIONS]
+
+TARGET_PATH indicates the path to run the command from.
+If omitted, the command is run from your current path.
+
+OPTIONS depend on the command. Please use `help` to
+get more information.
+
+
+AVAILABLE COMMANDS
+==================
+The following commands are available in the
+current path:
+
+  - bookmarks action [bookmark]
+  - cd [path]
+  - create storage_object [lun] [add_mapped_luns]
+  - delete lun
+  - exit
+  - get [group] [parameter...]
+  - help [topic]
+  - ls [path] [depth]
+  - pwd
+  - refresh
+  - set [group] [parameter=value...]
+  - status /iscsi/iqn.19...er1/tpg1/luns>
+/iscsi/iqn.19...er1/tpg1/luns> create /backstores/block/disk1
+Created LUN 0.
+/iscsi/iqn.19...er1/tpg1/luns> create /backstores/block/disk2
+Created LUN 1.
+/iscsi/iqn.19...er1/tpg1/luns> create /backstores/fileio/disk3
+Created LUN 2.
+/iscsi/iqn.19...er1/tpg1/luns> ls
+o- luns .................................................................................................................. [LUNs: 3]
+  o- lun0 .......................................................................... [block/disk1 (/dev/vg1/lv1) (default_tg_pt_gp)]
+  o- lun1 ........................................................................ [block/disk2 (/dev/nvme0n2p2) (default_tg_pt_gp)]
+  o- lun2 .......................................................................... [fileio/disk3 (/root/file1) (default_tg_pt_gp)]
+/iscsi/iqn.19...er1/tpg1/luns> ls
+o- luns .................................................................................................................. [LUNs: 3]
+  o- lun0 .......................................................................... [block/disk1 (/dev/vg1/lv1) (default_tg_pt_gp)]
+  o- lun1 ........................................................................ [block/disk2 (/dev/nvme0n2p2) (default_tg_pt_gp)]
+  o- lun2 .......................................................................... [fileio/disk3 (/root/file1) (default_tg_pt_gp)]
+/iscsi/iqn.19...er1/tpg1/luns>
+/iscsi/iqn.19...er1/tpg1/luns>
+/iscsi/iqn.19...er1/tpg1/luns>
+/iscsi/iqn.19...er1/tpg1/luns>
+/iscsi/iqn.19...er1/tpg1/luns> ls ../
+o- tpg1 ..................................................................................................... [no-gen-acls, no-auth]
+  o- acls ................................................................................................................ [ACLs: 0]
+  o- luns ................................................................................................................ [LUNs: 3]
+  | o- lun0 ........................................................................ [block/disk1 (/dev/vg1/lv1) (default_tg_pt_gp)]
+  | o- lun1 ...................................................................... [block/disk2 (/dev/nvme0n2p2) (default_tg_pt_gp)]
+  | o- lun2 ........................................................................ [fileio/disk3 (/root/file1) (default_tg_pt_gp)]
+  o- portals .......................................................................................................... [Portals: 1]
+    o- 0.0.0.0:3260 ........................................................................................................... [OK]
+/iscsi/iqn.19...er1/tpg1/luns> cd ..
+/iscsi/iqn.19...:server1/tpg1> ls a
+o- tpg1 ..................................................................................................... [no-gen-acls, no-auth]
+  o- acls ................................................................................................................ [ACLs: 0]
+  o- luns ................................................................................................................ [LUNs: 3]
+  | o- lun0 ........................................................................ [block/disk1 (/dev/vg1/lv1) (default_tg_pt_gp)]
+  | o- lun1 ...................................................................... [block/disk2 (/dev/nvme0n2p2) (default_tg_pt_gp)]
+  | o- lun2 ........................................................................ [fileio/disk3 (/root/file1) (default_tg_pt_gp)]
+  o- portals .......................................................................................................... [Portals: 1]
+    o- 0.0.0.0:3260 ........................................................................................................... [OK]
+/iscsi/iqn.19...:server1/tpg1> cd acls
+/iscsi/iqn.19...er1/tpg1/acls>
+/iscsi/iqn.19...er1/tpg1/acls> /iscsi/iqn.19...er1/tpg1/acls> help
+
+GENERALITIES
+============
+This is a shell in which you can create, delete and configure
+configuration objects.
+
+The available commands depend on the current path or target
+path you want to run a command in: different path have
+different sets of available commands, i.e. a path pointing at
+an iSCSI target will not have the same available commands as,
+say, a path pointing at a storage object.
+
+The prompt that starts each command line indicates your
+current path. Alternatively (useful if the prompt displays
+an abbreviated path to save space), you can run the
+`pwd` command to display the complete current path.
+
+Navigating the tree is done using the `cd` command. Without
+any argument, `cd` presents you with the full objects
+tree. Just use arrows to select the destination path, and
+enter will get you there. Please try `help cd` for navigation
+tips.
+
+COMMAND SYNTAX
+==============
+Commands are built using the following syntax:
+
+[TARGET_PATH] COMMAND_NAME [OPTIONS]
+
+TARGET_PATH indicates the path to run the command from.
+If omitted, the command is run from your current path.
+
+OPTIONS depend on the command. Please use `help` to
+get more information.
+
+
+AVAILABLE COMMANDS
+==================
+The following commands are available in the
+current path:
+
+  - bookmarks action [bookmark]
+  - cd [path]
+  - create wwn [add_mapped_luns]
+  - delete wwn
+  - exit
+  - get [group] [parameter...]
+  - help [topic]
+  - ls [path] [depth]
+  - pwd
+  - refresh
+  - set [group] [parameter=value...]
+  - status
+  - tag wwn_or_tag new_tag
+  - untag wwn_or_tag /iscsi/iqn.19...er1/tpg1/acls>
+/iscsi/iqn.19...er1/tpg1/acls>
+/iscsi/iqn.19...er1/tpg1/acls>
+/iscsi/iqn.19...er1/tpg1/acls>
+/iscsi/iqn.19...er1/tpg1/acls> create iqn.1994-05.com.redhat:server2
+Created Node ACL for iqn.1994-05.com.redhat:server2
+Created mapped LUN 2.
+Created mapped LUN 1.
+Created mapped LUN 0.
+/iscsi/iqn.19...er1/tpg1/acls> ls
+o- acls .................................................................................................................. [ACLs: 1]
+  o- iqn.1994-05.com.redhat:server2 ............................................................................... [Mapped LUNs: 3]
+    o- mapped_lun0 ......................................................................................... [lun0 block/disk1 (rw)]
+    o- mapped_lun1 ......................................................................................... [lun1 block/disk2 (rw)]
+    o- mapped_lun2 ........................................................................................ [lun2 fileio/disk3 (rw)]
+/iscsi/iqn.19...er1/tpg1/acls> ls ..
+o- tpg1 ..................................................................................................... [no-gen-acls, no-auth]
+  o- acls ................................................................................................................ [ACLs: 1]
+  | o- iqn.1994-05.com.redhat:server2 ............................................................................. [Mapped LUNs: 3]
+  |   o- mapped_lun0 ....................................................................................... [lun0 block/disk1 (rw)]
+  |   o- mapped_lun1 ....................................................................................... [lun1 block/disk2 (rw)]
+  |   o- mapped_lun2 ...................................................................................... [lun2 fileio/disk3 (rw)]
+  o- luns ................................................................................................................ [LUNs: 3]
+  | o- lun0 ........................................................................ [block/disk1 (/dev/vg1/lv1) (default_tg_pt_gp)]
+  | o- lun1 ...................................................................... [block/disk2 (/dev/nvme0n2p2) (default_tg_pt_gp)]
+  | o- lun2 ........................................................................ [fileio/disk3 (/root/file1) (default_tg_pt_gp)]
+  o- portals .......................................................................................................... [Portals: 1]
+    o- 0.0.0.0:3260 ........................................................................................................... [OK]
+/iscsi/iqn.19...er1/tpg1/acls> cd ../..
+/iscsi/iqn.19...edhat:server1> ls
+o- iqn.1994-05.com.redhat:server1 ........................................................................................ [TPGs: 1]
+  o- tpg1 ................................................................................................... [no-gen-acls, no-auth]
+    o- acls .............................................................................................................. [ACLs: 1]
+    | o- iqn.1994-05.com.redhat:server2 ........................................................................... [Mapped LUNs: 3]
+    |   o- mapped_lun0 ..................................................................................... [lun0 block/disk1 (rw)]
+    |   o- mapped_lun1 ..................................................................................... [lun1 block/disk2 (rw)]
+    |   o- mapped_lun2 .................................................................................... [lun2 fileio/disk3 (rw)]
+    o- luns .............................................................................................................. [LUNs: 3]
+    | o- lun0 ...................................................................... [block/disk1 (/dev/vg1/lv1) (default_tg_pt_gp)]
+    | o- lun1 .................................................................... [block/disk2 (/dev/nvme0n2p2) (default_tg_pt_gp)]
+    | o- lun2 ...................................................................... [fileio/disk3 (/root/file1) (default_tg_pt_gp)]
+    o- portals ........................................................................................................ [Portals: 1]
+      o- 0.0.0.0:3260 ......................................................................................................... [OK]
+/iscsi/iqn.19...edhat:server1> cd /
+/> ls
+o- / ......................................................................................................................... [...]
+  o- backstores .............................................................................................................. [...]
+  | o- block .................................................................................................. [Storage Objects: 2]
+  | | o- disk1 ...................................................................... [/dev/vg1/lv1 (496.0MiB) write-thru activated]
+  | | | o- alua ................................................................................................... [ALUA Groups: 1]
+  | | |   o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | | o- disk2 .................................................................... [/dev/nvme0n2p2 (523.0MiB) write-thru activated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- fileio ................................................................................................. [Storage Objects: 1]
+  | | o- disk3 ....................................................................... [/root/file1 (100.0MiB) write-back activated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- pscsi .................................................................................................. [Storage Objects: 0]
+  | o- ramdisk ................................................................................................ [Storage Objects: 0]
+  o- iscsi ............................................................................................................ [Targets: 1]
+  | o- iqn.1994-05.com.redhat:server1 .................................................................................... [TPGs: 1]
+  |   o- tpg1 ............................................................................................... [no-gen-acls, no-auth]
+  |     o- acls .......................................................................................................... [ACLs: 1]
+  |     | o- iqn.1994-05.com.redhat:server2 ....................................................................... [Mapped LUNs: 3]
+  |     |   o- mapped_lun0 ................................................................................. [lun0 block/disk1 (rw)]
+  |     |   o- mapped_lun1 ................................................................................. [lun1 block/disk2 (rw)]
+  |     |   o- mapped_lun2 ................................................................................ [lun2 fileio/disk3 (rw)]
+  |     o- luns .......................................................................................................... [LUNs: 3]
+  |     | o- lun0 .................................................................. [block/disk1 (/dev/vg1/lv1) (default_tg_pt_gp)]
+  |     | o- lun1 ................................................................ [block/disk2 (/dev/nvme0n2p2) (default_tg_pt_gp)]
+  |     | o- lun2 .................................................................. [fileio/disk3 (/root/file1) (default_tg_pt_gp)]
+  |     o- portals .................................................................................................... [Portals: 1]
+  |       o- 0.0.0.0:3260 ..................................................................................................... [OK]
+  o- loopback ......................................................................................................... [Targets: 0]
+/> exit
+Global pref auto_save_on_exit=true
+Configuration saved to /etc/target/saveconfig.json
+arget/sa
+[root@server1 /etc/target]# ls
+backup  saveconfig.json
+[root@server1 /etc/target]# cat saveconfig.json
+{
+  "fabric_modules": [],
+  "storage_objects": [
+    {
+      "aio": false,
+      "alua_tpgs": [
+        {
+          "alua_access_state": 0,
+          "alua_access_status": 0,
+          "alua_access_type": 3,
+          "alua_support_active_nonoptimized": 1,
+          "alua_support_active_optimized": 1,
+          "alua_support_offline": 1,
+          "alua_support_standby": 1,
+          "alua_support_transitioning": 1,
+          "alua_support_unavailable": 1,
+          "alua_write_metadata": 0,
+          "implicit_trans_secs": 0,
+          "name": "default_tg_pt_gp",
+          "nonop_delay_msecs": 100,
+          "preferred": 0,
+          "tg_pt_gp_id": 0,
+          "trans_delay_msecs": 0
+        }
+      ],
+      "attributes": {
+        "alua_support": 1,
+        "block_size": 512,
+        "emulate_3pc": 1,
+        "emulate_caw": 1,
+        "emulate_dpo": 1,
+        "emulate_fua_read": 1,
+        "emulate_fua_write": 1,
+        "emulate_model_alias": 1,
+        "emulate_pr": 1,
+        "emulate_rest_reord": 0,
+        "emulate_rsoc": 1,
+        "emulate_tas": 1,
+        "emulate_tpu": 0,
+        "emulate_tpws": 0,
+        "emulate_ua_intlck_ctrl": 0,
+        "emulate_write_cache": 1,
+        "enforce_pr_isids": 1,
+        "force_pr_aptpl": 0,
+        "is_nonrot": 0,
+        "max_unmap_block_desc_count": 1,
+        "max_unmap_lba_count": 8192,
+        "max_write_same_len": 4096,
+        "optimal_sectors": 16384,
+        "pgr_support": 1,
+        "pi_prot_format": 0,
+        "pi_prot_type": 0,
+        "pi_prot_verify": 0,
+        "queue_depth": 128,
+        "submit_type": 0,
+        "unmap_granularity": 1,
+        "unmap_granularity_alignment": 0,
+        "unmap_zeroes_data": 0
+      },
+      "dev": "/root/file1",
+      "name": "disk3",
+      "plugin": "fileio",
+      "size": 104857600,
+      "write_back": true,
+      "wwn": "89ff6208-ec9b-467a-aca0-ad3330828d18"
+    },
+    {
+      "alua_tpgs": [
+        {
+          "alua_access_state": 0,
+          "alua_access_status": 0,
+          "alua_access_type": 3,
+          "alua_support_active_nonoptimized": 1,
+          "alua_support_active_optimized": 1,
+          "alua_support_offline": 1,
+          "alua_support_standby": 1,
+          "alua_support_transitioning": 1,
+          "alua_support_unavailable": 1,
+          "alua_write_metadata": 0,
+          "implicit_trans_secs": 0,
+          "name": "default_tg_pt_gp",
+          "nonop_delay_msecs": 100,
+          "preferred": 0,
+          "tg_pt_gp_id": 0,
+          "trans_delay_msecs": 0
+        }
+      ],
+      "attributes": {
+        "alua_support": 1,
+        "block_size": 512,
+        "emulate_3pc": 1,
+        "emulate_caw": 1,
+        "emulate_dpo": 1,
+        "emulate_fua_read": 1,
+        "emulate_fua_write": 1,
+        "emulate_model_alias": 1,
+        "emulate_pr": 1,
+        "emulate_rest_reord": 0,
+        "emulate_rsoc": 1,
+        "emulate_tas": 1,
+        "emulate_tpu": 0,
+        "emulate_tpws": 0,
+        "emulate_ua_intlck_ctrl": 0,
+        "emulate_write_cache": 0,
+        "enforce_pr_isids": 1,
+        "force_pr_aptpl": 0,
+        "is_nonrot": 1,
+        "max_unmap_block_desc_count": 0,
+        "max_unmap_lba_count": 0,
+        "max_write_same_len": 2048,
+        "optimal_sectors": 2048,
+        "pgr_support": 1,
+        "pi_prot_format": 0,
+        "pi_prot_type": 0,
+        "pi_prot_verify": 0,
+        "queue_depth": 128,
+        "submit_type": 0,
+        "unmap_granularity": 0,
+        "unmap_granularity_alignment": 0,
+        "unmap_zeroes_data": 0
+      },
+      "dev": "/dev/vg1/lv1",
+      "name": "disk1",
+      "plugin": "block",
+      "readonly": false,
+      "write_back": false,
+      "wwn": "9230d92e-31eb-490b-af3e-64be5612ab79"
+    },
+    {
+      "alua_tpgs": [
+        {
+          "alua_access_state": 0,
+          "alua_access_status": 0,
+          "alua_access_type": 3,
+          "alua_support_active_nonoptimized": 1,
+          "alua_support_active_optimized": 1,
+          "alua_support_offline": 1,
+          "alua_support_standby": 1,
+          "alua_support_transitioning": 1,
+          "alua_support_unavailable": 1,
+          "alua_write_metadata": 0,
+          "implicit_trans_secs": 0,
+          "name": "default_tg_pt_gp",
+          "nonop_delay_msecs": 100,
+          "preferred": 0,
+          "tg_pt_gp_id": 0,
+          "trans_delay_msecs": 0
+        }
+      ],
+      "attributes": {
+        "alua_support": 1,
+        "block_size": 512,
+        "emulate_3pc": 1,
+        "emulate_caw": 1,
+        "emulate_dpo": 1,
+        "emulate_fua_read": 1,
+        "emulate_fua_write": 1,
+        "emulate_model_alias": 1,
+        "emulate_pr": 1,
+        "emulate_rest_reord": 0,
+        "emulate_rsoc": 1,
+        "emulate_tas": 1,
+        "emulate_tpu": 0,
+        "emulate_tpws": 0,
+        "emulate_ua_intlck_ctrl": 0,
+        "emulate_write_cache": 0,
+        "enforce_pr_isids": 1,
+        "force_pr_aptpl": 0,
+        "is_nonrot": 1,
+        "max_unmap_block_desc_count": 0,
+        "max_unmap_lba_count": 0,
+        "max_write_same_len": 2048,
+        "optimal_sectors": 2048,
+        "pgr_support": 1,
+        "pi_prot_format": 0,
+        "pi_prot_type": 0,
+        "pi_prot_verify": 0,
+        "queue_depth": 255,
+        "submit_type": 0,
+        "unmap_granularity": 0,
+        "unmap_granularity_alignment": 0,
+        "unmap_zeroes_data": 0
+      },
+      "dev": "/dev/nvme0n2p2",
+      "name": "disk2",
+      "plugin": "block",
+      "readonly": false,
+      "write_back": false,
+      "wwn": "67916235-f292-4fd3-bf64-7cc20763aa59"
+    }
+  ],
+  "targets": [
+    {
+      "fabric": "iscsi",
+      "parameters": {
+        "cmd_completion_affinity": "-1"
+      },
+      "tpgs": [
+        {
+          "attributes": {
+            "authentication": 0,
+            "cache_dynamic_acls": 0,
+            "default_cmdsn_depth": 64,
+            "default_erl": 0,
+            "demo_mode_discovery": 1,
+            "demo_mode_write_protect": 1,
+            "fabric_prot_type": 0,
+            "generate_node_acls": 0,
+            "login_keys_workaround": 1,
+            "login_timeout": 15,
+            "prod_mode_write_protect": 0,
+            "t10_pi": 0,
+            "tpg_enabled_sendtargets": 1
+          },
+          "enable": true,
+          "luns": [
+            {
+              "alias": "fe48dacbfd",
+              "alua_tg_pt_gp_name": "default_tg_pt_gp",
+              "index": 2,
+              "storage_object": "/backstores/fileio/disk3"
+            },
+            {
+              "alias": "00f26bcda9",
+              "alua_tg_pt_gp_name": "default_tg_pt_gp",
+              "index": 1,
+              "storage_object": "/backstores/block/disk2"
+            },
+            {
+              "alias": "9860705202",
+              "alua_tg_pt_gp_name": "default_tg_pt_gp",
+              "index": 0,
+              "storage_object": "/backstores/block/disk1"
+            }
+          ],
+          "node_acls": [
+            {
+              "attributes": {
+                "authentication": -1,
+                "dataout_timeout": 3,
+                "dataout_timeout_retries": 5,
+                "default_erl": 0,
+                "nopin_response_timeout": 30,
+                "nopin_timeout": 15,
+                "random_datain_pdu_offsets": 0,
+                "random_datain_seq_offsets": 0,
+                "random_r2t_offsets": 0
+              },
+              "mapped_luns": [
+                {
+                  "alias": "46b99add22",
+                  "index": 0,
+                  "tpg_lun": 0,
+                  "write_protect": false
+                },
+                {
+                  "alias": "ac743416f3",
+                  "index": 1,
+                  "tpg_lun": 1,
+                  "write_protect": false
+                },
+                {
+                  "alias": "9756c1876b",
+                  "index": 2,
+                  "tpg_lun": 2,
+                  "write_protect": false
+                }
+              ],
+              "node_wwn": "iqn.1994-05.com.redhat:server2"
+            }
+          ],
+          "parameters": {
+            "AuthMethod": "CHAP,None",
+            "DataDigest": "CRC32C,None",
+            "DataPDUInOrder": "Yes",
+            "DataSequenceInOrder": "Yes",
+            "DefaultTime2Retain": "20",
+            "DefaultTime2Wait": "2",
+            "ErrorRecoveryLevel": "0",
+            "FirstBurstLength": "65536",
+            "HeaderDigest": "CRC32C,None",
+            "IFMarkInt": "Reject",
+            "IFMarker": "No",
+            "ImmediateData": "Yes",
+            "InitialR2T": "Yes",
+            "MaxBurstLength": "262144",
+            "MaxConnections": "1",
+            "MaxOutstandingR2T": "1",
+            "MaxRecvDataSegmentLength": "8192",
+            "MaxXmitDataSegmentLength": "262144",
+            "OFMarkInt": "Reject",
+            "OFMarker": "No",
+            "TargetAlias": "LIO Target"
+          },
+          "portals": [
+            {
+              "ip_address": "0.0.0.0",
+              "iser": false,
+              "offload": false,
+              "port": 3260
+            }
+          ],
+          "tag": 1
+        }
+      ],
+      "wwn": "iqn.1994-05.com.redhat:server1"
+    }
+  ]
+}
+all-cmd --permanent --list-servicesscsi-target
+cockpit dhcpv6-client dns ftp http https imap imaps mountd mysql nfs pop3 pop3s rdp rpc-bind samba samba-client smtp smtp-submission smtps ssh telnet
+all-cmd --permanent --add-service=iscsi-target && --reload
+success
+bash: --reload: command not found...
+cmd --reload
+success
+firewall-cmd --info-service=
+State: running
+
+No options specified
+usage: 'firewall-cmd --help' for usage information or see firewall-cmd(1) man page
+
+iscsi-target  isns
+[root@server1 /etc/target]# firewall-cmd --info-service=iscsi-target
+iscsi-target
+  ports: 3260/tcp 3260/udp
+  protocols:
+  source-ports:
+  modules:
+  destination:
+  includes:
+  helpers:
+rget
+get
+● target.service - Restore LIO kernel target configuration
+     Loaded: loaded (/usr/lib/systemd/system/target.service; 0;1;38:5:185mdisabled; preset: 0;1;38:5:185mdisabled)
+     Active: active (exited) since Fri 2026-08-28 21:19:00 KST; 6s ago
+ Invocation: 7082cf0e37314aebab9bde4f97fdc61d
+    Process: 10914 ExecStart=/usr/bin/targetctl restore (code=exited, status=0/SUCCESS)
+   Main PID: 10914 (code=exited, status=0/SUCCESS)
+   Mem peak: 9.8M
+        CPU: 58ms
+
+Aug 28 21:19:00 server1.example.com systemd[1]: Starting target.service - Restore LIO kernel target configuration...
+Aug 28 21:19:00 server1.example.com systemd[1]: Finished target.service - Restore LIO kernel target configuration.
+cd
+[root@server1 ~]# c
+etcli
+targetcli shell version 2.1.58
+Copyright 2011-2013 by Datera, Inc and others.
+For help on commands, type 'help'.
+
+/> cd /
+/> ls
+o- / ......................................................................................................................... [...]
+  o- backstores .............................................................................................................. [...]
+  | o- block .................................................................................................. [Storage Objects: 2]
+  | | o- disk1 ...................................................................... [/dev/vg1/lv1 (496.0MiB) write-thru activated]
+  | | | o- alua ................................................................................................... [ALUA Groups: 1]
+  | | |   o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | | o- disk2 .................................................................... [/dev/nvme0n2p2 (523.0MiB) write-thru activated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- fileio ................................................................................................. [Storage Objects: 1]
+  | | o- disk3 ....................................................................... [/root/file1 (100.0MiB) write-back activated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- pscsi .................................................................................................. [Storage Objects: 0]
+  | o- ramdisk ................................................................................................ [Storage Objects: 0]
+  o- iscsi ............................................................................................................ [Targets: 1]
+  | o- iqn.1994-05.com.redhat:server1 .................................................................................... [TPGs: 1]
+  |   o- tpg1 ............................................................................................... [no-gen-acls, no-auth]
+  |     o- acls .......................................................................................................... [ACLs: 1]
+  |     | o- iqn.1994-05.com.redhat:server2 ....................................................................... [Mapped LUNs: 3]
+  |     |   o- mapped_lun0 ................................................................................. [lun0 block/disk1 (rw)]
+  |     |   o- mapped_lun1 ................................................................................. [lun1 block/disk2 (rw)]
+  |     |   o- mapped_lun2 ................................................................................ [lun2 fileio/disk3 (rw)]
+  |     o- luns .......................................................................................................... [LUNs: 3]
+  |     | o- lun0 .................................................................. [block/disk1 (/dev/vg1/lv1) (default_tg_pt_gp)]
+  |     | o- lun1 ................................................................ [block/disk2 (/dev/nvme0n2p2) (default_tg_pt_gp)]
+  |     | o- lun2 .................................................................. [fileio/disk3 (/root/file1) (default_tg_pt_gp)]
+  |     o- portals .................................................................................................... [Portals: 1]
+  |       o- 0.0.0.0:3260 ..................................................................................................... [OK]
+  o- loopback ......................................................................................................... [Targets: 0]
+/> /iscsi/delete iqn.1994-05.com.redhat:server1
+Deleted Target iqn.1994-05.com.redhat:server1.
+/> ls
+o- / ......................................................................................................................... [...]
+  o- backstores .............................................................................................................. [...]
+  | o- block .................................................................................................. [Storage Objects: 2]
+  | | o- disk1 .................................................................... [/dev/vg1/lv1 (496.0MiB) write-thru deactivated]
+  | | | o- alua ................................................................................................... [ALUA Groups: 1]
+  | | |   o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | | o- disk2 .................................................................. [/dev/nvme0n2p2 (523.0MiB) write-thru deactivated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- fileio ................................................................................................. [Storage Objects: 1]
+  | | o- disk3 ..................................................................... [/root/file1 (100.0MiB) write-back deactivated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- pscsi .................................................................................................. [Storage Objects: 0]
+  | o- ramdisk ................................................................................................ [Storage Objects: 0]
+  o- iscsi ............................................................................................................ [Targets: 0]
+  o- loopback ......................................................................................................... [Targets: 0]
+/> /backstores/block/delete disk1
+Deleted storage object disk1.
+/> /backstores/block delete disk2
+Deleted storage object disk2.
+/> luns/sdeletenlun0o/deleteddisk3
+No such path /luns
+/> cd /
+/> ls
+o- / ......................................................................................................................... [...]
+  o- backstores .............................................................................................................. [...]
+  | o- block .................................................................................................. [Storage Objects: 0]
+  | o- fileio ................................................................................................. [Storage Objects: 1]
+  | | o- disk3 ..................................................................... [/root/file1 (100.0MiB) write-back deactivated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- pscsi .................................................................................................. [Storage Objects: 0]
+  | o- ramdisk ................................................................................................ [Storage Objects: 0]
+  o- iscsi ............................................................................................................ [Targets: 0]
+  o- loopback ......................................................................................................... [Targets: 0]
+/> /backstores/fileio/delete disk3
+Deleted storage object disk3.
+/> ls
+o- / ......................................................................................................................... [...]
+  o- backstores .............................................................................................................. [...]
+  | o- block .................................................................................................. [Storage Objects: 0]
+  | o- fileio ................................................................................................. [Storage Objects: 0]
+  | o- pscsi .................................................................................................. [Storage Objects: 0]
+  | o- ramdisk ................................................................................................ [Storage Objects: 0]
+  o- iscsi ............................................................................................................ [Targets: 0]
+  o- loopback ......................................................................................................... [Targets: 0]
+/> exit
+Global pref auto_save_on_exit=true
+Last 10 configs saved in /etc/target/backup/.
+Configuration saved to /etc/target/saveconfig.json
+[root@server1 ~]#
+[root@server1 ~]#
+[root@server1 ~]# lvs
+  LV   VG  Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  home cs  -wi-ao----  16.86g
+  root cs  -wi-ao---- <34.55g
+  swap cs  -wi-ao----   6.00g
+  lv1  vg1 -wi-a----- 496.00m
+[root@server1 ~]# vgs
+  VG  #PV #LV #SN Attr    VSize   VFree
+  cs    1   3   0 wz--n--  57.41g    0
+  vg1   1   1   0 wz--n-- 496.00m    0
+[root@server1 ~]# pvs
+  PV             VG  Fmt  Attr PSize   PFree
+  /dev/nvme0n1p3 cs  lvm2 a--   57.41g    0
+  /dev/nvme0n2p1 vg1 lvm2 a--  496.00m    0
+parted -s /dev/nvme0n2 print
+Model: VMware Virtual NVMe Disk (nvme)
+Disk /dev/nvme0n2: 1074MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size   File system  Name     Flags
+ 1      1049kB  524MB   523MB               primary  lvm
+ 2      524MB   1073MB  548MB               primary
+
+lvremove -f /dev/vg1/lv1
+  Logical volume "lv1" successfully removed.
+remove vg1
+  Volume group "vg1" successfully removed
+move /dev/nvme0n2p1
+  Labels on physical volume "/dev/nvme0n2p1" successfully wiped.
+[root@server1 ~]# lvs
+  LV   VG Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  home cs -wi-ao----  16.86g
+  root cs -wi-ao---- <34.55g
+  swap cs -wi-ao----   6.00g
+[root@server1 ~]# vgs
+  VG #PV #LV #SN Attr    VSize  VFree
+  cs   1   3   0 wz--n-- 57.41g    0
+[root@server1 ~]# pvs
+  PV             VG Fmt  Attr PSize  PFree
+  /dev/nvme0n1p3 cs lvm2 a--  57.41g    0
+[root@server1 ~]# parted /dev/nvme0n2 print
+Model: VMware Virtual NVMe Disk (nvme)
+Disk /dev/nvme0n2: 1074MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size   File system  Name     Flags
+ 1      1049kB  524MB   523MB               primary  lvm
+ 2      524MB   1073MB  548MB               primary
+
+[root@server1 ~]# c
+lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+├─nvme0n2p2 259:5    0  523M  0 part
+└─nvme0n2p1 259:6    0  499M  0 part
+[root@server1 ~]# parted /dev/nvme0n2 print
+Model: VMware Virtual NVMe Disk (nvme)
+Disk /dev/nvme0n2: 1074MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size   File system  Name     Flags
+ 1      1049kB  524MB   523MB               primary  lvm
+ 2      524MB   1073MB  548MB               primary
+
+[root@server1 ~]# fdisk -l /dev/nvme0n2
+Disk /dev/nvme0n2: 1 GiB, 1073741824 bytes, 2097152 sectors
+Disk model: VMware Virtual NVMe Disk
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 74FB24D9-2FB6-49E6-99D2-2D224A97F139
+
+Device           Start     End Sectors  Size Type
+/dev/nvme0n2p1    2048 1023999 1021952  499M Linux LVM
+/dev/nvme0n2p2 1024000 2095103 1071104  523M Linux filesystem
+e0n2p12
+  Physical volume "/dev/nvme0n2p1" successfully created.
+ivg /dev/nvme0n2p1
+  Volume group "iscsivg" successfully created
+iscsivg -n disklv -l +100%FREE
+  Logical volume "disklv" created.
+[root@server1 ~]# lvs
+  LV     VG      Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  home   cs      -wi-ao----  16.86g
+  root   cs      -wi-ao---- <34.55g
+  swap   cs      -wi-ao----   6.00g
+  disklv iscsivg -wi-a----- 496.00m
+vgs
+  VG      #PV #LV #SN Attr    VSize   VFree
+  cs        1   3   0 wz--n--  57.41g    0
+  iscsivg   1   1   0 wz--n-- 496.00m    0
+[root@server1 ~]# pvs
+  PV             VG      Fmt  Attr PSize   PFree
+  /dev/nvme0n1p3 cs      lvm2 a--   57.41g    0
+  /dev/nvme0n2p1 iscsivg lvm2 a--  496.00m    0
+systemctlvenable#--nowetarget.servicenow target.service
+Created symlink '/etc/systemd/system/multi-user.target.wants/target.service' → '/usr/lib/systemd/system/target.service'.
+tcli
+targetcli shell version 2.1.58
+Copyright 2011-2013 by Datera, Inc and others.
+For help on commands, type 'help'.
+
+/> ls
+o- / ......................................................................................................................... [...]
+  o- backstores .............................................................................................................. [...]
+  | o- block .................................................................................................. [Storage Objects: 0]
+  | o- fileio ................................................................................................. [Storage Objects: 0]
+  | o- pscsi .................................................................................................. [Storage Objects: 0]
+  | o- ramdisk ................................................................................................ [Storage Objects: 0]
+  o- iscsi ............................................................................................................ [Targets: 0]
+  o- loopback ......................................................................................................... [Targets: 0]
+/>
+/>
+/> cd /backstores/
+/backstores> create disk1 /dev/iscsivg/disklv
+Command not found create
+cdeblockres> create disk1 /dev/iscsivg/disklv
+/backstores/block> create disk1 /dev/iscsivg/disklv
+Created block storage object disk1 using /dev/iscsivg/disklv.
+/backstores/block> create disk2 /dev/nvme0n2p2
+Created block storage object disk2 using /dev/nvme0n2p2.
+/backstores/block> cd ..
+/backstores> cd fileio
+/backstores/fileio> create disk3 /root/diskfile 100M
+Created fileio disk3 with size 104857600
+/backstores/fileio> cd ..
+/backstores> ls
+o- backstores ................................................................................................................ [...]
+  o- block .................................................................................................... [Storage Objects: 2]
+  | o- disk1 ............................................................... [/dev/iscsivg/disklv (496.0MiB) write-thru deactivated]
+  | | o- alua ..................................................................................................... [ALUA Groups: 1]
+  | |   o- default_tg_pt_gp ......................................................................... [ALUA state: Active/optimized]
+  | o- disk2 .................................................................... [/dev/nvme0n2p2 (523.0MiB) write-thru deactivated]
+  |   o- alua ..................................................................................................... [ALUA Groups: 1]
+  |     o- default_tg_pt_gp ......................................................................... [ALUA state: Active/optimized]
+  o- fileio ................................................................................................... [Storage Objects: 1]
+  | o- disk3 .................................................................... [/root/diskfile (100.0MiB) write-back deactivated]
+  |   o- alua ..................................................................................................... [ALUA Groups: 1]
+  |     o- default_tg_pt_gp ......................................................................... [ALUA state: Active/optimized]
+  o- pscsi .................................................................................................... [Storage Objects: 0]
+  o- ramdisk .................................................................................................. [Storage Objects: 0]
+/backstores> cd /iscsi
+/iscsi> create iqn.2014-06.com.example:server1
+Created target iqn.2014-06.com.example:server1.
+Created TPG 1.
+Global pref auto_add_default_portal=true
+Created default portal listening on all IPs (0.0.0.0), port 3260.
+/iscsi> ls
+o- iscsi .............................................................................................................. [Targets: 1]
+  o- iqn.2014-06.com.example:server1 ..................................................................................... [TPGs: 1]
+    o- tpg1 ................................................................................................. [no-gen-acls, no-auth]
+      o- acls ............................................................................................................ [ACLs: 0]
+      o- luns ............................................................................................................ [LUNs: 0]
+      o- portals ...................................................................................................... [Portals: 1]
+        o- 0.0.0.0:3260 ....................................................................................................... [OK]
+/iscsi> ls ..
+o- / ......................................................................................................................... [...]
+  o- backstores .............................................................................................................. [...]
+  | o- block .................................................................................................. [Storage Objects: 2]
+  | | o- disk1 ............................................................. [/dev/iscsivg/disklv (496.0MiB) write-thru deactivated]
+  | | | o- alua ................................................................................................... [ALUA Groups: 1]
+  | | |   o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | | o- disk2 .................................................................. [/dev/nvme0n2p2 (523.0MiB) write-thru deactivated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- fileio ................................................................................................. [Storage Objects: 1]
+  | | o- disk3 .................................................................. [/root/diskfile (100.0MiB) write-back deactivated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- pscsi .................................................................................................. [Storage Objects: 0]
+  | o- ramdisk ................................................................................................ [Storage Objects: 0]
+  o- iscsi ............................................................................................................ [Targets: 1]
+  | o- iqn.2014-06.com.example:server1 ................................................................................... [TPGs: 1]
+  |   o- tpg1 ............................................................................................... [no-gen-acls, no-auth]
+  |     o- acls .......................................................................................................... [ACLs: 0]
+  |     o- luns .......................................................................................................... [LUNs: 0]
+  |     o- portals .................................................................................................... [Portals: 1]
+  |       o- 0.0.0.0:3260 ..................................................................................................... [OK]
+  o- loopback ......................................................................................................... [Targets: 0]
+/iscsi>
+/iscsi>
+/iscsi>
+/iscsi> cd iqn.2014-06.com.example:server1/
+/iscsi/iqn.20...ample:server1> ls
+o- iqn.2014-06.com.example:server1 ....................................................................................... [TPGs: 1]
+  o- tpg1 ................................................................................................... [no-gen-acls, no-auth]
+    o- acls .............................................................................................................. [ACLs: 0]
+    o- luns .............................................................................................................. [LUNs: 0]
+    o- portals ........................................................................................................ [Portals: 1]
+      o- 0.0.0.0:3260 ......................................................................................................... [OK]
+/iscsi/iqn.20...ample:server1> cd luns
+No such path /iscsi/iqn.2014-06.com.example:server1/luns
+/iscsi/iqn.20...ample:server1> cdltpg1/
+/iscsi/iqn.20...:server1/tpg1> acls//create iqn.2014-06.com.example:server2
+Created Node ACL for iqn.2014-06.com.example:server2
+/iscsi/iqn.20...:server1/tpg1> ls
+o- tpg1 ..................................................................................................... [no-gen-acls, no-auth]
+  o- acls ................................................................................................................ [ACLs: 1]
+  | o- iqn.2014-06.com.example:server2 ............................................................................ [Mapped LUNs: 0]
+  o- luns ................................................................................................................ [LUNs: 0]
+  o- portals .......................................................................................................... [Portals: 1]
+    o- 0.0.0.0:3260 ........................................................................................................... [OK]
+/iscsi/iqn.20...:server1/tpg1> cd ../lun
+/iscsi/iqn.20...ample:server1> cd tpg1/
+/iscsi/iqn.20...:server1/tpg1> cd luns
+/iscsi/iqn.20...er1/tpg1/luns> create  /backstores/block/disk1
+Created LUN 0.
+Created LUN 0->0 mapping in node ACL iqn.2014-06.com.example:server2
+/iscsi/iqn.20...er1/tpg1/luns> create  /backstores/block/disk2
+Created LUN 1.
+Created LUN 1->1 mapping in node ACL iqn.2014-06.com.example:server2
+/iscsi/iqn.20...er1/tpg1/luns> create  /backstores/fileio/disk3
+Created LUN 2.
+Created LUN 2->2 mapping in node ACL iqn.2014-06.com.example:server2
+/iscsi/iqn.20...er1/tpg1/luns> ls ..
+o- tpg1 ..................................................................................................... [no-gen-acls, no-auth]
+  o- acls ................................................................................................................ [ACLs: 1]
+  | o- iqn.2014-06.com.example:server2 ............................................................................ [Mapped LUNs: 3]
+  |   o- mapped_lun0 ....................................................................................... [lun0 block/disk1 (rw)]
+  |   o- mapped_lun1 ....................................................................................... [lun1 block/disk2 (rw)]
+  |   o- mapped_lun2 ...................................................................................... [lun2 fileio/disk3 (rw)]
+  o- luns ................................................................................................................ [LUNs: 3]
+  | o- lun0 ................................................................. [block/disk1 (/dev/iscsivg/disklv) (default_tg_pt_gp)]
+  | o- lun1 ...................................................................... [block/disk2 (/dev/nvme0n2p2) (default_tg_pt_gp)]
+  | o- lun2 ..................................................................... [fileio/disk3 (/root/diskfile) (default_tg_pt_gp)]
+  o- portals .......................................................................................................... [Portals: 1]
+    o- 0.0.0.0:3260 ........................................................................................................... [OK]
+/iscsi/iqn.20...er1/tpg1/luns> cd /
+/> ls
+o- / ......................................................................................................................... [...]
+  o- backstores .............................................................................................................. [...]
+  | o- block .................................................................................................. [Storage Objects: 2]
+  | | o- disk1 ............................................................... [/dev/iscsivg/disklv (496.0MiB) write-thru activated]
+  | | | o- alua ................................................................................................... [ALUA Groups: 1]
+  | | |   o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | | o- disk2 .................................................................... [/dev/nvme0n2p2 (523.0MiB) write-thru activated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- fileio ................................................................................................. [Storage Objects: 1]
+  | | o- disk3 .................................................................... [/root/diskfile (100.0MiB) write-back activated]
+  | |   o- alua ................................................................................................... [ALUA Groups: 1]
+  | |     o- default_tg_pt_gp ....................................................................... [ALUA state: Active/optimized]
+  | o- pscsi .................................................................................................. [Storage Objects: 0]
+  | o- ramdisk ................................................................................................ [Storage Objects: 0]
+  o- iscsi ............................................................................................................ [Targets: 1]
+  | o- iqn.2014-06.com.example:server1 ................................................................................... [TPGs: 1]
+  |   o- tpg1 ............................................................................................... [no-gen-acls, no-auth]
+  |     o- acls .......................................................................................................... [ACLs: 1]
+  |     | o- iqn.2014-06.com.example:server2 ...................................................................... [Mapped LUNs: 3]
+  |     |   o- mapped_lun0 ................................................................................. [lun0 block/disk1 (rw)]
+  |     |   o- mapped_lun1 ................................................................................. [lun1 block/disk2 (rw)]
+  |     |   o- mapped_lun2 ................................................................................ [lun2 fileio/disk3 (rw)]
+  |     o- luns .......................................................................................................... [LUNs: 3]
+  |     | o- lun0 ........................................................... [block/disk1 (/dev/iscsivg/disklv) (default_tg_pt_gp)]
+  |     | o- lun1 ................................................................ [block/disk2 (/dev/nvme0n2p2) (default_tg_pt_gp)]
+  |     | o- lun2 ............................................................... [fileio/disk3 (/root/diskfile) (default_tg_pt_gp)]
+  |     o- portals .................................................................................................... [Portals: 1]
+  |       o- 0.0.0.0:3260 ..................................................................................................... [OK]
+  o- loopback ......................................................................................................... [Targets: 0]
+/> exit
+Global pref auto_save_on_exit=true
+Last 10 configs saved in /etc/target/backup/.
+Configuration saved to /etc/target/saveconfig.json
+[root@server1 ~]# ls /etc/target/
+backup  saveconfig.json
+cat /etc/target/saveconfig.json
+{
+  "fabric_modules": [],
+  "storage_objects": [
+    {
+      "aio": false,
+      "alua_tpgs": [
+        {
+          "alua_access_state": 0,
+          "alua_access_status": 0,
+          "alua_access_type": 3,
+          "alua_support_active_nonoptimized": 1,
+          "alua_support_active_optimized": 1,
+          "alua_support_offline": 1,
+          "alua_support_standby": 1,
+          "alua_support_transitioning": 1,
+          "alua_support_unavailable": 1,
+          "alua_write_metadata": 0,
+          "implicit_trans_secs": 0,
+          "name": "default_tg_pt_gp",
+          "nonop_delay_msecs": 100,
+          "preferred": 0,
+          "tg_pt_gp_id": 0,
+          "trans_delay_msecs": 0
+        }
+      ],
+      "attributes": {
+        "alua_support": 1,
+        "block_size": 512,
+        "emulate_3pc": 1,
+        "emulate_caw": 1,
+        "emulate_dpo": 1,
+        "emulate_fua_read": 1,
+        "emulate_fua_write": 1,
+        "emulate_model_alias": 1,
+        "emulate_pr": 1,
+        "emulate_rest_reord": 0,
+        "emulate_rsoc": 1,
+        "emulate_tas": 1,
+        "emulate_tpu": 0,
+        "emulate_tpws": 0,
+        "emulate_ua_intlck_ctrl": 0,
+        "emulate_write_cache": 1,
+        "enforce_pr_isids": 1,
+        "force_pr_aptpl": 0,
+        "is_nonrot": 0,
+        "max_unmap_block_desc_count": 1,
+        "max_unmap_lba_count": 8192,
+        "max_write_same_len": 4096,
+        "optimal_sectors": 16384,
+        "pgr_support": 1,
+        "pi_prot_format": 0,
+        "pi_prot_type": 0,
+        "pi_prot_verify": 0,
+        "queue_depth": 128,
+        "submit_type": 0,
+        "unmap_granularity": 1,
+        "unmap_granularity_alignment": 0,
+        "unmap_zeroes_data": 0
+      },
+      "dev": "/root/diskfile",
+      "name": "disk3",
+      "plugin": "fileio",
+      "size": 104857600,
+      "write_back": true,
+      "wwn": "fd0e09ab-cdc0-4819-86b9-3c6a7586397e"
+    },
+    {
+      "alua_tpgs": [
+        {
+          "alua_access_state": 0,
+          "alua_access_status": 0,
+          "alua_access_type": 3,
+          "alua_support_active_nonoptimized": 1,
+          "alua_support_active_optimized": 1,
+          "alua_support_offline": 1,
+          "alua_support_standby": 1,
+          "alua_support_transitioning": 1,
+          "alua_support_unavailable": 1,
+          "alua_write_metadata": 0,
+          "implicit_trans_secs": 0,
+          "name": "default_tg_pt_gp",
+          "nonop_delay_msecs": 100,
+          "preferred": 0,
+          "tg_pt_gp_id": 0,
+          "trans_delay_msecs": 0
+        }
+      ],
+      "attributes": {
+        "alua_support": 1,
+        "block_size": 512,
+        "emulate_3pc": 1,
+        "emulate_caw": 1,
+        "emulate_dpo": 1,
+        "emulate_fua_read": 1,
+        "emulate_fua_write": 1,
+        "emulate_model_alias": 1,
+        "emulate_pr": 1,
+        "emulate_rest_reord": 0,
+        "emulate_rsoc": 1,
+        "emulate_tas": 1,
+        "emulate_tpu": 0,
+        "emulate_tpws": 0,
+        "emulate_ua_intlck_ctrl": 0,
+        "emulate_write_cache": 0,
+        "enforce_pr_isids": 1,
+        "force_pr_aptpl": 0,
+        "is_nonrot": 1,
+        "max_unmap_block_desc_count": 0,
+        "max_unmap_lba_count": 0,
+        "max_write_same_len": 2048,
+        "optimal_sectors": 2048,
+        "pgr_support": 1,
+        "pi_prot_format": 0,
+        "pi_prot_type": 0,
+        "pi_prot_verify": 0,
+        "queue_depth": 255,
+        "submit_type": 0,
+        "unmap_granularity": 0,
+        "unmap_granularity_alignment": 0,
+        "unmap_zeroes_data": 0
+      },
+      "dev": "/dev/nvme0n2p2",
+      "name": "disk2",
+      "plugin": "block",
+      "readonly": false,
+      "write_back": false,
+      "wwn": "65c5b107-bf8e-45b2-b4e3-adf1ceae1ff9"
+    },
+    {
+      "alua_tpgs": [
+        {
+          "alua_access_state": 0,
+          "alua_access_status": 0,
+          "alua_access_type": 3,
+          "alua_support_active_nonoptimized": 1,
+          "alua_support_active_optimized": 1,
+          "alua_support_offline": 1,
+          "alua_support_standby": 1,
+          "alua_support_transitioning": 1,
+          "alua_support_unavailable": 1,
+          "alua_write_metadata": 0,
+          "implicit_trans_secs": 0,
+          "name": "default_tg_pt_gp",
+          "nonop_delay_msecs": 100,
+          "preferred": 0,
+          "tg_pt_gp_id": 0,
+          "trans_delay_msecs": 0
+        }
+      ],
+      "attributes": {
+        "alua_support": 1,
+        "block_size": 512,
+        "emulate_3pc": 1,
+        "emulate_caw": 1,
+        "emulate_dpo": 1,
+        "emulate_fua_read": 1,
+        "emulate_fua_write": 1,
+        "emulate_model_alias": 1,
+        "emulate_pr": 1,
+        "emulate_rest_reord": 0,
+        "emulate_rsoc": 1,
+        "emulate_tas": 1,
+        "emulate_tpu": 0,
+        "emulate_tpws": 0,
+        "emulate_ua_intlck_ctrl": 0,
+        "emulate_write_cache": 0,
+        "enforce_pr_isids": 1,
+        "force_pr_aptpl": 0,
+        "is_nonrot": 1,
+        "max_unmap_block_desc_count": 0,
+        "max_unmap_lba_count": 0,
+        "max_write_same_len": 2048,
+        "optimal_sectors": 2048,
+        "pgr_support": 1,
+        "pi_prot_format": 0,
+        "pi_prot_type": 0,
+        "pi_prot_verify": 0,
+        "queue_depth": 128,
+        "submit_type": 0,
+        "unmap_granularity": 0,
+        "unmap_granularity_alignment": 0,
+        "unmap_zeroes_data": 0
+      },
+      "dev": "/dev/iscsivg/disklv",
+      "name": "disk1",
+      "plugin": "block",
+      "readonly": false,
+      "write_back": false,
+      "wwn": "6a35d325-4f13-4402-8ddb-d9f380becbed"
+    }
+  ],
+  "targets": [
+    {
+      "fabric": "iscsi",
+      "parameters": {
+        "cmd_completion_affinity": "-1"
+      },
+      "tpgs": [
+        {
+          "attributes": {
+            "authentication": 0,
+            "cache_dynamic_acls": 0,
+            "default_cmdsn_depth": 64,
+            "default_erl": 0,
+            "demo_mode_discovery": 1,
+            "demo_mode_write_protect": 1,
+            "fabric_prot_type": 0,
+            "generate_node_acls": 0,
+            "login_keys_workaround": 1,
+            "login_timeout": 15,
+            "prod_mode_write_protect": 0,
+            "t10_pi": 0,
+            "tpg_enabled_sendtargets": 1
+          },
+          "enable": true,
+          "luns": [
+            {
+              "alias": "c04a9670aa",
+              "alua_tg_pt_gp_name": "default_tg_pt_gp",
+              "index": 2,
+              "storage_object": "/backstores/fileio/disk3"
+            },
+            {
+              "alias": "5ce4ee75d6",
+              "alua_tg_pt_gp_name": "default_tg_pt_gp",
+              "index": 1,
+              "storage_object": "/backstores/block/disk2"
+            },
+            {
+              "alias": "f522b0930f",
+              "alua_tg_pt_gp_name": "default_tg_pt_gp",
+              "index": 0,
+              "storage_object": "/backstores/block/disk1"
+            }
+          ],
+          "node_acls": [
+            {
+              "attributes": {
+                "authentication": -1,
+                "dataout_timeout": 3,
+                "dataout_timeout_retries": 5,
+                "default_erl": 0,
+                "nopin_response_timeout": 30,
+                "nopin_timeout": 15,
+                "random_datain_pdu_offsets": 0,
+                "random_datain_seq_offsets": 0,
+                "random_r2t_offsets": 0
+              },
+              "mapped_luns": [
+                {
+                  "alias": "c3afe70fae",
+                  "index": 2,
+                  "tpg_lun": 2,
+                  "write_protect": false
+                },
+                {
+                  "alias": "5fa10cf72a",
+                  "index": 1,
+                  "tpg_lun": 1,
+                  "write_protect": false
+                },
+                {
+                  "alias": "693b0dbf48",
+                  "index": 0,
+                  "tpg_lun": 0,
+                  "write_protect": false
+                }
+              ],
+              "node_wwn": "iqn.2014-06.com.example:server2"
+            }
+          ],
+          "parameters": {
+            "AuthMethod": "CHAP,None",
+            "DataDigest": "CRC32C,None",
+            "DataPDUInOrder": "Yes",
+            "DataSequenceInOrder": "Yes",
+            "DefaultTime2Retain": "20",
+            "DefaultTime2Wait": "2",
+            "ErrorRecoveryLevel": "0",
+            "FirstBurstLength": "65536",
+            "HeaderDigest": "CRC32C,None",
+            "IFMarkInt": "Reject",
+            "IFMarker": "No",
+            "ImmediateData": "Yes",
+            "InitialR2T": "Yes",
+            "MaxBurstLength": "262144",
+            "MaxConnections": "1",
+            "MaxOutstandingR2T": "1",
+            "MaxRecvDataSegmentLength": "8192",
+            "MaxXmitDataSegmentLength": "262144",
+            "OFMarkInt": "Reject",
+            "OFMarker": "No",
+            "TargetAlias": "LIO Target"
+          },
+          "portals": [
+            {
+              "ip_address": "0.0.0.0",
+              "iser": false,
+              "offload": false,
+              "port": 3260
+            }
+          ],
+          "tag": 1
+        }
+      ],
+      "wwn": "iqn.2014-06.com.example:server1"
+    }
+  ]
+}
+riadb
+● mariadb.service - MariaDB 10.11 database server
+     Loaded: loaded (/usr/lib/systemd/system/mariadb.service; enabled; preset: 0;1;38:5:185mdisabled)
+     Active: active (running) since Fri 2026-08-28 19:25:52 KST; 2h 14min ago
+ Invocation: ff9e4d43581a433a8e50ef3a9ffbe26f
+       Docs: man:mariadbd(8)
+             https://mariadb.com/kb/en/library/systemd/
+   Main PID: 6678 (mariadbd)
+     Status: "Taking your SQL requests now..."
+      Tasks: 9 (limit: 48322)
+     Memory: 120.6M (peak: 121.9M)
+        CPU: 922ms
+     CGroup: /system.slice/mariadb.service
+             └─6678 /usr/libexec/mariadbd --basedir=/usr
+
+Aug 28 19:25:51 server1.example.com mariadb-prepare-db-dir[6638]: Database MariaDB is probably initialized in /var/lib/mysql already, nothing is done.
+Aug 28 19:25:51 server1.example.com mariadb-prepare-db-dir[6638]: If this is not the case, make sure the /var/lib/mysql is empty before running mariadb-prepare-db-dir.
+Aug 28 19:25:51 server1.example.com (mariadbd)[6678]: 0;1;38:5:185m0;1;38:5:185mmariadb.service: Referenced but unset environment variable evaluates to an empty string: MYSQLD_OPTS, _WSREP_NEW_CLUSTER
+Aug 28 19:25:51 server1.example.com mariadb-check-upgrade[6712]: The datadir located at /var/lib/mysql needs to be upgraded using 'mariadb-upgrade' tool. This can be done using the f>
+Aug 28 19:25:51 server1.example.com mariadb-check-upgrade[6712]:   1. Back-up your data before with 'mariadb-upgrade'
+Aug 28 19:25:51 server1.example.com mariadb-check-upgrade[6712]:   2. Start the database daemon using 'systemctl start mariadb.service'
+Aug 28 19:25:51 server1.example.com mariadb-check-upgrade[6712]:   3. Run 'mariadb-upgrade' with a database user that has sufficient privileges
+Aug 28 19:25:51 server1.example.com mariadb-check-upgrade[6712]: Read more about 'mariadb-upgrade' usage at:
+Aug 28 19:25:51 server1.example.com mariadb-check-upgrade[6712]: https://mariadb.com/kb/en/mysql_upgrade/
+Aug 28 19:25:52 server1.example.com systemd[1]: Started mariadb.service - MariaDB 10.11 database server.
+[root@server1 ~]#Dc
+[root@server1 ~]# exit
+exit
+
+Script done on 2026-08-28 21:51:10+09:00 [COMMAND_EXIT_CODE="0"]
