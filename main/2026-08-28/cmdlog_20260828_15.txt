@@ -1,0 +1,114 @@
+Script started on 2026-08-28 15:33:30+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="156" LINES="51"]
+[root@main ~]# c
+which mysql
+/usr/bin/which: no mysql in (/root/.local/bin:/root/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/test:/test:/test)
+ mysql
+Last metadata expiration check: 0:13:43 ago on Fri 28 Aug 2026 04:27:05 PM KST.
+No match for argument: mysqlB
+Error: Unable to find a match: mysql
+[root@main ~]# dnf -y install mariadb mariadb-server
+Last metadata expiration check: 0:14:07 ago on Fri 28 Aug 2026 04:27:05 PM KST.
+Dependencies resolved.
+=======================================================================================================================================================================================
+ Package                                            Architecture                        Version                                           Repository                              Size
+=======================================================================================================================================================================================
+Installing:
+ mariadb                                           B x86_64                              3:10.11.18-1.el10                                 appstream                              1.6 M
+ mariadb-server                                    B x86_64                              3:10.11.18-1.el10                                 appstream                               10 M
+Installing dependencies:
+ mariadb-common                                    B noarch                              3:10.11.18-1.el10                                 appstream                               32 k
+ mariadb-errmsg                                    B noarch                              3:10.11.18-1.el10                                 appstream                              264 k
+ mysql-selinux                                     B noarch                              1.0.18-1.el10                                     appstream                               37 k
+ perl-DBD-MariaDB                                  B x86_64                              1.23-10.el10                                      appstream                              155 k
+ perl-File-Copy                                    B noarch                              2.41-514.el10                                     appstream                               21 k
+ perl-Sys-Hostname                                 B x86_64                              1.25-514.el10                                     appstream                               18 k
+Installing weak dependencies:
+ mariadb-backup                                    B x86_64                              3:10.11.18-1.el10                                 appstream                              6.6 M
+ mariadb-client-utils                              B x86_64                              3:10.11.18-1.el10                                 appstream                               39 k
+ mariadb-gssapi-server                             B x86_64                              3:10.11.18-1.el10                                 appstream                               17 k
+ mariadb-server-utils                              B x86_64                              3:10.11.18-1.el10                                 appstream                              258 k
+
+Transaction Summary
+=======================================================================================================================================================================================
+Install  12 Packages
+
+Total download size: 19 M
+Installed size: 124 M
+Downloading Packages:
+(1/12):)mariadb-client-utils-10.11.18-1.el10.x86_64.rpm                 100% [=======================================================================] -88 kB/s | 539 kB     00:00 ETA
+(2/12):)mariadb-common-10.11.18-1.el10.noarch.rpmpm                       0% [                                                                       ] 304 kB/s |  32 kB     00:00 ETA
+(3/12):)mariadb-errmsg-10.11.18-1.el10.noarch.rpmpm                       0% [-                                                                      ] 1.1 MB/s | 264 kB     00:00 ETA
+(4/12):)mariadb-gssapi-server-10.11.18-1.el10.x86_64.rpm                  7% [=====                                                                  ] 244 kB/s | 117 kB     00:00 ETA
+(5/12):)mariadb-backup-10.11.18-1.el10.x86_64.rpm                        10% [=======                                                                ] 6.5 MB/s | 6.6 MB     00:01 ETA
+(6/12):)mariadb-server-utils-10.11.18-1.el10.x86_64.rpm                  37% [==========================-                                            ] 3.4 MB/s | 258 kB     00:00 ETA
+(7/12):)mysql-selinux-1.0.18-1.el10.noarch.rpm                           40% [=============================                                          ] 564 kB/s | 737 kB     00:00 ETA
+(8/12):)perl-DBD-MariaDB-1.23-10.el10.x86_64.rpm                         44% [===============================-                                       ] 1.2 MB/s | 155 kB     00:00 ETA
+(9/12):2mariadb-server-10.11.18-1.el10.x86_64.rpm                        67% [================================================                       ] 321 MB/s |  10 MB     00:00 ETA
+(10/12):2perl-File-Copy-2.41-514.el10.noarch.rpm                         91% [================================================================-      ] 299 kB/s |  21 kB     00:00 ETA
+(11/12):2perl-Sys-Hostname-1.25-514.el10.x86_64.rpm                      91% [================================================================-      ] 275 kB/s |  18 kB     00:00 ETA
+(12/12): mariadb-10.11.18-1.el10.x86_64.rpm                              99% [======================================================================-] 508 kB/s | 1.6 MB     00:03 ETA
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                                  4.9 MB/s |  19 MB     00:03
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :  [============================================================================================================================================              ] 1/1
+  Installing       : mariadb-common-3:10.11.18-1.el10.noarch [===============================================================================================================  ]  1/12
+  Installing       : perl-Sys-Hostname-1.25-514.el10.x86_64 [================================================================================================================  ]  2/12
+  Installing       : mariadb-errmsg-3:10.11.18-1.el10.noarch [===============================================================================================================  ]  3/12
+  Installing       : perl-File-Copy-2.41-514.el10.noarch [===================================================================================================================  ]  4/12
+  Installing       : perl-DBD-MariaDB-1.23-10.el10.x86_64 [==================================================================================================================  ]  5/12
+  Running scriptlet: mysql-selinux-1.0.18-1.el10.noarch                                                                                                                           6/12
+  Installing       : mysql-selinux-1.0.18-1.el10.noarch [====================================================================================================================  ]  6/12
+  Running scriptlet: mysql-selinux-1.0.18-1.el10.noarch                                                                                                                           6/12
+libsemanage.semanage_direct_install_info: Overriding mysql module at lower priority 100 with module at priority 200.
+
+  Installing       : mariadb-client-utils-3:10.11.18-1.el10.x86_64 [=========================================================================================================  ]  7/12
+  Installing       : mariadb-backup-3:10.11.18-1.el10.x86_64 [===============================================================================================================  ]  8/12
+  Installing       : mariadb-gssapi-server-3:10.11.18-1.el10.x86_64 [========================================================================================================  ]  9/12
+  Installing       : mariadb-server-utils-3:10.11.18-1.el10.x86_64 [=========================================================================================================  ] 10/12
+  Running scriptlet: mariadb-server-3:10.11.18-1.el10.x86_64                                                                                                                     11/12
+  Installing       : mariadb-server-3:10.11.18-1.el10.x86_64 [===============================================================================================================  ] 11/12
+  Running scriptlet: mariadb-server-3:10.11.18-1.el10.x86_64                                                                                                                     11/12
+  Installing       : mariadb-3:10.11.18-1.el10.x86_64 [======================================================================================================================  ] 12/12
+  Running scriptlet: mysql-selinux-1.0.18-1.el10.noarch                                                                                                                          12/12
+  Running scriptlet: mariadb-3:10.11.18-1.el10.x86_64                                                                                                                            12/12
+
+Installed:
+  mariadb-3:10.11.18-1.el10.x86_64        mariadb-backup-3:10.11.18-1.el10.x86_64        mariadb-client-utils-3:10.11.18-1.el10.x86_64 mariadb-common-3:10.11.18-1.el10.noarch
+  mariadb-errmsg-3:10.11.18-1.el10.noarch mariadb-gssapi-server-3:10.11.18-1.el10.x86_64 mariadb-server-3:10.11.18-1.el10.x86_64       mariadb-server-utils-3:10.11.18-1.el10.x86_64
+  mysql-selinux-1.0.18-1.el10.noarch      perl-DBD-MariaDB-1.23-10.el10.x86_64           perl-File-Copy-2.41-514.el10.noarch           perl-Sys-Hostname-1.25-514.el10.x86_64
+
+Complete!
+ql -u server1 -p
+Enter password:
+ERROR 2002 (HY000): Can't connect to local server through socket '/var/lib/mysql/mysql.sock' (2)
+BB[root@main ~]# mysql -u server1 -p
+Enter password:
+ERROR 2002 (HY000): Can't connect to local server through socket '/var/lib/mysql/mysql.sock' (2)
+BB[root@main ~]# mysql -1@uetestuser -p
+Enter password:
+BWelcome to the MariaDB monitor.  Commands end with ; or \g.
+BBYour MariaDB connection id is 12
+Server version: 10.11.18-MariaDB MariaDB Server
+
+BBCopyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+BBType 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+BMariaDB [(none)]> select user();
++---------------------------+
+| user()                    |
++---------------------------+
+| testuser@main.example.com |
++---------------------------+
+B1 row in set (0.001 sec)
+BB
+BMariaDB [(none)]> exit
+BBye
+B[root@main ~]# exit
+exit
+
+Script done on 2026-08-28 18:13:45+09:00 [COMMAND_EXIT_CODE="0"]
