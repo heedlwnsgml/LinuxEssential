@@ -1,0 +1,167 @@
+Script started on 2026-08-28 15:33:24+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="117" LINES="46"]
+[root@server2 ~]# c
+
+Display all 275 possibilities? (y or n)
+[root@server2 ~]# cat /etc/chrony.conf
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (https://www.pool.ntp.org/join.html).
+pool 192.168.10.10 iburst
+
+# Use NTP servers from DHCP.
+sourcedir /run/chrony-dhcp
+
+# Record the rate at which the system clock gains/losses time.
+driftfile /var/lib/chrony/drift
+
+# Allow the system clock to be stepped in the first three updates
+# if its offset is larger than 1 second.
+makestep 1.0 3
+
+# Enable kernel synchronization of the real-time clock (RTC).
+rtcsync
+
+# Enable hardware timestamping on all interfaces that support it.
+#hwtimestamp *
+
+# Increase the minimum number of selectable sources required to adjust
+# the system clock.
+#minsources 2
+
+# Allow NTP client access from local network.
+#allow 192.168.0.0/16
+
+# Serve time even if not synchronized to a time source.
+#local stratum 10
+
+# Require authentication (nts or key option) for all NTP sources.
+#authselectmode require
+
+# Specify file containing keys for NTP authentication.
+#keyfile /etc/chrony.keys
+
+# Save NTS keys and cookies.
+ntsdumpdir /var/lib/chrony
+
+# Insert/delete leap seconds by slewing instead of stepping.
+#leapsecmode slew
+
+# Set the TAI-UTC offset of the system clock.
+#leapseclist /usr/share/zoneinfo/leap-seconds.list
+
+# Specify directory for log files.
+logdir /var/log/chrony
+
+# Select which information is logged.
+#log measurements statistics tracking
+[root@server2 ~]# c
+[root@server2 ~]# cat /etc/chrony.conf | head
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (https://www.pool.ntp.org/join.html).
+pool 192.168.10.10 iburst
+
+# Use NTP servers from DHCP.
+sourcedir /run/chrony-dhcp
+
+# Record the rate at which the system clock gains/losses time.
+driftfile /var/lib/chrony/drift
+
+[root@server2 ~]# cat /etc/chrony.conf
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (https://www.pool.ntp.org/join.html).
+pool 192.168.10.10 iburst
+
+# Use NTP servers from DHCP.
+sourcedir /run/chrony-dhcp
+
+# Record the rate at which the system clock gains/losses time.
+driftfile /var/lib/chrony/drift
+[root@server2 ~]# cat /etc/chrony.conf
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (https://www.pool.ntp.org/join.html).
+pool 192.168.10.10 iburst
+
+# Use NTP servers from DHCP.
+sourcedir /run/chrony-dhcp
+
+# Record the rate at which the system clock gains/losses time.
+driftfile /var/lib/chrony/drift
+
+bash: [root@server2: command not found...
+bash: pool: command not found...
+bash: sourcedir: command not found...
+bash: driftfile: command not found...
+[root@server2 ~]#  chronyc sources -v
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample
+===============================================================================
+^* main.example.com              3   9   377   161   -229us[ -237us] +/- 2687us
+[root@server2 ~]# timedatectl
+               Local time: Fri 2026-08-28 16:49:34 KST
+           Universal time: Fri 2026-08-28 07:49:34 UTC
+                 RTC time: Fri 2026-08-28 07:49:34
+                Time zone: Asia/Seoul (KST, +0900)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+rony.conf
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (https://www.pool.ntp.org/join.html).pool 192.168.10.10 iburst# Use NTP servers from DHCP.
+sourcedir /run/chrony-dhcp
+
+# Record the rate at which the system clock gains/losses time.
+driftfile /var/lib/chrony/drift
+
+# Allow the system clock to be stepped in the first three updates
+# if its offset is larger than 1 second.
+makestep 1.0 3
+
+# Enable kernel synchronization of the real-time clock (RTC).
+rtcsync
+
+# Enable hardware timestamping on all interfaces that support it.
+#hwtimestamp *
+
+# Increase the minimum number of selectable sources required to adjust
+# the system clock.
+#minsources 2
+
+# Allow NTP client access from local network.
+#allow 192.168.0.0/16
+
+# Serve time even if not synchronized to a time source.
+#local stratum 10
+
+# Require authentication (nts or key option) for all NTP sources.
+#authselectmode require
+
+# Specify file containing keys for NTP authentication.
+#keyfile /etc/chrony.keys
+
+# Save NTS keys and cookies.
+ntsdumpdir /var/lib/chrony
+
+# Insert/delete leap seconds by slewing instead of stepping.
+#leapsecmode slew
+
+# Set the TAI-UTC offset of the system clock.
+#leapseclist /usr/share/zoneinfo/leap-seconds.list3,18Top+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631+q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        21~@k   234,0-15,18 ~@k   67,0-18,18 910,0-1~@k   1,18 23,144,0-15,18 ~@k   6,7 7,0-18,18 9,1420,0-1~@k   1,18 23,134,0-15,18 ~@k   67,0-18,18 9,1730,0-1~@k   1,18 23,0-14,18 5~@k   6,0-17,18 89,0-140,18 ~@k
+# Specify directory for log files.41,1720%
+logdir /var/log/chrony42,0-140%
+43,1860%
+# Select which information is logged.44,1880%
+>4;m>4;m[root@server2t~]#icatt/etc/resolv.conf~@k   6,18 78,0-19,18 50~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   ~@k   498,0-17,18 6~@k   5,0-14,18 32,0-11,17 ~@k   0,1839,0-18,18 76,0-1~@k   5,18 43,0-12,18 1~@k   0,0-129,17 8,187,0-16,18 ~@k   54,0-13,13 2,181~@k   0,0-119,14 8,187,0-16,7  ~@k   5,184,0-13,14 2,181~@k   # Use NTP servers from DHCP.10,0-180%9,1860%pool 192.168.10.10 iburst8,1840%# Please consider joining the pool (https://www.pool.ntp.org/join.html).7,0-120%# Use public servers from the pool.ntp.org project.6,18Top~@k   54,0-13,18 21~@k   ~@k   ~@k   ~@k   ^[  ^[  ::q
+# Generated by NetworkManager
+search test.com example.com
+nameserver 8.8.8.8
+[root@server2 ~]# exit
+exit
+
+Script done on 2026-08-28 18:13:30+09:00 [COMMAND_EXIT_CODE="0"]
