@@ -1,0 +1,1002 @@
+Script started on 2026-08-31 15:42:35+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="181" LINES="51"]
+sidser
+[root@server2 ~]# cd /etc/iscsi/
+[root@server2 /etc/iscsi]# vi initiatorname.iscsi
+##
+## /etc/iscsi/initiatorname.iscsi#### Default iSCSI Initiatorname.
+##
+## DO NOT EDIT OR REMOVE THIS FILE!
+## If you remove this file, the iSCSI daemon will not start.
+## If you change the InitiatorName, existing access control lists
+## may reject this initiator. The InitiatorName must be unique
+## for each iSCSI initiator. Do NOT duplicate iSCSI InitiatorNames.
+InitiatorName=iqn.1994-05.com.redhat:server2
+~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    11,44All+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$pfff/ffff/f          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        i -- INSERT --11,44All0514^Z5-464   ^[  11,43Allu1 change; before #1  5 seconds ago211,44All11,44All~@k   1 #?\<InitiatorName\> InitiatorNameInitiatorName
+
+InitiatorName9,35Alli -- INSERT --9,35All^[  9,34All~@k   8~@k   9~@k   10,34~@k   1~@k   ~@k   1 i -- INSERT --11,1All#InitiatorName=iqn.1994-05.com.redhat:server22 InitiatorName=iqn.1994-05.com.redhat:server2InitiatorName=iqn.1994-05.com.redhat:server2246
+>4;m"initiatorname.iscsi"012L,6461B.written:server246^[  12,45All::wq
+>4;m[root@server2 /etc/iscsi]# vi initiatorname.iscsi
+##
+## /etc/iscsi/initiatorname.iscsi#### Default iSCSI Initiatorname.
+##
+## DO NOT EDIT OR REMOVE THIS FILE!
+## If you remove this file, the iSCSI daemon will not start.
+## If you change the InitiatorName, existing access control lists
+## may reject this initiator. The InitiatorName must be unique
+## for each iSCSI initiator. Do NOT duplicate iSCSI InitiatorNames.
+#InitiatorName=iqn.1994-05.com.redhat:server2
+InitiatorName=iqn.2014-06.com.example:server2
+~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    ~                                                                                                                                                                                    12,45All+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p:ffff/ffff          +q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38+q6b39+q6b3b+q4631^[  +q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037^[P0+r^[        +q6b50+q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[P0+r^[        //ooooooooInitiatrNameoooInitiatrNameooooInitiatrNameo
+InitiatrNameo2,22Allnooou remoonooonooo
+## foor. Doooooo7,43Allooooonooonooooooooooo2,22Allooou remoooooontrooo
+## foor. Doooooo12,45Allnnnnnnnnnnnnnnnnnn
+Inn2,16Allonnnnnnonnnnnnnnn
+#Inn
+Inn7,51Allnnnnnnonnnnnnnnnnn
+Inn2,16Allnnnnn will nnnnnnnnnn
+#Inn
+Inn12,45AllInitiatorNameInitiatorNameInitiatorName
+InitiatorNameInitiatorName 4~@k   3::nogh
+
+#InitiatorName
+>4;m"initiatorname.iscsi"^12L,:461B written
+>4;mi
+si
+● iscsi.service - Login and scanning of iSCSI devices
+     Loaded: loaded (/usr/lib/systemd/system/iscsi.service; indirect; preset: 0;1;38:5:185mdisabled)
+     Active: active (exited) since Mon 2026-08-31 15:46:11 KST; 6s ago
+ Invocation: ae9eb314c48b4b4b817f3edd465f36ec
+       Docs: man:iscsiadm(8)
+             man:iscsid(8)
+    Process: 5206 ExecStart=/usr/sbin/iscsiadm -m node --loginall=automatic -W (code=exited, status=21)
+   Main PID: 5206 (code=exited, status=21)
+   Mem peak: 1.5M
+        CPU: 4ms
+
+Aug 31 15:46:11 server2.example.com systemd[1]: Starting iscsi.service - Login and scanning of iSCSI devices...
+Aug 31 15:46:11 server2.example.com iscsiadm[5206]: iscsiadm: No records found
+Aug 31 15:46:11 server2.example.com systemd[1]: Finished iscsi.service - Login and scanning of iSCSI devices.
+id
+[root@server2 /etc/iscsi]# systemctl status iscsid
+● iscsi.service - Login and scanning of iSCSI devices
+     Loaded: loaded (/usr/lib/systemd/system/iscsi.service; indirect; preset: 0;1;38:5:185mdisabled)
+     Active: active (exited) since Mon 2026-08-31 15:46:11 KST; 26s ago
+ Invocation: ae9eb314c48b4b4b817f3edd465f36ec
+       Docs: man:iscsiadm(8)
+             man:iscsid(8)
+   Main PID: 5206 (code=exited, status=21)
+   Mem peak: 1.5M
+        CPU: 4ms
+
+Aug 31 15:46:11 server2.example.com systemd[1]: Starting iscsi.service - Login and scanning of iSCSI devices...
+Aug 31 15:46:11 server2.example.com iscsiadm[5206]: iscsiadm: No records found
+Aug 31 15:46:11 server2.example.com systemd[1]: Finished iscsi.service - Login and scanning of iSCSI devices.
+.s
+● iscsid.service - Open-iSCSI
+     Loaded: loaded (/usr/lib/systemd/system/iscsid.service; enabled; preset: 0;1;38:5:185mdisabled)
+     Active: active (running) since Mon 2026-08-31 15:32:43 KST; 14min ago
+ Invocation: af77546101a444d8b4d6ecc310c181ae
+TriggeredBy: ● iscsid.socket
+       Docs: man:iscsid(8)
+             man:iscsiuio(8)
+             man:iscsiadm(8)
+   Main PID: 1558 (iscsid)
+     Status: "Ready to process requests"
+      Tasks: 1 (limit: 48328)
+     Memory: 4.3M (peak: 4.8M)
+        CPU: 16ms
+     CGroup: /system.slice/iscsid.service
+             └─1558 /usr/sbin/iscsid -f
+
+Aug 31 15:32:43 server2.example.com systemd[1]: Starting iscsid.service - Open-iSCSI...
+Aug 31 15:32:43 server2.example.com systemd[1]: Started iscsid.service - Open-iSCSI.
+[root@server2 /etc/iscsi]# c
+csid.--no-pager -l
+● iscsid.service - Open-iSCSI
+     Loaded: loaded (/usr/lib/systemd/system/iscsid.service; enabled; preset: 0;1;38:5:185mdisabled)
+     Active: active (running) since Mon 2026-08-31 15:32:43 KST; 14min ago
+ Invocation: af77546101a444d8b4d6ecc310c181ae
+TriggeredBy: ● iscsid.socket
+       Docs: man:iscsid(8)
+             man:iscsiuio(8)
+             man:iscsiadm(8)
+   Main PID: 1558 (iscsid)
+     Status: "Ready to process requests"
+      Tasks: 1 (limit: 48328)
+     Memory: 4.3M (peak: 4.8M)
+        CPU: 16ms
+     CGroup: /system.slice/iscsid.service
+             └─1558 /usr/sbin/iscsid -f
+
+Aug 31 15:32:43 server2.example.com systemd[1]: Starting iscsid.service - Open-iSCSI...
+Aug 31 15:32:43 server2.example.com systemd[1]: Started iscsid.service - Open-iSCSI.
+iadm -m discovery
+iscsiadmr-mrdiscoveryc-t]sti-ps192.168.10.20very -t st -p 192.168.10.20
+192.168.10.20:3260,1 iqn.2014-06.com.example:server1
+[root@server2 /etc/iscsi]# iscsiadm -m discovery -t st -p 192.168.10.20
+192.168.10.20:3260 via sendtargets
+[root@server2 /etc/iscsi]# iscsiadm -m discovery -P 1
+SENDTARGETS:
+DiscoveryAddress: 192.168.10.20,3260
+Target: iqn.2014-06.com.example:server1
+        Portal: 192.168.10.20:3260,1
+                Iface Name: default
+iSNS:
+No targets found.
+STATIC:
+No targets found.
+FIRMWARE:
+No targets found.
+lsblkiadmm-mdnode -Tniqn.2014-06.com.example:server1 -p2192.168.10.20 -l
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+└─nvme0n2p1 259:5    0 1022M  0 part
+nvme0n3     259:6    0    1G  0 disk
+└─nvme0n3p1 259:7    0 1022M  0 part
+nvme0n4     259:8    0    1G  0 disk
+└─nvme0n4p1 259:9    0 1022M  0 part
+[iscsiadmv-m2nodec-Tsiqn.2014-06.com.example:server12-p4192.168.10.20l-lserver1 -p 192.168.10.20 -l
+iscsiadm: Could not login to [iface: default, target: iqn.2014-06.com.example:server1, portal: 192.168.10.20,3260].
+iscsiadm: initiator reported error (24 - iSCSI login failed due to authorization failure)
+iscsiadm: Could not log into all portals
+iscsiadmr-mrnodet-Tiiqn.2014-06.com.example:server12-p4192.168.10.20l-lserver1 -p 192.168.10.20 -l
+iscsiadm: Could not login to [iface: default, target: iqn.2014-06.com.example:server1, portal: 192.168.10.20,3260].
+iscsiadm: initiator reported error (24 - iSCSI login failed due to authorization failure)
+iscsiadm: Could not log into all portals
+[root@server2 /etc/iscsi]# systemctl restart iscsid
+[root@server2 /etc/iscsi]# iscsiadml-menodet-Tsiqn.2014-06.com.example:server1 -p 192.168.10.20 -l
+Login to [iface: default, target: iqn.2014-06.com.example:server1, portal: 192.168.10.20,3260] successful.
+siadm -m mode
+iscsiadm: mode mode is unkonwn/unsupported
+[root@server2 /etc/iscsi]# iscsiadm -m node
+192.168.10.20:3260,1 iqn.2014-06.com.example:server1
+[root@server2 /etc/iscsi]# iscsiadm -m node -P 1
+Target: iqn.2014-06.com.example:server1
+        Portal: 192.168.10.20:3260,1
+                Iface Name: default
+[root@server2 /etc/iscsi]# ls
+[root@server2 /etc/iscsi]#
+[root@server2 /etc/iscsi]# lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda           8:0    0  496M  0 disk
+sdb           8:16   0  523M  0 disk
+sdc           8:32   0  100M  0 disk
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+└─nvme0n2p1 259:5    0 1022M  0 part
+nvme0n3     259:6    0    1G  0 disk
+└─nvme0n3p1 259:7    0 1022M  0 part
+nvme0n4     259:8    0    1G  0 disk
+└─nvme0n4p1 259:9    0 1022M  0 part
+ grep 'Attached SCSI' /var/log/messages | grep 'Aug 31'
+Aug 31 15:32:40 server2 kernel: sr 3:0:0:0: Attached scsi generic sg0 type 5
+Aug 31 15:58:04 server2 kernel: sd 32:0:0:0: Attached scsi generic sg1 type 0
+Aug 31 15:58:04 server2 kernel: sd 32:0:0:1: Attached scsi generic sg2 type 0
+Aug 31 15:58:04 server2 kernel: sd 32:0:0:2: Attached scsi generic sg3 type 0
+Aug 31 15:58:04 server2 kernel: sd 32:0:0:0: [sda] Attached SCSI disk
+Aug 31 15:58:04 server2 kernel: sd 32:0:0:1: [sdb] Attached SCSI disk
+Aug 31 15:58:04 server2 kernel: sd 32:0:0:2: [sdc] Attached SCSI disk
+iadm -m session
+tcp: [3] 192.168.10.20:3260,1 iqn.2014-06.com.example:server1 (non-flash)
+[root@server2 /etc/iscsi]# iscsiadm -m session  -P 1
+Target: iqn.2014-06.com.example:server1 (non-flash)
+        Current Portal: 192.168.10.20:3260,1
+        Persistent Portal: 192.168.10.20:3260,1
+                **********
+                Interface:
+                **********
+                Iface Name: default
+                Iface Transport: tcp
+                Iface Initiatorname: iqn.2014-06.com.example:server2
+                Iface IPaddress: 192.168.10.30
+                Iface HWaddress: default
+                Iface Netdev: default
+                SID: 3
+                iSCSI Connection State: LOGGED IN
+                iSCSI Session State: LOGGED_IN
+                Internal iscsid Session State: NO CHANGE
+[root@server2 /etc/iscsi]# iscsiadm -m session  -P 2
+Target: iqn.2014-06.com.example:server1 (non-flash)
+        Current Portal: 192.168.10.20:3260,1
+        Persistent Portal: 192.168.10.20:3260,1
+                **********
+                Interface:
+                **********
+                Iface Name: default
+                Iface Transport: tcp
+                Iface Initiatorname: iqn.2014-06.com.example:server2
+                Iface IPaddress: 192.168.10.30
+                Iface HWaddress: default
+                Iface Netdev: default
+                SID: 3
+                iSCSI Connection State: LOGGED IN
+                iSCSI Session State: LOGGED_IN
+                Internal iscsid Session State: NO CHANGE
+                *********
+                Timeouts:
+                *********
+                Recovery Timeout: 120
+                Target Reset Timeout: 30
+                LUN Reset Timeout: 30
+                Abort Timeout: 15
+                *****
+                CHAP:
+                *****
+                username: <empty>
+                password: ********
+                username_in: <empty>
+                password_in: ********
+                ************************
+                Negotiated iSCSI params:
+                ************************
+                HeaderDigest: None
+                DataDigest: None
+                MaxRecvDataSegmentLength: 262144
+                MaxXmitDataSegmentLength: 262144
+                FirstBurstLength: 65536
+                MaxBurstLength: 262144
+                ImmediateData: Yes
+                InitialR2T: Yes
+                MaxOutstandingR2T: 1
+[root@server2 /etc/iscsi]# iscsiadm -m session  -P 3
+iSCSI Transport Class version 2.0-870
+version 6.2.1.11
+Target: iqn.2014-06.com.example:server1 (non-flash)
+        Current Portal: 192.168.10.20:3260,1
+        Persistent Portal: 192.168.10.20:3260,1
+                **********
+                Interface:
+                **********
+                Iface Name: default
+                Iface Transport: tcp
+                Iface Initiatorname: iqn.2014-06.com.example:server2
+                Iface IPaddress: 192.168.10.30
+                Iface HWaddress: default
+                Iface Netdev: default
+                SID: 3
+                iSCSI Connection State: LOGGED IN
+                iSCSI Session State: LOGGED_IN
+                Internal iscsid Session State: NO CHANGE
+                *********
+                Timeouts:
+                *********
+                Recovery Timeout: 120
+                Target Reset Timeout: 30
+                LUN Reset Timeout: 30
+                Abort Timeout: 15
+                *****
+                CHAP:
+                *****
+                username: <empty>
+                password: ********
+                username_in: <empty>
+                password_in: ********
+                ************************
+                Negotiated iSCSI params:
+                ************************
+                HeaderDigest: None
+                DataDigest: None
+                MaxRecvDataSegmentLength: 262144
+                MaxXmitDataSegmentLength: 262144
+                FirstBurstLength: 65536
+                MaxBurstLength: 262144
+                ImmediateData: Yes
+                InitialR2T: Yes
+                MaxOutstandingR2T: 1
+                ************************
+                Attached SCSI devices:
+                ************************
+                Host Number: 32 State: running
+                scsi32 Channel 00 Id 0 Lun: 0
+                        Attached scsi disk sda          State: running
+                scsi32 Channel 00 Id 0 Lun: 1
+                        Attached scsi disk sdb          State: running
+                scsi32 Channel 00 Id 0 Lun: 2
+                        Attached scsi disk sdc          State: running
+[root@server2 /etc/iscsi]#  tree /var/lib/iscsi
+/var/lib/iscsi
+├── ifaces
+├── isns
+├── nodes
+│   └── iqn.2014-06.com.example:server1
+│       └── 192.168.10.20,3260,1
+│           └── default
+├── send_targets
+│   └── 192.168.10.20,3260
+│       ├── iqn.2014-06.com.example:server1,192.168.10.20,3260,1,default -> /var/lib/iscsi/nodes/iqn.2014-06.com.example:server1/192.168.10.20,3260,1
+│       └── st_config
+├── slp
+└── static
+
+11 directories, 2 files
+[root@server2 /etc/iscsi]# lesss/var/lib/iscsi/nodes/iqn.2014-06.com.example\:server1/192.168.10.20\,3260\,1/default
+# BEGIN RECORD 6.2.1.11
+node.name = iqn.2014-06.com.example:server1
+node.tpgt = 1
+node.startup = automatic
+node.leading_login = No
+iface.iscsi_ifacename = default
+iface.prefix_len = 0
+iface.transport_name = tcp
+iface.vlan_id = 0
+iface.vlan_priority = 0
+iface.iface_num = 0
+iface.mtu = 0
+iface.port = 0
+iface.tos = 0
+iface.ttl = 0
+iface.tcp_wsf = 0
+iface.tcp_timer_scale = 0
+iface.def_task_mgmt_timeout = 0
+iface.erl = 0
+iface.max_receive_data_len = 0
+iface.first_burst_len = 0
+iface.max_outstanding_r2t = 0
+iface.max_burst_len = 0
+node.discovery_address = 192.168.10.20
+node.discovery_port = 3260
+node.discovery_type = send_targets
+node.session.initial_cmdsn = 0
+node.session.initial_login_retry_max = 8
+node.session.xmit_thread_priority = 0
+node.session.cmds_max = 128
+node.session.queue_depth = 32
+node.session.nr_sessions = 1
+node.session.auth.authmethod = None
+node.session.auth.chap_algs = MD5
+node.session.timeo.replacement_timeout = 120
+node.session.err_timeo.abort_timeout = 15
+node.session.err_timeo.lu_reset_timeout = 30
+node.session.err_timeo.tgt_reset_timeout = 30
+node.session.err_timeo.host_reset_timeout = 60
+node.session.iscsi.FastAbort = Yes
+node.session.iscsi.InitialR2T = No
+node.session.iscsi.ImmediateData = Yes
+node.session.iscsi.FirstBurstLength = 262144
+node.session.iscsi.MaxBurstLength = 16776192
+node.session.iscsi.DefaultTime2Retain = 0
+node.session.iscsi.DefaultTime2Wait = 2
+node.session.iscsi.MaxConnections = 1
+node.session.iscsi.MaxOutstandingR2T = 1
+node.session.iscsi.ERL = 0
+node.session.scan = auto
+node.session.reopen_maxn=2014-06.com.example:server1/192.168.10.20,3260,1/default
+node.session.conn_reopen_log_freq = 1
+node.conn[0].address = 192.168.10.20
+node.conn[0].port = 3260
+node.conn[0].startup = manual
+node.conn[0].tcp.window_size = 524288
+node.conn[0].tcp.type_of_service = 0
+node.conn[0].timeo.logout_timeout = 15
+node.conn[0].timeo.login_timeout = 15
+node.conn[0].timeo.auth_timeout = 45
+node.conn[0].timeo.noop_out_interval = 5
+node.conn[0].timeo.noop_out_timeout = 5
+node.conn[0].iscsi.MaxXmitDataSegmentLength = 0
+node.conn[0].iscsi.MaxRecvDataSegmentLength = 262144
+node.conn[0].iscsi.HeaderDigest = None
+node.conn[0].iscsi.IFMarker = No
+node.conn[0].iscsi.OFMarker = No
+#EENDBRECORD
+iface.def_task_mgmt_timeout = 0
+iface.tcp_timer_scale = 0
+iface.tcp_wsf = 0
+iface.ttl = 0
+iface.tos = 0
+iface.port = 0
+iface.mtu = 0
+iface.iface_num = 0
+iface.vlan_priority = 0
+iface.vlan_id = 0
+iface.transport_name = tcp
+iface.prefix_len = 0
+iface.iscsi_ifacename = default
+node.leading_login = No
+node.startup = automatic
+node.tpgt = 1
+node.name = iqn.2014-06.com.example:server1
+#EBEGIN RECORD 6.2.1.11
+node.session.reopen_max = 0
+node.session.conn_reopen_log_freq = 1
+node.conn[0].address = 192.168.10.20
+node.conn[0].port = 3260
+node.conn[0].startup = manual
+node.conn[0].tcp.window_size = 524288
+node.conn[0].tcp.type_of_service = 0
+node.conn[0].timeo.logout_timeout = 15
+node.conn[0].timeo.login_timeout = 15
+node.conn[0].timeo.auth_timeout = 45
+node.conn[0].timeo.noop_out_interval = 5
+node.conn[0].timeo.noop_out_timeout = 5
+node.conn[0].iscsi.MaxXmitDataSegmentLength = 0
+node.conn[0].iscsi.MaxRecvDataSegmentLength = 262144
+node.conn[0].iscsi.HeaderDigest = None
+node.conn[0].iscsi.IFMarker = No
+node.conn[0].iscsi.OFMarker = No
+#EENDBRECORD
+iface.def_task_mgmt_timeout = 0
+iface.tcp_timer_scale = 0
+iface.tcp_wsf = 0
+iface.ttl = 0
+iface.tos = 0
+iface.port = 0
+iface.mtu = 0
+iface.iface_num = 0
+iface.vlan_priority = 0
+iface.vlan_id = 0
+iface.transport_name = tcp
+iface.prefix_len = 0
+iface.iscsi_ifacename = default
+node.leading_login = No
+node.startup = automatic
+node.tpgt = 1
+node.name = iqn.2014-06.com.example:server1
+#EBEGIN RECORD 6.2.1.11
+node.session.reopen_max = 0
+node.session.conn_reopen_log_freq = 1
+node.conn[0].address = 192.168.10.20
+node.conn[0].port = 3260
+node.conn[0].startup = manual
+node.conn[0].tcp.window_size = 524288
+node.conn[0].tcp.type_of_service = 0
+node.conn[0].timeo.logout_timeout = 15
+node.conn[0].timeo.login_timeout = 15
+node.conn[0].timeo.auth_timeout = 45
+node.conn[0].timeo.noop_out_interval = 5
+node.conn[0].timeo.noop_out_timeout = 5
+node.conn[0].iscsi.MaxXmitDataSegmentLength = 0
+node.conn[0].iscsi.MaxRecvDataSegmentLength = 262144
+node.conn[0].iscsi.HeaderDigest = None
+node.conn[0].iscsi.IFMarker = No
+node.conn[0].iscsi.OFMarker = No
+#EENDBRECORD
+[root@server2 /etc/iscsi]# df
+Filesystem          Type      Size  Used Avail Use% Mounted on
+/dev/mapper/cs-root xfs        35G   13G   23G  36% /
+devtmpfs            devtmpfs  3.8G     0  3.8G   0% /dev
+tmpfs               tmpfs     3.8G   84K  3.8G   1% /dev/shm
+efivarfs            efivarfs  256K   76K  176K  31% /sys/firmware/efi/efivars
+tmpfs               tmpfs     1.5G   13M  1.5G   1% /run
+tmpfs               tmpfs     1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+/dev/nvme0n1p2      xfs       2.0G  400M  1.6G  21% /boot
+/dev/mapper/cs-home xfs        17G  369M   17G   3% /home
+/dev/nvme0n1p1      vfat      599M  8.9M  590M   2% /boot/efi
+tmpfs               tmpfs     765M  160K  765M   1% /run/user/0
+[root@server2 /etc/iscsi]# c
+iscsiadmt-mcnodeS-TIiqn.2014-06.com.example:server1s-p'192.168.10.20.-uample\:server1/192.168.10.20\,3260\,1/default
+Logging out of session [sid: 3, target: iqn.2014-06.com.example:server1, portal: 192.168.10.20,3260]
+Logout of [sid: 3, target: iqn.2014-06.com.example:server1, portal: 192.168.10.20,3260] successful.
+[root@server2 /etc/iscsi]# lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+└─nvme0n2p1 259:5    0 1022M  0 part
+nvme0n3     259:6    0    1G  0 disk
+└─nvme0n3p1 259:7    0 1022M  0 part
+nvme0n4     259:8    0    1G  0 disk
+└─nvme0n4p1 259:9    0 1022M  0 part
+[root@server2 /etc/iscsi]# lsblk -df
+NAME    FSTYPE FSVER LABEL UUID FSAVAIL FSUSE% MOUNTPOINTS
+sr0
+nvme0n1
+nvme0n2
+nvme0n3
+nvme0n4
+[root@server2 /etc/iscsi]# alias
+alias 000='script /test/scriptfile1.txt'
+alias DNS='cd /var/named'
+alias MAIL='cd /etc/postfix'
+alias WEB='cd /etc/httpd/conf'
+alias WWW='cd /var/www/html'
+alias bunzip2='bunzip2 -v'
+alias bzip2='bzip2 -v'
+alias c='clear'
+alias celar='clear'
+alias chrome='/usr/bin/google-chrome --no-sandbox'
+alias clea='clear'
+alias cp='cp -i'
+alias df='df -hT'
+alias dnslog='tail -f /var/log/messages'
+alias egrep='grep -E --color=auto'
+alias fgrep='grep -F --color=auto'
+alias fwadd='firewall-cmd --permanent'
+alias fwcmd='firewall-cmd'
+alias fwlist='firewall-cmd --list-all'
+alias fwreload='firewall-cmd --reload'
+alias grep='grep --color=auto -i'
+alias httpd.conf='vi /etc/httpd/conf/httpd.conf'
+alias l.='ls -d .* --color=auto'
+alias ll='ls -l --color=auto'
+alias ls='ls --color=auto -h'
+alias maillog='tail -f /var/log/maillog'
+alias main.cf='vi /etc/postfix/main.cf'
+alias mv='mv -i'
+alias named.conf='vi /etc/named.conf'
+alias named.rfc1912.zones='vi /etc/named.rfc1912.zones'
+alias rm='rm -i'
+alias vi='/usr/bin/vim'
+alias welog='tail -f /etc/httpd/logs/error_log'
+alias which='(alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot'
+alias wlog='tail -f /etc/httpd/logs/access_log'
+alias xzegrep='xzegrep --color=auto'
+alias xzfgrep='xzfgrep --color=auto'
+alias xzgrep='xzgrep --color=auto'
+alias zegrep='zegrep --color=auto'
+alias zfgrep='zfgrep --color=auto'
+alias zgrep='zgrep --color=auto'
+[root@server2 /etc/iscsi]# c
+iadm -m session
+iscsiadm: No active sessions.
+[root@server2 /etc/iscsi]# iscsiadm -m nodeion
+192.168.10.20:3260,1 iqn.2014-06.com.example:server1
+lsblk@server2 /etc/iscsi]# iiscsiadmf-m3nodes-Tniqn.2014-06.com.example:server1 -p 192.168.10.20 -u
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+└─nvme0n2p1 259:5    0 1022M  0 part
+nvme0n3     259:6    0    1G  0 disk
+└─nvme0n3p1 259:7    0 1022M  0 part
+nvme0n4     259:8    0    1G  0 disk
+└─nvme0n4p1 259:9    0 1022M  0 part
+tree /var/lib/iscsi/
+ifaces/       isns/         nodes/        send_targets/ slp/          static/
+[root@server2 /etc/iscsi]# tree /var/lib/iscsi/
+/var/lib/iscsi
+├── ifaces
+├── isns
+├── nodes
+│   └── iqn.2014-06.com.example:server1
+│       └── 192.168.10.20,3260,1
+│           └── default
+├── send_targets
+│   └── 192.168.10.20,3260
+│       ├── iqn.2014-06.com.example:server1,192.168.10.20,3260,1,default -> /var/lib/iscsi/nodes/iqn.2014-06.com.example:server1/192.168.10.20,3260,1
+│       └── st_config
+├── slp
+└── static
+
+11 directories, 2 files
+iscsiadm -m node
+192.168.10.20:3260,1 iqn.2014-06.com.example:server1
+-Tciqn.2014-06.com.example:server1m-px192.168.10.20 -o delete8.10.20 -o delete
+[root@server2 /etc/iscsi]# tree /var/lib/iscsi/
+/var/lib/iscsi/
+├── ifaces
+├── isns
+├── nodes
+├── send_targets
+│   └── 192.168.10.20,3260
+│       └── st_config
+├── slp
+└── static
+
+8 directories, 1 file
+iscsiadmr-mrdiscoveryc-t]sti-ps192.168.10.20:3260-t st -p 192.168.10.20:3260
+192.168.10.20:3260,1 iqn.2014-06.com.example:server1
+[root@server2 /etc/iscsi]# tree /var/lib/iscsi
+/var/lib/iscsi
+├── ifaces
+├── isns
+├── nodes
+│   └── iqn.2014-06.com.example:server1
+│       └── 192.168.10.20,3260,1
+│           └── default
+├── send_targets
+│   └── 192.168.10.20,3260
+│       ├── iqn.2014-06.com.example:server1,192.168.10.20,3260,1,default -> /var/lib/iscsi/nodes/iqn.2014-06.com.example:server1/192.168.10.20,3260,1
+│       └── st_config
+├── slp
+└── static
+
+11 directories, 2 files
+iscsiadmr-mrnodet-Tiiqn.2014-06.com.example:server12-p4192.168.10.20l-lserver1 -p 192.168.10.20 -l
+Login to [iface: default, target: iqn.2014-06.com.example:server1, portal: 192.168.10.20,3260] successful.
+[root@server2 /etc/iscsi]# blkid
+/dev/mapper/cs-root: UUID="f9655feb-8162-4827-b992-db69f379272e" BLOCK_SIZE="512" TYPE="xfs"
+/dev/nvme0n1p3: UUID="L97X7H-L81f-uabu-MHok-TCMj-MUnf-xcxHFV" TYPE="LVM2_member" PARTUUID="1f7fd631-9a96-49d6-9c46-ed834ba10035"
+/dev/mapper/cs-swap: UUID="dae72d55-87fd-48a8-a135-4e117be78d2f" TYPE="swap"
+/dev/nvme0n1p1: UUID="92D7-2447" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="3c984596-ed0c-4d81-b63f-695dd6098e97"
+/dev/nvme0n1p2: UUID="5fbb955b-a34d-4ac7-9f0b-67103b9c5119" BLOCK_SIZE="512" TYPE="xfs" PARTUUID="07c2f4b7-4584-4abc-a7d2-bc72fd70dec7"
+/dev/nvme0n4p1: UUID="q3q7GN-LHEl-p9vW-5s7b-cF2f-yAna-G68rje" TYPE="LVM2_member" PARTLABEL="primary" PARTUUID="2bf77659-fc43-469c-a252-7b2aa62c624e"
+/dev/mapper/cs-home: UUID="960c242e-6c55-482a-ad4e-683ceabf59fb" BLOCK_SIZE="512" TYPE="xfs"
+/dev/nvme0n2p1: UUID="670d4294-1815-4c9b-ad2f-bf5fb66e9111" BLOCK_SIZE="512" TYPE="xfs" PARTLABEL="primary" PARTUUID="b9fceced-4530-4772-9198-3ccff606d02f"
+/dev/nvme0n3p1: UUID="71f7df34-6301-4af5-944d-b9377a1629a4" BLOCK_SIZE="1024" TYPE="ext4" PARTLABEL="primary" PARTUUID="1b12d504-ca0d-4507-a06e-3ef67e382a32"
+parted -s /dev/sdb mklabel gpt mkpart primary 1MiB 100%
+[root@server2 /etc/iscsi]# parted -s /dev/sdc mklabel gtp mkpart primary 1MiB 100%
+parted: invalid token: gtp
+Error: Expecting a disk label type.
+[root@server2 /etc/iscsi]# parted -s /dev/sdc mklabel g1@p1@tart primary 1MiB 100%
+Warning: The resulting partition is not properly aligned for best performance: 2048s % 16384s != 0s
+[root@server2 /etc/iscsi]# lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda           8:0    0  496M  0 disk
+sdb           8:16   0  523M  0 disk
+└─sdb1        8:17   0  521M  0 part
+sdc           8:32   0  100M  0 disk
+└─sdc1        8:33   0   99M  0 part
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+└─nvme0n2p1 259:5    0 1022M  0 part
+nvme0n3     259:6    0    1G  0 disk
+└─nvme0n3p1 259:7    0 1022M  0 part
+nvme0n4     259:8    0    1G  0 disk
+└─nvme0n4p1 259:9    0 1022M  0 part
+[root@server2 /etc/iscsi]# parted -l
+Error: /dev/sda: unrecognised disk label
+Model: LIO-ORG disk1 (scsi)
+Disk /dev/sda: 520MB
+Sector size (logical/physical): 512B/512B
+Partition Table: unknown
+Disk Flags:
+
+Model: LIO-ORG disk2 (scsi)
+Disk /dev/sdb: 548MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End    Size   File system  Name     Flags
+ 1      1049kB  547MB  546MB               primary
+
+
+Model: LIO-ORG disk3 (scsi)
+Disk /dev/sdc: 105MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End    Size   File system  Name     Flags
+ 1      1049kB  105MB  104MB               primary
+
+
+Model: VMware Virtual NVMe Disk (nvme)
+Disk /dev/nvme0n1: 64.4GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size    File system  Name                  Flags
+ 1      1049kB  630MB   629MB   fat32        EFI System Partition  boot, esp
+ 2      630MB   2778MB  2147MB  xfs                                bls_boot
+ 3      2778MB  64.4GB  61.6GB                                     lvm
+
+
+Model: VMware Virtual NVMe Disk (nvme)
+Disk /dev/nvme0n4: 1074MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size    File system  Name     Flags
+ 1      1049kB  1073MB  1072MB               primary
+
+
+Model: VMware Virtual NVMe Disk (nvme)
+Disk /dev/nvme0n2: 1074MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size    File system  Name     Flags
+ 1      1049kB  1073MB  1072MB  xfs          primary  raid
+
+
+Model: VMware Virtual NVMe Disk (nvme)
+Disk /dev/nvme0n3: 1074MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size    File system  Name     Flags
+ 1      1049kB  1073MB  1072MB  ext4         primary  raid
+
+
+[root@server2 /etc/iscsi]# [root@server2 /etc/iscsi]# udevadm settle
+.xfs /dev/sdb1
+meta-data=/dev/sdb1              isize=512    agcount=4, agsize=33344 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=1
+         =                       reflink=1    bigtime=1 inobtcount=1 nrext64=1
+         =                       exchange=0   metadir=0
+data     =                       bsize=4096   blocks=133376, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1, parent=0
+log      =internal log           bsize=4096   blocks=16384, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+         =                       rgcount=0    rgsize=0 extents
+         =                       zoned=0      start=0 reserved=0
+[root@server2 /etc/iscsi]# mkfs.ext4//dev/sdc1
+mke2fs 1.47.1 (20-May-2024)
+Creating filesystem with 101356 1k blocks and 25376 inodes
+Filesystem UUID: fc9a579c-9f2f-4e7b-b68d-0d433a9b3b2b
+Superblock backups stored on blocks:
+        8193, 24577, 40961, 57345, 73729
+
+Allocating group tables: done3
+Writing inode tables: done3
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information: done3
+
+[root@server2 /etc/iscsi]# lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda           8:0    0  496M  0 disk
+sdb           8:16   0  523M  0 disk
+└─sdb1        8:17   0  521M  0 part
+sdc           8:32   0  100M  0 disk
+└─sdc1        8:33   0   99M  0 part
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+└─nvme0n2p1 259:11   0 1022M  0 part
+nvme0n3     259:6    0    1G  0 disk
+└─nvme0n3p1 259:12   0 1022M  0 part
+nvme0n4     259:8    0    1G  0 disk
+└─nvme0n4p1 259:10   0 1022M  0 part
+[root@server2 /etc/iscsi]# parted -s /dev/sdaemklabel gpt mkpart primary 1MiB 100%
+1
+mke2fs 1.47.1 (20-May-2024)
+Creating filesystem with 505856 1k blocks and 126480 inodes
+Filesystem UUID: 6417db0f-9eae-462e-bbbd-d5dc38b3cc69
+Superblock backups stored on blocks:
+        8193, 24577, 40961, 57345, 73729, 204801, 221185, 401409
+
+Allocating group tables: done2
+Writing inode tables: done2
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information: done2
+
+[root@server2 /etc/iscsi]# blkid
+/dev/mapper/cs-root: UUID="f9655feb-8162-4827-b992-db69f379272e" BLOCK_SIZE="512" TYPE="xfs"
+/dev/nvme0n1p3: UUID="L97X7H-L81f-uabu-MHok-TCMj-MUnf-xcxHFV" TYPE="LVM2_member" PARTUUID="1f7fd631-9a96-49d6-9c46-ed834ba10035"
+/dev/mapper/cs-swap: UUID="dae72d55-87fd-48a8-a135-4e117be78d2f" TYPE="swap"
+/dev/nvme0n1p1: UUID="92D7-2447" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="3c984596-ed0c-4d81-b63f-695dd6098e97"
+/dev/nvme0n1p2: UUID="5fbb955b-a34d-4ac7-9f0b-67103b9c5119" BLOCK_SIZE="512" TYPE="xfs" PARTUUID="07c2f4b7-4584-4abc-a7d2-bc72fd70dec7"
+/dev/nvme0n4p1: UUID="q3q7GN-LHEl-p9vW-5s7b-cF2f-yAna-G68rje" TYPE="LVM2_member" PARTLABEL="primary" PARTUUID="2bf77659-fc43-469c-a252-7b2aa62c624e"
+/dev/mapper/cs-home: UUID="960c242e-6c55-482a-ad4e-683ceabf59fb" BLOCK_SIZE="512" TYPE="xfs"
+/dev/nvme0n2p1: UUID="670d4294-1815-4c9b-ad2f-bf5fb66e9111" BLOCK_SIZE="512" TYPE="xfs" PARTLABEL="primary" PARTUUID="b9fceced-4530-4772-9198-3ccff606d02f"
+/dev/nvme0n3p1: UUID="71f7df34-6301-4af5-944d-b9377a1629a4" BLOCK_SIZE="1024" TYPE="ext4" PARTLABEL="primary" PARTUUID="1b12d504-ca0d-4507-a06e-3ef67e382a32"
+/dev/sdb1: UUID="683a8b9c-f0be-4ba3-ac6b-cd80e2e69bbf" BLOCK_SIZE="512" TYPE="xfs" PARTLABEL="primary" PARTUUID="4e4d2d91-13eb-40fe-9302-75c5356ab1a7"
+/dev/sdc1: UUID="fc9a579c-9f2f-4e7b-b68d-0d433a9b3b2b" BLOCK_SIZE="1024" TYPE="ext4" PARTLABEL="primary" PARTUUID="165b6991-099c-4f78-bfa0-08002d4bf2d4"
+/dev/sda1: UUID="6417db0f-9eae-462e-bbbd-d5dc38b3cc69" BLOCK_SIZE="1024" TYPE="ext4" PARTLABEL="primary" PARTUUID="5fcdf0a1-bef7-4f4c-864a-7dce1664cdaa"
+[root@server2 /etc/iscsi]# 14@mkfs1@g1@p1@x1@f1@1@s
+mkfs.xfs: /dev/sda1 appears to contain an existing filesystem (ext4).
+mkfs.xfs: Use the -f option to force overwrite.
+[root@server2 /etc/iscsi]# 1413@1@e1@x1@t1@4b1sda1
+mke2fs 1.47.1 (20-May-2024)
+/dev/sdb1 contains a xfs file system
+Proceed anyway? (y,N) y
+Creating filesystem with 133376 4k blocks and 33360 inodes
+Filesystem UUID: 8d61a643-9d5e-4a0d-97ea-e41480e368a6
+Superblock backups stored on blocks:
+        32768, 98304
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+[root@server2 /etc/iscsi]# blkid
+/dev/mapper/cs-root: UUID="f9655feb-8162-4827-b992-db69f379272e" BLOCK_SIZE="512" TYPE="xfs"
+/dev/nvme0n1p3: UUID="L97X7H-L81f-uabu-MHok-TCMj-MUnf-xcxHFV" TYPE="LVM2_member" PARTUUID="1f7fd631-9a96-49d6-9c46-ed834ba10035"
+/dev/mapper/cs-swap: UUID="dae72d55-87fd-48a8-a135-4e117be78d2f" TYPE="swap"
+/dev/nvme0n1p1: UUID="92D7-2447" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="3c984596-ed0c-4d81-b63f-695dd6098e97"
+/dev/nvme0n1p2: UUID="5fbb955b-a34d-4ac7-9f0b-67103b9c5119" BLOCK_SIZE="512" TYPE="xfs" PARTUUID="07c2f4b7-4584-4abc-a7d2-bc72fd70dec7"
+/dev/nvme0n4p1: UUID="q3q7GN-LHEl-p9vW-5s7b-cF2f-yAna-G68rje" TYPE="LVM2_member" PARTLABEL="primary" PARTUUID="2bf77659-fc43-469c-a252-7b2aa62c624e"
+/dev/mapper/cs-home: UUID="960c242e-6c55-482a-ad4e-683ceabf59fb" BLOCK_SIZE="512" TYPE="xfs"
+/dev/nvme0n2p1: UUID="670d4294-1815-4c9b-ad2f-bf5fb66e9111" BLOCK_SIZE="512" TYPE="xfs" PARTLABEL="primary" PARTUUID="b9fceced-4530-4772-9198-3ccff606d02f"
+/dev/nvme0n3p1: UUID="71f7df34-6301-4af5-944d-b9377a1629a4" BLOCK_SIZE="1024" TYPE="ext4" PARTLABEL="primary" PARTUUID="1b12d504-ca0d-4507-a06e-3ef67e382a32"
+/dev/sdb1: UUID="8d61a643-9d5e-4a0d-97ea-e41480e368a6" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="primary" PARTUUID="4e4d2d91-13eb-40fe-9302-75c5356ab1a7"
+/dev/sdc1: UUID="fc9a579c-9f2f-4e7b-b68d-0d433a9b3b2b" BLOCK_SIZE="1024" TYPE="ext4" PARTLABEL="primary" PARTUUID="165b6991-099c-4f78-bfa0-08002d4bf2d4"
+/dev/sda1: UUID="6417db0f-9eae-462e-bbbd-d5dc38b3cc69" BLOCK_SIZE="1024" TYPE="ext4" PARTLABEL="primary" PARTUUID="5fcdf0a1-bef7-4f4c-864a-7dce1664cdaa"
+[root@server2 /etc/iscsi]# mkfs.xfs /dev/sda1
+mkfs.xfs: /dev/sda1 appears to contain an existing filesystem (ext4).
+mkfs.xfs: Use the -f option to force overwrite.
+[root@server2 /etc/iscsi]# mkfs.xfs-f//dev/sda1
+meta-data=/dev/sda1              isize=512    agcount=4, agsize=31616 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=1
+         =                       reflink=1    bigtime=1 inobtcount=1 nrext64=1
+         =                       exchange=0   metadir=0
+data     =                       bsize=4096   blocks=126464, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1, parent=0
+log      =internal log           bsize=4096   blocks=16384, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+         =                       rgcount=0    rgsize=0 extents
+         =                       zoned=0      start=0 reserved=0
+[root@server2 /etc/iscsi]# blkid
+/dev/mapper/cs-root: UUID="f9655feb-8162-4827-b992-db69f379272e" BLOCK_SIZE="512" TYPE="xfs"
+/dev/nvme0n1p3: UUID="L97X7H-L81f-uabu-MHok-TCMj-MUnf-xcxHFV" TYPE="LVM2_member" PARTUUID="1f7fd631-9a96-49d6-9c46-ed834ba10035"
+/dev/mapper/cs-swap: UUID="dae72d55-87fd-48a8-a135-4e117be78d2f" TYPE="swap"
+/dev/nvme0n1p1: UUID="92D7-2447" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="3c984596-ed0c-4d81-b63f-695dd6098e97"
+/dev/nvme0n1p2: UUID="5fbb955b-a34d-4ac7-9f0b-67103b9c5119" BLOCK_SIZE="512" TYPE="xfs" PARTUUID="07c2f4b7-4584-4abc-a7d2-bc72fd70dec7"
+/dev/nvme0n4p1: UUID="q3q7GN-LHEl-p9vW-5s7b-cF2f-yAna-G68rje" TYPE="LVM2_member" PARTLABEL="primary" PARTUUID="2bf77659-fc43-469c-a252-7b2aa62c624e"
+/dev/mapper/cs-home: UUID="960c242e-6c55-482a-ad4e-683ceabf59fb" BLOCK_SIZE="512" TYPE="xfs"
+/dev/nvme0n2p1: UUID="670d4294-1815-4c9b-ad2f-bf5fb66e9111" BLOCK_SIZE="512" TYPE="xfs" PARTLABEL="primary" PARTUUID="b9fceced-4530-4772-9198-3ccff606d02f"
+/dev/nvme0n3p1: UUID="71f7df34-6301-4af5-944d-b9377a1629a4" BLOCK_SIZE="1024" TYPE="ext4" PARTLABEL="primary" PARTUUID="1b12d504-ca0d-4507-a06e-3ef67e382a32"
+/dev/sdb1: UUID="8d61a643-9d5e-4a0d-97ea-e41480e368a6" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="primary" PARTUUID="4e4d2d91-13eb-40fe-9302-75c5356ab1a7"
+/dev/sdc1: UUID="fc9a579c-9f2f-4e7b-b68d-0d433a9b3b2b" BLOCK_SIZE="1024" TYPE="ext4" PARTLABEL="primary" PARTUUID="165b6991-099c-4f78-bfa0-08002d4bf2d4"
+/dev/sda1: UUID="c88c7463-93ad-4f4e-a6dd-313c404fc3b1" BLOCK_SIZE="512" TYPE="xfs" PARTLABEL="primary" PARTUUID="5fcdf0a1-bef7-4f4c-864a-7dce1664cdaa"
+[root@server2 /etc/iscsi]# c
+[root@server2 /etc/iscsi]# lsblk -T
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda           8:0    0  496M  0 disk
+└─sda1        8:1    0  494M  0 part
+sdb           8:16   0  523M  0 disk
+└─sdb1        8:17   0  521M  0 part
+sdc           8:32   0  100M  0 disk
+└─sdc1        8:33   0   99M  0 part
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+└─nvme0n2p1 259:11   0 1022M  0 part
+nvme0n3     259:6    0    1G  0 disk
+└─nvme0n3p1 259:12   0 1022M  0 part
+nvme0n4     259:8    0    1G  0 disk
+└─nvme0n4p1 259:10   0 1022M  0 part
+[root@server2 /etc/iscsi]# lsblk -f
+NAME        FSTYPE      FSVER    LABEL UUID                                   FSAVAIL FSUSE% MOUNTPOINTS
+sda
+└─sda1      xfs                        c88c7463-93ad-4f4e-a6dd-313c404fc3b1
+sdb
+└─sdb1      ext4        1.0            8d61a643-9d5e-4a0d-97ea-e41480e368a6
+sdc
+└─sdc1      ext4        1.0            fc9a579c-9f2f-4e7b-b68d-0d433a9b3b2b
+sr0
+nvme0n1
+├─nvme0n1p1 vfat        FAT32          92D7-2447                               589.9M     1% /boot/efi
+├─nvme0n1p2 xfs                        5fbb955b-a34d-4ac7-9f0b-67103b9c5119      1.5G    20% /boot
+└─nvme0n1p3 LVM2_member LVM2 001       L97X7H-L81f-uabu-MHok-TCMj-MUnf-xcxHFV
+  ├─cs-root xfs                        f9655feb-8162-4827-b992-db69f379272e     22.3G    35% /
+  ├─cs-swap swap        1              dae72d55-87fd-48a8-a135-4e117be78d2f                  [SWAP]
+  └─cs-home xfs                        960c242e-6c55-482a-ad4e-683ceabf59fb     16.4G     2% /home
+nvme0n2
+└─nvme0n2p1 xfs                        670d4294-1815-4c9b-ad2f-bf5fb66e9111
+nvme0n3
+└─nvme0n3p1 ext4        1.0            71f7df34-6301-4af5-944d-b9377a1629a4
+nvme0n4
+└─nvme0n4p1 LVM2_member LVM2 001       q3q7GN-LHEl-p9vW-5s7b-cF2f-yAna-G68rje
+[root@server2 /etc/iscsi]# c
+[root@server2 /etc/iscsi]# lsblk -f
+NAME        FSTYPE      FSVER    LABEL UUID                                   FSAVAIL FSUSE% MOUNTPOINTS
+sda
+└─sda1      xfs                        c88c7463-93ad-4f4e-a6dd-313c404fc3b1
+sdb
+└─sdb1      ext4        1.0            8d61a643-9d5e-4a0d-97ea-e41480e368a6
+sdc
+└─sdc1      ext4        1.0            fc9a579c-9f2f-4e7b-b68d-0d433a9b3b2b
+sr0
+nvme0n1
+├─nvme0n1p1 vfat        FAT32          92D7-2447                               589.9M     1% /boot/efi
+├─nvme0n1p2 xfs                        5fbb955b-a34d-4ac7-9f0b-67103b9c5119      1.5G    20% /boot
+└─nvme0n1p3 LVM2_member LVM2 001       L97X7H-L81f-uabu-MHok-TCMj-MUnf-xcxHFV
+  ├─cs-root xfs                        f9655feb-8162-4827-b992-db69f379272e     22.3G    35% /
+  ├─cs-swap swap        1              dae72d55-87fd-48a8-a135-4e117be78d2f                  [SWAP]
+  └─cs-home xfs                        960c242e-6c55-482a-ad4e-683ceabf59fb     16.4G     2% /home
+nvme0n2
+└─nvme0n2p1 xfs                        670d4294-1815-4c9b-ad2f-bf5fb66e9111
+nvme0n3
+└─nvme0n3p1 ext4        1.0            71f7df34-6301-4af5-944d-b9377a1629a4
+nvme0n4
+└─nvme0n4p1 LVM2_member LVM2 001       q3q7GN-LHEl-p9vW-5s7b-cF2f-yAna-G68rje
+[root@server2 /etc/iscsi]#
+blkid
+/dev/mapper/cs-root: UUID="f9655feb-8162-4827-b992-db69f379272e" BLOCK_SIZE="512" TYPE="xfs"
+/dev/nvme0n1p3: UUID="L97X7H-L81f-uabu-MHok-TCMj-MUnf-xcxHFV" TYPE="LVM2_member" PARTUUID="1f7fd631-9a96-49d6-9c46-ed834ba10035"
+/dev/mapper/cs-swap: UUID="dae72d55-87fd-48a8-a135-4e117be78d2f" TYPE="swap"
+/dev/nvme0n1p1: UUID="92D7-2447" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="3c984596-ed0c-4d81-b63f-695dd6098e97"
+/dev/nvme0n1p2: UUID="5fbb955b-a34d-4ac7-9f0b-67103b9c5119" BLOCK_SIZE="512" TYPE="xfs" PARTUUID="07c2f4b7-4584-4abc-a7d2-bc72fd70dec7"
+/dev/nvme0n4p1: UUID="q3q7GN-LHEl-p9vW-5s7b-cF2f-yAna-G68rje" TYPE="LVM2_member" PARTLABEL="primary" PARTUUID="2bf77659-fc43-469c-a252-7b2aa62c624e"
+/dev/mapper/cs-home: UUID="960c242e-6c55-482a-ad4e-683ceabf59fb" BLOCK_SIZE="512" TYPE="xfs"
+/dev/nvme0n2p1: UUID="670d4294-1815-4c9b-ad2f-bf5fb66e9111" BLOCK_SIZE="512" TYPE="xfs" PARTLABEL="primary" PARTUUID="b9fceced-4530-4772-9198-3ccff606d02f"
+/dev/nvme0n3p1: UUID="71f7df34-6301-4af5-944d-b9377a1629a4" BLOCK_SIZE="1024" TYPE="ext4" PARTLABEL="primary" PARTUUID="1b12d504-ca0d-4507-a06e-3ef67e382a32"
+/dev/sdb1: UUID="8d61a643-9d5e-4a0d-97ea-e41480e368a6" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="primary" PARTUUID="4e4d2d91-13eb-40fe-9302-75c5356ab1a7"
+/dev/sdc1: UUID="fc9a579c-9f2f-4e7b-b68d-0d433a9b3b2b" BLOCK_SIZE="1024" TYPE="ext4" PARTLABEL="primary" PARTUUID="165b6991-099c-4f78-bfa0-08002d4bf2d4"
+/dev/sda1: UUID="c88c7463-93ad-4f4e-a6dd-313c404fc3b1" BLOCK_SIZE="512" TYPE="xfs" PARTLABEL="primary" PARTUUID="5fcdf0a1-bef7-4f4c-864a-7dce1664cdaa"
+[root@server2 /etc/iscsi]# lsblk -f
+NAME        FSTYPE      FSVER    LABEL UUID                                   FSAVAIL FSUSE% MOUNTPOINTS
+sda
+└─sda1      xfs                        c88c7463-93ad-4f4e-a6dd-313c404fc3b1
+sdb
+└─sdb1      ext4        1.0            8d61a643-9d5e-4a0d-97ea-e41480e368a6
+sdc
+└─sdc1      ext4        1.0            fc9a579c-9f2f-4e7b-b68d-0d433a9b3b2b
+sr0
+nvme0n1
+├─nvme0n1p1 vfat        FAT32          92D7-2447                               589.9M     1% /boot/efi
+├─nvme0n1p2 xfs                        5fbb955b-a34d-4ac7-9f0b-67103b9c5119      1.5G    20% /boot
+└─nvme0n1p3 LVM2_member LVM2 001       L97X7H-L81f-uabu-MHok-TCMj-MUnf-xcxHFV
+  ├─cs-root xfs                        f9655feb-8162-4827-b992-db69f379272e     22.3G    35% /
+  ├─cs-swap swap        1              dae72d55-87fd-48a8-a135-4e117be78d2f                  [SWAP]
+  └─cs-home xfs                        960c242e-6c55-482a-ad4e-683ceabf59fb     16.4G     2% /home
+nvme0n2
+└─nvme0n2p1 xfs                        670d4294-1815-4c9b-ad2f-bf5fb66e9111
+nvme0n3
+└─nvme0n3p1 ext4        1.0            71f7df34-6301-4af5-944d-b9377a1629a4
+nvme0n4
+└─nvme0n4p1 LVM2_member LVM2 001       q3q7GN-LHEl-p9vW-5s7b-cF2f-yAna-G68rje
+[root@server2 /etc/iscsi]# lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda           8:0    0  496M  0 disk
+└─sda1        8:1    0  494M  0 part
+sdb           8:16   0  523M  0 disk
+└─sdb1        8:17   0  521M  0 part
+sdc           8:32   0  100M  0 disk
+└─sdc1        8:33   0   99M  0 part
+sr0          11:0    1 1024M  0 rom
+nvme0n1     259:0    0   60G  0 disk
+├─nvme0n1p1 259:1    0  600M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    2G  0 part /boot
+└─nvme0n1p3 259:3    0 57.4G  0 part
+  ├─cs-root 253:0    0 34.5G  0 lvm  /
+  ├─cs-swap 253:1    0    6G  0 lvm  [SWAP]
+  └─cs-home 253:2    0 16.9G  0 lvm  /home
+nvme0n2     259:4    0    1G  0 disk
+└─nvme0n2p1 259:11   0 1022M  0 part
+nvme0n3     259:6    0    1G  0 disk
+└─nvme0n3p1 259:12   0 1022M  0 part
+nvme0n4     259:8    0    1G  0 disk
+└─nvme0n4p1 259:10   0 1022M  0 part
+ iertre
+initiatorname.iscsi  iscsid.conf
+[root@server2 /etc/iscsi]# history-| grep/partedr-s
+ 1030  parted -s /dev/sdb mklabel gpt mkpart primary 1MiB 100%
+ 1031  parted -s /dev/sdc mklabel gtp mkpart primary 1MiB 100%
+ 1032  parted -s /dev/sdc mklabel gpt mkpart primary 1MiB 100%
+ 1034  parted -l
+ 1039  parted -s /dev/sda mklabel gpt mkpart primary 1MiB 100%
+ 1056  history | grep parted -s
+[root@server2 /etc/iscsi]# exit
+exit
+
+Script done on 2026-08-31 16:47:53+09:00 [COMMAND_EXIT_CODE="0"]
