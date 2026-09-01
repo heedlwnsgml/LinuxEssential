@@ -1,0 +1,334 @@
+Script started on 2026-09-01 16:45:33+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="172" LINES="51"]
+[root@server1 ~]# c
+cd ~/podman/httpd-app/
+[root@server1 ~/podman/httpd-app]# podman ps -a
+CONTAINER ID  IMAGE                  COMMAND           CREATED         STATUS                     PORTS                 NAMES
+9662266e9b2c  localhost/myhttpd:1.0  httpd-foreground  30 minutes ago  Exited (0) 17 minutes ago  0.0.0.0:8081->80/tcp  web2
+s
+REPOSITORY                   TAG         IMAGE ID      CREATED         SIZE
+quay.io/heedlwnsgml/myimage  1.0         2221dd723052  48 minutes ago  120 MB
+quay.io/dlwnsgml/myimage     1.0         2221dd723052  48 minutes ago  120 MB
+localhost/myhttpd            1.0         2221dd723052  48 minutes ago  120 MB
+docker.io/library/httpd      latest      17aba4293f3b  7 days ago      120 MB
+[root@server1 ~/podman/httpd-app]# podman stop -a
+9662266e9b2c8b1c774e5e1301116381c1892a2c143fc2560b1be9aecf0aa460
+[root@server1 ~/podman/httpd-app]# podman rmo-a-a
+9662266e9b2c8b1c774e5e1301116381c1892a2c143fc2560b1be9aecf0aa460
+[root@server1 ~/podman/httpd-app]# podman ps -a
+CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+[root@server1 ~/podman/httpd-app]# podman rmi -a
+Untagged: docker.io/library/httpd:latest
+Untagged: quay.io/heedlwnsgml/myimage:1.0
+Untagged: quay.io/dlwnsgml/myimage:1.0
+Untagged: localhost/myhttpd:1.0
+Deleted: 2221dd7230520ae7284313322fea7585fbf4f45a9a89c6d200d03e3a06dde98b
+[root@server1 ~/podman/httpd-app]#
+[root@server1 ~/podman/httpd-app]#
+
+image   (Manage images)                                  images  (List images in local storage)                   import  (Import a tarball to create a filesystem image)
+[root@server1 ~/podman/httpd-app]# podman imagese
+REPOSITORY  TAG         IMAGE ID    CREATED     SIZE
+[root@server1 ~/podman/httpd-app]# c
+[root@server1 ~/podman/httpd-app]# useradd appdev
+[root@server1 ~/podman/httpd-app]# echo 'appdev:centos' | chpasswd
+[root@server1 ~/podman/httpd-app]# useradd test01
+[root@server1 ~/podman/httpd-app]# passwd test01
+New password:
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password:
+passwd: password updated successfully
+[root@server1 ~/podman/httpd-app]# cd
+[root@server1 ~]# find / -name '*.container'
+[root@server1 ~]# find / -"*.container"iner"
+[root@server1 ~]# useradd consvc
+[root@server1 ~]# echo 'consvc1@p1@a1@s1@s1@w1@dd
+nsvc@localhost
+The authenticity of host 'localhost (::1)' can't be established.
+ED25519 key fingerprint is SHA256:1bMkFk34LULVwr0CxxwoASCXwOmP5tYn0I1rehLQrOw.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:1: main
+    ~/.ssh/known_hosts:4: server2
+    ~/.ssh/known_hosts:5: server1
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'localhost' (ED25519) to the list of known hosts.
+consvc@localhost's password:
+
+1 device has a firmware upgrade available.
+Run `fwupdmgr get-upgrades` for more information.
+
+mkdirc-pe~/.config/containers/config/containers/
+consvc@server1:~$ /bin/cp /usr/share/containers/registries.conf.d/00-vendor.conf \
+/bin/cpn/usr/share/containers/registries.conf.d/00-vendor.conf \
+  ~/.config/containers/registries.conf
+consvc@server1:~$ vi ~/.config/containers/registries.conf
+>4;2m"~/.config/containers/registries.conf" 4L, 164B▽  zz0%m           >c# Default search registries for RHEL
+unqualified-search-registries = ["registry.access.redhat.com", "registry.redhat.io", "docker.io"]short-name-mode="enforcing"
+>4;m".config/containers/registries.conf" 4L,B112Btwritten1All3,0-1All^[  ^[  ::wq                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           ~                                                                                                                                                                           1,1All+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p+q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38^[P0    +q6b39+q6b3b+q4631+q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037+q6b50^[P   +q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[  ~@k   2~@@   97~@k   6~@k   5~@k   4~@k   3~@k   2~@k   1~@k   0~@k   89~@k   8~@k   7~@k   6~@k   5~@k   4~@k   3i -- INSERT --2,83All4"docker.io"]"docker.io"]1"docker."docker.io"]74"docker.io"]3 "docker.io"]65"docker.io""docker.io""docker.io"]58"docker."docker.io"]1"docker."docker.io"]44"docker.io"]3 "docker.io"]35"docker.io"]4"docker.io"]3,1 :21^[  3,0-1AllZ~@k    ::w
+podmannloginedocker.iopodman login docker.io
+Username: heedlwnsgml
+Password: Error: getting username and password: reading password: interrupted
+consvc@server1:~$ podman login docker.io
+Username: leejunhee021210
+Password:
+Login Succeeded!
+consvc@server1:~$ mkdir -p ~/podman/htdocs
+consvc@server1:~$ cd ~/podman/htdocs/
+consvc@server1:~/podman/htdocs$ ls
+consvc@server1:~/podman/htdocs$
+consvc@server1:~/podman/htdocs$
+consvc@server1:~/podman/htdocs$ cat << EOF > ~/podman/htdocs/index.html
+<pre>
+$(cowsay -f eyes LINUX)
+</pre>
+consvc@server1:~/podman/htdocs$ cat << EOF > ~/podman/htdocs/index.html
+<pre>
+$(cowsay -f eyes LINUX)
+</pre>
+EOF
+consvc@server1:~/podman/htdocs$ podman search httpd | head
+NAME                              DESCRIPTION
+docker.io/library/httpd           The Apache HTTP Server Project
+docker.io/manageiq/httpd          Container with httpd, built on CentOS for Ma...
+docker.io/paketobuildpacks/httpd
+docker.io/vulhub/httpd
+docker.io/openeuler/httpd
+docker.io/dockerpinata/httpd
+docker.io/centos/httpd
+docker.io/jokerjack/httpd         base image:  buxybox, running httpd server,...
+docker.io/e2eteam/httpd
+consvc@server1:~/podman/htdocs$ cat index.html
+<pre>
+ _______
+< LINUX >
+ -------
+    \
+     \
+                                   .::!!!!!!!:.
+  .!!!!!:.                        .:!!!!!!!!!!!!
+  ~~~~!!!!!!.                 .:!!!!!!!!!UWWW$$$
+      :$$NWX!!:           .:!!!!!!XUWW$$$$$$$$$P
+      $$$$$##WX!:      .<!!!!UW$$$$"  $$$$$$$$#
+      $$$$$  $$$UX   :!!UW$$$$$$$$$   4$$$$$*
+      ^$$$B  $$$$\     $$$$$$$$$$$$   d$$R"
+        "*$bd$$$$      '*$$$$$$$$$$$o+#"
+             """"          """""""
+</pre>
+consvc@server1:~/podman/htdocs$ consvc@server1:~/podman/htdocs$ podman run -d --name webapp -p 8080:80 -v ~/podman/htdocs:/usr/local/
+bin/     etc/     games/   include/ lib/     lib64/   libexec/ sbin/    share/   src/
+consvc@server1:~/podman/htdocs$ podman run -d --name webapp -p 8080:80 -v ~/podman/htdocs:/usr/local/apache2/htdocs:Z docker.io/library/httpd
+Trying to pull docker.io/library/httpd:latest...
+Getting image source signatures
+Copying blob 8ff6b626bd4b [--------------------------------------] 0.0b / 289.0b
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b
+Copying blob 8ff6b626bd4b [--------------------------------------] 0.0b / 289.0b | 0.0 b/s
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b | 0.0 b/s
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB | 0.0 b/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b [--------------------------------------] 0.0b / 289.0b
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b
+Copying blob 8ff6b626bd4b [--------------------------------------] 0.0b / 289.0b | 0.0 b/s
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b | 0.0 b/s
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB | 0.0 b/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b | 0.0 b/s
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB | 0.0 b/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b | 0.0 b/s
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB | 0.0 b/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b | 0.0 b/s
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB | 0.0 b/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB | 0.0 b/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 6310eb16bf42 [--------------------------------------] 95.4KiB / 28.4MiB | 5.2 MiB/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 6310eb16bf42 [==============>-----------------------] 11.1MiB / 28.4MiB | 520.8 MiB/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 6310eb16bf42 [================================>-----] 24.8MiB / 28.4MiB | 194.6 MiB/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 6310eb16bf42 done   |
+Copying blob 0be8edeb7b17 done   |
+Copying blob 6de3897443b2 [=============>------------------------] 4.6MiB / 12.8MiB | 91.2 MiB/s
+Copying blob af224ce66aeb done   |
+Copying blob 8ff6b626bd4b done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 6310eb16bf42 done   |
+Copying blob 0be8edeb7b17 done   |
+Copying blob 6de3897443b2 done   |
+Copying blob af224ce66aeb done   |
+Copying blob 8ff6b626bd4b done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 6310eb16bf42 done   |
+Copying blob 0be8edeb7b17 done   |
+Copying blob 6de3897443b2 done   |
+Copying blob af224ce66aeb done   |
+Copying blob 8ff6b626bd4b done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 6310eb16bf42 done   |
+Copying blob 0be8edeb7b17 done   |
+Copying blob 6de3897443b2 done   |
+Copying blob af224ce66aeb done   |
+Copying blob 8ff6b626bd4b done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 6310eb16bf42 done   |
+Copying blob 0be8edeb7b17 done   |
+Copying blob 6de3897443b2 done   |
+Copying blob af224ce66aeb done   |
+Copying config 17aba4293f done   |
+Copying config 17aba4293f done   |
+Copying config 17aba4293f done   |
+Writing manifest to image destination
+ca65d2bcf1d7d65e1665fb45a868b80cee6f8edd8ab270ed25883d73a79a2f51
+consvc@server1:~/podman/htdocs$ cd
+consvc@server1:~$ ls -ld
+drwx------. 6 consvc consvc 121 Sep  1 17:34 .
+consvc@server1:~$ ls -ldz
+ls: invalid option -- 'z'
+Try 'ls --help' for more information.
+consvc@server1:~$ ls -dzz
+ls: invalid option -- 'z'
+Try 'ls --help' for more information.
+consvc@server1:~$ ls -dZ ~/podman/htdocs/
+system_u:object_r:container_file_t:s0:c208,c285 /home/consvc/podman/htdocs/
+consvc@server1:~$ podman stopa-a
+ca65d2bcf1d7d65e1665fb45a868b80cee6f8edd8ab270ed25883d73a79a2f51
+consvc@server1:~$ podman rm -a
+ca65d2bcf1d7d65e1665fb45a868b80cee6f8edd8ab270ed25883d73a79a2f51
+consvc@server1:~$lso-dZn~/podman/htdocs/
+system_u:object_r:container_file_t:s0:c208,c285 /home/consvc/podman/htdocs/
+consvc@server1:~$ podman ps -a
+CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+podmanzruno-da--namecwebappp-pm8080:80c-v ~/podman/htdocs:/usr/local/apache2/htdocs:Z docker.io/library/httpd
+51b74352763e6f088db00322b8b18d63148f7eaf9dd9cc8d7e677b7f21f719b8
+consvc@server1:~$ podman ps
+CONTAINER ID  IMAGE                           COMMAND           CREATED        STATUS        PORTS                 NAMES
+51b74352763e  docker.io/library/httpd:latest  httpd-foreground  6 seconds ago  Up 6 seconds  0.0.0.0:8080->80/tcp  webapp
+consvc@server1:~$ curl localhost:8080
+<pre>
+ _______
+< LINUX >
+ -------
+    \
+     \
+                                   .::!!!!!!!:.
+  .!!!!!:.                        .:!!!!!!!!!!!!
+  ~~~~!!!!!!.                 .:!!!!!!!!!UWWW$$$
+      :$$NWX!!:           .:!!!!!!XUWW$$$$$$$$$P
+      $$$$$##WX!:      .<!!!!UW$$$$"  $$$$$$$$#
+      $$$$$  $$$UX   :!!UW$$$$$$$$$   4$$$$$*
+      ^$$$B  $$$$\     $$$$$$$$$$$$   d$$R"
+        "*$bd$$$$      '*$$$$$$$$$$$o+#"
+             """"          """""""
+</pre>
+consvc@server1:~$
+consvc@server1:~$ podman stop webapp && podman rm webapp
+webapp
+webapp
+consvc@server1:~$ mkdir -p ~/.config/containers/systemd/es.conf
+consvc@server1:~$  cat <<'EOF' > ~/.config/containers/systemd/webapp.container
+[Unit]
+Description=Apache WebApp Container (Rootless)
+
+[Container]
+# podman run -d --name webapp \
+# -p 8080:80 \
+# -v ~/podman/htdocs:/usr/local/apach2/htdocs:Z \
+# docker.io/library/httpd
+Image=docker.io/library/httpd
+ContainerName=webapp
+PublishPort=8080:80
+Volume=%h/podman/htdocs:/usr/local/apache2/htdocs:Z
+
+[Install]
+WantedBy=default.target
+
+consvc@server1:~$  cat <<'EOF' > ~/.config/containers/systemd/webapp.container
+[Unit]
+Description=Apache WebApp Container (Rootless)
+
+[Container]
+# podman run -d --name webapp \
+# -p 8080:80 \
+# -v ~/podman/htdocs:/usr/local/apach2/htdocs:Z \
+# docker.io/library/httpd
+Image=docker.io/library/httpd
+ContainerName=webapp
+PublishPort=8080:80
+Volume=%h/podman/htdocs:/usr/local/apache2/htdocs:Z
+
+[Install]
+WantedBy=default.target
+
+EOF
+consvc@server1:~$ systemctl --user daemon-reload
+consvc@server1:~$ systemctl --user start webapp.service
+consvc@server1:~$ podmanpps -a
+CONTAINER ID  IMAGE                           COMMAND           CREATED         STATUS         PORTS                 NAMES
+70ecb2db9a76  docker.io/library/httpd:latest  httpd-foreground  12 seconds ago  Up 13 seconds  0.0.0.0:8080->80/tcp  webapp
+consvc@server1:~$ systemctl --user status webapp.service
+● webapp.service - Apache WebApp Container (Rootless)
+     Loaded: loaded (/home/consvc/.config/containers/systemd/webapp.container; generated0;1;38:5:185m)
+     Active: active (running) since Tue 2026-09-01 17:46:35 KST; 1min 21s ago
+ Invocation: 583e8d61dccc4adcaebe81595d97b9e1
+   Main PID: 6288 (conmon)
+      Tasks: 84 (limit: 48319)
+     Memory: 33.5M (peak: 52.3M)
+        CPU: 139ms
+     CGroup: /user.slice/user-1007.slice/user@1007.service/app.slice/webapp.service
+             ├─libpod-payload-70ecb2db9a7622ac61b2eeca6d4d253b612c68ade9cccc5899b2e92d81e7df05
+             │ ├─6290 httpd -DFOREGROUND
+             │ ├─6294 httpd -DFOREGROUND
+             │ ├─6295 httpd -DFOREGROUND
+             │ └─6296 httpd -DFOREGROUND
+             └─runtime
+               ├─6282 /usr/bin/pasta --config-net -t 8080-8080:80-80 --dns-forward 169.254.1.1 -u none -T none -U none --no-map-gw --quiet --map-guest-addr 169.254.1.2 --n>
+               └─6288 /usr/bin/conmon --api-version 1 -c 70ecb2db9a7622ac61b2eeca6d4d253b612c68ade9cccc5899b2e92d81e7df05 -u 70ecb2db9a7622ac61b2eeca6d4d253b612c68ade9cccc>
+consvc@server1:~$Dexit\
+> ^C
+consvc@server1:~$ exit
+logout
+Connection to localhost closed.
+[root@server1 ~]# exit
+exit
+
+Script done on 2026-09-01 17:50:27+09:00 [COMMAND_EXIT_CODE="130"]
