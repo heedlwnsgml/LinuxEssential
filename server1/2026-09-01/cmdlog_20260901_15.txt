@@ -1,0 +1,435 @@
+Script started on 2026-09-01 15:38:12+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="117" LINES="46"]
+ge prune -f
+dnfoinstallr-y~epel-releasell -y epel-release
+prometheus-rpm_release                       186% [=====================================-======] 336 kB/s | 819  B     00:02 ETA
+prometheus-rpm_release-source                186% [=====================================-======] 327 kB/s | 819  B     00:02 ETA
+Package epel-release-10-9.el10_3.noarch is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[dnftinstall1-y]cowsay install -y cowsay
+Last metadata expiration check: 0:00:01 ago on Tue 01 Sep 2026 03:50:33 PM KST.
+Package cowsay-3.8.4-3.el10_2.noarch is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+mkdir@-pr~/podman/httpd-app~&&ocda~/podman/httpd-app~/podman/httpd-app
+[root@server1 ~/podman/httpd-app]#  cat << EOF > ~/podman/httpd-app/index.html
+<pre>
+$(cowsay -f milk "WEB2")
+</pre>
+[root@server1 ~/podman/httpd-app]#  cat << EOF > ~/podman/httpd-app/index.html
+<pre>
+$(cowsay -f milk "WEB2")
+</pre>
+EOF
+[root@server1 ~/podman/httpd-app]# cat << EOF > ~/podman/httpd-app/Containerfile
+FROM docker.io/library/httpd
+COPY index.html /usr/local/apache2/htdocs/index.html
+[root@server1 ~/podman/httpd-app]# cat << EOF > ~/podman/httpd-app/Containerfile
+FROM docker.io/library/httpd
+COPY index.html /usr/local/apache2/htdocs/index.html
+EOF
+[root@server1 ~/podman/httpd-app]# ls
+Containerfile  index.html
+ges
+REPOSITORY                           TAG         IMAGE ID      CREATED       SIZE
+docker.io/redhat/ubi9                latest      d79e55c295db  15 hours ago  220 MB
+registry.access.redhat.com/ubi8/ubi  latest      a48a2cc47774  22 hours ago  205 MB
+docker.io/leejunhee021210/mynginx    1.0         38becec41bfa  7 days ago    165 MB
+docker.io/library/nginx              latest      38becec41bfa  7 days ago    165 MB
+[root@server1 ~/podman/httpd-app]# podman ps -a
+CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+[root@server1 ~/podman/httpd-app]# podman rmi -a
+Untagged: docker.io/leejunhee021210/mynginx:1.0
+Untagged: docker.io/library/nginx:latest
+Untagged: docker.io/redhat/ubi9:latest
+Untagged: registry.access.redhat.com/ubi8/ubi:latest
+Deleted: 38becec41bfad1ab0ac77eb1626c569fea6a8f39e59436880f61bdeed477226e
+Deleted: d79e55c295db520e8d0025d6b988be9663a49d7adfdb5c82e62a0e6380dc67f0
+Deleted: a48a2cc47774e6875bd821dc14c6d4c71bf802ca563ad2d49405742889521b74
+ges
+REPOSITORY  TAG         IMAGE ID    CREATED     SIZE
+[root@server1 ~/podman/httpd-app]# podman images
+REPOSITORY  TAG         IMAGE ID    CREATED     SIZE
+[root@server1 ~/podman/httpd-app]# c
+podman build -t myhttpd:1.0 .
+STEP 1/2: FROM docker.io/library/httpd
+Trying to pull docker.io/library/httpd:latest...
+Getting image source signatures
+Copying blob 8ff6b626bd4b [--------------------------------------] 0.0b / 289.0b
+Copying blob 8ff6b626bd4b [--------------------------------------] 0.0b / 289.0b
+Copying blob 8ff6b626bd4b [--------------------------------------] 0.0b / 289.0b | 0.0 b/s
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB | 0.0 b/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b [--------------------------------------] 0.0b / 289.0b | 0.0 b/s
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB | 0.0 b/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB | 0.0 b/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB | 0.0 b/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 6310eb16bf42 [--------------------------------------] 0.0b / 28.4MiB | 0.0 b/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 6310eb16bf42 [============>-------------------------] 10.0MiB / 28.4MiB | 841.7 MiB/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 6310eb16bf42 [===============================>------] 23.8MiB / 28.4MiB | 554.3 MiB/s
+Copying blob 0be8edeb7b17 [--------------------------------------] 0.0b / 1.9MiB | 0.0 b/s
+Copying blob 6de3897443b2 [--------------------------------------] 0.0b / 12.8MiB | 0.0 b/s
+Copying blob 4f4fb700ef54 [--------------------------------------] 0.0b / 32.0b | 0.0 b/s
+Copying blob af224ce66aeb [--------------------------------------] 0.0b / 144.0b | 0.0 b/s
+Copying blob 8ff6b626bd4b done   |
+Copying blob 6310eb16bf42 done   |
+Copying blob 0be8edeb7b17 done   |
+Copying blob 6de3897443b2 [=============>------------------------] 4.9MiB / 12.8MiB | 118.3 MiB/s
+Copying blob 4f4fb700ef54 done   |
+Copying blob af224ce66aeb done   |
+Copying blob 8ff6b626bd4b done   |
+Copying blob 6310eb16bf42 done   |
+Copying blob 0be8edeb7b17 done   |
+Copying blob 6de3897443b2 [=====================================>] 12.8MiB / 12.8MiB | 54.9 MiB/s
+Copying blob 4f4fb700ef54 done   |
+Copying blob af224ce66aeb done   |
+Copying blob 8ff6b626bd4b done   |
+Copying blob 6310eb16bf42 done   |
+Copying blob 0be8edeb7b17 done   |
+Copying blob 6de3897443b2 done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob af224ce66aeb done   |
+Copying blob 8ff6b626bd4b done   |
+Copying blob 6310eb16bf42 done   |
+Copying blob 0be8edeb7b17 done   |
+Copying blob 6de3897443b2 done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob af224ce66aeb done   |
+Copying blob 8ff6b626bd4b done   |
+Copying blob 6310eb16bf42 done   |
+Copying blob 0be8edeb7b17 done   |
+Copying blob 6de3897443b2 done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob af224ce66aeb done   |
+Copying blob 8ff6b626bd4b done   |
+Copying blob 6310eb16bf42 done   |
+Copying blob 0be8edeb7b17 done   |
+Copying blob 6de3897443b2 done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob af224ce66aeb done   |
+Copying blob 8ff6b626bd4b done   |
+Copying blob 6310eb16bf42 done   |
+Copying blob 0be8edeb7b17 done   |
+Copying blob 6de3897443b2 done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob af224ce66aeb done   |
+Copying config 17aba4293f done   |
+Copying config 17aba4293f done   |
+Copying config 17aba4293f done   |
+Writing manifest to image destination
+STEP 2/2: COPY index.html /usr/local/apache2/htdocs/index.html
+COMMIT myhttpd:1.0
+--> 2221dd723052
+Successfully tagged localhost/myhttpd:1.0
+2221dd7230520ae7284313322fea7585fbf4f45a9a89c6d200d03e3a06dde98b
+ges
+REPOSITORY               TAG         IMAGE ID      CREATED             SIZE
+localhost/myhttpd        1.0         2221dd723052  About a minute ago  120 MB
+docker.io/library/httpd  latest      17aba4293f3b  7 days ago          120 MB
+[root@server1 ~/podman/httpd-app]# podman run -d --name web2 -p 8081:800myhttpd:1.0
+1c78feff1fbf3eb401082cc390ddb8bc92a9e2a406c113f773dd79a6162b05aa
+[root@server1 ~/podman/httpd-app]# podman ps
+CONTAINER ID  IMAGE                  COMMAND           CREATED         STATUS         PORTS                 NAMES
+1c78feff1fbf  localhost/myhttpd:1.0  httpd-foreground  42 seconds ago  Up 42 seconds  0.0.0.0:8081->80/tcp  web2
+[root@server1 ~/podman/httpd-app]# curl localhost:8081
+<pre>
+ ______
+< WEB2 >
+ ------
+ \     ____________
+  \    |__________|
+      /           /\
+     /           /  \
+    /___________/___/|
+    |          |     |
+    |  ==\ /== |     |
+    |   O   O  | \ \ |
+    |     <    |  \ \|
+   /|          |   \ \
+  / |  \_____/ |   / /
+ / /|          |  / /|
+/||\|          | /||\/
+    -------------|
+        | |    | |
+       <__/    \__>
+</pre>
+[root@server1 ~/podman/httpd-app]# curl localhost:8081
+curl: (7) Failed to connect to localhost port 80 after 0 ms: Could not connect to server
+[root@server1 ~/podman/httpd-app]# podman logs web2
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 10.88.0.7. Set the 'ServerName' directive globally to suppress this message
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 10.88.0.7. Set the 'ServerName' directive globally to suppress this message
+[Tue Sep 01 07:03:10.252452 2026] [mpm_event:notice] [pid 1:tid 1] AH00489: Apache/2.4.68 (Unix) configured -- resuming normal operations
+[Tue Sep 01 07:03:10.252600 2026] [core:notice] [pid 1:tid 1] AH00094: Command line: 'httpd -D FOREGROUND'
+10.88.0.1 - - [01/Sep/2026:07:04:01 +0000] "GET / HTTP/1.1" 200 391
+[root@server1 ~/podman/httpd-app]# podmanologsoweb20
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 10.88.0.7. Set the 'ServerName' directive globally to suppress this message
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 10.88.0.7. Set the 'ServerName' directive globally to suppress this message
+[Tue Sep 01 07:03:10.252452 2026] [mpm_event:notice] [pid 1:tid 1] AH00489: Apache/2.4.68 (Unix) configured -- resuming normal operations
+[Tue Sep 01 07:03:10.252600 2026] [core:notice] [pid 1:tid 1] AH00094: Command line: 'httpd -D FOREGROUND'
+10.88.0.1 - - [01/Sep/2026:07:04:01 +0000] "GET / HTTP/1.1" 200 391
+192.168.10.30 - - [01/Sep/2026:07:05:01 +0000] "GET / HTTP/1.1" 200 391
+[root@server1 ~/podman/httpd-app]#
+[root@server1 ~/podman/httpd-app]#
+[root@server1 ~/podman/httpd-app]#
+[root@server1 ~/podman/httpd-app]# podman ps
+CONTAINER ID  IMAGE                  COMMAND           CREATED        STATUS        PORTS                 NAMES
+1c78feff1fbf  localhost/myhttpd:1.0  httpd-foreground  2 minutes ago  Up 2 minutes  0.0.0.0:8081->80/tcp  web2
+[root@server1 ~/podman/httpd-app]# [root@server1 ~/podman/httpd-app]# podman ps
+CONTAINER ID  IMAGE                  COMMAND           CREATED        STATUS        PORTS                 NAMES
+1c78feff1fbf  localhost/myhttpd:1.0  httpd-foreground  2 minutes ago  Up 2 minutes  0.0.0.0:8081->80/tcp  web2
+[root@server1 ~/podman/httpd-app]#
+[root@server1 ~/podman/httpd-app]#
+[root@server1 ~/podman/httpd-app]# podman exec -it2web2 bash/bs
+root@1c78feff1fbf:/usr/local/apache2# hostma
+root@1c78feff1fbf:/usr/local/apache2#
+root@1c78feff1fbf:/usr/local/apache2# hostname
+1c78feff1fbf
+root@1c78feff1fbf:/usr/local/apache2# id
+uid=0(root) gid=0(root) groups=0(root)
+root@1c78feff1fbf:/usr/local/apache2# ps
+bash: ps: command not found
+root@1c78feff1fbf:/usr/local/apache2# ls
+bin  build  cgi-bin  conf  error  htdocs  icons  include  logs  modules
+root@1c78feff1fbf:/usr/local/apache2# top
+bash: top: command not found
+root@1c78feff1fbf:/usr/local/apache2# ls /proc
+1   acpi        cmdline    dma            interrupts  key-users    loadavg  mounts        scsi      sys            uptime
+3   asound      consoles   driver         iomem       keys         locks    mtrr          self      sysrq-trigger  version
+4   bootconfig  cpuinfo    dynamic_debug  ioports     kmsg         mdstat   net           slabinfo  sysvipc        vmallocinfo
+5   buddyinfo   crypto     execdomains    irq         kpagecgroup  meminfo  pagetypeinfo  softirqs  thread-self    vmstat
+87  bus         devices    filesystems    kallsyms    kpagecount   misc     partitions    stat      timer_list     zoneinfo
+93  cgroups     diskstats  fs             kcore       kpageflags   modules  schedstat     swaps     tty
+root@1c78feff1fbf:/usr/local/apache2#
+root@1c78feff1fbf:/usr/local/apache2#
+root@1c78feff1fbf:/usr/local/apache2# 1@y1@u1@mll -y procps-ng
+bash: yum: command not found
+root@1c78feff1fbf:/usr/local/apache2# 1@d1@n1@fl1@1@-1@yc1@-install -y
+bash: dnf: command not found
+root@1c78feff1fbf:/usr/local/apache2# exit
+exit
+[root@server1 ~/podman/httpd-app]# c
+[root@server1 ~/podman/httpd-app]# podman top web2
+USER        PID         PPID        %CPU        ELAPSED          TTY         TIME        COMMAND
+root        1           0           0.000       5m49.182035781s  ?           0s          httpd -DFOREGROUND
+www-data    3           1           0.000       5m49.18216059s   ?           0s          httpd -DFOREGROUND
+www-data    4           1           0.000       5m49.182177476s  ?           0s          httpd -DFOREGROUND
+www-data    5           1           0.000       5m49.182192358s  ?           0s          httpd -DFOREGROUND
+-help
+
+Usage:
+ ps [options]
+
+ for additional help text.
+
+For more details see ps(1).
+[root@server1 ~/podman/httpd-app]# podman ps
+CONTAINER ID  IMAGE                  COMMAND           CREATED        STATUS        PORTS                 NAMES
+1c78feff1fbf  localhost/myhttpd:1.0  httpd-foreground  9 minutes ago  Up 9 minutes  0.0.0.0:8081->80/tcp  web2
+man stop web2
+web2
+-f
+web2
+[root@server1 ~/podman/httpd-app]# podman ps -a
+CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+podman run -d --name web2 8081:80 myhttpd:1.0
+? Please select an image:
+  ▸ registry.access.redhat.com/8081:80
+    docker.io/library/8081:80
+? ▸ldocker.io/library/8081:80m/8081:80
+Error: ^C
+[root@server1 ~/podman/httpd-app]# podman build -t myhttpd:1.0 .
+STEP 1/2: FROM docker.io/library/httpd
+STEP 2/2: COPY index.html /usr/local/apache2/htdocs/index.html
+--> Using cache 2221dd7230520ae7284313322fea7585fbf4f45a9a89c6d200d03e3a06dde98b
+COMMIT myhttpd:1.0
+--> 2221dd723052
+Successfully tagged localhost/myhttpd:1.0
+2221dd7230520ae7284313322fea7585fbf4f45a9a89c6d200d03e3a06dde98b
+[root@server1 ~/podman/httpd-app]# podman runl-d---nametweb2.8081:80 myhttpd:1.0
+? Please select an image:
+  ▸ registry.access.redhat.com/8081:80
+    docker.io/library/8081:80
+
+? ▸lregistry.access.redhat.com/8081:80
+    docker.io/library/8081:80
+Error: ^C
+[podmanerunr-d~--namenweb2p-pa8081:80omyhttpd:1.0 --name web2 -p 8081:80 myhttpd:1.0
+9662266e9b2c8b1c774e5e1301116381c1892a2c143fc2560b1be9aecf0aa460
+[root@server1 ~/podman/httpd-app]# cat << EOF > ~/podman/httpd-app/index2.html
+<pre>
+$(cowsay -f meow LINUX)
+</pre>
+[root@server1 ~/podman/httpd-app]# cat << EOF > ~/podman/httpd-app/index2.html
+<pre>
+$(cowsay -f meow LINUX)
+</pre>
+EOF
+[root@server1 ~/podman/httpd-app]# cat ~/podman/httpd-app/index2.html
+<pre>
+ _______
+< LINUX >
+ -------
+  \
+   \ ,   _ ___.--'''`--''//-,-_--_.
+      \`"' ` || \\ \ \\/ / // / ,-\\`,_
+     /'`  \ \ || Y  | \|/ / // / - |__ `-,
+    /@"\  ` \ `\ |  | ||/ // | \/  \  `-._`-,_.,
+   /  _.-. `.-\,___/\ _/|_/_\_\/|_/ |     `-._._)
+   `-'``/  /  |  // \__/\__  /  \__/ \
+        `-'  /-\/  | -|   \__ \   |-' |
+          __/\ / _/ \/ __,-'   ) ,' _|'
+         (((__/(((_.' ((___..-'((__,'
+</pre>
+tab -e
+no crontab for root - using an empty one
+>4;m>4;mcrontab:anoEchanges0madeBto crontab         >c~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                ~                                                                                                                                0,0-1All+q436f+q6b75+q6b64+q6b72+q6b6c+q2332+q2334+q2569+q2a37+q6b31$q q?12$p+q6b32+q6b33+q6b34+q6b35+q6b36+q6b37+q6b38^[P0    +q6b39+q6b3b+q4631+q4632+q2531+q2638+q6b62+q6b49+q6b44+q6b68+q4037+q6b50^[P   +q6b4e+q4b31+q4b33+q4b34+q4b35+q6b42+q5053+q5045^[  ::q
+ex2.html web2:/usr/local/apache2/htdocs/index.html
+calhost:8081
+<pre>
+ _______
+< LINUX >
+ -------
+  \
+   \ ,   _ ___.--'''`--''//-,-_--_.
+      \`"' ` || \\ \ \\/ / // / ,-\\`,_
+     /'`  \ \ || Y  | \|/ / // / - |__ `-,
+    /@"\  ` \ `\ |  | ||/ // | \/  \  `-._`-,_.,
+   /  _.-. `.-\,___/\ _/|_/_\_\/|_/ |     `-._._)
+   `-'``/  /  |  // \__/\__  /  \__/ \
+        `-'  /-\/  | -|   \__ \   |-' |
+          __/\ / _/ \/ __,-'   ) ,' _|'
+         (((__/(((_.' ((___..-'((__,'
+</pre>
+[root@server1 ~/podman/httpd-app]# podman ps
+CONTAINER ID  IMAGE                  COMMAND           CREATED        STATUS        PORTS                 NAMES
+9662266e9b2c  localhost/myhttpd:1.0  httpd-foreground  2 minutes ago  Up 2 minutes  0.0.0.0:8081->80/tcp  web2
+ podman cp index2.html web2:/usr/local/apache2/htdocs/inde1@1@2l
+[root@server1 ~/podman/httpd-app]# podman login quay.io
+Username: heedlwnsgml
+Password:
+Error: logging into "quay.io": invalid username/password
+[root@server1 ~/podman/httpd-app]# podman login quay.io
+Username: heedlwnsgml
+Password:
+Error: logging into "quay.io": invalid username/password
+[root@server1 ~/podman/httpd-app]# podman login quay.io
+Username: heedlwnsgml
+Password:
+Error: logging into "quay.io": invalid username/password
+/dlwnsgml/myimage:1.0
+[root@server1 ~/podman/httpd-app]# podman tag localhost/myhttpd:1.0 quay.heedlwnsgml/myimage:1.0
+[root@server1 ~/podman/httpd-app]# podman login quay.io
+Username: heedlwnsgml
+Password:
+Error: logging into "quay.io": invalid username/password
+ay.io/
+quay.io/dlwnsgml/myimage:1.0     quay.io/heedlwnsgml/myimage:1.0
+[root@server1 ~/podman/httpd-app]# podman push quay.io/heedlwnsgml/myimage:1.0
+Getting image source signatures
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 411a86676185 [--------------------------------------] 0.0b / 77.3MiB | 0.0 b/s
+Copying blob 49f2f3f7fdd4 [--------------------------------------] 0.0b / 5.8MiB | 0.0 b/s
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 411a86676185 [--------------------------------------] 8.0b / 77.3MiB | 3.3 MiB/s
+Copying blob 49f2f3f7fdd4 [--------------------------------------] 8.0b / 5.8MiB | 4.0 MiB/s
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 411a86676185 [--------------------------------------] 8.0b / 77.3MiB | 3.3 MiB/s
+Copying blob 49f2f3f7fdd4 [--------------------------------------] 8.0b / 5.8MiB | 4.0 MiB/s
+Copying blob 33e713185c78 [--------------------------------------] 8.0b / 31.6MiB | 2.4 MiB/s
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 411a86676185 [--------------------------------------] 8.0b / 77.3MiB | 3.3 MiB/s
+Copying blob 49f2f3f7fdd4 [--------------------------------------] 8.0b / 5.8MiB | 4.0 MiB/s
+Copying blob 33e713185c78 [--------------------------------------] 8.0b / 31.6MiB | 2.4 MiB/s
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 411a86676185 [--------------------------------------] 8.0b / 77.3MiB | 3.3 MiB/s
+Copying blob 49f2f3f7fdd4 [--------------------------------------] 8.0b / 5.8MiB | 4.0 MiB/s
+Copying blob 33e713185c78 [--------------------------------------] 8.0b / 31.6MiB | 2.4 MiB/s
+Copying blob d385e0e4a5b3 [--------------------------------------] 8.0b / 2.5KiB | 1.8 MiB/s
+Copying blob a3ed95caeb02 skipped: already exists
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 411a86676185 [--------------------------------------] 8.0b / 77.3MiB | 3.3 MiB/s
+Copying blob 49f2f3f7fdd4 [--------------------------------------] 8.0b / 5.8MiB | 4.0 MiB/s
+Copying blob 33e713185c78 [--------------------------------------] 8.0b / 31.6MiB | 2.4 MiB/s
+Copying blob d385e0e4a5b3 [--------------------------------------] 8.0b / 2.5KiB | 1.8 MiB/s
+Copying blob a3ed95caeb02 skipped: already exists
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 411a86676185 [--------------------------------------] 8.0b / 77.3MiB | 3.3 MiB/s
+Copying blob 49f2f3f7fdd4 [--------------------------------------] 8.0b / 5.8MiB | 4.0 MiB/s
+Copying blob 33e713185c78 [--------------------------------------] 8.0b / 31.6MiB | 2.4 MiB/s
+Copying blob d385e0e4a5b3 [--------------------------------------] 8.0b / 2.5KiB | 1.8 MiB/s
+Copying blob a3ed95caeb02 skipped: already exists
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 411a86676185 [--------------------------------------] 8.0b / 77.3MiB | 3.3 MiB/s
+Copying blob 49f2f3f7fdd4 [--------------------------------------] 8.0b / 5.8MiB | 4.0 MiB/s
+Copying blob 33e713185c78 [--------------------------------------] 8.0b / 31.6MiB | 2.4 MiB/s
+Copying blob d385e0e4a5b3 [--------------------------------------] 8.0b / 2.5KiB | 1.8 MiB/s
+Copying blob a3ed95caeb02 skipped: already exists
+Copying blob a60c5411750f [--------------------------------------] 8.0b / 4.0KiB | 3.9 MiB/s
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 411a86676185 [--------------------------------------] 8.0b / 77.3MiB | 3.3 MiB/s
+Copying blob 49f2f3f7fdd4 [--------------------------------------] 8.0b / 5.8MiB | 4.0 MiB/s
+Copying blob 33e713185c78 [--------------------------------------] 8.0b / 31.6MiB | 2.4 MiB/s
+Copying blob d385e0e4a5b3 [--------------------------------------] 8.0b / 2.5KiB | 1.8 MiB/s
+Copying blob a3ed95caeb02 skipped: already exists
+Copying blob a60c5411750f [--------------------------------------] 8.0b / 4.0KiB | 3.9 MiB/s
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 411a86676185 [--------------------------------------] 8.0b / 77.3MiB | 3.3 MiB/s
+Copying blob 49f2f3f7fdd4 [--------------------------------------] 8.0b / 5.8MiB | 4.0 MiB/s
+Copying blob 33e713185c78 [--------------------------------------] 8.0b / 31.6MiB | 2.4 MiB/s
+Copying blob d385e0e4a5b3 [--------------------------------------] 8.0b / 2.5KiB | 1.8 MiB/s
+Copying blob a3ed95caeb02 skipped: already exists
+Copying blob a60c5411750f [--------------------------------------] 8.0b / 4.0KiB | 3.9 MiB/s
+Copying blob 904d55aeeaa2 [--------------------------------------] 8.0b / 3.5KiB | 2.0 MiB/s
+Copying blob 411a86676185 [--------------------------------------] 8.0b / 77.3MiB | 3.3 MiB/s
+Copying blob 49f2f3f7fdd4 [--------------------------------------] 8.0b / 5.8MiB | 4.0 MiB/s
+Copying blob 33e713185c78 [--------------------------------------] 8.0b / 31.6MiB | 2.4 MiB/s
+Copying blob d385e0e4a5b3 [--------------------------------------] 8.0b / 2.5KiB | 1.8 MiB/s
+Copying blob a3ed95caeb02 skipped: already exists
+Copying blob a60c5411750f [--------------------------------------] 8.0b / 4.0KiB | 3.9 MiB/s
+Error: writing blob: initiating layer upload to /v2/heedlwnsgml/myimage/blobs/uploads/ in quay.io: unauthorized: access to the requested resource is not authorized
+[root@server1 ~/podman/httpd-app]# exit
+exit
+
+Script done on 2026-09-01 16:28:28+09:00 [COMMAND_EXIT_CODE="125"]
